@@ -276,8 +276,12 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 func _dañar():
 		if is_hurt or is_dead:
 			return
+			
+			
 		#  Primero escudo
 		if escudo > 0:
+			is_hurt = true;
+			state_machine.travel("hurt")
 			escudo -= 1
 			emit_signal("vidas_cambiadas", vidas, escudo)
 			
