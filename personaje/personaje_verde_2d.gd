@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var anim_tree = $AnimationTree
 @onready var state_machine = anim_tree.get("parameters/playback")
 
-signal vidas_cambiadas(nuevas_vidas)
+signal vidas_cambiadas(vidas, escudo)
 
 const velocidad = 300.0
 const velocidad_correr = 450.0
@@ -44,7 +44,7 @@ var shoot_timer = 0
 
 
 func _ready():
-	emit_signal("vidas_cambiadas", vidas)
+	emit_signal("vidas_cambiadas", vidas, escudo)
 	pass
 
 
@@ -153,11 +153,12 @@ func apply_powerup(type):
 		"dobSal":
 			dobSalAct = true
 		"escudo":
-			escudo = 2
+			escudo += 2
+			emit_signal("vidas_cambiadas", vidas, escudo)
 		"vida":
 			if vidas < 2:
 				vidas = 2
-				emit_signal("vidas_cambiadas", vidas)
+				emit_signal("vidas_cambiadas", vidas, escudo)
 				flash_heal()
 
 
@@ -275,8 +276,17 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 func _dañar():
 		if is_hurt or is_dead:
 			return
+		#  Primero escudo
+		if escudo > 0:
+			escudo -= 1
+			emit_signal("vidas_cambiadas", vidas, escudo)
+			
+			# efecto visual distinto opcional
+			flash_damage()
+			return
+		
 		vidas -= 1
-		emit_signal("vidas_cambiadas", vidas)
+		emit_signal("vidas_cambiadas", vidas, escudo)
 		if vidas <= 0:
 			is_dead = true
 			bloquearControles = true

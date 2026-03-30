@@ -24,9 +24,9 @@ texture = ExtResource("2_4squ5")
 position = Vector2(0, 7)
 shape = SubResource("CapsuleShape2D_x4fpu")
 
-[node name="Hitbox" type="Area2D" parent="." unique_id=88912872]
+[node name="Hitbox" type="Area2D" parent="." unique_id=88912872 groups=["Enemigos"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=377442333]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=377442333 groups=["Enemigos"]]
 position = Vector2(2, 6)
 shape = SubResource("CircleShape2D_dm53f")
 

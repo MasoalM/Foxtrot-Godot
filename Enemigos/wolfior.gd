@@ -6,7 +6,7 @@ extends CharacterBody2D
 var speed = 120
 var player
 var start_position
-var detect_distance = 300
+var detect_distance = 600
 var patrol_distance = 75
 var chasing = false
 var chase_timer = 0.0
@@ -44,7 +44,7 @@ var espada_scene = preload("res://Enemigos//Espada.tscn")
 
 
 func _ready():
-	get_tree().debug_collisions_hint = false
+	get_tree().debug_collisions_hint = true
 	
 	add_to_group("Enemigos")
 	player = get_tree().get_first_node_in_group("player")
@@ -239,7 +239,7 @@ func attack():
 	shape.radius = original_radius
 	shape.height = original_height
 	shape_node.position.x = 0
-	hitbox.monitoring = false
+	
 
 
 	if is_instance_valid(espada_idle):

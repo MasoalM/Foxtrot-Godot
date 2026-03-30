@@ -456,13 +456,19 @@ texture = ExtResource("39_dg0w2")
 layout_mode = 0
 offset_left = 122.0
 offset_top = 56.0
-offset_right = 206.0
+offset_right = 278.0
 offset_bottom = 91.0
 
 [node name="cora1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=519954009]
 layout_mode = 2
 
 [node name="cora2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1291268981]
+layout_mode = 2
+
+[node name="escudo1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=2068122972]
+layout_mode = 2
+
+[node name="escudo2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1411731843]
 layout_mode = 2
 
 [node name="CharacterBody2D3" parent="." unique_id=1098210497 instance=ExtResource("40_dg0w2")]
