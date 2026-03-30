@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bs1xpgquu3t8k"]
+
+[ext_resource type="Texture2D" uid="uid://cjnlvn4vfck27" path="res://SpritesFoxtrot/Efecto y otros/fondo1.png" id="1_kpgyf"]
+
+[node name="Node2D" type="Node2D" unique_id=1858728029]
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=87867068]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Parallax2D" unique_id=1799284992]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground" unique_id=1205759741]
+motion_mirroring = Vector2(2037, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer" unique_id=152028415]
+texture_filter = 1
+position = Vector2(1022.50006, 196.50003)
+scale = Vector2(1.9892579, 3.2035086)
+texture = ExtResource("1_kpgyf")

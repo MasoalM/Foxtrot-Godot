@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://6rcs6agfvdu0"]
+
+[ext_resource type="Texture2D" uid="uid://baymtgl2f0teb" path="res://SpritesFoxtrot/PowerUps/Shield.png" id="1_2dfc1"]
+[ext_resource type="Script" uid="uid://bic2xget2ouif" path="res://powerUps/escudo.gd" id="2_33ndi"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_33ndi"]
+radius = 13.0
+height = 34.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2dfc1"]
+radius = 12.0
+height = 34.0
+
+[node name="RigidBody2D" type="RigidBody2D" unique_id=637563091]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=924884598]
+texture_filter = 1
+texture = ExtResource("1_2dfc1")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1278460220]
+script = ExtResource("2_33ndi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1195977402]
+shape = SubResource("CapsuleShape2D_33ndi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1405962848]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_2dfc1")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

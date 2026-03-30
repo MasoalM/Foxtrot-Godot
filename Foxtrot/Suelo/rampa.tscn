@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b3ul2ctyj8r8i"]
+
+[ext_resource type="Texture2D" uid="uid://c81mlpy356nqb" path="res://Sprites/Tiles/Default/ramp.png" id="1_rjnq2"]
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=642679567]
+
+[node name="BlockBlue" type="Sprite2D" parent="." unique_id=1179969687]
+texture = ExtResource("1_rjnq2")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1836606708]
+polygon = PackedVector2Array(3, -4, -19, -25, -28, -27, -32, -20, -32, 27, -32, 32, 23, 32, 26, 32, 38, 32)

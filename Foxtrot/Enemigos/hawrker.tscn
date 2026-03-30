@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bjtf1vhnso0ys"]
+
+[ext_resource type="Script" uid="uid://co875d5yuwu3s" path="res://Enemigos/hawrker.gd" id="1_4squ5"]
+[ext_resource type="Texture2D" uid="uid://cjrroox3o3igj" path="res://SpritesFoxtrot/Enemigos/Hawrker.png" id="2_4squ5"]
+[ext_resource type="PackedScene" uid="uid://b7diipa0verqi" path="res://Enemigos/flecha.tscn" id="2_dm53f"]
+[ext_resource type="Texture2D" uid="uid://dep81qp7tesl" path="res://SpritesFoxtrot/Proyectiles/Bow.png" id="3_afeyf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x4fpu"]
+radius = 21.0
+height = 50.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dm53f"]
+radius = 29.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1098210497 groups=["Enemigos"]]
+script = ExtResource("1_4squ5")
+projectile_scene = ExtResource("2_dm53f")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=740053985]
+texture_filter = 1
+texture = ExtResource("2_4squ5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2011937271 groups=["Enemigos"]]
+position = Vector2(0, 7)
+shape = SubResource("CapsuleShape2D_x4fpu")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=88912872]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=377442333]
+position = Vector2(2, 6)
+shape = SubResource("CircleShape2D_dm53f")
+
+[node name="Bow" type="Node2D" parent="." unique_id=225723064]
+
+[node name="Marker2D" type="Marker2D" parent="Bow" unique_id=1733462299]
+
+[node name="Sprite2D" type="Sprite2D" parent="Bow" unique_id=419762791]
+texture_filter = 1
+position = Vector2(18, 1)
+texture = ExtResource("3_afeyf")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://b7diipa0verqi"]
+
+[ext_resource type="Script" uid="uid://d0wd3j7ry8jgr" path="res://Enemigos/flecha.gd" id="1_u4wd1"]
+[ext_resource type="Texture2D" uid="uid://dfu6lb8k4h32u" path="res://SpritesFoxtrot/Proyectiles/Arrow.png" id="2_u4wd1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kyqwc"]
+radius = 5.0
+height = 54.0
+
+[node name="Area2D" type="Area2D" unique_id=1423240358 groups=["Enemigos"]]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_u4wd1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=770195888]
+texture_filter = 1
+position = Vector2(-7.748604e-07, -5.421404)
+rotation = -2.3352506
+scale = Vector2(2.5793393, 2.4825664)
+texture = ExtResource("2_u4wd1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=431087791 groups=["Enemigos"]]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(0, -4)
+shape = SubResource("CapsuleShape2D_kyqwc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

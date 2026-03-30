@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://digj45m3nsyp4"]
+
+[ext_resource type="Script" uid="uid://dw1ufvymmdmcv" path="res://Enemigos/wolfior.gd" id="1_3yp3h"]
+[ext_resource type="Texture2D" uid="uid://dc0qodfc3da77" path="res://Sprites/Characters/Default/Wolfior.png" id="1_s2ktt"]
+[ext_resource type="Texture2D" uid="uid://1wsf2lhqi5jo" path="res://SpritesFoxtrot/Sword.png" id="3_ayysr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ayysr"]
+radius = 25.0
+height = 82.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3yp3h"]
+radius = 23.0
+height = 76.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=547989863]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_3yp3h")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=168423799]
+texture_filter = 1
+texture = ExtResource("1_s2ktt")
+
+[node name="hitboxAtaque" type="Area2D" parent="." unique_id=2122217189]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitboxAtaque" unique_id=1633705388]
+position = Vector2(0, 10)
+shape = SubResource("CapsuleShape2D_ayysr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=890915852]
+position = Vector2(0, 10)
+shape = SubResource("CapsuleShape2D_3yp3h")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1693097214]
+collision_mask = 3
+
+[node name="EspadaIdle" type="Node2D" parent="." unique_id=56523616]
+
+[node name="sword" type="Sprite2D" parent="EspadaIdle" unique_id=1035658033]
+texture_filter = 1
+position = Vector2(2, -2.0000002)
+scale = Vector2(1, 0.984375)
+texture = ExtResource("3_ayysr")
+
+[connection signal="area_entered" from="hitboxAtaque" to="." method="_on_area_2d_area_entered"]

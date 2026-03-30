@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://yvhofclcpx88"]
+
+[ext_resource type="Texture2D" uid="uid://danmmjyc8ut3x" path="res://Sprites/Tiles/Default/block_blue.png" id="1_4iic5"]
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=642679567]
+
+[node name="BlockBlue" type="Sprite2D" parent="." unique_id=1179969687]
+texture = ExtResource("1_4iic5")
+
+[node name="BlockBlue2" type="Sprite2D" parent="." unique_id=420675288]
+position = Vector2(63, 0)
+texture = ExtResource("1_4iic5")
+
+[node name="BlockBlue3" type="Sprite2D" parent="." unique_id=1394125503]
+position = Vector2(126, 0)
+texture = ExtResource("1_4iic5")
+
+[node name="BlockBlue4" type="Sprite2D" parent="." unique_id=424822269]
+position = Vector2(189, 0)
+texture = ExtResource("1_4iic5")
+
+[node name="BlockBlue5" type="Sprite2D" parent="." unique_id=1993266587]
+position = Vector2(252, 0)
+texture = ExtResource("1_4iic5")

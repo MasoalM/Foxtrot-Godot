@@ -1,0 +1,152 @@
+[gd_scene format=3 uid="uid://pv0tnikacfoy"]
+
+[ext_resource type="Texture2D" uid="uid://cllxhtageh6m" path="res://SpritesFoxtrot/parallax/Bosq/CapaSuperInferior.png" id="1_wi16v"]
+[ext_resource type="Texture2D" uid="uid://cp3ihcdv3novw" path="res://SpritesFoxtrot/parallax/Bosq/CapaInferior.png" id="2_xxorx"]
+[ext_resource type="Texture2D" uid="uid://l481e81spml5" path="res://SpritesFoxtrot/parallax/Bosq/CapaSuperior.png" id="3_hj3l8"]
+[ext_resource type="Texture2D" uid="uid://cvncjxwygko2o" path="res://SpritesFoxtrot/parallax/Bosq/CapaSuperSuperior.png" id="4_5u0un"]
+[ext_resource type="Texture2D" uid="uid://btyq03b2myllr" path="res://SpritesFoxtrot/parallax/Bosq/RayosLuz.png" id="4_xxorx"]
+[ext_resource type="Texture2D" uid="uid://dnqb7ij2x4hfc" path="res://SpritesFoxtrot/parallax/Aldea/village1.png" id="6_hj3l8"]
+[ext_resource type="Texture2D" uid="uid://dsjja58owssse" path="res://SpritesFoxtrot/parallax/Aldea/village3.png" id="7_cm5rq"]
+[ext_resource type="Texture2D" uid="uid://ck6yxw0141gv0" path="res://SpritesFoxtrot/parallax/Aldea/village2.png" id="8_g46ma"]
+[ext_resource type="Texture2D" uid="uid://di2n3qkcs1khi" path="res://SpritesFoxtrot/parallax/Aldea/village5.png" id="9_ung3l"]
+[ext_resource type="Texture2D" uid="uid://brqc0y4xegmay" path="res://SpritesFoxtrot/parallax/Aldea/village4.png" id="10_pqqhd"]
+[ext_resource type="Texture2D" uid="uid://2wtgdc3olnnx" path="res://SpritesFoxtrot/parallax/Aldea/village7.png" id="11_ag6nf"]
+[ext_resource type="Texture2D" uid="uid://bvpiwguliliyg" path="res://SpritesFoxtrot/parallax/Aldea/village6.png" id="12_8mcra"]
+[ext_resource type="Texture2D" uid="uid://dmflpomwd6tic" path="res://SpritesFoxtrot/parallax/Aldea/village9.png" id="13_xkq20"]
+[ext_resource type="Texture2D" uid="uid://cip416d85bnbf" path="res://SpritesFoxtrot/parallax/Aldea/village8.png" id="14_omykm"]
+[ext_resource type="Texture2D" uid="uid://cp3kym4rqn3ie" path="res://SpritesFoxtrot/parallax/Aldea/village11.png" id="15_b67vs"]
+[ext_resource type="Texture2D" uid="uid://drweihjxc31ug" path="res://SpritesFoxtrot/parallax/Aldea/village10.png" id="16_r0xia"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5u0un"]
+animations = [{
+"frames": [{
+"duration": 0.96,
+"texture": ExtResource("6_hj3l8")
+}, {
+"duration": 0.8,
+"texture": ExtResource("8_g46ma")
+}, {
+"duration": 0.28,
+"texture": ExtResource("7_cm5rq")
+}, {
+"duration": 0.2,
+"texture": ExtResource("10_pqqhd")
+}, {
+"duration": 0.06,
+"texture": ExtResource("9_ung3l")
+}, {
+"duration": 0.04,
+"texture": ExtResource("12_8mcra")
+}, {
+"duration": 0.06,
+"texture": ExtResource("11_ag6nf")
+}, {
+"duration": 0.2,
+"texture": ExtResource("14_omykm")
+}, {
+"duration": 0.28,
+"texture": ExtResource("13_xkq20")
+}, {
+"duration": 0.8,
+"texture": ExtResource("16_r0xia")
+}, {
+"duration": 0.96,
+"texture": ExtResource("15_b67vs")
+}, {
+"duration": 0.8,
+"texture": ExtResource("16_r0xia")
+}, {
+"duration": 0.28,
+"texture": ExtResource("13_xkq20")
+}, {
+"duration": 0.2,
+"texture": ExtResource("14_omykm")
+}, {
+"duration": 0.06,
+"texture": ExtResource("11_ag6nf")
+}, {
+"duration": 0.04,
+"texture": ExtResource("12_8mcra")
+}, {
+"duration": 0.06,
+"texture": ExtResource("9_ung3l")
+}, {
+"duration": 0.2,
+"texture": ExtResource("10_pqqhd")
+}, {
+"duration": 0.28,
+"texture": ExtResource("7_cm5rq")
+}, {
+"duration": 0.8,
+"texture": ExtResource("8_g46ma")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D" unique_id=1858728029]
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=87867068]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Parallax2D" unique_id=1799284992]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground" unique_id=717420956]
+motion_scale = Vector2(0.1, 1)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer" unique_id=1633525427]
+texture_filter = 1
+position = Vector2(576, 324)
+scale = Vector2(3, 3.4105263)
+texture = ExtResource("1_wi16v")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground" unique_id=676365534]
+motion_scale = Vector2(0.4, 1)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer2" unique_id=2010150970]
+texture_filter = 1
+position = Vector2(576, 323.99997)
+scale = Vector2(3, 3.4105263)
+texture = ExtResource("2_xxorx")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground" unique_id=1059724465]
+motion_scale = Vector2(0.7, 1)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer4" unique_id=676319745]
+texture_filter = 1
+position = Vector2(576, 324)
+scale = Vector2(3, 3.410526)
+texture = ExtResource("3_hj3l8")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground" unique_id=823139020]
+motion_scale = Vector2(0.9, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer5" unique_id=1799642854]
+texture_filter = 1
+position = Vector2(576, 324)
+scale = Vector2(3, 3.4105263)
+texture = ExtResource("4_xxorx")
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground" unique_id=1884341877]
+motion_scale = Vector2(0.9, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer6" unique_id=754270646]
+texture_filter = 1
+position = Vector2(576, 324)
+scale = Vector2(2.9999998, 3.4105263)
+sprite_frames = SubResource("SpriteFrames_5u0un")
+autoplay = "default"
+frame = 1
+frame_progress = 0.5233228
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground" unique_id=1965828683]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer3" unique_id=1679039402]
+texture_filter = 1
+position = Vector2(576, 324)
+scale = Vector2(3, 3.410526)
+texture = ExtResource("4_5u0un")

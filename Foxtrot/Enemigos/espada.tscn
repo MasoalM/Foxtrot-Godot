@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://t1cfueh5ads8"]
+
+[ext_resource type="Script" uid="uid://x6c5m5rj87ti" path="res://Enemigos/espada.gd" id="1_5xcw1"]
+[ext_resource type="Texture2D" uid="uid://1wsf2lhqi5jo" path="res://SpritesFoxtrot/Sword.png" id="1_g856d"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5xcw1"]
+radius = 7.0
+height = 66.0
+
+[node name="Area2D" type="Area2D" unique_id=570638121 groups=["Enemigos"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_5xcw1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1540467225]
+texture_filter = 1
+position = Vector2(2, -31)
+scale = Vector2(1, 1.046875)
+texture = ExtResource("1_g856d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1871982359 groups=["Enemigos"]]
+position = Vector2(1, -29)
+shape = SubResource("CapsuleShape2D_5xcw1")

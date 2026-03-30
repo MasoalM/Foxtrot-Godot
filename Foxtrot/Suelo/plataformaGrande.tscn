@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://b4ce882t14pla"]
+
+[ext_resource type="PackedScene" uid="uid://yvhofclcpx88" path="res://Suelo/plataforma.tscn" id="1_o8ly1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o8ly1"]
+size = Vector2(4096, 64)
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=642679567]
+
+[node name="StaticBody2D" parent="." unique_id=2127158555 instance=ExtResource("1_o8ly1")]
+
+[node name="StaticBody2D2" parent="." unique_id=1252610348 instance=ExtResource("1_o8ly1")]
+position = Vector2(315, 0)
+
+[node name="StaticBody2D3" parent="." unique_id=314570254 instance=ExtResource("1_o8ly1")]
+position = Vector2(630, 0)
+
+[node name="StaticBody2D4" parent="." unique_id=2022594465 instance=ExtResource("1_o8ly1")]
+position = Vector2(945, 0)
+
+[node name="StaticBody2D5" parent="." unique_id=1273870365 instance=ExtResource("1_o8ly1")]
+position = Vector2(1260, 0)
+
+[node name="StaticBody2D6" parent="." unique_id=1485850105 instance=ExtResource("1_o8ly1")]
+position = Vector2(1575, 0)
+
+[node name="StaticBody2D7" parent="." unique_id=545858552 instance=ExtResource("1_o8ly1")]
+position = Vector2(1890, 0)
+
+[node name="StaticBody2D8" parent="." unique_id=1075091988 instance=ExtResource("1_o8ly1")]
+position = Vector2(2205, 0)
+
+[node name="StaticBody2D9" parent="." unique_id=1284449068 instance=ExtResource("1_o8ly1")]
+position = Vector2(2520, 0)
+
+[node name="StaticBody2D10" parent="." unique_id=608666822 instance=ExtResource("1_o8ly1")]
+position = Vector2(2835, 0)
+
+[node name="StaticBody2D11" parent="." unique_id=1951696826 instance=ExtResource("1_o8ly1")]
+position = Vector2(3150, 0)
+
+[node name="StaticBody2D12" parent="." unique_id=1234247465 instance=ExtResource("1_o8ly1")]
+position = Vector2(3465, 0)
+
+[node name="StaticBody2D13" parent="." unique_id=1261690276 instance=ExtResource("1_o8ly1")]
+position = Vector2(3780, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1343524104]
+position = Vector2(2016, 0)
+shape = SubResource("RectangleShape2D_o8ly1")

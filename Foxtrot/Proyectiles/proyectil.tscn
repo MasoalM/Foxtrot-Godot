@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://ds1iqd2mh3l1m"]
+
+[ext_resource type="Script" uid="uid://2mqogathkaob" path="res://Proyectiles/proyectil.gd" id="1_1hd88"]
+[ext_resource type="Texture2D" uid="uid://bww6sqbj1rc6k" path="res://Sprites/Tiles/Default/MoxSht.png" id="2_1hd88"]
+[ext_resource type="Texture2D" uid="uid://djp4mcoh2wnil" path="res://Sprites/Tiles/Default/luz.png" id="3_8al7i"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1hd88"]
+radius = 7.0
+height = 40.0
+
+[node name="Proyectil" type="Area2D" unique_id=1529313797]
+light_mask = 512
+visibility_layer = 7
+script = ExtResource("1_1hd88")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1055736728]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_1hd88")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1311440186]
+texture_filter = 1
+position = Vector2(3.3881318e-21, 0)
+scale = Vector2(0.77000004, 0.5799999)
+texture = ExtResource("2_1hd88")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=508917827]
+position = Vector2(10, 6.7762636e-21)
+scale = Vector2(0.4986089, 0.25903615)
+color = Color(0.8509804, 0.64705884, 0.8039216, 1)
+texture = ExtResource("3_8al7i")

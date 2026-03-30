@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://bli8g4akaj8hq"]
+
+[ext_resource type="PackedScene" uid="uid://tqyojfmurh6m" path="res://Suelo/bloque_2d.tscn" id="1_x56iu"]
+[ext_resource type="PackedScene" uid="uid://btxh1fbl4jfwi" path="res://Suelo/bloque2_2d.tscn" id="2_5l6rm"]
+[ext_resource type="PackedScene" uid="uid://t3cps6t21qux" path="res://personaje/personajeVerde_2d.tscn" id="3_r16r3"]
+[ext_resource type="Script" uid="uid://dbevart6empd" path="res://niveles/camera_2d.gd" id="4_5l6rm"]
+[ext_resource type="PackedScene" uid="uid://c0pg6o11j4nrg" path="res://Enemigos/sierra_2d.tscn" id="4_myqx8"]
+
+[node name="Node2D" type="Node2D" unique_id=151303341]
+position = Vector2(403, 514)
+
+[node name="StaticBody2D" parent="." unique_id=642679567 instance=ExtResource("1_x56iu")]
+position = Vector2(-1, 1)
+
+[node name="StaticBody2D2" parent="." unique_id=350896233 instance=ExtResource("1_x56iu")]
+position = Vector2(60, 1)
+
+[node name="StaticBody2D3" parent="." unique_id=602510938 instance=ExtResource("1_x56iu")]
+position = Vector2(122, 1)
+
+[node name="StaticBody2D4" parent="." unique_id=902676825 instance=ExtResource("1_x56iu")]
+position = Vector2(184, 0)
+
+[node name="StaticBody2D5" parent="." unique_id=1479584014 instance=ExtResource("1_x56iu")]
+position = Vector2(245, -1)
+
+[node name="StaticBody2D6" parent="." unique_id=2133200993 instance=ExtResource("1_x56iu")]
+position = Vector2(307, -1)
+
+[node name="StaticBody2D7" parent="." unique_id=1686207723 instance=ExtResource("2_5l6rm")]
+position = Vector2(147, -170)
+
+[node name="StaticBody2D8" parent="." unique_id=1487757351 instance=ExtResource("1_x56iu")]
+position = Vector2(371, -61)
+
+[node name="StaticBody2D9" parent="." unique_id=543038001 instance=ExtResource("1_x56iu")]
+position = Vector2(371, -121)
+
+[node name="StaticBody2D10" parent="." unique_id=1674797682 instance=ExtResource("2_5l6rm")]
+position = Vector2(310, -122)
+
+[node name="Node2D" parent="." unique_id=421719618 instance=ExtResource("3_r16r3")]
+position = Vector2(78, -112)
+
+[node name="Node2D2" parent="." unique_id=286299241 instance=ExtResource("4_myqx8")]
+position = Vector2(278, -291)
+
+[node name="RigidBody2D" parent="." unique_id=677796148 instance=ExtResource("4_myqx8")]
+position = Vector2(184, -249)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1010869035]
+position = Vector2(78, -112)
+script = ExtResource("4_5l6rm")
