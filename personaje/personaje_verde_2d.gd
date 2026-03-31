@@ -153,13 +153,29 @@ func apply_powerup(type):
 		"dobSal":
 			dobSalAct = true
 		"escudo":
-			escudo += 2
+			var cantidad = 2
+
+			# Curar primero si falta vida
+			if vidas < 2:
+				var vida_faltante = 2 - vidas
+				var curacion = min(cantidad, vida_faltante)
+				
+				vidas += curacion
+				
+				flash(1)  # opcional pero queda muy bien
+
+			# Lo restante se convierte en escudo
+			if cantidad > 0:
+				escudo += cantidad
+				escudo = clamp(escudo, 0, 2)
+			flash(1)	
+
 			emit_signal("vidas_cambiadas", vidas, escudo)
 		"vida":
 			if vidas < 2:
 				vidas = 2
 				emit_signal("vidas_cambiadas", vidas, escudo)
-				flash_heal()
+				flash(2)
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
@@ -286,7 +302,7 @@ func _dañar():
 			emit_signal("vidas_cambiadas", vidas, escudo)
 			
 			# efecto visual distinto opcional
-			flash_damage()
+			flash(3)
 			return
 		
 		vidas -= 1
@@ -296,13 +312,20 @@ func _dañar():
 			bloquearControles = true
 			state_machine.travel("death")
 		else:
-			flash_damage()
+			flash(3)
 			is_hurt = true
 			state_machine.travel("hurt")
 			
-func flash_damage():
+
+	
+func flash(color):
 	for i in range(3):
-		animacion.modulate = Color(1, 0.2, 0.2)  
+		if color == 3:
+			animacion.modulate = Color(1, 0.2, 0.2)
+		if color == 2:
+			animacion.modulate = Color(0.2, 1, 0.2)
+		if color == 1:
+			animacion.modulate = Color(0.1, 0.6, 1)	
 		await get_tree().create_timer(0.15).timeout
 		
 		animacion.modulate = Color(1, 1, 1)  
@@ -311,16 +334,7 @@ func flash_damage():
 	# asegurar que termina limpio
 	animacion.modulate = Color(1, 1, 1)			
 
-func flash_heal():
-	for i in range(2):
-		animacion.modulate = Color(0.2, 1, 0.2)  # verde
-		await get_tree().create_timer(0.15).timeout
-		
-		animacion.modulate = Color(1, 1, 1)  # normal
-		await get_tree().create_timer(0.15).timeout
 
-	# asegurar reset final
-	animacion.modulate = Color(1, 1, 1)	
 #func _on_area_2d_area_entered(area: Area2D) -> void:
 #	if area.is_in_group("Lianas"):
 #		print("the end is never the end is never the end is never the end is never the end is never the end is never ")
