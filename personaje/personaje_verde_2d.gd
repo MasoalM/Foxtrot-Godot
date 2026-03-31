@@ -41,6 +41,8 @@ var enemigosIn = 0
 
 var shoot_cooldown = 0.2
 var shoot_timer = 0
+var shoot_anim_timeout = 0.0
+const SHOOT_ANIM_MAX = 1.0
 
 
 func _ready():
@@ -56,6 +58,11 @@ func _reset_afk() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if isShooting:
+		shoot_anim_timeout += delta
+		if shoot_anim_timeout >= SHOOT_ANIM_MAX:
+			isShooting = false
+			shoot_anim_timeout = 0.0
 	_animaciones()
 	# Gravedad
 	if not is_on_floor():
@@ -203,6 +210,7 @@ func _animaciones() -> void:
 	# ↓ MOVIDO AQUÍ: el disparo interrumpe también jump y fall
 	if (not bloquearControles) and Input.is_action_just_pressed("DispararBasico") and (shoot_timer <= 0):
 		if get_tree().get_nodes_in_group("ProyectilAliado").size() < 3:
+			print("hallo")
 			isShooting = true
 			state_machine.travel("shoot")
 			return
@@ -270,9 +278,11 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 					state_machine.travel("hurt")
 
 		"shoot":
+			print("hola")
 			isShooting = false
 			is_jumping = false
 			is_fall = false
+			#state_machine.travel("static")
 
 		"jump":
 			# Al acabar el impulso visual, pasar a la animación de vuelo
@@ -312,9 +322,9 @@ func _dañar():
 			bloquearControles = true
 			state_machine.travel("death")
 		else:
-			flash(3)
 			is_hurt = true
 			state_machine.travel("hurt")
+			flash(3)
 			
 
 	
