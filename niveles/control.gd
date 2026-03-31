@@ -2,9 +2,9 @@ extends Control
 
 @onready var corazones = $HBoxContainer.get_children()
 @onready var fondo = $TextureRect
-var fullvida = preload("res://hud/MoxFullHealthBar (1).png")
-var damagedvida = preload("res://hud/MoxFullHealthBar (3).png")
-var vidaescudo = preload("res://hud/MoxFullHealthBar (2).png")
+var fullvida = preload("res://hud/MoxFullHealthBar.png")
+var damagedvida = preload("res://hud/MoxDamagedHealthBar.png")
+var vidaescudo = preload("res://hud/MoxProtectedHealthBar.png")
 
 var corazon_rojo = preload("res://hud/Heart2.png")
 var corazon_gris = preload("res://hud/ProtectedHeart.png")
