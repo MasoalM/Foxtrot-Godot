@@ -39,7 +39,6 @@
 [ext_resource type="Texture2D" uid="uid://bgh8ouadkr0y" path="res://SpritesFoxtrot/Bloques/Dirt.png" id="34_51gxm"]
 [ext_resource type="Script" uid="uid://bc3yl0l1o2rb1" path="res://niveles/control.gd" id="38_608v1"]
 [ext_resource type="Texture2D" uid="uid://c7j8y60gsqd2q" path="res://hud/HealthBar.png" id="39_dg0w2"]
-[ext_resource type="PackedScene" uid="uid://bjtf1vhnso0ys" path="res://Enemigos/hawrker.tscn" id="40_dg0w2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rn8p"]
 texture = ExtResource("34_51gxm")
@@ -445,6 +444,7 @@ offset_bottom = 105.0
 script = ExtResource("38_608v1")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control" unique_id=1421845045]
+texture_filter = 1
 layout_mode = 0
 offset_left = 51.0
 offset_top = 41.0
@@ -474,6 +474,3 @@ layout_mode = 2
 [node name="escudo2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1411731843]
 texture_filter = 1
 layout_mode = 2
-
-[node name="CharacterBody2D3" parent="." unique_id=1098210497 instance=ExtResource("40_dg0w2")]
-position = Vector2(792, 411)
