@@ -44,7 +44,7 @@ var espada_scene = preload("res://Enemigos//Espada.tscn")
 
 
 func _ready():
-	get_tree().debug_collisions_hint = true
+	get_tree().debug_collisions_hint = false
 	
 	add_to_group("Enemigos")
 	player = get_tree().get_first_node_in_group("player")

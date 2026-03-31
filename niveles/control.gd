@@ -1,6 +1,10 @@
 extends Control
 
 @onready var corazones = $HBoxContainer.get_children()
+@onready var fondo = $TextureRect
+var fullvida = preload("res://hud/MoxFullHealthBar (1).png")
+var damagedvida = preload("res://hud/MoxFullHealthBar (3).png")
+var vidaescudo = preload("res://hud/MoxFullHealthBar (2).png")
 
 var corazon_rojo = preload("res://hud/Heart2.png")
 var corazon_gris = preload("res://hud/ProtectedHeart.png")
@@ -47,3 +51,11 @@ func actualizar_vidas(vidas, escudo):
 				corazones[i].texture = corazon_escudo
 			else:
 				corazones[i].visible = false
+	
+	if escudo > 0:
+		fondo.texture = vidaescudo
+	else:
+		if vidas == max_vidas:
+			fondo.texture = fullvida
+		else:
+			fondo.texture = damagedvida			
