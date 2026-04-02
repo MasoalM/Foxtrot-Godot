@@ -12,7 +12,8 @@ const velocidad_correr = 450.0
 const aceleracion = 1000.0
 const aceleracion_aire = aceleracion * 0.5
 const friccion = 1200.0
-const JUMP_VELOCITY = -500.0
+const JUMP_VELOCITY = -525.0
+const cut_factor = 0.5
 const bala = preload("res://Proyectiles/proyectil.tscn")
 const coyoteTime = 10
 const afk = 400
@@ -43,6 +44,8 @@ var shoot_cooldown = 0.2
 var shoot_timer = 0
 var shoot_anim_timeout = 0.0
 const SHOOT_ANIM_MAX = 1.0
+
+
 
 
 func _ready():
@@ -89,6 +92,9 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 		if not is_on_floor():
 			dobSal = false
+
+	if Input.is_action_just_released("ui_accept") and velocity.y < 0:
+		velocity.y *= cut_factor
 
 	vel = velocidad
 	if ((not bloquearControles) and Input.is_action_pressed("correr") and is_on_floor()) or air_nercia:
@@ -347,4 +353,4 @@ func flash(color):
 
 #func _on_area_2d_area_entered(area: Area2D) -> void:
 #	if area.is_in_group("Lianas"):
-#		print("the end is never the end is never the end is never the end is never the end is never the end is never ")
+#		print("the end is never the end is never the end is never the end is never the end is never the end is never ") 
