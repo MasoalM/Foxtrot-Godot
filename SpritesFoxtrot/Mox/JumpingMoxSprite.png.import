@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b0ecpmyc72rny"
-path="res://.godot/imported/JumpingMoxSprite (1).png-08fd76c5fa815280a7924f1a354ba73d.ctex"
+path="res://.godot/imported/JumpingMoxSprite.png-5f05fa301dc53e6f4a46672bca470dfd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SpritesFoxtrot/Mox/JumpingMoxSprite (1).png"
-dest_files=["res://.godot/imported/JumpingMoxSprite (1).png-08fd76c5fa815280a7924f1a354ba73d.ctex"]
+source_file="res://SpritesFoxtrot/Mox/JumpingMoxSprite.png"
+dest_files=["res://.godot/imported/JumpingMoxSprite.png-5f05fa301dc53e6f4a46672bca470dfd.ctex"]
 
 [params]
 

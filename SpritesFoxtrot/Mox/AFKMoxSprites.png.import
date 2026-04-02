@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dcjjxxuihax6p"
-path="res://.godot/imported/AFKMoxSprites (1).png-2ab2568954a123fbbc510b3394e37427.ctex"
+path="res://.godot/imported/AFKMoxSprites.png-8f389f4ad9bfc64156f13ca7265166d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SpritesFoxtrot/Mox/AFKMoxSprites (1).png"
-dest_files=["res://.godot/imported/AFKMoxSprites (1).png-2ab2568954a123fbbc510b3394e37427.ctex"]
+source_file="res://SpritesFoxtrot/Mox/AFKMoxSprites.png"
+dest_files=["res://.godot/imported/AFKMoxSprites.png-8f389f4ad9bfc64156f13ca7265166d0.ctex"]
 
 [params]
 

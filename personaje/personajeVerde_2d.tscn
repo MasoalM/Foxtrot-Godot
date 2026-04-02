@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://csqhart454t43" path="res://personaje/personaje_verde_2d.gd" id="1_7aows"]
 [ext_resource type="Texture2D" uid="uid://g8g7kfqoyawo" path="res://Sprites/Characters/Default/Mox.png" id="2_7aows"]
-[ext_resource type="Texture2D" uid="uid://dcjjxxuihax6p" path="res://SpritesFoxtrot/Mox/AFKMoxSprites (1).png" id="3_6lhxe"]
+[ext_resource type="Texture2D" uid="uid://dcjjxxuihax6p" path="res://SpritesFoxtrot/Mox/AFKMoxSprites.png" id="3_6lhxe"]
 [ext_resource type="Texture2D" uid="uid://63eeggf4trap" path="res://SpritesFoxtrot/Mox/WalkingMoxSprite.png" id="3_s7s46"]
-[ext_resource type="Texture2D" uid="uid://b0ecpmyc72rny" path="res://SpritesFoxtrot/Mox/JumpingMoxSprite (1).png" id="4_6lhxe"]
+[ext_resource type="Texture2D" uid="uid://b0ecpmyc72rny" path="res://SpritesFoxtrot/Mox/JumpingMoxSprite.png" id="4_6lhxe"]
 [ext_resource type="Texture2D" uid="uid://dh6bkfrm7tuhh" path="res://SpritesFoxtrot/Mox/RunningMoxSprites.png" id="4_lkeop"]
 [ext_resource type="Texture2D" uid="uid://dbkds1dnxlyto" path="res://SpritesFoxtrot/Mox/ShootingMoxSprite.png" id="5_hypta"]
 [ext_resource type="Texture2D" uid="uid://dswffqagy103s" path="res://SpritesFoxtrot/Mox/HurtingMoxSprites.png" id="5_no0uw"]
