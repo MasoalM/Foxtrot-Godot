@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b7diipa0verqi"]
 
 [ext_resource type="Script" uid="uid://d0wd3j7ry8jgr" path="res://Enemigos/flecha.gd" id="1_u4wd1"]
-[ext_resource type="Texture2D" uid="uid://dfu6lb8k4h32u" path="res://SpritesFoxtrot/Proyectiles/Arrow.png" id="2_u4wd1"]
+[ext_resource type="Texture2D" uid="uid://dfu6lb8k4h32u" path="res://Sprites/Proyectiles/Arrow.png" id="2_u4wd1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kyqwc"]
 radius = 5.0

@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var animacion = $AnimatedSprite2D
 @onready var anim_tree = $AnimationTree
 @onready var state_machine = anim_tree.get("parameters/playback")
-@onready var dust = preload("res://SpritesFoxtrot/Particles/Dust.tscn")
+@onready var dust = preload("res://Sprites/Particles/Dust.tscn")
 
 signal vidas_cambiadas(vidas, escudo)
 

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://ds1iqd2mh3l1m"]
 
 [ext_resource type="Script" uid="uid://2mqogathkaob" path="res://Proyectiles/proyectil.gd" id="1_1hd88"]
-[ext_resource type="Texture2D" uid="uid://bww6sqbj1rc6k" path="res://Sprites/Tiles/Default/MoxSht.png" id="2_1hd88"]
-[ext_resource type="Texture2D" uid="uid://djp4mcoh2wnil" path="res://Sprites/Tiles/Default/luz.png" id="3_8al7i"]
+[ext_resource type="Texture2D" uid="uid://bww6sqbj1rc6k" path="res://Sprites/Mox/MoxSht.png" id="2_1hd88"]
+[ext_resource type="Texture2D" uid="uid://djp4mcoh2wnil" path="res://Sprites/Efecto y otros/luz.png" id="3_8al7i"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1hd88"]
 radius = 7.0

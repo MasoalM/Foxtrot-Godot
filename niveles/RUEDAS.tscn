@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c5sgbl6h0vo11"]
+[gd_scene format=3 uid="uid://kp65rldxyvb6"]
 
 [ext_resource type="PackedScene" uid="uid://tqyojfmurh6m" path="res://Suelo/bloque_2d.tscn" id="1_hpdgl"]
 [ext_resource type="PackedScene" uid="uid://btxh1fbl4jfwi" path="res://Suelo/bloque2_2d.tscn" id="2_as1pi"]
@@ -49,10 +49,9 @@ position = Vector2(278, -291)
 [node name="RigidBody2D" parent="." unique_id=677796148 instance=ExtResource("4_lxfqp")]
 position = Vector2(184, -249)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1010869035 node_paths=PackedStringArray("object_to_follow")]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1010869035]
 position = Vector2(78, -112)
 script = ExtResource("5_vplrp")
-object_to_follow = NodePath("../Node2D")
 
 [node name="StaticBody2D11" parent="." unique_id=1754977153 instance=ExtResource("6_as1pi")]
 position = Vector2(-363, -217)

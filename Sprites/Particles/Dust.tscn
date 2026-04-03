@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bvh1g2k08pj06"]
+
+[ext_resource type="Texture2D" uid="uid://bcdh1u768muvr" path="res://Sprites/Particles/DustAnimation1.png" id="1_rvgic"]
+[ext_resource type="Texture2D" uid="uid://c5cgp4mk74w7p" path="res://Sprites/Particles/DustAnimation2.png" id="2_k8tr1"]
+[ext_resource type="Texture2D" uid="uid://c4uq3nyirwgmc" path="res://Sprites/Particles/DustAnimation3.png" id="3_s0ajg"]
+[ext_resource type="Texture2D" uid="uid://bhf213tntbadh" path="res://Sprites/Particles/DustAnimation4.png" id="4_xaeav"]
+[ext_resource type="Texture2D" uid="uid://ddty85e2xiutx" path="res://Sprites/Particles/DustAnimation5.png" id="5_1t6tx"]
+[ext_resource type="Texture2D" uid="uid://02xp2ha4qada" path="res://Sprites/Particles/DustAnimation6.png" id="6_uuv61"]
+[ext_resource type="Script" uid="uid://f0x1125520yr" path="res://Sprites/Particles/dust.gd" id="7_6rh1d"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s6y7e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rvgic")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_k8tr1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_s0ajg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xaeav")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1t6tx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_uuv61")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="Dust" type="AnimatedSprite2D" unique_id=1834029072]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_s6y7e")
+autoplay = "default"
+frame = 5
+frame_progress = 1.0
+script = ExtResource("7_6rh1d")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

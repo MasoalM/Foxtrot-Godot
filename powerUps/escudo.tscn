@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://6rcs6agfvdu0"]
 
-[ext_resource type="Texture2D" uid="uid://baymtgl2f0teb" path="res://SpritesFoxtrot/PowerUps/Shield.png" id="1_2dfc1"]
+[ext_resource type="Texture2D" uid="uid://baymtgl2f0teb" path="res://Sprites/PowerUps/Shield.png" id="1_2dfc1"]
 [ext_resource type="Script" uid="uid://bic2xget2ouif" path="res://powerUps/escudo.gd" id="2_33ndi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_33ndi"]

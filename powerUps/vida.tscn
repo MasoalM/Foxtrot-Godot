@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b1ftwkgwp40yb"]
 
-[ext_resource type="Texture2D" uid="uid://ca7kef2h3iclf" path="res://SpritesFoxtrot/PowerUps/Heart.png" id="1_2tpb7"]
+[ext_resource type="Texture2D" uid="uid://ca7kef2h3iclf" path="res://Sprites/PowerUps/Heart.png" id="1_2tpb7"]
 [ext_resource type="Script" uid="uid://c7hts51hrhxs0" path="res://powerUps/vida.gd" id="2_rn1fe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rn1fe"]

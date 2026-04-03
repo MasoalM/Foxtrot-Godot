@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://csgorm16kj0mv"]
 
-[ext_resource type="Texture2D" uid="uid://dwroa0ojm2rqf" path="res://SpritesFoxtrot/Bloques/Column.png" id="1_5cgij"]
+[ext_resource type="Texture2D" uid="uid://dwroa0ojm2rqf" path="res://Sprites/Bloques/Column.png" id="1_5cgij"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lwmiw"]
 radius = 12.0

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dtcw45iyc4vgd"]
 
-[ext_resource type="Texture2D" uid="uid://dxqij2jts8ivr" path="res://SpritesFoxtrot/PowerUps/Boots.png" id="1_hpqph"]
+[ext_resource type="Texture2D" uid="uid://dxqij2jts8ivr" path="res://Sprites/PowerUps/Boots.png" id="1_hpqph"]
 [ext_resource type="Script" uid="uid://vwrb1i2twbbx" path="res://powerUps/dobleSalt.gd" id="2_hpqph"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_35ida"]

@@ -50,13 +50,15 @@ func _physics_process(delta):
 			if distance < shoot_distance:
 				shoot_timer -= delta
 
-				if shoot_timer <= 0 and !dead:
-					animated_sprite.play("preShot")
+				if shoot_timer <= 0:
+					if !dead:
+						animated_sprite.play("preShot")
 					shoot_timer = 2
 					await get_tree().create_timer(1).timeout
 					shoot()
 					shoot_timer = shoot_cooldown
-					animated_sprite.play("idle")
+					if !dead:
+						animated_sprite.play("idle")
 		move_and_slide()
 	
 func get_shot_velocity(target_pos: Vector2) -> Vector2:
@@ -92,8 +94,9 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("ProyectilAliado"):
 		if area.has_method("morir"):
 			area.morir()
+		if !dead:
+			bow.queue_free()
 		dead = true
-		#bow.queue_free()
 		animated_sprite.play("death")
 		await get_tree().create_timer(1.8).timeout
 		queue_free()	

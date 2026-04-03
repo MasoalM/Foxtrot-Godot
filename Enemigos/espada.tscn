@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://t1cfueh5ads8"]
 
 [ext_resource type="Script" uid="uid://x6c5m5rj87ti" path="res://Enemigos/espada.gd" id="1_5xcw1"]
-[ext_resource type="Texture2D" uid="uid://1wsf2lhqi5jo" path="res://SpritesFoxtrot/Sword.png" id="1_g856d"]
+[ext_resource type="Texture2D" uid="uid://1wsf2lhqi5jo" path="res://Sprites/Sword.png" id="1_g856d"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5xcw1"]
 radius = 7.0

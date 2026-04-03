@@ -1,57 +1,43 @@
 [gd_scene format=3 uid="uid://cy2gnd2dce0ks"]
 
 [ext_resource type="PackedScene" uid="uid://t3cps6t21qux" path="res://personaje/personajeVerde_2d.tscn" id="1_xqqx3"]
-[ext_resource type="Texture2D" uid="uid://ba7k7rjrcl1jw" path="res://Sprites/Tiles/Default/Dirt.png" id="2_g6lol"]
-[ext_resource type="Texture2D" uid="uid://5ti0kh28yim5" path="res://Sprites/Tiles/Default/Grass.png" id="3_unt6w"]
-[ext_resource type="Texture2D" uid="uid://5uvn68uac1bp" path="res://SpritesFoxtrot/Bloques/Spikes (1).png" id="4_dccrm"]
-[ext_resource type="Texture2D" uid="uid://bktcuauxvfsik" path="res://SpritesFoxtrot/Bloques/WoodBlock (1).png" id="5_an17n"]
-[ext_resource type="Texture2D" uid="uid://cv1sxq1g5e6ya" path="res://SpritesFoxtrot/Bloques/DamagedWoodBlock (1).png" id="6_bxsc0"]
-[ext_resource type="Texture2D" uid="uid://1c6fp8kosfun" path="res://SpritesFoxtrot/Bloques/DirtPlant.png" id="7_rapbn"]
-[ext_resource type="Texture2D" uid="uid://bv7smjbq3c4cl" path="res://SpritesFoxtrot/Bloques/DirtWorm.png" id="8_mqfnb"]
-[ext_resource type="Texture2D" uid="uid://dndppuovdw37x" path="res://SpritesFoxtrot/Bloques/WoodPlatform64x64v2.png" id="9_kx3d6"]
-[ext_resource type="Texture2D" uid="uid://cmsdu8ecv8xpm" path="res://SpritesFoxtrot/Bloques/WoodPlatform64x64v3.png" id="10_tcwlf"]
-[ext_resource type="Texture2D" uid="uid://b3cgui4nffxit" path="res://SpritesFoxtrot/Bloques/Tronco2.png" id="11_xmr5h"]
-[ext_resource type="Texture2D" uid="uid://tf7376gh2lk7" path="res://SpritesFoxtrot/Bloques/Tronco2girado.png" id="12_vdsh4"]
-[ext_resource type="Texture2D" uid="uid://dr2ev3uvv6jtg" path="res://SpritesFoxtrot/Bloques/Tronco3.png" id="13_68742"]
-[ext_resource type="Texture2D" uid="uid://58ai3dj7qbxd" path="res://SpritesFoxtrot/Bloques/Tronco3girado.png" id="14_p6pex"]
-[ext_resource type="Texture2D" uid="uid://bbyplr24o06l2" path="res://SpritesFoxtrot/Bloques/Dirt2.png" id="14_xqqx3"]
-[ext_resource type="Texture2D" uid="uid://ctttsaoywm8el" path="res://SpritesFoxtrot/Bloques/Tronco4.png" id="15_idxhw"]
-[ext_resource type="Texture2D" uid="uid://jexrnmphyi5w" path="res://SpritesFoxtrot/Bloques/Tronco4girado.png" id="16_lq5ll"]
-[ext_resource type="Texture2D" uid="uid://bhi4rwsvr46gk" path="res://SpritesFoxtrot/Bloques/Tronco.png" id="17_7n5dc"]
-[ext_resource type="Texture2D" uid="uid://cqmtptxgrjlx7" path="res://SpritesFoxtrot/Bloques/TroncoGirado.png" id="18_lx0vv"]
-[ext_resource type="Texture2D" uid="uid://bolcbj1i1ii50" path="res://SpritesFoxtrot/Bloques/Tronco4Atravesable.png" id="19_gyolj"]
-[ext_resource type="Texture2D" uid="uid://dreno1rvanj1b" path="res://SpritesFoxtrot/Bloques/Tronco4giradoAtravesable.png" id="20_y3lj0"]
-[ext_resource type="Texture2D" uid="uid://d0c0arweo6ojp" path="res://SpritesFoxtrot/Bloques/TroncoAtravesable.png" id="21_8ev5q"]
-[ext_resource type="Texture2D" uid="uid://dxf6c0xlre7h3" path="res://SpritesFoxtrot/Bloques/TroncoGIradoAtravesable.png" id="22_ikcu6"]
-[ext_resource type="Texture2D" uid="uid://cqx6fj8wrtj5o" path="res://SpritesFoxtrot/Bloques/ruinBlock.png" id="23_f2gdb"]
-[ext_resource type="Texture2D" uid="uid://dhj8neb2jgy8x" path="res://Sprites/Tiles/Default/WoodPlatform64x64.png" id="24_2tbti"]
-[ext_resource type="Texture2D" uid="uid://jifb5oo4isom" path="res://SpritesFoxtrot/Bloques/Grass2.png" id="24_g6lol"]
-[ext_resource type="Texture2D" uid="uid://dftv1q8c4snhl" path="res://SpritesFoxtrot/Checkpoint/Hoguera.png" id="25_1bvtk"]
-[ext_resource type="Texture2D" uid="uid://d0thqy0u7ov6f" path="res://SpritesFoxtrot/Bloques/RuinStairs.png" id="26_fifm1"]
-[ext_resource type="Texture2D" uid="uid://bg67x8awhtuch" path="res://SpritesFoxtrot/Bloques/GrassRuinTransition.png" id="27_rdnx6"]
-[ext_resource type="Texture2D" uid="uid://uo1swjyosu5i" path="res://SpritesFoxtrot/Bloques/DirtRuinTransition.png" id="28_j01b1"]
-[ext_resource type="Texture2D" uid="uid://dwroa0ojm2rqf" path="res://SpritesFoxtrot/Bloques/Column.png" id="29_srddr"]
-[ext_resource type="Texture2D" uid="uid://djp4mcoh2wnil" path="res://Sprites/Tiles/Default/luz.png" id="31_elm21"]
+[ext_resource type="Texture2D" uid="uid://5uvn68uac1bp" path="res://Sprites/Bloques/Spikes (1).png" id="4_dccrm"]
+[ext_resource type="Texture2D" uid="uid://bktcuauxvfsik" path="res://Sprites/Bloques/WoodBlock (1).png" id="5_an17n"]
+[ext_resource type="Texture2D" uid="uid://cv1sxq1g5e6ya" path="res://Sprites/Bloques/DamagedWoodBlock (1).png" id="6_bxsc0"]
+[ext_resource type="Texture2D" uid="uid://1c6fp8kosfun" path="res://Sprites/Bloques/DirtPlant.png" id="7_rapbn"]
+[ext_resource type="Texture2D" uid="uid://bv7smjbq3c4cl" path="res://Sprites/Bloques/DirtWorm.png" id="8_mqfnb"]
+[ext_resource type="Texture2D" uid="uid://dndppuovdw37x" path="res://Sprites/Bloques/WoodPlatform64x64v2.png" id="9_kx3d6"]
+[ext_resource type="Texture2D" uid="uid://cmsdu8ecv8xpm" path="res://Sprites/Bloques/WoodPlatform64x64v3.png" id="10_tcwlf"]
+[ext_resource type="Texture2D" uid="uid://b3cgui4nffxit" path="res://Sprites/Bloques/Tronco2.png" id="11_xmr5h"]
+[ext_resource type="Texture2D" uid="uid://tf7376gh2lk7" path="res://Sprites/Bloques/Tronco2girado.png" id="12_vdsh4"]
+[ext_resource type="Texture2D" uid="uid://dr2ev3uvv6jtg" path="res://Sprites/Bloques/Tronco3.png" id="13_68742"]
+[ext_resource type="Texture2D" uid="uid://58ai3dj7qbxd" path="res://Sprites/Bloques/Tronco3girado.png" id="14_p6pex"]
+[ext_resource type="Texture2D" uid="uid://bbyplr24o06l2" path="res://Sprites/Bloques/Dirt2.png" id="14_xqqx3"]
+[ext_resource type="Texture2D" uid="uid://ctttsaoywm8el" path="res://Sprites/Bloques/Tronco4.png" id="15_idxhw"]
+[ext_resource type="Texture2D" uid="uid://jexrnmphyi5w" path="res://Sprites/Bloques/Tronco4girado.png" id="16_lq5ll"]
+[ext_resource type="Texture2D" uid="uid://bhi4rwsvr46gk" path="res://Sprites/Bloques/Tronco.png" id="17_7n5dc"]
+[ext_resource type="Texture2D" uid="uid://cqmtptxgrjlx7" path="res://Sprites/Bloques/TroncoGirado.png" id="18_lx0vv"]
+[ext_resource type="Texture2D" uid="uid://bolcbj1i1ii50" path="res://Sprites/Bloques/Tronco4Atravesable.png" id="19_gyolj"]
+[ext_resource type="Texture2D" uid="uid://dreno1rvanj1b" path="res://Sprites/Bloques/Tronco4giradoAtravesable.png" id="20_y3lj0"]
+[ext_resource type="Texture2D" uid="uid://d0c0arweo6ojp" path="res://Sprites/Bloques/TroncoAtravesable.png" id="21_8ev5q"]
+[ext_resource type="Texture2D" uid="uid://dxf6c0xlre7h3" path="res://Sprites/Bloques/TroncoGIradoAtravesable.png" id="22_ikcu6"]
+[ext_resource type="Texture2D" uid="uid://cqx6fj8wrtj5o" path="res://Sprites/Bloques/ruinBlock.png" id="23_f2gdb"]
+[ext_resource type="Texture2D" uid="uid://dhj8neb2jgy8x" path="res://Sprites/Bloques/WoodPlatform64x64.png" id="24_2tbti"]
+[ext_resource type="Texture2D" uid="uid://jifb5oo4isom" path="res://Sprites/Bloques/Grass2.png" id="24_g6lol"]
+[ext_resource type="Texture2D" uid="uid://dftv1q8c4snhl" path="res://Sprites/Checkpoint/Hoguera.png" id="25_1bvtk"]
+[ext_resource type="Texture2D" uid="uid://d0thqy0u7ov6f" path="res://Sprites/Bloques/RuinStairs.png" id="26_fifm1"]
+[ext_resource type="Texture2D" uid="uid://bg67x8awhtuch" path="res://Sprites/Bloques/GrassRuinTransition.png" id="27_rdnx6"]
+[ext_resource type="Texture2D" uid="uid://uo1swjyosu5i" path="res://Sprites/Bloques/DirtRuinTransition.png" id="28_j01b1"]
+[ext_resource type="Texture2D" uid="uid://dwroa0ojm2rqf" path="res://Sprites/Bloques/Column.png" id="29_srddr"]
+[ext_resource type="Texture2D" uid="uid://djp4mcoh2wnil" path="res://Sprites/Efecto y otros/luz.png" id="31_elm21"]
 [ext_resource type="PackedScene" uid="uid://dtcw45iyc4vgd" path="res://powerUps/dobleSalto.tscn" id="32_qo2to"]
 [ext_resource type="PackedScene" uid="uid://6rcs6agfvdu0" path="res://powerUps/escudo.tscn" id="33_sdkmw"]
 [ext_resource type="PackedScene" uid="uid://b1ftwkgwp40yb" path="res://powerUps/vida.tscn" id="34_lh55y"]
 [ext_resource type="PackedScene" uid="uid://cv4mf7w2d3xe0" path="res://Otros/jungFrond.tscn" id="36_l0x8k"]
-[ext_resource type="Texture2D" uid="uid://yna61wn5d72r" path="res://SpritesFoxtrot/Coleccionables/Coleccionable.png" id="36_no0i1"]
-[ext_resource type="AudioStream" uid="uid://dbuxhiplotkmh" path="res://SpritesFoxtrot/Music/Level2.ogg" id="38_g6lol"]
+[ext_resource type="Texture2D" uid="uid://yna61wn5d72r" path="res://Sprites/Coleccionables/Coleccionable.png" id="36_no0i1"]
+[ext_resource type="AudioStream" uid="uid://dbuxhiplotkmh" path="res://Sprites/Music/Level2.ogg" id="38_g6lol"]
 [ext_resource type="PackedScene" uid="uid://bjtf1vhnso0ys" path="res://Enemigos/hawrker.tscn" id="39_unt6w"]
 [ext_resource type="PackedScene" uid="uid://digj45m3nsyp4" path="res://Enemigos/wolfior.tscn" id="40_dccrm"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rn8p"]
-texture = ExtResource("2_g6lol")
-texture_region_size = Vector2i(64, 64)
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i12o8"]
-texture = ExtResource("3_unt6w")
-texture_region_size = Vector2i(64, 64)
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qhqn8"]
 texture = ExtResource("4_dccrm")
@@ -224,8 +210,6 @@ tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 custom_data_layer_0/name = "damage"
 custom_data_layer_0/type = 1
-sources/0 = SubResource("TileSetAtlasSource_5rn8p")
-sources/1 = SubResource("TileSetAtlasSource_i12o8")
 sources/4 = SubResource("TileSetAtlasSource_tc1tu")
 sources/5 = SubResource("TileSetAtlasSource_vp4r3")
 sources/3 = SubResource("TileSetAtlasSource_qw1dg")

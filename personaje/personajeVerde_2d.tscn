@@ -1,16 +1,18 @@
 [gd_scene format=3 uid="uid://t3cps6t21qux"]
 
 [ext_resource type="Script" uid="uid://csqhart454t43" path="res://personaje/personaje_verde_2d.gd" id="1_7aows"]
-[ext_resource type="Texture2D" uid="uid://g8g7kfqoyawo" path="res://Sprites/Characters/Default/Mox.png" id="2_7aows"]
-[ext_resource type="Texture2D" uid="uid://dcjjxxuihax6p" path="res://SpritesFoxtrot/Mox/AFKMoxSprites.png" id="3_6lhxe"]
-[ext_resource type="Texture2D" uid="uid://63eeggf4trap" path="res://SpritesFoxtrot/Mox/WalkingMoxSprite.png" id="3_s7s46"]
-[ext_resource type="Texture2D" uid="uid://b0ecpmyc72rny" path="res://SpritesFoxtrot/Mox/JumpingMoxSprite.png" id="4_6lhxe"]
-[ext_resource type="Texture2D" uid="uid://dh6bkfrm7tuhh" path="res://SpritesFoxtrot/Mox/RunningMoxSprites.png" id="4_lkeop"]
-[ext_resource type="Texture2D" uid="uid://dbkds1dnxlyto" path="res://SpritesFoxtrot/Mox/ShootingMoxSprite.png" id="5_hypta"]
-[ext_resource type="Texture2D" uid="uid://dswffqagy103s" path="res://SpritesFoxtrot/Mox/HurtingMoxSprites.png" id="5_no0uw"]
-[ext_resource type="Texture2D" uid="uid://bbt06btyo0jct" path="res://SpritesFoxtrot/Mox/MoxDeathSprites.png" id="5_qlilp"]
-[ext_resource type="Texture2D" uid="uid://duv8vqosolq8i" path="res://SpritesFoxtrot/Mox/IdleMoxSprites.png" id="7_iy0t5"]
-[ext_resource type="PackedScene" uid="uid://bvh1g2k08pj06" path="res://SpritesFoxtrot/Particles/Dust.tscn" id="11_t4j0b"]
+[ext_resource type="Texture2D" uid="uid://dcjjxxuihax6p" path="res://Sprites/Mox/AFKMoxSprites.png" id="3_6lhxe"]
+[ext_resource type="Texture2D" uid="uid://63eeggf4trap" path="res://Sprites/Mox/WalkingMoxSprite.png" id="3_s7s46"]
+[ext_resource type="Texture2D" uid="uid://b0ecpmyc72rny" path="res://Sprites/Mox/JumpingMoxSprite.png" id="4_6lhxe"]
+[ext_resource type="Texture2D" uid="uid://dh6bkfrm7tuhh" path="res://Sprites/Mox/RunningMoxSprites.png" id="4_lkeop"]
+[ext_resource type="Texture2D" uid="uid://dbkds1dnxlyto" path="res://Sprites/Mox/ShootingMoxSprite.png" id="5_hypta"]
+[ext_resource type="Texture2D" uid="uid://dswffqagy103s" path="res://Sprites/Mox/HurtingMoxSprites.png" id="5_no0uw"]
+[ext_resource type="Texture2D" uid="uid://bbt06btyo0jct" path="res://Sprites/Mox/MoxDeathSprites.png" id="5_qlilp"]
+[ext_resource type="Texture2D" uid="uid://duv8vqosolq8i" path="res://Sprites/Mox/IdleMoxSprites.png" id="7_iy0t5"]
+[ext_resource type="PackedScene" uid="uid://bvh1g2k08pj06" path="res://Sprites/Particles/Dust.tscn" id="11_t4j0b"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qlilp"]
+load_path = "res://.godot/imported/Mox.png-127a4769301a4cfdf1d2bd93b474666c.ctex"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7aows"]
 radius = 21.0
@@ -1022,7 +1024,7 @@ script = ExtResource("1_7aows")
 [node name="CharacterGreenFront" type="Sprite2D" parent="." unique_id=217656587]
 visible = false
 texture_filter = 1
-texture = ExtResource("2_7aows")
+texture = SubResource("CompressedTexture2D_qlilp")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1361997311]
 position = Vector2(35, 0)
