@@ -302,7 +302,7 @@ texture = ExtResource("3_ayysr")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1654619215]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_6pt4v")
-animation = &"hurtChase"
+animation = &"death"
 autoplay = "idle"
 
 [connection signal="area_entered" from="hitboxAtaque" to="." method="_on_area_2d_area_entered"]
