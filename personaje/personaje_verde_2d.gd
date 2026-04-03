@@ -64,12 +64,17 @@ func _reset_afk() -> void:
 
 func _physics_process(delta: float) -> void:
 	
-	
-	
-	if isGrounded == false and is_on_floor() == true:
+	if !isGrounded and is_on_floor():
 		var instance = dust.instantiate()
 		instance.global_position = $DustMarker.global_position
 		get_parent().add_child(instance)
+	
+	# Si quisiésemos poner partículas al saltar	
+	#if is_jumping and isGrounded:
+	#	var instance = dust.instantiate()
+	#	instance.global_position = $DustMarker2.global_position
+	#	get_parent().add_child(instance)
+	
 	
 	isGrounded = is_on_floor()
 	
