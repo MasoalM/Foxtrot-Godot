@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var animacion = $AnimatedSprite2D
 @onready var anim_tree = $AnimationTree
 @onready var state_machine = anim_tree.get("parameters/playback")
+@onready var dust = preload("res://SpritesFoxtrot/Particles/Dust.tscn")
 
 signal vidas_cambiadas(vidas, escudo)
 
@@ -28,6 +29,7 @@ var is_dead = false
 var bloquearControles = false
 var is_jumping = false
 var is_fall = false
+var isGrounded = true
 
 var dobSalAct = false
 var dobSal = false
@@ -61,6 +63,16 @@ func _reset_afk() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	
+	
+	
+	if isGrounded == false and is_on_floor() == true:
+		var instance = dust.instantiate()
+		instance.global_position = $DustMarker.global_position
+		get_parent().add_child(instance)
+	
+	isGrounded = is_on_floor()
+	
 	if isShooting:
 		shoot_anim_timeout += delta
 		if shoot_anim_timeout >= SHOOT_ANIM_MAX:

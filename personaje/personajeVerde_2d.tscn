@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dswffqagy103s" path="res://SpritesFoxtrot/Mox/HurtingMoxSprites.png" id="5_no0uw"]
 [ext_resource type="Texture2D" uid="uid://bbt06btyo0jct" path="res://SpritesFoxtrot/Mox/MoxDeathSprites.png" id="5_qlilp"]
 [ext_resource type="Texture2D" uid="uid://duv8vqosolq8i" path="res://SpritesFoxtrot/Mox/IdleMoxSprites.png" id="7_iy0t5"]
+[ext_resource type="PackedScene" uid="uid://bvh1g2k08pj06" path="res://SpritesFoxtrot/Particles/Dust.tscn" id="11_t4j0b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7aows"]
 radius = 21.0
@@ -1065,6 +1066,11 @@ parameters/static/TimeScale/scale = 0.0
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=829617542]
 root_node = NodePath("../AnimationTree")
 libraries/ = SubResource("AnimationLibrary_no0uw")
+
+[node name="DustMarker" type="Marker2D" parent="." unique_id=196948750]
+position = Vector2(2, 17)
+
+[node name="Dust" parent="DustMarker" unique_id=1834029072 instance=ExtResource("11_t4j0b")]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
