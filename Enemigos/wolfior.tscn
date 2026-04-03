@@ -5,9 +5,14 @@
 [ext_resource type="Texture2D" uid="uid://2pdy8pg7s1u4" path="res://SpritesFoxtrot/Enemigos/Wolfior/Idle/WolfiorIdle1.png" id="3_ca1f7"]
 [ext_resource type="Texture2D" uid="uid://ddtes1omelrtr" path="res://SpritesFoxtrot/Enemigos/Wolfior/Idle/WolfiorIdle2.png" id="4_aptyn"]
 [ext_resource type="Texture2D" uid="uid://bf31cexon0eof" path="res://SpritesFoxtrot/Enemigos/Wolfior/WolfiorDeathSprites.png" id="4_pcpde"]
+[ext_resource type="Texture2D" uid="uid://demp7vosvhom1" path="res://SpritesFoxtrot/Enemigos/Wolfior/WalkingHurtingWolfiorSprite.png" id="5_gs5y2"]
 [ext_resource type="Texture2D" uid="uid://s8p3x4tidbv5" path="res://SpritesFoxtrot/Enemigos/Wolfior/WalkingWolfiorSprite.png" id="5_j8fnk"]
 [ext_resource type="Texture2D" uid="uid://c2r85gtdeqv78" path="res://SpritesFoxtrot/Enemigos/Wolfior/JumpingWolfiorSprite.png" id="6_j8fnk"]
+[ext_resource type="Texture2D" uid="uid://bsyannvybqepl" path="res://SpritesFoxtrot/Enemigos/Wolfior/JumpingHurtingWolfiorSprite.png" id="6_r4u32"]
+[ext_resource type="Texture2D" uid="uid://dha2ks1p55eq7" path="res://SpritesFoxtrot/Enemigos/Wolfior/Idle/WolfiorHurtIdle1.png" id="6_uurhx"]
 [ext_resource type="Texture2D" uid="uid://cyfculu2nxdpi" path="res://SpritesFoxtrot/Enemigos/Wolfior/SlowWalkingWolfiorSprite.png" id="7_pcpde"]
+[ext_resource type="Texture2D" uid="uid://b5fqyxi8cvp4c" path="res://SpritesFoxtrot/Enemigos/Wolfior/Idle/WolfiorHurtIdle2.png" id="7_ums8c"]
+[ext_resource type="Texture2D" uid="uid://dqoiaxtlhrl0t" path="res://SpritesFoxtrot/Enemigos/Wolfior/SlowWalkingHurtingWolfiorSprite.png" id="7_uurhx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ayysr"]
 radius = 25.0
@@ -68,6 +73,38 @@ region = Rect2(288, 96, 96, 96)
 [sub_resource type="AtlasTexture" id="AtlasTexture_b4gnn"]
 atlas = ExtResource("4_pcpde")
 region = Rect2(384, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orfyd"]
+atlas = ExtResource("5_gs5y2")
+region = Rect2(0, 32, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0iebu"]
+atlas = ExtResource("5_gs5y2")
+region = Rect2(64, 32, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7i6ne"]
+atlas = ExtResource("6_r4u32")
+region = Rect2(0, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10kx4"]
+atlas = ExtResource("6_r4u32")
+region = Rect2(64, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ka4v"]
+atlas = ExtResource("6_r4u32")
+region = Rect2(128, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04sqb"]
+atlas = ExtResource("6_r4u32")
+region = Rect2(192, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82uli"]
+atlas = ExtResource("7_uurhx")
+region = Rect2(0, 32, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdrtq"]
+atlas = ExtResource("7_uurhx")
+region = Rect2(64, 32, 64, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gs5y2"]
 atlas = ExtResource("6_j8fnk")
@@ -142,6 +179,56 @@ animations = [{
 }],
 "loop": false,
 "name": &"death",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orfyd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0iebu")
+}],
+"loop": true,
+"name": &"hurtChase",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_uurhx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ums8c")
+}],
+"loop": true,
+"name": &"hurtIdle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7i6ne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10kx4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ka4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04sqb")
+}],
+"loop": false,
+"name": &"hurtJump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82uli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tdrtq")
+}],
+"loop": true,
+"name": &"hurtWalk",
 "speed": 5.0
 }, {
 "frames": [{
@@ -153,7 +240,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 1.5
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -215,7 +302,7 @@ texture = ExtResource("3_ayysr")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1654619215]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_6pt4v")
-animation = &"death"
+animation = &"hurtChase"
 autoplay = "idle"
 
 [connection signal="area_entered" from="hitboxAtaque" to="." method="_on_area_2d_area_entered"]

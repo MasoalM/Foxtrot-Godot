@@ -40,6 +40,10 @@ var last_x = 0.0
 var stuck_time_limit = 0.5
 var lives
 var espada_scene = preload("res://Enemigos//Espada.tscn")
+
+const HURT_LIVES = 1
+const DEATH_LIVES = 0
+
 @onready var ray = $RayCast2D
 
 
@@ -82,7 +86,10 @@ func _physics_process(delta):
 		# --- CHASE ---
 		if chasing:
 			if is_on_floor():
-				animated_sprite.play("chase")
+				if lives == HURT_LIVES:
+					animated_sprite.play("hurtChase")
+				else:
+					animated_sprite.play("chase")
 			chase_timer -= delta
 
 			if is_instance_valid(player):
@@ -109,14 +116,20 @@ func _physics_process(delta):
 
 			if is_waiting:
 				if is_on_floor():
-					animated_sprite.play("idle")
+					if lives == HURT_LIVES:
+						animated_sprite.play("hurtIdle")
+					else: 
+						animated_sprite.play("idle")
 				if not in_knockback:
 					velocity.x = 0
 
 				if patrol_wait_time <= 0:
 					is_waiting = false
 					if is_on_floor():
-						animated_sprite.play("walk")
+						if lives == HURT_LIVES:
+							animated_sprite.play("hurtWalk")
+						else:
+							animated_sprite.play("walk")
 					patrol_wait_time = patrol_move_duration
 
 			else:
@@ -163,7 +176,10 @@ func _physics_process(delta):
 			stuck_timer = 0
 
 		if (stuck_timer > stuck_time_limit):
-			animated_sprite.play("jump")
+			if lives == HURT_LIVES:
+				animated_sprite.play("hurtJump")
+			else:
+				animated_sprite.play("jump")
 			velocity.y = jump_force
 			stuck_timer = 0
 
@@ -268,8 +284,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		knockback_timer = knockback_duration
 		in_knockback = true
 		
-		
 		if lives == 0:
+			espada_sprite.queue_free()
 			animated_sprite.play("death")
-			await get_tree().create_timer(1.5).timeout
+			await get_tree().create_timer(1.8).timeout
 			queue_free()
