@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://digj45m3nsyp4"]
 
 [ext_resource type="Script" uid="uid://dw1ufvymmdmcv" path="res://Enemigos/wolfior.gd" id="1_3yp3h"]
-[ext_resource type="Texture2D" uid="uid://dc0qodfc3da77" path="res://Sprites/Characters/Default/Wolfior.png" id="1_s2ktt"]
 [ext_resource type="Texture2D" uid="uid://1wsf2lhqi5jo" path="res://SpritesFoxtrot/Sword.png" id="3_ayysr"]
+[ext_resource type="Texture2D" uid="uid://2pdy8pg7s1u4" path="res://SpritesFoxtrot/Enemigos/Wolfior/Idle/WolfiorIdle1.png" id="3_ca1f7"]
+[ext_resource type="Texture2D" uid="uid://ddtes1omelrtr" path="res://SpritesFoxtrot/Enemigos/Wolfior/Idle/WolfiorIdle2.png" id="4_aptyn"]
+[ext_resource type="Texture2D" uid="uid://s8p3x4tidbv5" path="res://SpritesFoxtrot/Enemigos/Wolfior/WalkingWolfiorSprite.png" id="5_j8fnk"]
+[ext_resource type="Texture2D" uid="uid://c2r85gtdeqv78" path="res://SpritesFoxtrot/Enemigos/Wolfior/JumpingWolfiorSprite.png" id="6_j8fnk"]
+[ext_resource type="Texture2D" uid="uid://cyfculu2nxdpi" path="res://SpritesFoxtrot/Enemigos/Wolfior/SlowWalkingWolfiorSprite.png" id="7_pcpde"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ayysr"]
 radius = 25.0
@@ -12,14 +16,95 @@ height = 82.0
 radius = 23.0
 height = 76.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_dt3m3"]
+atlas = ExtResource("5_j8fnk")
+region = Rect2(0, 32, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pt4v"]
+atlas = ExtResource("5_j8fnk")
+region = Rect2(64, 32, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs5y2"]
+atlas = ExtResource("6_j8fnk")
+region = Rect2(0, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4u32"]
+atlas = ExtResource("6_j8fnk")
+region = Rect2(64, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uurhx"]
+atlas = ExtResource("6_j8fnk")
+region = Rect2(128, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ums8c"]
+atlas = ExtResource("6_j8fnk")
+region = Rect2(192, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cow6n"]
+atlas = ExtResource("7_pcpde")
+region = Rect2(0, 32, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_da82i"]
+atlas = ExtResource("7_pcpde")
+region = Rect2(64, 32, 64, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6pt4v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dt3m3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pt4v")
+}],
+"loop": true,
+"name": &"chase",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ca1f7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_aptyn")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gs5y2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4u32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uurhx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ums8c")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cow6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_da82i")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=547989863]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_3yp3h")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=168423799]
-texture_filter = 1
-texture = ExtResource("1_s2ktt")
 
 [node name="hitboxAtaque" type="Area2D" parent="." unique_id=2122217189]
 collision_layer = 4
@@ -41,7 +126,13 @@ collision_mask = 3
 [node name="sword" type="Sprite2D" parent="EspadaIdle" unique_id=1035658033]
 texture_filter = 1
 position = Vector2(2, -2.0000002)
-scale = Vector2(1, 0.984375)
+scale = Vector2(-1, 1)
 texture = ExtResource("3_ayysr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1654619215]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_6pt4v")
+animation = &"walk"
+autoplay = "idle"
 
 [connection signal="area_entered" from="hitboxAtaque" to="." method="_on_area_2d_area_entered"]

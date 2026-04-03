@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 @onready var animacion = $AnimatedSprite2D
 @onready var anim_tree = $AnimationTree
 @onready var state_machine = anim_tree.get("parameters/playback")
@@ -46,9 +45,6 @@ var shoot_cooldown = 0.2
 var shoot_timer = 0
 var shoot_anim_timeout = 0.0
 const SHOOT_ANIM_MAX = 1.0
-
-
-
 
 func _ready():
 	emit_signal("vidas_cambiadas", vidas, escudo)

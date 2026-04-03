@@ -2,6 +2,7 @@ extends CharacterBody2D
 @onready var hitbox = $hitboxAtaque
 @onready var espada_idle = $EspadaIdle
 @onready var espada_sprite = $EspadaIdle/sword
+@onready var animated_sprite = $AnimatedSprite2D
 
 var speed = 120
 var player
@@ -79,6 +80,7 @@ func _physics_process(delta):
 
 	# --- CHASE ---
 	if chasing:
+		animated_sprite.play("chase")
 		chase_timer -= delta
 
 		if is_instance_valid(player):
@@ -101,6 +103,7 @@ func _physics_process(delta):
 
 	# --- PATROL ---
 	else:
+		animated_sprite.play("walk")
 		patrol_wait_time -= delta
 
 		if is_waiting:
@@ -134,12 +137,11 @@ func _physics_process(delta):
 		flip = velocity.x < 0
 
 	# Flip del lobo
-	$Sprite2D.flip_h = flip
+	$AnimatedSprite2D.flip_h = flip
 
 	# Flip de la espada (sprite interno)
 	espada_sprite.flip_h = flip
 
-	# 🔥 POSICIÓN + ROTACIÓN EXACTA QUE PEDISTE
 	if flip:
 		# IZQUIERDA
 		espada_idle.position.x = -40
