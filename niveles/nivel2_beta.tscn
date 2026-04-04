@@ -35,7 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://b1ftwkgwp40yb" path="res://powerUps/vida.tscn" id="34_lh55y"]
 [ext_resource type="PackedScene" uid="uid://cv4mf7w2d3xe0" path="res://Otros/jungFrond.tscn" id="36_l0x8k"]
 [ext_resource type="Texture2D" uid="uid://yna61wn5d72r" path="res://Sprites/Coleccionables/Coleccionable.png" id="36_no0i1"]
-[ext_resource type="AudioStream" uid="uid://dbuxhiplotkmh" path="res://Sprites/Music/Level2.ogg" id="38_g6lol"]
+[ext_resource type="AudioStream" uid="uid://dbuxhiplotkmh" path="res://Music/Level2.ogg" id="38_g6lol"]
 [ext_resource type="PackedScene" uid="uid://bjtf1vhnso0ys" path="res://Enemigos/hawrker.tscn" id="39_unt6w"]
 [ext_resource type="PackedScene" uid="uid://digj45m3nsyp4" path="res://Enemigos/wolfior.tscn" id="40_dccrm"]
 

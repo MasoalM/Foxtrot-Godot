@@ -3,6 +3,10 @@ extends CharacterBody2D
 @onready var espada_idle = $EspadaIdle
 @onready var espada_sprite = $EspadaIdle/sword
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var aullidoMuerte = $AudioStreamPlayer2DDeath
+@onready var madSound = $AudioStreamPlayer2DMad
+@onready var jumpSound = $AudioStreamPlayer2DJump
+@onready var swordHitSound = $AudioStreamPlayer2DSwordHit
 
 var speed = 120
 var player
@@ -80,6 +84,8 @@ func _physics_process(delta):
 			var distance = global_position.distance_to(player.global_position)
 
 			if can_see_player() and distance < detect_distance:
+				if !chasing:
+					madSound.play()
 				chasing = true
 				chase_timer = chase_duration
 
@@ -100,6 +106,7 @@ func _physics_process(delta):
 						velocity.x = 0
 						if attack_timer <= 0:
 							attack()
+							swordHitSound.play()
 							attack_timer = attack_cooldown
 					else:
 						if player.global_position.x > global_position.x:
@@ -176,6 +183,7 @@ func _physics_process(delta):
 			stuck_timer = 0
 
 		if (stuck_timer > stuck_time_limit):
+			jumpSound.play()
 			if lives == HURT_LIVES:
 				animated_sprite.play("hurtJump")
 			else:
@@ -285,6 +293,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		in_knockback = true
 		
 		if lives == 0:
+			aullidoMuerte.play()
 			espada_sprite.queue_free()
 			animated_sprite.play("death")
 			await get_tree().create_timer(1.8).timeout

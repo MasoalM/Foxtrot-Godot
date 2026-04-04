@@ -4,6 +4,10 @@ extends CharacterBody2D
 @onready var anim_tree = $AnimationTree
 @onready var state_machine = anim_tree.get("parameters/playback")
 @onready var dust = preload("res://Sprites/Particles/Dust.tscn")
+@onready var shotSound = $AudioStreamPlayer2DShot
+@onready var shieldSound = $AudioStreamPlayer2DShield
+@onready var healSound = $AudioStreamPlayer2DHeal
+@onready var jumpSound = $AudioStreamPlayer2DJump
 
 signal vidas_cambiadas(vidas, escudo)
 
@@ -103,6 +107,7 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("correr"):
 			air_nercia = true
 		velocity.y = JUMP_VELOCITY
+		jumpSound.play()
 		if not is_on_floor():
 			dobSal = false
 
@@ -156,6 +161,7 @@ func _physics_process(delta: float) -> void:
 		if get_tree().get_nodes_in_group("ProyectilAliado").size() < 3:
 			shoot_timer = shoot_cooldown
 			var shoot = bala.instantiate()  # ← instanciar solo cuando se necesita
+			shotSound.play()
 			get_parent().add_child(shoot)
 			shoot.position = $Marker2D.global_position
 			if not mirando_derecha:
@@ -179,6 +185,7 @@ func apply_powerup(type):
 		"dobSal":
 			dobSalAct = true
 		"escudo":
+			shieldSound.play()
 			var cantidad = 2
 
 			# Curar primero si falta vida
@@ -199,6 +206,7 @@ func apply_powerup(type):
 			emit_signal("vidas_cambiadas", vidas, escudo)
 		"vida":
 			if vidas < 2:
+				healSound.play()
 				vidas = 2
 				emit_signal("vidas_cambiadas", vidas, escudo)
 				flash(2)
@@ -283,7 +291,6 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	match anim_name:
 		"death":
 			queue_free()
-
 		"hurt":
 			is_hurt = false
 			if enemigosIn > 0:
@@ -295,14 +302,11 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 				else:
 					is_hurt = true
 					state_machine.travel("hurt")
-
 		"shoot":
-			print("hola")
 			isShooting = false
 			is_jumping = false
 			is_fall = false
 			#state_machine.travel("static")
-
 		"jump":
 			# Al acabar el impulso visual, pasar a la animación de vuelo
 			is_jumping = false
@@ -321,15 +325,12 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 func _dañar():
 		if is_hurt or is_dead:
 			return
-			
-			
 		#  Primero escudo
 		if escudo > 0:
 			is_hurt = true;
 			state_machine.travel("hurt")
 			escudo -= 1
 			emit_signal("vidas_cambiadas", vidas, escudo)
-			
 			# efecto visual distinto opcional
 			flash(3)
 			return

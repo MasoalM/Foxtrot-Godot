@@ -9,7 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://dswffqagy103s" path="res://Sprites/Mox/HurtingMoxSprites.png" id="5_no0uw"]
 [ext_resource type="Texture2D" uid="uid://bbt06btyo0jct" path="res://Sprites/Mox/MoxDeathSprites.png" id="5_qlilp"]
 [ext_resource type="Texture2D" uid="uid://duv8vqosolq8i" path="res://Sprites/Mox/IdleMoxSprites.png" id="7_iy0t5"]
+[ext_resource type="AudioStream" uid="uid://b3p1ioh4e7wyt" path="res://Sounds/Mox/Shot1.ogg" id="11_g88dg"]
 [ext_resource type="PackedScene" uid="uid://bvh1g2k08pj06" path="res://Sprites/Particles/Dust.tscn" id="11_t4j0b"]
+[ext_resource type="AudioStream" uid="uid://dw8gvjc120phm" path="res://Sounds/ShieldPowerUp.ogg" id="12_g88dg"]
+[ext_resource type="AudioStream" uid="uid://bnam0ivmvmieu" path="res://Sounds/HealPowerUp.ogg" id="13_mijjb"]
+[ext_resource type="AudioStream" uid="uid://8yxd8012oq5s" path="res://Sounds/Mox/Jump.ogg" id="14_wha0b"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qlilp"]
 load_path = "res://.godot/imported/Mox.png-127a4769301a4cfdf1d2bd93b474666c.ctex"
@@ -1073,6 +1077,21 @@ libraries/ = SubResource("AnimationLibrary_no0uw")
 position = Vector2(2, 17)
 
 [node name="Dust" parent="DustMarker" unique_id=1834029072 instance=ExtResource("11_t4j0b")]
+
+[node name="AudioStreamPlayer2DShot" type="AudioStreamPlayer2D" parent="." unique_id=779898210]
+stream = ExtResource("11_g88dg")
+volume_db = 10.0
+
+[node name="AudioStreamPlayer2DShield" type="AudioStreamPlayer2D" parent="." unique_id=1879655811]
+stream = ExtResource("12_g88dg")
+
+[node name="AudioStreamPlayer2DHeal" type="AudioStreamPlayer2D" parent="." unique_id=1762546225]
+stream = ExtResource("13_mijjb")
+volume_db = 1.0
+
+[node name="AudioStreamPlayer2DJump" type="AudioStreamPlayer2D" parent="." unique_id=2071857992]
+stream = ExtResource("14_wha0b")
+volume_db = -8.0
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
