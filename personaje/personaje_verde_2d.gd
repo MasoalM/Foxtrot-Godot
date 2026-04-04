@@ -335,7 +335,7 @@ func _dañar():
 			flash(3)
 			return
 		
-		#vidas -= 1 PRUEBAS
+		vidas -= 1 
 		emit_signal("vidas_cambiadas", vidas, escudo)
 		if vidas <= 0:
 			is_dead = true

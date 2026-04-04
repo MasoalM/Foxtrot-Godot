@@ -290,7 +290,13 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		
 		if lives == 0:
 			aullidoMuerte.play()
+
+			# dejar de hacer daño al morir
+			hitbox.monitoring = false
+			remove_from_group("Enemigos")
+
 			espada_sprite.queue_free()
 			animated_sprite.play("death")
+
 			await get_tree().create_timer(1.8).timeout
 			queue_free()
