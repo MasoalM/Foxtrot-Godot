@@ -9,7 +9,10 @@ extends CharacterBody2D
 @onready var healSound = $AudioStreamPlayer2DHeal
 @onready var jumpSound = $AudioStreamPlayer2DJump
 
+var monedas_estado = [false, false, false]
+
 signal vidas_cambiadas(vidas, escudo)
+signal monedas_cambiadas(monedas_estado)
 
 const velocidad = 300.0
 const velocidad_correr = 450.0
@@ -363,6 +366,15 @@ func flash(color):
 
 	# asegurar que termina limpio
 	animacion.modulate = Color(1, 1, 1)			
+	
+
+
+func recoger_moneda(id):
+	if not monedas_estado[id]:
+		monedas_estado[id] = true
+		emit_signal("monedas_cambiadas", monedas_estado)
+		print(monedas_estado)
+		
 
 
 #func _on_area_2d_area_entered(area: Area2D) -> void:

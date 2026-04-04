@@ -35,9 +35,9 @@
 [ext_resource type="Texture2D" uid="uid://d0c0arweo6ojp" path="res://Sprites/Bloques/TroncoAtravesable.png" id="22_dg0w2"]
 [ext_resource type="Texture2D" uid="uid://ctdnpbddrvlm4" path="res://Sprites/Bloques/DirtBroken.png" id="23_0bvab"]
 [ext_resource type="Texture2D" uid="uid://dxf6c0xlre7h3" path="res://Sprites/Bloques/TroncoGIradoAtravesable.png" id="23_sni5d"]
-[ext_resource type="Texture2D" uid="uid://yna61wn5d72r" path="res://Sprites/Coleccionables/Coleccionable.png" id="33_sni5d"]
 [ext_resource type="Texture2D" uid="uid://bgh8ouadkr0y" path="res://Sprites/Bloques/Dirt.png" id="34_51gxm"]
 [ext_resource type="Script" uid="uid://bc3yl0l1o2rb1" path="res://niveles/control.gd" id="38_608v1"]
+[ext_resource type="PackedScene" uid="uid://d0ordmi0yu7tp" path="res://Sprites/Coleccionables/coleccionable.tscn" id="39_608v1"]
 [ext_resource type="Texture2D" uid="uid://c7j8y60gsqd2q" path="res://hud/HealthBar.png" id="39_dg0w2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rn8p"]
@@ -410,25 +410,6 @@ position = Vector2(8520, 68)
 [node name="CharacterBody2D10" parent="." unique_id=177145773 instance=ExtResource("6_c62jp")]
 position = Vector2(10650, 337)
 
-[node name="Coleccionable3" type="Sprite2D" parent="." unique_id=66914831]
-texture_filter = 1
-position = Vector2(10709, -31)
-scale = Vector2(2, 2)
-texture = ExtResource("33_sni5d")
-
-[node name="Coleccionable2" type="Sprite2D" parent="." unique_id=204832148]
-z_index = -2
-texture_filter = 1
-position = Vector2(4384, 585)
-scale = Vector2(2, 2)
-texture = ExtResource("33_sni5d")
-
-[node name="Coleccionable" type="Sprite2D" parent="." unique_id=465529049]
-texture_filter = 1
-position = Vector2(7900.9995, 470)
-scale = Vector2(2, 2)
-texture = ExtResource("33_sni5d")
-
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1973022397]
 position = Vector2(8225, 45)
 amount = 120
@@ -474,3 +455,34 @@ layout_mode = 2
 [node name="escudo2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1411731843]
 texture_filter = 1
 layout_mode = 2
+
+[node name="HBoxContainerMonedas" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=279312973]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 97.0
+offset_right = 247.0
+offset_bottom = 131.0
+
+[node name="moneda1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=1196292693]
+layout_mode = 2
+
+[node name="moneda3" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=1022365090]
+layout_mode = 2
+
+[node name="moneda2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=279906200]
+layout_mode = 2
+
+[node name="Area2D" parent="." unique_id=604219173 instance=ExtResource("39_608v1")]
+light_mask = 7
+visibility_layer = 7
+position = Vector2(7898, 466)
+coin_id = 1
+
+[node name="Area2D2" parent="." unique_id=1172429116 instance=ExtResource("39_608v1")]
+position = Vector2(4374, 591)
+
+[node name="Area2D3" parent="." unique_id=134276004 instance=ExtResource("39_608v1")]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(10704, -37)
+coin_id = 2
