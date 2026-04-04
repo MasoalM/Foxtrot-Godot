@@ -421,16 +421,19 @@ position = Vector2(8225, 45)
 amount = 120
 process_material = SubResource("ParticleProcessMaterial_608v1")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1559233288]
+[node name="CharacterBody2D3" parent="." unique_id=1098210497 instance=ExtResource("40_w41ru")]
+position = Vector2(792, 411)
 
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=772487275]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1872637630]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=728874364]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 208.0
 offset_bottom = 105.0
 script = ExtResource("38_8uftp")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control" unique_id=1421845045]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control" unique_id=475090312]
 texture_filter = 1
 layout_mode = 0
 offset_left = 51.0
@@ -439,28 +442,41 @@ offset_right = 179.0
 offset_bottom = 105.0
 texture = ExtResource("39_hvxkv")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1090805532]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1658991766]
 layout_mode = 0
 offset_left = 122.0
 offset_top = 56.0
 offset_right = 278.0
 offset_bottom = 91.0
 
-[node name="cora1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=519954009]
+[node name="cora1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1393160481]
 texture_filter = 1
 layout_mode = 2
 
-[node name="cora2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1291268981]
+[node name="cora2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=444071938]
 texture_filter = 1
 layout_mode = 2
 
-[node name="escudo1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=2068122972]
+[node name="escudo1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1774578037]
 texture_filter = 1
 layout_mode = 2
 
-[node name="escudo2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1411731843]
+[node name="escudo2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=48431145]
 texture_filter = 1
 layout_mode = 2
 
-[node name="CharacterBody2D3" parent="." unique_id=1098210497 instance=ExtResource("40_w41ru")]
-position = Vector2(792, 411)
+[node name="HBoxContainerMonedas" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1789885735]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 97.0
+offset_right = 247.0
+offset_bottom = 131.0
+
+[node name="moneda1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=1355803454]
+layout_mode = 2
+
+[node name="moneda3" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=1117696296]
+layout_mode = 2
+
+[node name="moneda2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=1655894086]
+layout_mode = 2

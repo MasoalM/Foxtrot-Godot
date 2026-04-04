@@ -447,16 +447,16 @@ position = Vector2(9314, 542)
 amount = 120
 process_material = SubResource("ParticleProcessMaterial_an17n")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=567268997]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1950291334]
 
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=404918291]
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=471813670]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 208.0
 offset_bottom = 105.0
 script = ExtResource("39_dccrm")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control" unique_id=1030891935]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control" unique_id=1629611885]
 texture_filter = 1
 layout_mode = 0
 offset_left = 51.0
@@ -465,25 +465,41 @@ offset_right = 179.0
 offset_bottom = 105.0
 texture = ExtResource("40_an17n")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=71199318]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=883572617]
 layout_mode = 0
 offset_left = 122.0
 offset_top = 56.0
 offset_right = 278.0
 offset_bottom = 91.0
 
-[node name="cora1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=815456826]
+[node name="cora1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1722497929]
 texture_filter = 1
 layout_mode = 2
 
-[node name="cora2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1685089977]
+[node name="cora2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=56408876]
 texture_filter = 1
 layout_mode = 2
 
-[node name="escudo1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1470708244]
+[node name="escudo1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=538462678]
 texture_filter = 1
 layout_mode = 2
 
-[node name="escudo2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=874537875]
+[node name="escudo2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1435551834]
 texture_filter = 1
+layout_mode = 2
+
+[node name="HBoxContainerMonedas" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1745534378]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 97.0
+offset_right = 247.0
+offset_bottom = 131.0
+
+[node name="moneda1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=521398374]
+layout_mode = 2
+
+[node name="moneda3" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=2081587624]
+layout_mode = 2
+
+[node name="moneda2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=880837871]
 layout_mode = 2
