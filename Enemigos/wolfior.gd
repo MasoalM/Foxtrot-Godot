@@ -57,7 +57,6 @@ func _ready():
 	
 	add_to_group("Enemigos")
 	player = get_tree().get_first_node_in_group("player")
-	print("PLAYER ES:", player)
 	hitbox.area_entered.connect(_on_area_2d_area_entered)
 	start_position = global_position
 	last_x = global_position.x
@@ -270,13 +269,10 @@ func attack():
 			espada_idle.visible = true
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	print(area.get_groups())
 	if area.is_in_group("ProyectilAliado"):
-		print("funciono")
 		
 		if area.has_method("morir"):
 			area.morir()
-		print("funciono2")
 		lives -= 1
 		var direction = sign(global_position.x - area.global_position.x)
 		

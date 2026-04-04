@@ -237,10 +237,9 @@ func _animaciones() -> void:
 	if is_dead or is_hurt:
 		return
 
-	# ↓ MOVIDO AQUÍ: el disparo interrumpe también jump y fall
+	
 	if (not bloquearControles) and Input.is_action_just_pressed("DispararBasico") and (shoot_timer <= 0):
 		if get_tree().get_nodes_in_group("ProyectilAliado").size() < 3:
-			print("hallo")
 			isShooting = true
 			state_machine.travel("shoot")
 			return
