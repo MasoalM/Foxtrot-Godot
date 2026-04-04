@@ -65,6 +65,11 @@ func _ready():
 
 
 func _physics_process(delta):
+
+	# 💥 GRAVEDAD SIEMPRE ACTIVA
+	if !is_on_floor():
+		velocity.y += gravity * delta
+
 	if lives > 0:
 		attack_timer -= delta
 		
@@ -73,10 +78,6 @@ func _physics_process(delta):
 			knockback_timer -= delta
 		else:
 			in_knockback = false
-
-		# --- GRAVEDAD ---
-		if !is_on_floor():
-			velocity.y += gravity * delta
 
 		# --- DETECCIÓN PLAYER ---
 		if player:
@@ -126,6 +127,7 @@ func _physics_process(delta):
 						animated_sprite.play("hurtIdle")
 					else: 
 						animated_sprite.play("idle")
+
 				if not in_knockback:
 					velocity.x = 0
 
@@ -160,18 +162,13 @@ func _physics_process(delta):
 		elif velocity.x != 0:
 			flip = velocity.x < 0
 
-		# Flip del lobo
 		$AnimatedSprite2D.flip_h = flip
-
-		# Flip de la espada (sprite interno)
 		espada_sprite.flip_h = flip
 
 		if flip:
-			# IZQUIERDA
 			espada_idle.position.x = -40
 			espada_idle.rotation = deg_to_rad(-30)
 		else:
-			# DERECHA
 			espada_idle.position.x = 35
 			espada_idle.rotation = deg_to_rad(30)
 
@@ -192,8 +189,15 @@ func _physics_process(delta):
 
 		last_x = global_position.x
 
-		move_and_slide()
-	
+	else:
+	# 
+		velocity.x = 0
+		
+		if is_on_floor():
+			set_physics_process(false)  # lo congela completamente
+
+	# 💥 SIEMPRE se aplica movimiento
+	move_and_slide()
 func can_see_player():
 	if lives > 0:
 		if player == null or ray == null:
@@ -269,11 +273,38 @@ func attack():
 			espada_idle.visible = true
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
+	if lives <= 0:
+		return
 	if area.is_in_group("ProyectilAliado"):
 		
 		if area.has_method("morir"):
 			area.morir()
-		lives -= 1
+
+		#  comprobar vida ANTES
+		var new_lives = lives - 1
+
+		if new_lives <= 0:
+			lives = 0
+			
+			#  MUERTE SIN KNOCKBACK
+			aullidoMuerte.play()
+
+			set_collision_layer_value(3, false)
+			set_collision_layer_value(4, true)
+
+			hitbox.monitoring = false
+			remove_from_group("Enemigos")
+
+			espada_sprite.queue_free()
+			animated_sprite.play("death")
+
+			await get_tree().create_timer(1.8).timeout
+			queue_free()
+			return
+		
+		# si no muere hacemos knockback aplicar knockback
+		lives = new_lives
+
 		var direction = sign(global_position.x - area.global_position.x)
 		
 		velocity.x = direction * knockback_force
@@ -283,16 +314,3 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 
 		knockback_timer = knockback_duration
 		in_knockback = true
-		
-		if lives == 0:
-			aullidoMuerte.play()
-
-			# dejar de hacer daño al morir
-			hitbox.monitoring = false
-			remove_from_group("Enemigos")
-
-			espada_sprite.queue_free()
-			animated_sprite.play("death")
-
-			await get_tree().create_timer(1.8).timeout
-			queue_free()
