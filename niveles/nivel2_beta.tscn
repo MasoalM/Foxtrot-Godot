@@ -36,7 +36,9 @@
 [ext_resource type="PackedScene" uid="uid://cv4mf7w2d3xe0" path="res://Otros/jungFrond.tscn" id="36_l0x8k"]
 [ext_resource type="Texture2D" uid="uid://yna61wn5d72r" path="res://Sprites/Coleccionables/Coleccionable.png" id="36_no0i1"]
 [ext_resource type="AudioStream" uid="uid://dbuxhiplotkmh" path="res://Music/Level2.ogg" id="38_g6lol"]
+[ext_resource type="Script" uid="uid://bc3yl0l1o2rb1" path="res://niveles/control.gd" id="39_dccrm"]
 [ext_resource type="PackedScene" uid="uid://bjtf1vhnso0ys" path="res://Enemigos/hawrker.tscn" id="39_unt6w"]
+[ext_resource type="Texture2D" uid="uid://c7j8y60gsqd2q" path="res://hud/HealthBar.png" id="40_an17n"]
 [ext_resource type="PackedScene" uid="uid://digj45m3nsyp4" path="res://Enemigos/wolfior.tscn" id="40_dccrm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qhqn8"]
@@ -444,3 +446,44 @@ position = Vector2(6486, 335)
 position = Vector2(9314, 542)
 amount = 120
 process_material = SubResource("ParticleProcessMaterial_an17n")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=567268997]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=404918291]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 208.0
+offset_bottom = 105.0
+script = ExtResource("39_dccrm")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control" unique_id=1030891935]
+texture_filter = 1
+layout_mode = 0
+offset_left = 51.0
+offset_top = 41.0
+offset_right = 179.0
+offset_bottom = 105.0
+texture = ExtResource("40_an17n")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=71199318]
+layout_mode = 0
+offset_left = 122.0
+offset_top = 56.0
+offset_right = 278.0
+offset_bottom = 91.0
+
+[node name="cora1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=815456826]
+texture_filter = 1
+layout_mode = 2
+
+[node name="cora2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1685089977]
+texture_filter = 1
+layout_mode = 2
+
+[node name="escudo1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1470708244]
+texture_filter = 1
+layout_mode = 2
+
+[node name="escudo2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=874537875]
+texture_filter = 1
+layout_mode = 2
