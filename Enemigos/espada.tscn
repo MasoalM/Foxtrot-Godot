@@ -14,9 +14,10 @@ script = ExtResource("1_5xcw1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1540467225]
 texture_filter = 1
-position = Vector2(2, -31)
+position = Vector2(0, -31)
 scale = Vector2(1, 1.046875)
 texture = ExtResource("1_g856d")
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1871982359 groups=["Enemigos"]]
 position = Vector2(1, -29)

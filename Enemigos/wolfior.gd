@@ -227,24 +227,22 @@ func attack():
 		var offset_x = 20
 		var dir = 1
 
-		# Detectar dirección del jugador
 		if player.global_position.x < global_position.x:
 			offset_x = -20
 			dir = -1
 		
-		var pos = global_position + Vector2(offset_x, 20)
-
 		if is_instance_valid(espada_idle):
 			espada_idle.visible = false
 
-		# Configurar espada de ataque
-		espada.global_position = pos
-		espada.scale.x = dir
+		# Añadir como hijo del enemigo
+		add_child(espada)
 
+		# Posición LOCAL (ahora sí sigue al enemigo)
+		espada.position = Vector2(offset_x, 20)
+
+		# Dirección
 		if espada.has_method("set_direction"):
 			espada.set_direction(dir)
-
-		get_parent().add_child(espada)
 
 		# --- HITBOX ---
 		hitbox.monitoring = true
@@ -255,10 +253,8 @@ func attack():
 		var original_radius = shape.radius
 		var original_height = shape.height
 
-		# Agrandar hitbox
 		shape.radius = original_radius * 2
 
-		# Mover hitbox según dirección
 		if dir == -1:
 			shape_node.position.x = -original_radius
 		else:
@@ -266,10 +262,10 @@ func attack():
 
 		await get_tree().create_timer(0.25).timeout
 
-		# Restaurar hitbox
 		shape.radius = original_radius
 		shape.height = original_height
 		shape_node.position.x = 0
+
 		if is_instance_valid(espada_idle):
 			espada_idle.visible = true
 

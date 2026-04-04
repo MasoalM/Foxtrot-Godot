@@ -334,7 +334,7 @@ layer_4/name = "Cubierta"
 layer_4/tile_data = PackedInt32Array(524346, 33, 0, 589882, 33, 2, 524347, 131105, 0, 589883, 524321, 2, 524348, 327713, 0, 589884, 196641, 2, 524349, 393249, 1, 589885, 65569, 2, 524350, 196641, 0, 589886, 262177, 2, 524351, 262177, 0, 589887, 327713, 2, 589888, 524321, 1, 524353, 196641, 0, 589889, 196641, 2, 524354, 327713, 0, 589890, 327713, 2, 524355, 524321, 0, 589891, 458785, 0, 524356, 393249, 0, 589892, 524321, 0, 524357, 393249, 1, 589893, 524321, 1, 524352, 327713, 0)
 
 [node name="CharacterBody2D2" parent="." unique_id=547989863 instance=ExtResource("6_c62jp")]
-position = Vector2(4784, -199)
+position = Vector2(4800, 0)
 
 [node name="CharacterBody2D11" parent="." unique_id=1732304284 instance=ExtResource("6_c62jp")]
 position = Vector2(14293.299, 475.37866)
@@ -355,9 +355,9 @@ scale = Vector2(0.2033645, 0.29222414)
 texture = ExtResource("8_i12o8")
 texture_scale = 1.98
 
-[node name="PointLight2D3" type="PointLight2D" parent="." unique_id=2108516218]
-position = Vector2(7899, 474)
-scale = Vector2(0.3194546, 0.37604526)
+[node name="PointLight2D3" type="PointLight2D" parent="PointLight2D4" unique_id=2108516218]
+position = Vector2(17294.068, -379.8451)
+scale = Vector2(1.5708474, 1.2868384)
 texture = ExtResource("8_i12o8")
 texture_scale = 1.98
 
