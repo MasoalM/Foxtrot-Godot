@@ -8,6 +8,8 @@ extends CharacterBody2D
 @onready var shieldSound = $AudioStreamPlayer2DShield
 @onready var healSound = $AudioStreamPlayer2DHeal
 @onready var jumpSound = $AudioStreamPlayer2DJump
+@onready var coinSound = $AudioStreamPlayer2DCoin
+@onready var walkSound = $AudioStreamPlayer2DWalk
 
 var monedas_estado = [false, false, false]
 
@@ -26,6 +28,7 @@ const coyoteTime = 10
 const afk = 400
 
 var realAFK = 0
+var walk_timer = 0.0
 var afkAnimation = false
 var isShooting = false
 var correr = false
@@ -138,8 +141,7 @@ func _physics_process(delta: float) -> void:
 
 	# Movimiento
 	if is_on_floor():
-		if aire:
-			aire = false
+		aire = false
 		if not bloquearControles:
 			var direction := Input.get_axis("ui_left", "ui_right")
 			if direction != 0:
@@ -172,6 +174,18 @@ func _physics_process(delta: float) -> void:
 				shoot.vel_bala *= -1
 
 	move_and_slide()
+	if is_on_floor() and abs(velocity.x) > velocidad/4:
+		walk_timer -= 0.008
+		if walk_timer <= 0:
+			walkSound.volume_db = randf_range(12, 15)
+			# velocidad de pasos
+			if correr and abs(velocity.x) > velocidad_correr/2:
+				walkSound.pitch_scale = randf_range(2, 2.5)
+				walk_timer = 0.1   # pasos rápidos
+			else: 
+				walkSound.pitch_scale = randf_range(1, 1.5)
+				walk_timer = 0.25  # pasos normales
+			walkSound.play()
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		if collision.get_collider() is TileMap:
@@ -371,8 +385,8 @@ func flash(color):
 func recoger_moneda(id):
 	if not monedas_estado[id]:
 		monedas_estado[id] = true
+		coinSound.play()
 		emit_signal("monedas_cambiadas", monedas_estado)
-		print(monedas_estado)
 		
 
 

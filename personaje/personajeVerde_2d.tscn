@@ -14,9 +14,10 @@
 [ext_resource type="AudioStream" uid="uid://dw8gvjc120phm" path="res://Sounds/ShieldPowerUp.ogg" id="12_g88dg"]
 [ext_resource type="AudioStream" uid="uid://bnam0ivmvmieu" path="res://Sounds/HealPowerUp.ogg" id="13_mijjb"]
 [ext_resource type="AudioStream" uid="uid://8yxd8012oq5s" path="res://Sounds/Mox/Jump.ogg" id="14_wha0b"]
+[ext_resource type="AudioStream" uid="uid://cc3mrbj63h21l" path="res://Sounds/Coin.ogg" id="15_ycepb"]
+[ext_resource type="AudioStream" uid="uid://dkj5a17j4eo2x" path="res://Sounds/Walk.ogg" id="16_up0l0"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qlilp"]
-load_path = "res://.godot/imported/Mox.png-127a4769301a4cfdf1d2bd93b474666c.ctex"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7aows"]
 radius = 21.0
@@ -1074,13 +1075,13 @@ root_node = NodePath("../AnimationTree")
 libraries/ = SubResource("AnimationLibrary_no0uw")
 
 [node name="DustMarker" type="Marker2D" parent="." unique_id=196948750]
-position = Vector2(2, 17)
+position = Vector2(-1, 17)
 
 [node name="Dust" parent="DustMarker" unique_id=1834029072 instance=ExtResource("11_t4j0b")]
 
 [node name="AudioStreamPlayer2DShot" type="AudioStreamPlayer2D" parent="." unique_id=779898210]
 stream = ExtResource("11_g88dg")
-volume_db = 10.0
+volume_db = 15.0
 
 [node name="AudioStreamPlayer2DShield" type="AudioStreamPlayer2D" parent="." unique_id=1879655811]
 stream = ExtResource("12_g88dg")
@@ -1092,6 +1093,12 @@ volume_db = 1.0
 [node name="AudioStreamPlayer2DJump" type="AudioStreamPlayer2D" parent="." unique_id=2071857992]
 stream = ExtResource("14_wha0b")
 volume_db = -8.0
+
+[node name="AudioStreamPlayer2DCoin" type="AudioStreamPlayer2D" parent="." unique_id=1804781218]
+stream = ExtResource("15_ycepb")
+
+[node name="AudioStreamPlayer2DWalk" type="AudioStreamPlayer2D" parent="." unique_id=1857039479]
+stream = ExtResource("16_up0l0")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

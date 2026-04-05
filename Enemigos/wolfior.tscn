@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://bnvkerfn3w6ci" path="res://Sounds/Wolfior/Maxfior.ogg" id="15_cow6n"]
 [ext_resource type="AudioStream" uid="uid://8yxd8012oq5s" path="res://Sounds/Mox/Jump.ogg" id="16_da82i"]
 [ext_resource type="AudioStream" uid="uid://csdaj6md0wfab" path="res://Sounds/Wolfior/SwordHit.ogg" id="17_e5q2k"]
+[ext_resource type="AudioStream" uid="uid://b07go6ttw8dxj" path="res://Sounds/Wolfior/WolfiorHurtSound.ogg" id="18_rdd4w"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ayysr"]
 radius = 25.0
@@ -311,6 +312,7 @@ autoplay = "idle"
 
 [node name="AudioStreamPlayer2DDeath" type="AudioStreamPlayer2D" parent="." unique_id=620670966]
 stream = ExtResource("14_ums8c")
+volume_db = -2.0
 pitch_scale = 1.5
 
 [node name="AudioStreamPlayer2DMad" type="AudioStreamPlayer2D" parent="." unique_id=719322177]
@@ -326,5 +328,9 @@ max_distance = 1280.0
 [node name="AudioStreamPlayer2DSwordHit" type="AudioStreamPlayer2D" parent="." unique_id=1435861497]
 stream = ExtResource("17_e5q2k")
 volume_db = 5.0
+
+[node name="AudioStreamPlayer2DHurt" type="AudioStreamPlayer2D" parent="." unique_id=169539033]
+stream = ExtResource("18_rdd4w")
+volume_db = 13.0
 
 [connection signal="area_entered" from="hitboxAtaque" to="." method="_on_area_2d_area_entered"]

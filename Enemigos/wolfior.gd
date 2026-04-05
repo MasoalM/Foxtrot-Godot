@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var madSound = $AudioStreamPlayer2DMad
 @onready var jumpSound = $AudioStreamPlayer2DJump
 @onready var swordHitSound = $AudioStreamPlayer2DSwordHit
+@onready var hurtSound = $AudioStreamPlayer2DHurt
 
 var speed = 120
 var player
@@ -66,7 +67,7 @@ func _ready():
 
 func _physics_process(delta):
 
-	# 💥 GRAVEDAD SIEMPRE ACTIVA
+	# GRAVEDAD SIEMPRE ACTIVA
 	if !is_on_floor():
 		velocity.y += gravity * delta
 
@@ -303,6 +304,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			return
 		
 		# si no muere hacemos knockback aplicar knockback
+		hurtSound.play()
 		lives = new_lives
 
 		var direction = sign(global_position.x - area.global_position.x)

@@ -11,7 +11,6 @@ var corazon_rojo = preload("res://hud/Heart2.png")
 var corazon_gris = preload("res://hud/ProtectedHeart.png")
 var corazon_escudo = preload("res://hud/ShieldHeart.png") 
 
-
 var moneda_textura = preload("res://Sprites/Coleccionables/Coleccionable.png")
 
 func _ready():
