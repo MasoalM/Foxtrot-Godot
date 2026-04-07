@@ -10,6 +10,7 @@ extends CharacterBody2D
 @onready var jumpSound = $AudioStreamPlayer2DJump
 @onready var coinSound = $AudioStreamPlayer2DCoin
 @onready var walkSound = $AudioStreamPlayer2DWalk
+@onready var damageSound = $AudioStreamPlayer2DDamage
 
 var monedas_estado = [false, false, false]
 
@@ -342,6 +343,7 @@ func _dañar():
 		if is_hurt or is_dead:
 			return
 		#  Primero escudo
+		damageSound.play()
 		if escudo > 0:
 			is_hurt = true;
 			state_machine.travel("hurt")
@@ -350,7 +352,6 @@ func _dañar():
 			# efecto visual distinto opcional
 			flash(3)
 			return
-		
 		vidas -= 1 
 		emit_signal("vidas_cambiadas", vidas, escudo)
 		if vidas <= 0:

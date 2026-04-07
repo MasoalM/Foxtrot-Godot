@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://8yxd8012oq5s" path="res://Sounds/Mox/Jump.ogg" id="14_wha0b"]
 [ext_resource type="AudioStream" uid="uid://cc3mrbj63h21l" path="res://Sounds/Coin.ogg" id="15_ycepb"]
 [ext_resource type="AudioStream" uid="uid://dkj5a17j4eo2x" path="res://Sounds/Walk.ogg" id="16_up0l0"]
+[ext_resource type="AudioStream" uid="uid://b7x6xvgkwjgyl" path="res://Sounds/Mox/Damage.ogg" id="17_w0lf6"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qlilp"]
 
@@ -1099,6 +1100,10 @@ stream = ExtResource("15_ycepb")
 
 [node name="AudioStreamPlayer2DWalk" type="AudioStreamPlayer2D" parent="." unique_id=1857039479]
 stream = ExtResource("16_up0l0")
+
+[node name="AudioStreamPlayer2DDamage" type="AudioStreamPlayer2D" parent="." unique_id=1385423498]
+stream = ExtResource("17_w0lf6")
+volume_db = 4.0
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

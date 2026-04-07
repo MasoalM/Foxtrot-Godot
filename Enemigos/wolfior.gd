@@ -197,7 +197,7 @@ func _physics_process(delta):
 		if is_on_floor():
 			set_physics_process(false)  # lo congela completamente
 
-	# 💥 SIEMPRE se aplica movimiento
+	# Siempre se aplica movimiento
 	move_and_slide()
 func can_see_player():
 	if lives > 0:
