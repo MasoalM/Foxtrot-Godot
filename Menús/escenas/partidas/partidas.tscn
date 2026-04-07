@@ -1,0 +1,206 @@
+[gd_scene format=3 uid="uid://de306odn5phcy"]
+
+[ext_resource type="Texture2D" uid="uid://c2ykgj5lpibhw" path="res://Menús/assets/fondos/principal_frame.png" id="1_lmaa5"]
+[ext_resource type="Script" uid="uid://1xm1g1ue53yy" path="res://Menús/escenas/partidas/partidas.gd" id="3_cet4p"]
+[ext_resource type="Texture2D" uid="uid://d0u0qj6010kog" path="res://Menús/assets/Partidas.png" id="3_dk1an"]
+[ext_resource type="Texture2D" uid="uid://ch8tflsdpv7rp" path="res://Menús/assets/Ranura.png" id="4_2feee"]
+[ext_resource type="Texture2D" uid="uid://bu5lsmru6ibqr" path="res://Menús/assets/Información.png" id="5_0e7n6"]
+[ext_resource type="FontFile" uid="uid://coe4gaaihhlww" path="res://Menús/assets/fuentes/Retro Gaming.ttf" id="6_l4xib"]
+[ext_resource type="Texture2D" uid="uid://cdqqaji1ke2i8" path="res://Menús/assets/botones/Jugar.png" id="7_7ifkf"]
+[ext_resource type="Texture2D" uid="uid://dlybbrynl26wf" path="res://Menús/assets/botones/Jugar Desactivado.png" id="8_2feee"]
+[ext_resource type="Texture2D" uid="uid://bmg6eta32vtya" path="res://Menús/assets/botones/Atrás.png" id="8_lmaa5"]
+[ext_resource type="Script" uid="uid://cl4mdldwi2i8g" path="res://Menús/escenas/partidas/jugar.gd" id="9_0e7n6"]
+[ext_resource type="Script" uid="uid://i8al5r4kf4uc" path="res://Menús/botones/atrás.gd" id="9_a1jkm"]
+[ext_resource type="Texture2D" uid="uid://bmevwu7ovv4sm" path="res://Menús/assets/Confirmar.png" id="12_7ifkf"]
+[ext_resource type="Texture2D" uid="uid://jgej215r4378" path="res://Menús/assets/botones/Sí.png" id="13_lmaa5"]
+[ext_resource type="Script" uid="uid://b8xmrdr0eehme" path="res://Menús/escenas/partidas/botones_confirmar.gd" id="13_mvyfo"]
+[ext_resource type="Texture2D" uid="uid://bbybg50rsx45t" path="res://Menús/assets/botones/No.png" id="14_mvyfo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2feee"]
+font = ExtResource("6_l4xib")
+font_size = 12
+font_color = Color(0.47843137, 0.3019608, 0.21568628, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vdci2"]
+font = ExtResource("6_l4xib")
+font_size = 10
+font_color = Color(0.47843137, 0.3019608, 0.21568628, 1)
+
+[node name="Partidas" type="Node2D" unique_id=1187043667]
+
+[node name="Fondo" type="TextureRect" parent="." unique_id=1762129510]
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("1_lmaa5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Menú" type="VBoxContainer" parent="Fondo" unique_id=1718345823]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -110.0
+offset_right = 200.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -2
+
+[node name="Menú Partidas" type="TextureRect" parent="Fondo/Menú" unique_id=2074870223]
+layout_mode = 2
+texture = ExtResource("3_dk1an")
+
+[node name="Partidas" type="HBoxContainer" parent="Fondo/Menú/Menú Partidas" unique_id=33363190]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.0
+offset_bottom = 53.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 48
+alignment = 1
+script = ExtResource("3_cet4p")
+
+[node name="Ranura 1" type="TextureButton" parent="Fondo/Menú/Menú Partidas/Partidas" unique_id=1454160007]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_2feee")
+
+[node name="Ranura 2" type="TextureButton" parent="Fondo/Menú/Menú Partidas/Partidas" unique_id=1793103201]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_2feee")
+
+[node name="Ranura 3" type="TextureButton" parent="Fondo/Menú/Menú Partidas/Partidas" unique_id=2049916195]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_2feee")
+
+[node name="Información" type="TextureRect" parent="Fondo/Menú" unique_id=1489120108]
+visible = false
+layout_mode = 2
+texture = ExtResource("5_0e7n6")
+
+[node name="Info" type="VBoxContainer" parent="Fondo/Menú/Información" unique_id=1054598144]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 35.0
+offset_top = -42.5
+offset_right = 365.0
+offset_bottom = 35.5
+grow_vertical = 2
+theme_override_constants/separation = 2
+
+[node name="Partida seleccionada" type="Label" parent="Fondo/Menú/Información/Info" unique_id=530525110]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_2feee")
+horizontal_alignment = 1
+
+[node name="Tiempo de juego" type="Label" parent="Fondo/Menú/Información/Info" unique_id=289237787]
+layout_mode = 2
+text = "Tiempo de juego: "
+label_settings = SubResource("LabelSettings_vdci2")
+
+[node name="Última vez" type="Label" parent="Fondo/Menú/Información/Info" unique_id=1064430674]
+layout_mode = 2
+text = "Última vez: "
+label_settings = SubResource("LabelSettings_vdci2")
+
+[node name="Monedas" type="Label" parent="Fondo/Menú/Información/Info" unique_id=800693965]
+layout_mode = 2
+text = "Monedas: "
+label_settings = SubResource("LabelSettings_vdci2")
+
+[node name="Vidas" type="Label" parent="Fondo/Menú/Información/Info" unique_id=1643697683]
+layout_mode = 2
+text = "Vidas: "
+label_settings = SubResource("LabelSettings_vdci2")
+
+[node name="Botones" type="HBoxContainer" parent="Fondo" unique_id=850779537]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 460.5
+offset_right = 840.0
+offset_bottom = 508.5
+size_flags_vertical = 4
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="Jugar" type="TextureButton" parent="Fondo/Botones" unique_id=673635935]
+layout_mode = 2
+texture_normal = ExtResource("7_7ifkf")
+texture_disabled = ExtResource("8_2feee")
+script = ExtResource("9_0e7n6")
+
+[node name="Atrás" type="TextureButton" parent="Fondo/Botones" unique_id=1672891730]
+custom_minimum_size = Vector2(64, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_lmaa5")
+script = ExtResource("9_a1jkm")
+
+[node name="Menú Confirmar" type="VBoxContainer" parent="Fondo" unique_id=965418816]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Confirmar" type="TextureRect" parent="Fondo/Menú Confirmar" unique_id=132382784]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("12_7ifkf")
+
+[node name="Botones" type="HBoxContainer" parent="Fondo/Menú Confirmar/Confirmar" unique_id=441930373]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -65.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 12
+alignment = 1
+script = ExtResource("13_mvyfo")
+
+[node name="Sí" type="TextureButton" parent="Fondo/Menú Confirmar/Confirmar/Botones" unique_id=1198725775]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("13_lmaa5")
+
+[node name="No" type="TextureButton" parent="Fondo/Menú Confirmar/Confirmar/Botones" unique_id=1153123096]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("14_mvyfo")
+
+[connection signal="pressed" from="Fondo/Menú/Menú Partidas/Partidas/Ranura 1" to="Fondo/Botones/Jugar" method="_on_slot_pressed" flags=18 binds= [1]]
+[connection signal="pressed" from="Fondo/Menú/Menú Partidas/Partidas/Ranura 2" to="Fondo/Botones/Jugar" method="_on_slot_pressed" flags=18 binds= [2]]
+[connection signal="pressed" from="Fondo/Menú/Menú Partidas/Partidas/Ranura 3" to="Fondo/Botones/Jugar" method="_on_slot_pressed" flags=18 binds= [3]]
+[connection signal="pressed" from="Fondo/Botones/Jugar" to="Fondo/Botones/Jugar" method="_on_jugar_pressed"]
+[connection signal="pressed" from="Fondo/Botones/Atrás" to="Fondo/Botones/Atrás" method="_on_pressed"]
+[connection signal="pressed" from="Fondo/Menú Confirmar/Confirmar/Botones/Sí" to="Fondo/Menú Confirmar/Confirmar/Botones" method="_on_sí_pressed"]
+[connection signal="pressed" from="Fondo/Menú Confirmar/Confirmar/Botones/No" to="Fondo/Menú Confirmar/Confirmar/Botones" method="_on_no_pressed"]

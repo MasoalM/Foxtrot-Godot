@@ -11,7 +11,13 @@ config_version=5
 [application]
 
 config/name="Prueba-1"
+run/main_scene="uid://ej230yybshag"
 config/features=PackedStringArray("4.6", "Forward Plus")
+
+[autoload]
+
+UIManager="*uid://f0ybas2rbse4"
+AudioManager="*uid://cc8yanldkmnro"
 
 [display]
 
@@ -61,4 +67,5 @@ DispararBasico={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
