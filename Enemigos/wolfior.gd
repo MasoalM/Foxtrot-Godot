@@ -1,4 +1,5 @@
 extends CharacterBody2D
+
 @onready var hitbox = $hitboxAtaque
 @onready var espada_idle = $EspadaIdle
 @onready var espada_sprite = $EspadaIdle/sword
@@ -58,7 +59,6 @@ func _ready():
 	
 	add_to_group("Enemigos")
 	player = get_tree().get_first_node_in_group("player")
-	hitbox.area_entered.connect(_on_area_2d_area_entered)
 	start_position = global_position
 	last_x = global_position.x
 	lives=2
@@ -87,6 +87,7 @@ func _physics_process(delta):
 			if can_see_player() and distance < detect_distance:
 				if !chasing:
 					madSound.play()
+					
 				chasing = true
 				chase_timer = chase_duration
 
@@ -97,6 +98,7 @@ func _physics_process(delta):
 					animated_sprite.play("hurtChase")
 				else:
 					animated_sprite.play("chase")
+					
 			chase_timer -= delta
 
 			if is_instance_valid(player):
@@ -139,6 +141,7 @@ func _physics_process(delta):
 							animated_sprite.play("hurtWalk")
 						else:
 							animated_sprite.play("walk")
+					
 					patrol_wait_time = patrol_move_duration
 
 			else:
@@ -181,10 +184,12 @@ func _physics_process(delta):
 
 		if (stuck_timer > stuck_time_limit):
 			jumpSound.play()
+			
 			if lives == HURT_LIVES:
 				animated_sprite.play("hurtJump")
 			else:
 				animated_sprite.play("jump")
+				
 			velocity.y = jump_force
 			stuck_timer = 0
 
@@ -197,7 +202,7 @@ func _physics_process(delta):
 		if is_on_floor():
 			set_physics_process(false)  # lo congela completamente
 
-	# Siempre se aplica movimiento
+	# SIEMPRE se aplica movimiento
 	move_and_slide()
 func can_see_player():
 	if lives > 0:
@@ -276,8 +281,8 @@ func attack():
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if lives <= 0:
 		return
-	if area.is_in_group("ProyectilAliado"):
 		
+	if area.is_in_group("ProyectilAliado"):
 		if area.has_method("morir"):
 			area.morir()
 
