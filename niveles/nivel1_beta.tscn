@@ -312,10 +312,10 @@ position = Vector2(284.29984, 398.6304)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D5" unique_id=1548526242]
 position = Vector2(305, -708)
-limit_left = 0
-limit_top = 0
-limit_right = 10000012
-limit_bottom = 680
+limit_left = 4
+limit_top = -2
+limit_right = 10000016
+limit_bottom = 678
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1726310753]
 z_index = -1
@@ -361,6 +361,7 @@ texture = ExtResource("8_i12o8")
 texture_scale = 1.98
 
 [node name="PointLight2D2" type="PointLight2D" parent="." unique_id=1316857474]
+visible = false
 position = Vector2(-1035, -1141)
 texture = ExtResource("8_i12o8")
 texture_scale = 14.87
