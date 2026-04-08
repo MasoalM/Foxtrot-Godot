@@ -311,7 +311,6 @@ autoplay = true
 z_index = -1
 texture_filter = 1
 position = Vector2(284.29984, 398.6304)
-collision_layer = 3
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D5" unique_id=1548526242]
 position = Vector2(305, -708)
@@ -361,6 +360,8 @@ texture = ExtResource("32_fwmkn")
 
 [node name="Area2D" type="Area2D" parent="PortalNivel1" unique_id=1930651479 groups=["Portals"]]
 position = Vector2(1, 7)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PortalNivel1/Area2D" unique_id=2052480001]
 position = Vector2(-1, 0)
@@ -383,6 +384,8 @@ texture = ExtResource("32_fwmkn")
 
 [node name="Area2D" type="Area2D" parent="PortalNivel2" unique_id=2092265224 groups=["Portals"]]
 position = Vector2(1, 7)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PortalNivel2/Area2D" unique_id=616428664]
 position = Vector2(-1, 0)
@@ -405,6 +408,8 @@ texture = ExtResource("32_fwmkn")
 
 [node name="Area2D" type="Area2D" parent="PortalNivel3" unique_id=1504517524 groups=["Portals"]]
 position = Vector2(1, 7)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PortalNivel3/Area2D" unique_id=191908170]
 position = Vector2(-1, 0)
@@ -427,6 +432,8 @@ texture = ExtResource("32_fwmkn")
 
 [node name="Area2D" type="Area2D" parent="PortalNivel4" unique_id=965665636 groups=["Portals"]]
 position = Vector2(1, 7)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PortalNivel4/Area2D" unique_id=367331287]
 position = Vector2(-1, 0)
@@ -449,6 +456,8 @@ texture = ExtResource("32_fwmkn")
 
 [node name="Area2D" type="Area2D" parent="PortalNivel5" unique_id=111280230 groups=["Portals"]]
 position = Vector2(1, 7)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PortalNivel5/Area2D" unique_id=2033235362]
 position = Vector2(-1, 0)

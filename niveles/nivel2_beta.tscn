@@ -274,7 +274,6 @@ autoplay = true
 [node name="CharacterBody2D5" parent="." unique_id=1006504852 groups=["player"] instance=ExtResource("1_xqqx3")]
 texture_filter = 1
 position = Vector2(284.29984, 398.6304)
-collision_layer = 3
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D5" unique_id=1548526242]
 position = Vector2(305, -708)
@@ -528,6 +527,8 @@ texture = ExtResource("31_elm21")
 
 [node name="Area2D" type="Area2D" parent="PortalFinNivel" unique_id=1278270615 groups=["Portals"]]
 position = Vector2(1, 7)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PortalFinNivel/Area2D" unique_id=1505673095]
 position = Vector2(-1, 0)
