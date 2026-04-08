@@ -57,6 +57,8 @@ var shoot_timer = 0
 var shoot_anim_timeout = 0.0
 const SHOOT_ANIM_MAX = 1.0
 
+var portal_actual = null
+
 func _ready():
 	emit_signal("vidas_cambiadas", vidas, escudo)
 	pass
@@ -70,6 +72,12 @@ func _reset_afk() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	
+	if portal_actual and Input.is_action_just_pressed("enter_portal"):
+		if portal_actual.has_method("entrar_al_nivel"):
+			portal_actual.entrar_al_nivel()
+		else:
+			print("Error: portal_actual no tiene 'entrar_al_nivel'")
 	
 	if !isGrounded and is_on_floor():
 		var instance = dust.instantiate()
@@ -240,10 +248,24 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		enemigosIn += 1
 		_dañar()
 			
+# Detectar entrada en áreas
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Enemigos"):
-		_dañar()			
-			
+		_dañar()	
+	if area.is_in_group("portales"):
+		# Subimos por la jerarquía hasta encontrar el nodo que tenga 'entrar_al_nivel'
+		var node = area
+		while node != null and not node.has_method("entrar_al_nivel"):
+			node = node.get_parent()
+		if node != null:
+			portal_actual = node
+		else:
+			print("Portal sin método 'entrar_al_nivel'")
+
+# Detectar salida de áreas
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	if portal_actual and area.is_in_group("portales"):
+		portal_actual = null
 			
 
 
