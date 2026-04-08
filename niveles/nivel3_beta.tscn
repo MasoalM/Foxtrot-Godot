@@ -45,6 +45,8 @@
 [ext_resource type="PackedScene" uid="uid://bjtf1vhnso0ys" path="res://Enemigos/hawrker.tscn" id="40_w41ru"]
 [ext_resource type="PackedScene" uid="uid://digj45m3nsyp4" path="res://Enemigos/wolfior.tscn" id="44_6f0j1"]
 [ext_resource type="Texture2D" uid="uid://dm5i2l2pnfqhy" path="res://Sprites/Enemigos/Piranha.png" id="44_rev2v"]
+[ext_resource type="Texture2D" uid="uid://c6hicl8pigqrp" path="res://Sprites/Portals/PortalNivel1.png" id="46_xradi"]
+[ext_resource type="Script" uid="uid://desol7c47hbtl" path="res://Sprites/Portals/portals.gd" id="47_bf0o1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rn8p"]
 texture = ExtResource("3_q0edt")
@@ -327,17 +329,20 @@ initial_velocity_max = 60.0
 gravity = Vector3(0, -50, 0)
 color_ramp = SubResource("GradientTexture1D_dg0w2")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_n0u70"]
+
 [node name="Node2D" type="Node2D" unique_id=1979362221]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=396328753]
 stream = ExtResource("1_s6an7")
-volume_db = -14.0
+volume_db = -9.0
 autoplay = true
 
 [node name="CharacterBody2D5" parent="." unique_id=1006504852 groups=["player"] instance=ExtResource("2_s6an7")]
 z_index = -1
 texture_filter = 1
 position = Vector2(284.29984, 398.6304)
+collision_layer = 3
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D5" unique_id=1548526242]
 position = Vector2(305, -708)
@@ -518,3 +523,28 @@ texture = ExtResource("44_rev2v")
 texture_filter = 1
 position = Vector2(4293, 550)
 texture = ExtResource("44_rev2v")
+
+[node name="PortalFinNivel" type="Sprite2D" parent="." unique_id=1626171669 groups=["Portals"]]
+z_index = -2
+position = Vector2(4607, 390)
+texture = ExtResource("46_xradi")
+script = ExtResource("47_bf0o1")
+escena_destino = "res://niveles/level_selector.tscn"
+
+[node name="PointLight2D" type="PointLight2D" parent="PortalFinNivel" unique_id=1311627503]
+position = Vector2(1, 9.999998)
+scale = Vector2(0.680147, 0.67663515)
+color = Color(0.85, 1, 0, 1)
+energy = 2.0
+texture = ExtResource("32_xhdyk")
+
+[node name="Area2D" type="Area2D" parent="PortalFinNivel" unique_id=51056008 groups=["Portals"]]
+position = Vector2(1, 7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PortalFinNivel/Area2D" unique_id=2083672796]
+position = Vector2(-1, 0)
+scale = Vector2(3.5, 5)
+shape = SubResource("CircleShape2D_n0u70")
+
+[connection signal="body_entered" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_exited"]

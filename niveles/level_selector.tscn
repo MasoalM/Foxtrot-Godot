@@ -311,6 +311,7 @@ autoplay = true
 z_index = -1
 texture_filter = 1
 position = Vector2(284.29984, 398.6304)
+collision_layer = 3
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D5" unique_id=1548526242]
 position = Vector2(305, -708)
@@ -349,6 +350,7 @@ z_index = -2
 position = Vector2(900, 513)
 texture = ExtResource("32_4uapo")
 script = ExtResource("35_x1c2d")
+escena_destino = "res://niveles/nivel1_beta.tscn"
 
 [node name="PointLight2D" type="PointLight2D" parent="PortalNivel1" unique_id=1442181060]
 position = Vector2(1, 9.999998)
@@ -370,6 +372,7 @@ z_index = -2
 position = Vector2(1944, 387)
 texture = ExtResource("34_16s84")
 script = ExtResource("35_x1c2d")
+escena_destino = "res://niveles/nivel2_beta.tscn"
 
 [node name="PointLight2D" type="PointLight2D" parent="PortalNivel2" unique_id=1155833100]
 position = Vector2(2.0000305, 9.000026)
@@ -391,6 +394,7 @@ z_index = -2
 position = Vector2(2751, 515)
 texture = ExtResource("35_tr1h6")
 script = ExtResource("35_x1c2d")
+escena_destino = "res://niveles/nivel3_beta.tscn"
 
 [node name="PointLight2D" type="PointLight2D" parent="PortalNivel3" unique_id=972579564]
 position = Vector2(-1.9073486e-05, 7.9999733)
@@ -412,6 +416,7 @@ z_index = -2
 position = Vector2(4417, 579)
 texture = ExtResource("36_x1c2d")
 script = ExtResource("35_x1c2d")
+escena_destino = "res://niveles/nivel4_beta.tscn"
 
 [node name="PointLight2D" type="PointLight2D" parent="PortalNivel4" unique_id=779615914]
 position = Vector2(1.0000343, 7.0000076)
@@ -433,6 +438,7 @@ z_index = -2
 position = Vector2(5920, 453)
 texture = ExtResource("37_1ihya")
 script = ExtResource("35_x1c2d")
+escena_destino = "res://niveles/nivel5_beta.tscn"
 
 [node name="PointLight2D" type="PointLight2D" parent="PortalNivel5" unique_id=1868973674]
 position = Vector2(4.000078, 1.0000076)
@@ -449,13 +455,13 @@ position = Vector2(-1, 0)
 scale = Vector2(3.5, 5)
 shape = SubResource("CircleShape2D_tr1h6")
 
-[connection signal="area_entered" from="PortalNivel1/Area2D" to="CharacterBody2D5" method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="PortalNivel1/Area2D" to="CharacterBody2D5" method="_on_area_2d_area_exited"]
-[connection signal="area_entered" from="PortalNivel2/Area2D" to="CharacterBody2D5" method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="PortalNivel2/Area2D" to="CharacterBody2D5" method="_on_area_2d_area_exited"]
-[connection signal="area_entered" from="PortalNivel3/Area2D" to="CharacterBody2D5" method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="PortalNivel3/Area2D" to="CharacterBody2D5" method="_on_area_2d_area_exited"]
-[connection signal="area_entered" from="PortalNivel4/Area2D" to="CharacterBody2D5" method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="PortalNivel4/Area2D" to="CharacterBody2D5" method="_on_area_2d_area_exited"]
-[connection signal="area_entered" from="PortalNivel5/Area2D" to="CharacterBody2D5" method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="PortalNivel5/Area2D" to="CharacterBody2D5" method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="PortalNivel1/Area2D" to="PortalNivel1" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="PortalNivel1/Area2D" to="PortalNivel1" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="PortalNivel2/Area2D" to="PortalNivel2" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="PortalNivel2/Area2D" to="PortalNivel2" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="PortalNivel3/Area2D" to="PortalNivel3" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="PortalNivel3/Area2D" to="PortalNivel3" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="PortalNivel4/Area2D" to="PortalNivel4" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="PortalNivel4/Area2D" to="PortalNivel4" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="PortalNivel5/Area2D" to="PortalNivel5" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="PortalNivel5/Area2D" to="PortalNivel5" method="_on_area_2d_body_exited"]

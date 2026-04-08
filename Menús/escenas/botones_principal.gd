@@ -21,6 +21,7 @@ func _on_cargar_partida_pressed() -> void:
 func _on_nueva_partida_pressed() -> void:
 	print("PRESIONADO: NUEVA PARTIDA")
 	_global_pressed()
+	get_tree().change_scene_to_file("res://niveles/level_selector.tscn")
 
 # Ajustes
 func _on_ajustes_pressed() -> void:

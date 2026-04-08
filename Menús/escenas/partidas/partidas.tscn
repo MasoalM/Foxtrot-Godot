@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://jgej215r4378" path="res://Menús/assets/botones/Sí.png" id="13_lmaa5"]
 [ext_resource type="Script" uid="uid://b8xmrdr0eehme" path="res://Menús/escenas/partidas/botones_confirmar.gd" id="13_mvyfo"]
 [ext_resource type="Texture2D" uid="uid://bbybg50rsx45t" path="res://Menús/assets/botones/No.png" id="14_mvyfo"]
+[ext_resource type="AudioStream" uid="uid://doemiotxtfad" path="res://Music/MenuPrincipal.ogg" id="16_mvyfo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2feee"]
 font = ExtResource("6_l4xib")
@@ -196,6 +197,11 @@ texture_normal = ExtResource("13_lmaa5")
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("14_mvyfo")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=839302366]
+stream = ExtResource("16_mvyfo")
+volume_db = -8.0
+autoplay = true
 
 [connection signal="pressed" from="Fondo/Menú/Menú Partidas/Partidas/Ranura 1" to="Fondo/Botones/Jugar" method="_on_slot_pressed" flags=18 binds= [1]]
 [connection signal="pressed" from="Fondo/Menú/Menú Partidas/Partidas/Ranura 2" to="Fondo/Botones/Jugar" method="_on_slot_pressed" flags=18 binds= [2]]

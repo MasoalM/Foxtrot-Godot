@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b3ctycvf404e0" path="res://Menús/assets/botones/Nueva Partida Desativado.png" id="6_13ptg"]
 [ext_resource type="Texture2D" uid="uid://cppd4mtt2ypgn" path="res://Menús/assets/botones/Ajustes.png" id="7_0xcfo"]
 [ext_resource type="Texture2D" uid="uid://qm5nijdh1m8e" path="res://Menús/assets/botones/Salir.png" id="8_y4740"]
+[ext_resource type="AudioStream" uid="uid://doemiotxtfad" path="res://Music/MenuPrincipal.ogg" id="9_x568q"]
 
 [node name="MenúPrincipal" type="Node2D" unique_id=347318251]
 
@@ -60,6 +61,11 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("8_y4740")
 metadata/tipo = "SALIR"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=703604580]
+stream = ExtResource("9_x568q")
+volume_db = -8.0
+autoplay = true
 
 [connection signal="pressed" from="Menú Principal/Botones/Cargar Partida" to="Menú Principal/Botones" method="_on_cargar_partida_pressed"]
 [connection signal="pressed" from="Menú Principal/Botones/Nueva Partida" to="Menú Principal/Botones" method="_on_nueva_partida_pressed"]
