@@ -298,7 +298,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			set_collision_layer_value(3, false)
 			set_collision_layer_value(4, true)
 
-			hitbox.monitoring = false
+			set_deferred("monitoring", false)
 			remove_from_group("Enemigos")
 
 			espada_sprite.queue_free()
