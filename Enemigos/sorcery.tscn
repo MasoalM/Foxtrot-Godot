@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b4x007pbgxha5"]
+
+[ext_resource type="Texture2D" uid="uid://cysh8ij8nfxx3" path="res://Sprites/Proyectiles/SorceravenShot.png" id="1_m1p5w"]
+[ext_resource type="Script" uid="uid://b30i8cr8lgfhq" path="res://Enemigos/sorcery.gd" id="1_shto3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_shto3"]
+radius = 16.0
+
+[node name="Area2D" type="Area2D" unique_id=1015978547 groups=["Enemigos"]]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_shto3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=12790645]
+texture = ExtResource("1_m1p5w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=196231358]
+shape = SubResource("CircleShape2D_shto3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
