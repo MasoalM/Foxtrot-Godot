@@ -538,6 +538,8 @@ scale = Vector2(3.5, 5)
 shape = SubResource("CircleShape2D_mqfnb")
 
 [node name="Indicador" type="Sprite2D" parent="PortalFinNivel" unique_id=1441578271]
+texture_filter = 1
+position = Vector2(0, -70)
 texture = ExtResource("43_rapbn")
 
 [connection signal="body_entered" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_entered"]

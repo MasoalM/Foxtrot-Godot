@@ -13,6 +13,7 @@ config_version=5
 config/name="Prueba-1"
 run/main_scene="uid://ej230yybshag"
 config/features=PackedStringArray("4.6", "Forward Plus")
+config/icon="uid://ru0bqi3annxs"
 
 [audio]
 

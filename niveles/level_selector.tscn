@@ -306,7 +306,7 @@ radius = 12.577773
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=396328753]
 stream = ExtResource("1_t6gdh")
-volume_db = -8.0
+volume_db = -17.0
 autoplay = true
 
 [node name="CharacterBody2D5" parent="." unique_id=1006504852 groups=["player"] instance=ExtResource("2_x1c2d")]
@@ -371,6 +371,8 @@ scale = Vector2(3.5, 5)
 shape = SubResource("CircleShape2D_tr1h6")
 
 [node name="Indicador" type="Sprite2D" parent="PortalNivel1" unique_id=831472125]
+texture_filter = 1
+position = Vector2(1, -64)
 texture = ExtResource("38_1ihya")
 
 [node name="PortalNivel2" type="Sprite2D" parent="." unique_id=1963603361]
@@ -398,6 +400,8 @@ scale = Vector2(3.5, 5)
 shape = SubResource("CircleShape2D_tr1h6")
 
 [node name="Indicador" type="Sprite2D" parent="PortalNivel2" unique_id=1817107355]
+texture_filter = 1
+position = Vector2(2, -62)
 texture = ExtResource("38_1ihya")
 
 [node name="PortalNivel3" type="Sprite2D" parent="." unique_id=1185762857]
@@ -425,6 +429,8 @@ scale = Vector2(3.5, 5)
 shape = SubResource("CircleShape2D_tr1h6")
 
 [node name="Indicador" type="Sprite2D" parent="PortalNivel3" unique_id=1855580724]
+texture_filter = 1
+position = Vector2(2, -65)
 texture = ExtResource("38_1ihya")
 
 [node name="PortalNivel4" type="Sprite2D" parent="." unique_id=1175430740]
@@ -452,6 +458,9 @@ scale = Vector2(3.5, 5)
 shape = SubResource("CircleShape2D_tr1h6")
 
 [node name="Indicador" type="Sprite2D" parent="PortalNivel4" unique_id=1547784655]
+z_index = 1
+texture_filter = 1
+position = Vector2(0, -66)
 texture = ExtResource("38_1ihya")
 
 [node name="PortalNivel5" type="Sprite2D" parent="." unique_id=1514346959]
@@ -479,6 +488,8 @@ scale = Vector2(3.5, 5)
 shape = SubResource("CircleShape2D_tr1h6")
 
 [node name="Indicador" type="Sprite2D" parent="PortalNivel5" unique_id=1163017775]
+texture_filter = 1
+position = Vector2(-1, -69)
 texture = ExtResource("38_1ihya")
 
 [connection signal="body_entered" from="PortalNivel1/Area2D" to="PortalNivel1" method="_on_area_2d_body_entered"]

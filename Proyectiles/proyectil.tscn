@@ -12,6 +12,7 @@ height = 40.0
 [node name="Proyectil" type="Area2D" unique_id=1529313797]
 light_mask = 512
 visibility_layer = 7
+z_index = -2
 script = ExtResource("1_1hd88")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1055736728]
