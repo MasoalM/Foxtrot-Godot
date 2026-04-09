@@ -97,7 +97,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		if !dead:
 			bow.queue_free()
 		dead = true
-		set_collision_layer_value(3, false)
+		set_collision_layer_value(1, false)
 		set_collision_layer_value(4, true)
 		set_deferred("monitoring", false)
 		remove_from_group("Enemigos")
