@@ -57,6 +57,9 @@ var shoot_timer = 0
 var shoot_anim_timeout = 0.0
 const SHOOT_ANIM_MAX = 1.0
 
+var hurt_timer = 0.0
+const HURT_DURATION = 1.0
+
 func _ready():
 	emit_signal("vidas_cambiadas", vidas, escudo)
 	pass
@@ -75,6 +78,12 @@ func _physics_process(delta: float) -> void:
 		instance.global_position = $DustMarker.global_position
 		get_parent().add_child(instance)
 	
+	if not is_dead:
+		if hurt_timer > 0:
+			hurt_timer -= delta
+			if hurt_timer <= 0:
+				is_hurt = false
+				state_machine.travel("static")
 	# Si quisiésemos poner partículas al saltar	
 	#if is_jumping and isGrounded:
 	#	var instance = dust.instantiate()
@@ -305,17 +314,10 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	match anim_name:
 		"death":
 			queue_free()
+			
 		"hurt":
-			is_hurt = false
-			if enemigosIn > 0:
-				vidas -= 1
-				if vidas <= 0:
-					is_dead = true
-					bloquearControles = true
-					state_machine.travel("death")
-				else:
-					is_hurt = true
-					state_machine.travel("hurt")
+			state_machine.travel("static")
+		
 		"shoot":
 			isShooting = false
 			is_jumping = false
@@ -339,17 +341,24 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 func _dañar():
 		if is_hurt or is_dead:
 			return
+		state_machine.travel("static")
 		#  Primero escudo
 		damageSound.play()
 		if escudo > 0:
 			is_hurt = true;
 			state_machine.travel("hurt")
 			escudo -= 1
+			# Reemplaza las dos líneas "is_hurt = true" por esto en ambos sitios:	
+			is_hurt = true
+			hurt_timer = HURT_DURATION
 			emit_signal("vidas_cambiadas", vidas, escudo)
 			# efecto visual distinto opcional
 			flash(3)
 			return
-		vidas -= 1 
+		vidas -= 1
+		# Reemplaza las dos líneas "is_hurt = true" por esto en ambos sitios:
+		is_hurt = true
+		hurt_timer = HURT_DURATION 
 		emit_signal("vidas_cambiadas", vidas, escudo)
 		if vidas <= 0:
 			is_dead = true
