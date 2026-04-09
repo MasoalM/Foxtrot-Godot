@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://28rvnhdskttu"
-path="res://.godot/imported/Sorceraven.png-377b42df817b7397b6b46b699b2fd7bc.ctex"
+uid="uid://jlr60hek0783"
+path="res://.godot/imported/RuinsBackground.png-9c5baf29e55df1f12bcef9388f3a2d5a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Enemigos/Sorceraven.png"
-dest_files=["res://.godot/imported/Sorceraven.png-377b42df817b7397b6b46b699b2fd7bc.ctex"]
+source_file="res://Sprites/Bloques/RuinsBackground.png"
+dest_files=["res://.godot/imported/RuinsBackground.png-9c5baf29e55df1f12bcef9388f3a2d5a.ctex"]
 
 [params]
 
