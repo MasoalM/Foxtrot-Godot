@@ -44,7 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://c7j8y60gsqd2q" path="res://hud/HealthBar.png" id="39_hvxkv"]
 [ext_resource type="PackedScene" uid="uid://bjtf1vhnso0ys" path="res://Enemigos/hawrker.tscn" id="40_w41ru"]
 [ext_resource type="PackedScene" uid="uid://digj45m3nsyp4" path="res://Enemigos/wolfior.tscn" id="44_6f0j1"]
-[ext_resource type="Texture2D" uid="uid://dm5i2l2pnfqhy" path="res://Sprites/Enemigos/Piranha.png" id="44_rev2v"]
+[ext_resource type="PackedScene" uid="uid://cb6oqqy6h61jd" path="res://Enemigos/piranha.tscn" id="45_y6dms"]
 [ext_resource type="Texture2D" uid="uid://c6hicl8pigqrp" path="res://Sprites/Portals/PortalNivel1.png" id="46_xradi"]
 [ext_resource type="Script" uid="uid://desol7c47hbtl" path="res://Sprites/Portals/portals.gd" id="47_bf0o1"]
 [ext_resource type="Texture2D" uid="uid://cu8lwjcio2np5" path="res://Sprites/F.png" id="48_bf0o1"]
@@ -507,25 +507,25 @@ layout_mode = 2
 [node name="CharacterBody2D8" parent="." unique_id=547989863 instance=ExtResource("44_6f0j1")]
 position = Vector2(8063, 403)
 
-[node name="Piranha3" type="Sprite2D" parent="." unique_id=961378669]
-texture_filter = 1
-position = Vector2(7082, 607)
-texture = ExtResource("44_rev2v")
+[node name="piranha1" parent="." unique_id=1966710050 instance=ExtResource("45_y6dms")]
+position = Vector2(4247, 549)
+limiteIzquierda = 3765.0
+limiteDerecha = 4875.0
 
-[node name="Piranha4" type="Sprite2D" parent="." unique_id=2039944433]
-texture_filter = 1
-position = Vector2(6610, 595)
-texture = ExtResource("44_rev2v")
+[node name="piranha2" parent="." unique_id=1268708965 instance=ExtResource("45_y6dms")]
+position = Vector2(6225, 553)
+limiteIzquierda = 6002.0
+limiteDerecha = 9215.0
 
-[node name="Piranha2" type="Sprite2D" parent="." unique_id=2013801129]
-texture_filter = 1
-position = Vector2(6164, 595)
-texture = ExtResource("44_rev2v")
+[node name="piranha3" parent="." unique_id=362443143 instance=ExtResource("45_y6dms")]
+position = Vector2(6571, 553)
+limiteIzquierda = 6002.0
+limiteDerecha = 9215.0
 
-[node name="Piranha" type="Sprite2D" parent="." unique_id=1879447600]
-texture_filter = 1
-position = Vector2(4293, 550)
-texture = ExtResource("44_rev2v")
+[node name="piranha4" parent="." unique_id=1218329668 instance=ExtResource("45_y6dms")]
+position = Vector2(6880, 553)
+limiteIzquierda = 6002.0
+limiteDerecha = 9215.0
 
 [node name="PortalFinNivel" type="Sprite2D" parent="." unique_id=1626171669 groups=["Portals"]]
 z_index = -2
