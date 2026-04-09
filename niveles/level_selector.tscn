@@ -40,6 +40,7 @@
 [ext_resource type="PackedScene" uid="uid://pv0tnikacfoy" path="res://Otros/bosq.tscn" id="36_rpbob"]
 [ext_resource type="Texture2D" uid="uid://cfgwuyp3gfx7h" path="res://Sprites/Portals/PortalNivel4.png" id="36_x1c2d"]
 [ext_resource type="Texture2D" uid="uid://dbibh2t34xh5p" path="res://Sprites/Portals/PortalNivel5.png" id="37_1ihya"]
+[ext_resource type="Texture2D" uid="uid://cu8lwjcio2np5" path="res://Sprites/F.png" id="38_1ihya"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rn8p"]
 texture = ExtResource("3_1ihya")
@@ -299,6 +300,7 @@ sources/2 = SubResource("TileSetAtlasSource_2j8ji")
 sources/14 = SubResource("TileSetAtlasSource_1ihya")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tr1h6"]
+radius = 12.577773
 
 [node name="Node2D" type="Node2D" unique_id=1979362221]
 
@@ -368,6 +370,9 @@ position = Vector2(-1, 0)
 scale = Vector2(3.5, 5)
 shape = SubResource("CircleShape2D_tr1h6")
 
+[node name="Indicador" type="Sprite2D" parent="PortalNivel1" unique_id=831472125]
+texture = ExtResource("38_1ihya")
+
 [node name="PortalNivel2" type="Sprite2D" parent="." unique_id=1963603361]
 z_index = -2
 position = Vector2(1944, 387)
@@ -391,6 +396,9 @@ collision_mask = 2
 position = Vector2(-1, 0)
 scale = Vector2(3.5, 5)
 shape = SubResource("CircleShape2D_tr1h6")
+
+[node name="Indicador" type="Sprite2D" parent="PortalNivel2" unique_id=1817107355]
+texture = ExtResource("38_1ihya")
 
 [node name="PortalNivel3" type="Sprite2D" parent="." unique_id=1185762857]
 z_index = -2
@@ -416,6 +424,9 @@ position = Vector2(-1, 0)
 scale = Vector2(3.5, 5)
 shape = SubResource("CircleShape2D_tr1h6")
 
+[node name="Indicador" type="Sprite2D" parent="PortalNivel3" unique_id=1855580724]
+texture = ExtResource("38_1ihya")
+
 [node name="PortalNivel4" type="Sprite2D" parent="." unique_id=1175430740]
 z_index = -2
 position = Vector2(4417, 579)
@@ -440,6 +451,9 @@ position = Vector2(-1, 0)
 scale = Vector2(3.5, 5)
 shape = SubResource("CircleShape2D_tr1h6")
 
+[node name="Indicador" type="Sprite2D" parent="PortalNivel4" unique_id=1547784655]
+texture = ExtResource("38_1ihya")
+
 [node name="PortalNivel5" type="Sprite2D" parent="." unique_id=1514346959]
 z_index = -2
 position = Vector2(5920, 453)
@@ -463,6 +477,9 @@ collision_mask = 2
 position = Vector2(-1, 0)
 scale = Vector2(3.5, 5)
 shape = SubResource("CircleShape2D_tr1h6")
+
+[node name="Indicador" type="Sprite2D" parent="PortalNivel5" unique_id=1163017775]
+texture = ExtResource("38_1ihya")
 
 [connection signal="body_entered" from="PortalNivel1/Area2D" to="PortalNivel1" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalNivel1/Area2D" to="PortalNivel1" method="_on_area_2d_body_exited"]

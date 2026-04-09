@@ -41,6 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://c7j8y60gsqd2q" path="res://hud/HealthBar.png" id="39_dg0w2"]
 [ext_resource type="Texture2D" uid="uid://c6hicl8pigqrp" path="res://Sprites/Portals/PortalNivel1.png" id="40_sni5d"]
 [ext_resource type="Script" uid="uid://desol7c47hbtl" path="res://Sprites/Portals/portals.gd" id="41_d3inr"]
+[ext_resource type="Texture2D" uid="uid://cu8lwjcio2np5" path="res://Sprites/F.png" id="42_d3inr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rn8p"]
 texture = ExtResource("34_51gxm")
@@ -304,6 +305,7 @@ gravity = Vector3(0, -50, 0)
 color_ramp = SubResource("GradientTexture1D_dg0w2")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yf3lr"]
+radius = 12.577651
 
 [node name="Node2D" type="Node2D" unique_id=1979362221]
 
@@ -530,6 +532,9 @@ collision_mask = 2
 position = Vector2(-1, 0)
 scale = Vector2(3.5, 5)
 shape = SubResource("CircleShape2D_yf3lr")
+
+[node name="Indicador" type="Sprite2D" parent="PortalFinNivel" unique_id=1651135916]
+texture = ExtResource("42_d3inr")
 
 [connection signal="body_entered" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_exited"]
