@@ -42,6 +42,8 @@
 [ext_resource type="Texture2D" uid="uid://cfgwuyp3gfx7h" path="res://Sprites/Portals/PortalNivel4.png" id="36_x1c2d"]
 [ext_resource type="Texture2D" uid="uid://dbibh2t34xh5p" path="res://Sprites/Portals/PortalNivel5.png" id="37_1ihya"]
 [ext_resource type="Texture2D" uid="uid://cu8lwjcio2np5" path="res://Sprites/F.png" id="38_1ihya"]
+[ext_resource type="AudioStream" uid="uid://bju45770rly62" path="res://Sounds/Portal.ogg" id="39_es81m"]
+[ext_resource type="AudioStream" uid="uid://dmybnkonokowx" path="res://Sounds/PrePortal.mp3" id="40_kr3tk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rn8p"]
 texture = ExtResource("3_1ihya")
@@ -382,6 +384,14 @@ texture_filter = 1
 position = Vector2(1, -64)
 texture = ExtResource("38_1ihya")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PortalNivel1" unique_id=1870534779]
+stream = ExtResource("39_es81m")
+volume_db = 3.0
+
+[node name="PrePortal" type="AudioStreamPlayer2D" parent="PortalNivel1" unique_id=2054095995]
+stream = ExtResource("40_kr3tk")
+volume_db = -4.0
+
 [node name="PortalNivel2" type="Sprite2D" parent="." unique_id=1963603361]
 z_index = -2
 position = Vector2(1944, 387)
@@ -411,6 +421,14 @@ texture_filter = 1
 position = Vector2(2, -62)
 texture = ExtResource("38_1ihya")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PortalNivel2" unique_id=1956315466]
+stream = ExtResource("39_es81m")
+volume_db = 3.0
+
+[node name="PrePortal" type="AudioStreamPlayer2D" parent="PortalNivel2" unique_id=198242862]
+stream = ExtResource("40_kr3tk")
+volume_db = -4.0
+
 [node name="PortalNivel3" type="Sprite2D" parent="." unique_id=1185762857]
 z_index = -2
 position = Vector2(2751, 515)
@@ -439,6 +457,14 @@ shape = SubResource("CircleShape2D_tr1h6")
 texture_filter = 1
 position = Vector2(2, -65)
 texture = ExtResource("38_1ihya")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PortalNivel3" unique_id=949993226]
+stream = ExtResource("39_es81m")
+volume_db = 3.0
+
+[node name="PrePortal" type="AudioStreamPlayer2D" parent="PortalNivel3" unique_id=294089608]
+stream = ExtResource("40_kr3tk")
+volume_db = -4.0
 
 [node name="PortalNivel4" type="Sprite2D" parent="." unique_id=1175430740]
 z_index = -2
@@ -470,6 +496,14 @@ texture_filter = 1
 position = Vector2(0, -66)
 texture = ExtResource("38_1ihya")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PortalNivel4" unique_id=2129729904]
+stream = ExtResource("39_es81m")
+volume_db = 3.0
+
+[node name="PrePortal" type="AudioStreamPlayer2D" parent="PortalNivel4" unique_id=875288000]
+stream = ExtResource("40_kr3tk")
+volume_db = -4.0
+
 [node name="PortalNivel5" type="Sprite2D" parent="." unique_id=1514346959]
 z_index = -2
 position = Vector2(5920, 453)
@@ -498,6 +532,14 @@ shape = SubResource("CircleShape2D_tr1h6")
 texture_filter = 1
 position = Vector2(-1, -69)
 texture = ExtResource("38_1ihya")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PortalNivel5" unique_id=2099334059]
+stream = ExtResource("39_es81m")
+volume_db = 3.0
+
+[node name="PrePortal" type="AudioStreamPlayer2D" parent="PortalNivel5" unique_id=1189054880]
+stream = ExtResource("40_kr3tk")
+volume_db = -4.0
 
 [connection signal="body_entered" from="PortalNivel1/Area2D" to="PortalNivel1" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalNivel1/Area2D" to="PortalNivel1" method="_on_area_2d_body_exited"]

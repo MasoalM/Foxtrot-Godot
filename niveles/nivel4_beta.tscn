@@ -42,8 +42,10 @@
 [ext_resource type="Texture2D" uid="uid://c7j8y60gsqd2q" path="res://hud/HealthBar.png" id="40_uk1df"]
 [ext_resource type="Texture2D" uid="uid://c6hicl8pigqrp" path="res://Sprites/Portals/PortalNivel1.png" id="41_cc4s7"]
 [ext_resource type="Script" uid="uid://desol7c47hbtl" path="res://Sprites/Portals/portals.gd" id="42_ct6o4"]
+[ext_resource type="AudioStream" uid="uid://bju45770rly62" path="res://Sounds/Portal.ogg" id="43_ayohi"]
 [ext_resource type="Texture2D" uid="uid://cu8lwjcio2np5" path="res://Sprites/F.png" id="43_l4jck"]
 [ext_resource type="Texture2D" uid="uid://28rvnhdskttu" path="res://Sprites/Enemigos/Sorceraven.png" id="44_86eud"]
+[ext_resource type="AudioStream" uid="uid://dmybnkonokowx" path="res://Sounds/PrePortal.mp3" id="44_t1lxu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_86eud"]
 texture = ExtResource("3_r10fn")
@@ -457,6 +459,14 @@ shape = SubResource("CircleShape2D_mqfnb")
 texture_filter = 1
 position = Vector2(0, -70)
 texture = ExtResource("43_l4jck")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PortalFinNivel" unique_id=996019042]
+stream = ExtResource("43_ayohi")
+volume_db = 3.0
+
+[node name="PrePortal" type="AudioStreamPlayer2D" parent="PortalFinNivel" unique_id=1587267761]
+stream = ExtResource("44_t1lxu")
+volume_db = -4.0
 
 [node name="CharacterBody2D2" parent="." unique_id=1098210497 instance=ExtResource("38_ijlxt")]
 position = Vector2(3294, 546)
