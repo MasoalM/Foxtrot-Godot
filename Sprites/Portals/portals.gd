@@ -21,9 +21,14 @@ func entrar_al_nivel():
 	if escena_destino == "":
 		print("Error: escena_destino no asignada")
 		return
+	jugador_dentro = false  # evita que se pueda pulsar F de nuevo
 	print("Entrando al nivel: ", escena_destino)
 	prePortalSound.stop()
 	portalSound.play()
+	var jugador = get_tree().get_first_node_in_group("player")
+	if jugador:
+		jugador.bloquearControles = true
+		jugador.velocity.x = 0
 	await get_tree().create_timer(1.0).timeout
 	get_tree().change_scene_to_file(escena_destino)
 
