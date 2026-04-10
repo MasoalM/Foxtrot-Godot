@@ -576,7 +576,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SHIFT/Area2D" unique_id=1757589712]
-position = Vector2(-132.23108, -151.79895)
+position = Vector2(-206.32382, -212.68631)
 scale = Vector2(3.5000005, 5)
 shape = SubResource("RectangleShape2D_w30pp")
 
