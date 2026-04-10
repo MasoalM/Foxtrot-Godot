@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var animated_sprite = $AnimatedSprite2D
 
 @export var speed := 80.0
 @export var jump_interval := 5.0
@@ -31,6 +32,7 @@ var is_jumping := false
 
 
 func _ready():
+	animated_sprite.play("movement")
 	surface_y = position.y
 	swim_y = surface_y + swim_depth
 	
@@ -76,7 +78,7 @@ func _physics_process(delta):
 		direction = -1
 		
 		
-	$Sprite2D.flip_h = direction > 0
+	$AnimatedSprite2D.flip_h = direction > 0
 		
 		
 	_update_rotation(delta)	
@@ -95,7 +97,7 @@ func _update_rotation(delta):
 		if direction > 0:
 			angle += PI
 		
-		$Sprite2D.rotation = lerp_angle($Sprite2D.rotation, angle, 0.1)
+		$AnimatedSprite2D.rotation = lerp_angle($AnimatedSprite2D.rotation, angle, 0.1)
 
 # --- salto ---
 func _jump():

@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var projectile_scene: PackedScene
 @onready var hitbox = $Hitbox
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var muerte = $AudioStreamPlayer2DDeath
 
 @onready var bow = $Bow   
 
@@ -102,5 +103,6 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		set_deferred("monitoring", false)
 		remove_from_group("Enemigos")
 		animated_sprite.play("death")
+		muerte.play()
 		await get_tree().create_timer(1.8).timeout
 		queue_free()	

@@ -8,7 +8,8 @@ extends CharacterBody2D
 @onready var ray_suelo = $RayCastSuelo
 @onready var ray_vision = $RayCastVision
 @onready var shoot_point = $ShootPoint
-@onready var sprite = $Sprite2D
+@onready var animated_sprite = $AnimatedSprite2D
+@onready var muerte = $AudioStreamPlayer2DDeath
 
 var direction := 1
 var player
@@ -43,6 +44,7 @@ func _physics_process(delta):
 
 	else:
 		# --- MOVIMIENTO NORMAL ---
+		animated_sprite.play("movement")
 		velocity.x = speed * direction
 
 		# --- DETECTAR BORDE ---
@@ -56,7 +58,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 	# --- FLIP VISUAL ---
-	sprite.flip_h = direction > 0
+	animated_sprite.flip_h = direction > 0
 
 
 func _flip():
@@ -121,9 +123,6 @@ func can_see_player():
 			return true
 
 	return false
-
-	
-
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("ProyectilAliado"):

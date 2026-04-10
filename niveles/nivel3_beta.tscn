@@ -480,32 +480,32 @@ position = Vector2(7687, 403)
 
 [node name="piranha1" parent="." unique_id=1966710050 instance=ExtResource("45_y6dms")]
 position = Vector2(4247, 549)
-limiteIzquierda = 3765.0
-limiteDerecha = 4875.0
+limiteIzquierda = 3750.0
+limiteDerecha = 5000.0
 
 [node name="piranha2" parent="." unique_id=1268708965 instance=ExtResource("45_y6dms")]
 position = Vector2(6225, 553)
-limiteIzquierda = 6002.0
-limiteDerecha = 9215.0
+limiteIzquierda = 6000.0
+limiteDerecha = 7500.0
 
 [node name="piranha3" parent="." unique_id=362443143 instance=ExtResource("45_y6dms")]
 position = Vector2(6571, 616)
-limiteIzquierda = 6002.0
-limiteDerecha = 9215.0
+limiteIzquierda = 6000.0
+limiteDerecha = 7500.0
 
 [node name="piranha5" parent="." unique_id=764955249 instance=ExtResource("45_y6dms")]
 position = Vector2(5677, 683)
-limiteIzquierda = 6002.0
-limiteDerecha = 9215.0
+limiteIzquierda = 5000.0
+limiteDerecha = 5900.0
 
 [node name="piranha4" parent="." unique_id=1218329668 instance=ExtResource("45_y6dms")]
 position = Vector2(6880, 553)
-limiteIzquierda = 6002.0
-limiteDerecha = 9215.0
+limiteIzquierda = 6500.0
+limiteDerecha = 8000.0
 
 [node name="PortalFinNivel" type="Sprite2D" parent="." unique_id=1626171669 groups=["Portals"]]
 z_index = -2
-position = Vector2(4607, 390)
+position = Vector2(9243, 392)
 texture = ExtResource("46_xradi")
 script = ExtResource("47_bf0o1")
 escena_destino = "res://niveles/level_selector.tscn"
@@ -552,23 +552,23 @@ limiteDerecha = 9215.0
 
 [node name="piranha6" parent="." unique_id=929317046 instance=ExtResource("45_y6dms")]
 position = Vector2(7143, 611)
-limiteIzquierda = 6002.0
-limiteDerecha = 9215.0
+limiteIzquierda = 6500.0
+limiteDerecha = 8000.0
 
 [node name="piranha7" parent="." unique_id=1811325459 instance=ExtResource("45_y6dms")]
 position = Vector2(7425, 550)
-limiteIzquierda = 6002.0
-limiteDerecha = 9215.0
+limiteIzquierda = 7000.0
+limiteDerecha = 8500.0
 
 [node name="piranha8" parent="." unique_id=387354311 instance=ExtResource("45_y6dms")]
 position = Vector2(7622, 610)
-limiteIzquierda = 6002.0
-limiteDerecha = 9215.0
+limiteIzquierda = 7500.0
+limiteDerecha = 9000.0
 
 [node name="piranha9" parent="." unique_id=1172051062 instance=ExtResource("45_y6dms")]
 position = Vector2(7822, 554)
-limiteIzquierda = 6002.0
-limiteDerecha = 9215.0
+limiteIzquierda = 7750.0
+limiteDerecha = 9250.0
 
 [node name="IcePowerUp(1)" type="Sprite2D" parent="." unique_id=2129440362]
 position = Vector2(9148, 438)
