@@ -26,6 +26,7 @@ const JUMP_VELOCITY = -525.0
 const cut_factor = 0.5
 const bala = preload("res://Proyectiles/proyectil.tscn")
 const ataqueGuante = preload("res://powerUps/ataqueguante.tscn")
+const ataqueCargado = preload("res://powerUps/ataque_cargado.tscn")
 const coyoteTime = 10
 const afk = 400
 
@@ -45,6 +46,7 @@ var isGrounded = true
 var dobSalAct = false
 var guanteActivo = false
 var dobSal = false
+var ataqueCarg = false
 var vel
 var mirando_derecha = true
 var air_nercia = false
@@ -171,17 +173,29 @@ func _physics_process(delta: float) -> void:
 				velocity.x = move_toward(velocity.x, 0, friccion * delta)
 
 	# Disparo
+	
 	if shoot_timer > 0:
 		shoot_timer -= delta
 
 	if (not bloquearControles) and Input.is_action_just_pressed("DispararBasico") and (shoot_timer <= 0):
 		_reset_afk()
+
+		# ATAQUE CARGADO
+		if ataqueCarg:
+			ataqueCarg = false
+			shoot_timer = shoot_cooldown
+			hacer_ataque_cargado()
+			
+			return
+
+		# DISPARO NORMAL
 		if get_tree().get_nodes_in_group("ProyectilAliado").size() < 3:
 			shoot_timer = shoot_cooldown
-			var shoot = bala.instantiate()  # ← instanciar solo cuando se necesita
+			var shoot = bala.instantiate()
 			shotSound.play()
 			get_parent().add_child(shoot)
 			shoot.position = $Marker2D.global_position
+
 			if not mirando_derecha:
 				shoot.scale.x *= -1
 				shoot.vel_bala *= -1
@@ -244,6 +258,9 @@ func apply_powerup(type):
 			
 			dobSalAct = true
 			guanteActivo = true
+		"cargado":
+			ataqueCarg= true
+			
 				
 
 
@@ -411,7 +428,10 @@ func _hacer_ataque_guante():
 	# debajo del jugador
 	atk.global_position = global_position + Vector2(0, 30)		
 		
-
+func hacer_ataque_cargado():
+	var atk = ataqueCargado.instantiate()
+	get_parent().add_child(atk)
+	atk.global_position = global_position
 
 #func _on_area_2d_area_entered(area: Area2D) -> void:
 #	if area.is_in_group("Lianas"):

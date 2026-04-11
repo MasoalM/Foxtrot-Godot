@@ -290,22 +290,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		var new_lives = lives - 1
 
 		if new_lives <= 0:
-			lives = 0
-			
-			#  MUERTE SIN KNOCKBACK
-			aullidoMuerte.play()
-
-			set_collision_layer_value(3, false)
-			set_collision_layer_value(4, true)
-
-			set_deferred("monitoring", false)
-			remove_from_group("Enemigos")
-
-			espada_sprite.queue_free()
-			animated_sprite.play("death")
-
-			await get_tree().create_timer(1.8).timeout
-			queue_free()
+			muerte()
 			return
 		
 		# si no muere hacemos knockback aplicar knockback
@@ -321,3 +306,28 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 
 		knockback_timer = knockback_duration
 		in_knockback = true
+	if area.is_in_group("ataqueCargado"):
+		muerte()
+
+
+func muerte():
+	if lives <= 0:
+		return
+		
+	lives = 0
+	
+	aullidoMuerte.play()
+
+	set_collision_layer_value(3, false)
+	set_collision_layer_value(4, true)
+
+	set_deferred("monitoring", false)
+	remove_from_group("Enemigos")
+
+	if is_instance_valid(espada_sprite):
+		espada_sprite.queue_free()
+
+	animated_sprite.play("death")
+
+	await get_tree().create_timer(1.8).timeout
+	queue_free()
