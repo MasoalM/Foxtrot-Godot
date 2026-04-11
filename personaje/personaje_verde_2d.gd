@@ -127,7 +127,7 @@ func _physics_process(delta: float) -> void:
 			air_nercia = true
 		velocity.y = JUMP_VELOCITY
 		jumpSound.play()
-		if not is_on_floor():
+		if not is_on_floor() and coyoteTimeActual <= 0:
 			dobSal = false
 			if guanteActivo:
 				_hacer_ataque_guante()

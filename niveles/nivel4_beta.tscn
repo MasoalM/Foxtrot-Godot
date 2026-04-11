@@ -46,6 +46,7 @@
 [ext_resource type="Texture2D" uid="uid://cu8lwjcio2np5" path="res://Sprites/F.png" id="43_l4jck"]
 [ext_resource type="AudioStream" uid="uid://dmybnkonokowx" path="res://Sounds/PrePortal.mp3" id="44_t1lxu"]
 [ext_resource type="PackedScene" uid="uid://sua7jayjmk8o" path="res://Enemigos/sorceraven.tscn" id="46_t1lxu"]
+[ext_resource type="PackedScene" uid="uid://sw3iu1espuey" path="res://powerUps/guante.tscn" id="47_sph8r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_86eud"]
 texture = ExtResource("3_r10fn")
@@ -482,6 +483,9 @@ position = Vector2(6748, 292)
 
 [node name="CharacterBody2D16" parent="." unique_id=1127469986 instance=ExtResource("46_t1lxu")]
 position = Vector2(6362, 292)
+
+[node name="guante" parent="." unique_id=2119763944 instance=ExtResource("47_sph8r")]
+position = Vector2(755, 546)
 
 [connection signal="body_entered" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_exited"]
