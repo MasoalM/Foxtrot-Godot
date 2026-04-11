@@ -330,10 +330,10 @@ position = Vector2(284.29984, 398.6304)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D5" unique_id=1548526242]
 position = Vector2(305, -708)
-limit_left = 4
-limit_top = -2
-limit_right = 10000016
-limit_bottom = 678
+limit_left = 2
+limit_top = -18
+limit_right = 10000014
+limit_bottom = 662
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1726310753]
 z_index = -1
@@ -537,6 +537,28 @@ position = Vector2(-45.085297, -111.96572)
 scale = Vector2(3.5, 5)
 shape = SubResource("RectangleShape2D_w30pp")
 
+[node name="SPACE2" type="Node2D" parent="." unique_id=481477404]
+texture_filter = 1
+position = Vector2(1880.0002, -47.000004)
+rotation = 0.0030432786
+scale = Vector2(0.99999976, 0.99999976)
+script = ExtResource("40_w30pp")
+
+[node name="Indicador" type="Sprite2D" parent="SPACE2" unique_id=1656219700]
+texture_filter = 1
+position = Vector2(673.01624, 332.95346)
+texture = ExtResource("42_32x6e")
+
+[node name="Area2D" type="Area2D" parent="SPACE2" unique_id=446539091 groups=["Portals"]]
+position = Vector2(720.6292, 412.90396)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SPACE2/Area2D" unique_id=505498699]
+position = Vector2(-142.78891, -137.6612)
+scale = Vector2(3.500001, 5)
+shape = SubResource("RectangleShape2D_w30pp")
+
 [node name="SPACE" type="Node2D" parent="." unique_id=93112923]
 texture_filter = 1
 position = Vector2(0, -3.0517578e-05)
@@ -555,7 +577,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SPACE/Area2D" unique_id=566035749]
-position = Vector2(-96.05231, -126.253815)
+position = Vector2(-121.220535, -144.81567)
 scale = Vector2(3.500001, 5)
 shape = SubResource("RectangleShape2D_w30pp")
 
@@ -567,7 +589,7 @@ script = ExtResource("40_w30pp")
 
 [node name="Indicador" type="Sprite2D" parent="SHIFT" unique_id=362709562]
 texture_filter = 1
-position = Vector2(565.41327, 271.14)
+position = Vector2(564.32196, 211.14157)
 texture = ExtResource("43_yhcb6")
 
 [node name="Area2D" type="Area2D" parent="SHIFT" unique_id=761201413 groups=["Portals"]]
@@ -576,7 +598,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SHIFT/Area2D" unique_id=1757589712]
-position = Vector2(-206.32382, -212.68631)
+position = Vector2(-253.33899, -222.61479)
 scale = Vector2(3.5000005, 5)
 shape = SubResource("RectangleShape2D_w30pp")
 
@@ -619,6 +641,8 @@ volume_db = -4.0
 
 [connection signal="body_entered" from="E/Area2D" to="E" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="E/Area2D" to="E" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="SPACE2/Area2D" to="SPACE2" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="SPACE2/Area2D" to="SPACE2" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="SPACE/Area2D" to="SPACE" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="SPACE/Area2D" to="SPACE" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="SHIFT/Area2D" to="SHIFT" method="_on_area_2d_body_entered"]
