@@ -29,6 +29,7 @@ func _physics_process(delta):
 	if ve_jugador and is_instance_valid(player):
 		# --- PARADO ---
 		velocity.x = 0
+		#animated_sprite.play("idle")
 		
 		# --- MIRAR AL PLAYER ---
 		if player.global_position.x > global_position.x:
@@ -40,6 +41,8 @@ func _physics_process(delta):
 		shoot_timer -= delta
 		if shoot_timer <= 0:
 			shoot_timer = shoot_cooldown
+			animated_sprite.play("preShot")
+			await get_tree().create_timer(0.5).timeout
 			shoot()
 
 	else:
@@ -128,4 +131,13 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("ProyectilAliado"):
 		if area.has_method("morir"):
 			area.morir()
-		queue_free()	
+		die()
+		
+func die():
+	velocity = Vector2.ZERO
+	animated_sprite.play("death")
+	muerte.play()
+	set_physics_process(false)
+
+	await get_tree().create_timer(3).timeout
+	queue_free()
