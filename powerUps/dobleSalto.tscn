@@ -9,7 +9,7 @@ radius = 16.03122
 [sub_resource type="CircleShape2D" id="CircleShape2D_j67wb"]
 radius = 17.0
 
-[node name="StaticBody2D" type="StaticBody2D" unique_id=1752570427]
+[node name="Area2D" type="Area2D" unique_id=134811654]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=354953536]
 texture_filter = 1
@@ -19,6 +19,8 @@ texture = ExtResource("1_hpqph")
 shape = SubResource("CircleShape2D_35ida")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=278544899]
+collision_layer = 7
+collision_mask = 7
 script = ExtResource("2_hpqph")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1186692951]

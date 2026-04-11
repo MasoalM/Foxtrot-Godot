@@ -25,6 +25,7 @@ const friccion = 1200.0
 const JUMP_VELOCITY = -525.0
 const cut_factor = 0.5
 const bala = preload("res://Proyectiles/proyectil.tscn")
+const ataqueGuante = preload("res://powerUps/ataqueguante.tscn")
 const coyoteTime = 10
 const afk = 400
 
@@ -42,6 +43,7 @@ var is_fall = false
 var isGrounded = true
 
 var dobSalAct = false
+var guanteActivo = false
 var dobSal = false
 var vel
 var mirando_derecha = true
@@ -125,6 +127,8 @@ func _physics_process(delta: float) -> void:
 		jumpSound.play()
 		if not is_on_floor():
 			dobSal = false
+			if guanteActivo:
+				_hacer_ataque_guante()
 
 	if Input.is_action_just_released("ui_accept") and velocity.y < 0:
 		velocity.y *= cut_factor
@@ -236,6 +240,11 @@ func apply_powerup(type):
 				vidas = 2
 				emit_signal("vidas_cambiadas", vidas, escudo)
 				flash(2)
+		"guante":
+			
+			dobSalAct = true
+			guanteActivo = true
+				
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
@@ -394,6 +403,13 @@ func recoger_moneda(id):
 		monedas_estado[id] = true
 		coinSound.play()
 		emit_signal("monedas_cambiadas", monedas_estado)
+		
+func _hacer_ataque_guante():
+	var atk = ataqueGuante.instantiate()
+	get_parent().add_child(atk)
+	
+	# debajo del jugador
+	atk.global_position = global_position + Vector2(0, 30)		
 		
 
 
