@@ -6,5 +6,5 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	print(body.get_groups())
 	if body.is_in_group("player"):
-		body.apply_powerup("vida")
+		body.apply_powerup("OneUp")
 		get_parent().queue_free() 

@@ -268,6 +268,8 @@ func apply_powerup(type):
 			iniciar_parpadeo_cargado()
 		"hielo":
 			proyectil_actual = bala_hielo	
+		"OneUp":
+			GameState.ganar_vida()	
 			
 				
 
@@ -396,6 +398,7 @@ func _dañar():
 		emit_signal("vidas_cambiadas", vidas, escudo)
 		if vidas <= 0:
 			is_dead = true
+			GameState.perder_vida()
 			bloquearControles = true
 			state_machine.travel("death")
 		else:
