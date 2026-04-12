@@ -194,7 +194,7 @@ func _physics_process(delta: float) -> void:
 		# DISPARO NORMAL
 		if get_tree().get_nodes_in_group("ProyectilAliado").size() < 3:
 			shoot_timer = shoot_cooldown
-			var shoot = bala.instantiate()
+			var shoot = proyectil_actual.instantiate()
 			shotSound.play()
 			get_parent().add_child(shoot)
 			shoot.position = $Marker2D.global_position
@@ -263,6 +263,8 @@ func apply_powerup(type):
 			guanteActivo = true
 		"cargado":
 			ataqueCarg= true
+		"hielo":
+			proyectil_actual = bala_hielo	
 			
 				
 

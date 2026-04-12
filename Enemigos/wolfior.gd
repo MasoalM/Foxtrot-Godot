@@ -21,6 +21,7 @@ var chase_duration = 2.0
 var attack_distance = 50
 var attack_cooldown = 1.0
 var attack_timer = 0.0
+var eshielo = false
 
 var gravity = 900
 var jump_force = -450
@@ -50,12 +51,16 @@ var espada_scene = preload("res://Enemigos//Espada.tscn")
 const HURT_LIVES = 1
 const DEATH_LIVES = 0
 
+#congelar
+var congelado = false
+var freeze_timer = 0.0
+
 @onready var ray = $RayCast2D
 
 
 
 func _ready():
-	get_tree().debug_collisions_hint = true
+	get_tree().debug_collisions_hint = false
 	
 	add_to_group("Enemigos")
 	player = get_tree().get_first_node_in_group("player")
@@ -66,6 +71,15 @@ func _ready():
 
 
 func _physics_process(delta):
+	
+	if congelado:
+		freeze_timer -= delta
+	
+		if freeze_timer <= 0:
+			congelado = false
+			animated_sprite.modulate = Color(1, 1, 1)
+		
+		return
 
 	# GRAVEDAD SIEMPRE ACTIVA
 	if !is_on_floor():
@@ -281,7 +295,11 @@ func attack():
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if lives <= 0:
 		return
-		
+	
+	if area.is_in_group("ProyectilHielo"):
+		congelar(1.5)	
+		eshielo = true
+			
 	if area.is_in_group("ProyectilAliado"):
 		if area.has_method("morir"):
 			area.morir()
@@ -296,16 +314,18 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		# si no muere hacemos knockback aplicar knockback
 		hurtSound.play()
 		lives = new_lives
-
-		var direction = sign(global_position.x - area.global_position.x)
 		
-		velocity.x = direction * knockback_force
+		if not eshielo:
+			var direction = sign(global_position.x - area.global_position.x)
+			
+			velocity.x = direction * knockback_force
 
-		if is_on_floor():
-			velocity.y = knockback_up_force
+			if is_on_floor():
+				velocity.y = knockback_up_force
 
-		knockback_timer = knockback_duration
-		in_knockback = true
+			knockback_timer = knockback_duration
+			in_knockback = true
+			
 	if area.is_in_group("ataqueCargado"):
 		muerte()
 
@@ -331,3 +351,18 @@ func muerte():
 
 	await get_tree().create_timer(1.8).timeout
 	queue_free()
+	
+	
+
+	
+		
+		
+	
+func congelar(tiempo):
+	if congelado:
+		return
+	
+	congelado = true
+	freeze_timer = tiempo
+	
+	animated_sprite.modulate = Color(0.1, 0.6, 1)

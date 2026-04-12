@@ -49,6 +49,7 @@
 [ext_resource type="AudioStream" uid="uid://bju45770rly62" path="res://Sounds/Portal.ogg" id="47_7ojyf"]
 [ext_resource type="AudioStream" uid="uid://dmybnkonokowx" path="res://Sounds/PrePortal.mp3" id="48_x8ox5"]
 [ext_resource type="PackedScene" uid="uid://dw7i1hbjdk3w4" path="res://powerUps/fuego.tscn" id="49_ipfsg"]
+[ext_resource type="PackedScene" uid="uid://bdq5jvbrb4e5b" path="res://powerUps/itemHielo.tscn" id="50_i4ij1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rn8p"]
 texture = ExtResource("34_51gxm")
@@ -642,6 +643,9 @@ volume_db = -4.0
 
 [node name="fuego" parent="." unique_id=2119763944 instance=ExtResource("49_ipfsg")]
 position = Vector2(4174, 229)
+
+[node name="Area2D4" parent="." unique_id=116065897 instance=ExtResource("50_i4ij1")]
+position = Vector2(463, 391)
 
 [connection signal="body_entered" from="E/Area2D" to="E" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="E/Area2D" to="E" method="_on_area_2d_body_exited"]
