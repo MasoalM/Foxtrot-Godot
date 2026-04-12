@@ -37,6 +37,7 @@ player=""
 ProyectilAliado=""
 Enemigos=""
 ataqueCargado=""
+ProyectilHielo=""
 
 [input]
 

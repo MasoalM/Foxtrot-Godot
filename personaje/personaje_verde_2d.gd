@@ -25,6 +25,7 @@ const friccion = 1200.0
 const JUMP_VELOCITY = -525.0
 const cut_factor = 0.5
 const bala = preload("res://Proyectiles/proyectil.tscn")
+const bala_hielo = preload("res://Proyectiles/proyectil_hielo.tscn")
 const ataqueGuante = preload("res://powerUps/ataqueguante.tscn")
 const ataqueCargado = preload("res://powerUps/ataque_cargado.tscn")
 const coyoteTime = 10
@@ -43,6 +44,7 @@ var is_jumping = false
 var is_fall = false
 var isGrounded = true
 
+var proyectil_actual
 var dobSalAct = false
 var guanteActivo = false
 var dobSal = false
@@ -65,6 +67,7 @@ var hurt_timer = 0.0
 const HURT_DURATION = 1.0
 
 func _ready():
+	proyectil_actual = bala
 	emit_signal("vidas_cambiadas", vidas, escudo)
 	pass
 

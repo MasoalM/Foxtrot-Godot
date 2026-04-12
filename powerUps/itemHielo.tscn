@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bdq5jvbrb4e5b"]
+
+[ext_resource type="Texture2D" uid="uid://goneu4h3rtb1" path="res://Sprites/PowerUps/IcePowerUp (1).png" id="1_blpbm"]
+[ext_resource type="Script" uid="uid://dsq7d3l6ct4qb" path="res://powerUps/item_hielo.gd" id="1_delbn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_delbn"]
+radius = 19.026299
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5lujc"]
+radius = 19.0
+
+[node name="Area2D" type="Area2D" unique_id=116065897]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_delbn")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1080204192]
+texture = ExtResource("1_blpbm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=780133965]
+shape = SubResource("CircleShape2D_delbn")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1841487188]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1484075935]
+shape = SubResource("CircleShape2D_5lujc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
