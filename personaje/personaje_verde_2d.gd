@@ -49,6 +49,7 @@ var dobSalAct = false
 var guanteActivo = false
 var dobSal = false
 var ataqueCarg = false
+var tween_parpadeo
 var vel
 var mirando_derecha = true
 var air_nercia = false
@@ -186,6 +187,7 @@ func _physics_process(delta: float) -> void:
 		# ATAQUE CARGADO
 		if ataqueCarg:
 			ataqueCarg = false
+			parar_parpadeo_cargado()
 			shoot_timer = shoot_cooldown
 			hacer_ataque_cargado()
 			
@@ -262,7 +264,8 @@ func apply_powerup(type):
 			dobSalAct = true
 			guanteActivo = true
 		"cargado":
-			ataqueCarg= true
+			ataqueCarg = true
+			iniciar_parpadeo_cargado()
 		"hielo":
 			proyectil_actual = bala_hielo	
 			
@@ -437,6 +440,25 @@ func hacer_ataque_cargado():
 	var atk = ataqueCargado.instantiate()
 	get_parent().add_child(atk)
 	atk.global_position = global_position
+	
+func iniciar_parpadeo_cargado():
+	if tween_parpadeo:
+		tween_parpadeo.kill()
+	
+	tween_parpadeo = create_tween().set_loops()
+	
+	tween_parpadeo.tween_property(animacion, "modulate",
+		Color(1, 1, 0.2), 0.5)
+	
+	tween_parpadeo.tween_property(animacion, "modulate",
+		Color(1, 1, 1), 0.5)	
+		
+func parar_parpadeo_cargado():
+	if tween_parpadeo:
+		tween_parpadeo.kill()
+		tween_parpadeo = null
+	
+	animacion.modulate = Color(1, 1, 1)		
 
 #func _on_area_2d_area_entered(area: Area2D) -> void:
 #	if area.is_in_group("Lianas"):
