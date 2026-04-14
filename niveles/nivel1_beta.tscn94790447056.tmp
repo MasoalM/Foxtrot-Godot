@@ -650,12 +650,12 @@ position = Vector2(463, 391)
 
 [node name="Node2D2" parent="." unique_id=972032776 instance=ExtResource("51_7sv1y")]
 position = Vector2(930, 349)
-altura_max = 150
+altura_max = 5000
 velocidad = 2.0
 
 [node name="Node2D3" parent="." unique_id=1355736173 instance=ExtResource("51_7sv1y")]
 position = Vector2(1008, 345)
-altura_max = 150
+altura_max = 5000
 velocidad = 2.0
 
 [connection signal="body_entered" from="E/Area2D" to="E" method="_on_area_2d_body_entered"]

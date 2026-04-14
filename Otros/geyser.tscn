@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://n0tvoj34dw3"]
+
+[ext_resource type="Script" uid="uid://bexwi5n5v82op" path="res://Otros/geyser.gd" id="1_riiri"]
+[ext_resource type="Texture2D" uid="uid://sy68klfuondp" path="res://Sprites/Bloques/Water.png" id="1_x41aw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x41aw"]
+size = Vector2(64, 64)
+
+[node name="Area2D" type="Area2D" unique_id=1824907440]
+collision_mask = 3
+script = ExtResource("1_riiri")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1392611963]
+shape = SubResource("RectangleShape2D_x41aw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=578594197]
+texture = ExtResource("1_x41aw")

@@ -1044,7 +1044,7 @@ shape = SubResource("CapsuleShape2D_7aows")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1592391551]
 collision_layer = 2
-collision_mask = 132
+collision_mask = 133
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=95291075]
 position = Vector2(-4, 0)

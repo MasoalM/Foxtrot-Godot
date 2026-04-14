@@ -68,6 +68,7 @@ var hurt_timer = 0.0
 const HURT_DURATION = 1.0
 
 func _ready():
+	#add_to_group("player")
 	proyectil_actual = bala
 	emit_signal("vidas_cambiadas", vidas, escudo)
 	pass
