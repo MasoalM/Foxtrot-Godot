@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var fuerza = 1200
+@export var fuerza = 1400
 
 func _process(delta):
 	for body in get_overlapping_bodies():
