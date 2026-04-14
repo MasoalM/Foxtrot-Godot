@@ -59,9 +59,10 @@ func _cambiar_fase(nueva: Fase):
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x41aw"]
-size = Vector2(64, 191)
+size = Vector2(64, 101.5)
 
 [node name="Node2D" type="Node2D" unique_id=972032776 groups=["Lianas"]]
+position = Vector2(0, -64)
 script = SubResource("GDScript_g0r31")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1018291929]
@@ -69,7 +70,7 @@ collision_mask = 3
 script = ExtResource("2_5l2id")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1669165846]
-position = Vector2(0, 31.5)
+position = Vector2(0, 13.75)
 shape = SubResource("RectangleShape2D_x41aw")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1926109528]
