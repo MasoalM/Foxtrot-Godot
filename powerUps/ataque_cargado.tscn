@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://dbtsj1f13cdnh"]
 
 [ext_resource type="Script" uid="uid://lvndfh2n80o3" path="res://powerUps/ataque_cargado.gd" id="1_1n3i7"]
+[ext_resource type="Texture2D" uid="uid://dn054n80l2qp0" path="res://Sprites/Proyectiles/MoxSht.png" id="2_5f1c6"]
+[ext_resource type="Texture2D" uid="uid://djp4mcoh2wnil" path="res://Sprites/Efecto y otros/luz.png" id="3_sfl78"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5f1c6"]
-radius = 52.0
-height = 326.0
+radius = 27.0
+height = 110.0
 
 [node name="ataqueCargado" type="Area2D" unique_id=1543892374 groups=["ProyectilAliado", "ataqueCargado"]]
 collision_layer = 7
@@ -15,5 +17,18 @@ script = ExtResource("1_1n3i7")
 position = Vector2(159, 1)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_5f1c6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1257452750]
+modulate = Color(1, 0.3987948, 0.3423099, 1)
+position = Vector2(160, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("2_5f1c6")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=2122808382]
+position = Vector2(161.00002, -8.077936e-28)
+scale = Vector2(0.4986089, 0.25903615)
+color = Color(1, 0.5015858, 0.44138303, 1)
+energy = 2.0
+texture = ExtResource("3_sfl78")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

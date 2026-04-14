@@ -1,9 +1,9 @@
-[gd_scene format=3 uid="uid://ds1iqd2mh3l1m"]
+[gd_scene format=3 uid="uid://bdrcpm0122npi"]
 
-[ext_resource type="Script" uid="uid://2mqogathkaob" path="res://Proyectiles/proyectil.gd" id="1_1hd88"]
-[ext_resource type="Texture2D" uid="uid://bww6sqbj1rc6k" path="res://Sprites/Mox/MoxSht.png" id="2_1hd88"]
-[ext_resource type="Texture2D" uid="uid://djp4mcoh2wnil" path="res://Sprites/Efecto y otros/luz.png" id="3_8al7i"]
-[ext_resource type="AudioStream" uid="uid://bo3v3bl6nrqp7" path="res://Sounds/BrokenWoodBlock.ogg" id="4_82vof"]
+[ext_resource type="Texture2D" uid="uid://bww6sqbj1rc6k" path="res://Sprites/Mox/MoxSht.png" id="2_od0mu"]
+[ext_resource type="Texture2D" uid="uid://djp4mcoh2wnil" path="res://Sprites/Efecto y otros/luz.png" id="3_0hkfx"]
+[ext_resource type="Script" uid="uid://bhn6gffstfel6" path="res://Proyectiles/proyectilDoubleJump.gd" id="3_od0mu"]
+[ext_resource type="AudioStream" uid="uid://bo3v3bl6nrqp7" path="res://Sounds/BrokenWoodBlock.ogg" id="4_33kv1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1hd88"]
 radius = 7.0
@@ -13,26 +13,28 @@ height = 40.0
 light_mask = 512
 visibility_layer = 7
 z_index = -2
-script = ExtResource("1_1hd88")
+rotation = 1.5707964
+script = ExtResource("3_od0mu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1055736728]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_1hd88")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1311440186]
+modulate = Color(0, 1, 1, 1)
 texture_filter = 1
 position = Vector2(3.3881318e-21, 0)
 scale = Vector2(0.77000004, 0.5799999)
-texture = ExtResource("2_1hd88")
+texture = ExtResource("2_od0mu")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=508917827]
 position = Vector2(10, 6.7762636e-21)
 scale = Vector2(0.4986089, 0.25903615)
-color = Color(0.26278073, 0.08150122, 0.75880307, 1)
+color = Color(0, 0.54635507, 0.62705934, 1)
 energy = 2.0
-texture = ExtResource("3_8al7i")
+texture = ExtResource("3_0hkfx")
 
 [node name="AudioStreamPlayer2DBloqueRoto" type="AudioStreamPlayer2D" parent="." unique_id=2077954969]
-stream = ExtResource("4_82vof")
+stream = ExtResource("4_33kv1")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://dd5sb40u5hh3j"]
+
+[ext_resource type="Texture2D" uid="uid://oxcawnssvo6v" path="res://Sprites/Particles/DoubleJumpParticles1.png" id="1_kdcjg"]
+[ext_resource type="Texture2D" uid="uid://blorgv764055g" path="res://Sprites/Particles/DoubleJumpParticles2.png" id="2_mn5bj"]
+[ext_resource type="Texture2D" uid="uid://b1akp0nfsqw85" path="res://Sprites/Particles/DoubleJumpParticles3.png" id="3_durea"]
+[ext_resource type="Texture2D" uid="uid://bsvalgl7tobu5" path="res://Sprites/Particles/DoubleJumpParticles4.png" id="4_5hnyk"]
+[ext_resource type="Texture2D" uid="uid://c0wdmpg2dtexp" path="res://Sprites/Particles/DoubleJumpParticles5.png" id="5_s6kqu"]
+[ext_resource type="Texture2D" uid="uid://dquavcqwv68ds" path="res://Sprites/Particles/DoubleJumpParticles6.png" id="6_mxqim"]
+[ext_resource type="Texture2D" uid="uid://wai0xcyv10ai" path="res://Sprites/Particles/DoubleJumpParticles7.png" id="7_2mjaf"]
+[ext_resource type="Texture2D" uid="uid://dxid4dxuaebby" path="res://Sprites/Particles/DoubleJumpParticles8.png" id="8_21ny1"]
+[ext_resource type="Texture2D" uid="uid://2e8eo22i3rb6" path="res://Sprites/Particles/DoubleJumpParticles9.png" id="9_g8nfn"]
+[ext_resource type="Script" uid="uid://c5jhpw2dlsp2d" path="res://Sprites/Particles/double_jump_particles.gd" id="10_mn5bj"]
+[ext_resource type="PackedScene" uid="uid://bdrcpm0122npi" path="res://Proyectiles/proyectilDoubleJump.tscn" id="11_durea"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n721v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_kdcjg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mn5bj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_durea")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5hnyk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_s6kqu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mxqim")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2mjaf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_21ny1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_g8nfn")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" unique_id=727688675]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_n721v")
+autoplay = "default"
+frame = 8
+frame_progress = 1.0
+script = ExtResource("10_mn5bj")
+
+[node name="Proyectil" parent="." unique_id=1529313797 instance=ExtResource("11_durea")]
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

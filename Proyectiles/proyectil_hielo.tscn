@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d3rbw3h32mwd4" path="res://Proyectiles/proyectil_hielo.gd" id="1_4d56t"]
 [ext_resource type="Texture2D" uid="uid://btwlx6o6ek14h" path="res://Sprites/Proyectiles/IceMoxShot.png" id="1_p0s47"]
+[ext_resource type="Texture2D" uid="uid://djp4mcoh2wnil" path="res://Sprites/Efecto y otros/luz.png" id="3_owjbq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4d56t"]
 radius = 19.026299
@@ -10,9 +11,18 @@ radius = 19.026299
 script = ExtResource("1_4d56t")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=461320201]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_p0s47")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=356649775]
+scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_4d56t")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1624229890]
+position = Vector2(10, 6.7762636e-21)
+scale = Vector2(0.4986089, 0.25903615)
+color = Color(0, 0.7610066, 0.6468449, 1)
+energy = 2.0
+texture = ExtResource("3_owjbq")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

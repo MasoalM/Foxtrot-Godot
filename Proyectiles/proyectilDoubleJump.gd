@@ -2,7 +2,7 @@ extends Area2D
 
 @onready var bloqueRotoSound = $AudioStreamPlayer2DBloqueRoto
 
-const dist_max = 45.0
+const dist_max = 90.0
 
 var vel_bala = 300.0
 var dist = 0.0
@@ -15,7 +15,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if visible:
-		position.x += vel_bala * delta
+		position.y += vel_bala * delta
 		dist += 1
 		if dist > dist_max:
 			morir()
@@ -29,8 +29,9 @@ func _on_body_entered(body):
 		if body is TileMap:
 			var tilemap = body
 			
-			var offset = Vector2(32 if vel_bala > 0 else -32, 0)
-			var pos = tilemap.to_local(global_position + offset)
+			#var offset = Vector2(32 if vel_bala > 0 else -32, 0)
+			#var pos = tilemap.to_local(global_position + offset)
+			var pos = tilemap.to_local(global_position)
 			var cell = tilemap.local_to_map(pos)
 
 			var tile_data = tilemap.get_cell_tile_data(0, cell)

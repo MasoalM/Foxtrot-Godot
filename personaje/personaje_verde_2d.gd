@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var anim_tree = $AnimationTree
 @onready var state_machine = anim_tree.get("parameters/playback")
 @onready var dust = preload("res://Sprites/Particles/Dust.tscn")
+@onready var doubleJumpParticles = preload("res://Sprites/Particles/DoubleJumpParticles.tscn")
 @onready var shotSound = $AudioStreamPlayer2DShot
 @onready var shieldSound = $AudioStreamPlayer2DShield
 @onready var healSound = $AudioStreamPlayer2DHeal
@@ -11,6 +12,11 @@ extends CharacterBody2D
 @onready var coinSound = $AudioStreamPlayer2DCoin
 @onready var walkSound = $AudioStreamPlayer2DWalk
 @onready var damageSound = $AudioStreamPlayer2DDamage
+@onready var iceSound = $AudioStreamPlayer2DIce
+@onready var doubleJumpPowerUpSound = $AudioStreamPlayer2DDoubleJumpPowerUp
+@onready var oneUpSound = $AudioStreamPlayer2DOneUp
+@onready var firePowerUpSound = $AudioStreamPlayer2DFirePowerUp
+
 
 var monedas_estado = [false, false, false]
 
@@ -26,7 +32,6 @@ const JUMP_VELOCITY = -525.0
 const cut_factor = 0.5
 const bala = preload("res://Proyectiles/proyectil.tscn")
 const bala_hielo = preload("res://Proyectiles/proyectil_hielo.tscn")
-const ataqueGuante = preload("res://powerUps/ataqueguante.tscn")
 const ataqueCargado = preload("res://powerUps/ataque_cargado.tscn")
 const coyoteTime = 10
 const afk = 400
@@ -93,12 +98,6 @@ func _physics_process(delta: float) -> void:
 			if hurt_timer <= 0:
 				is_hurt = false
 				state_machine.travel("static")
-	# Si quisiésemos poner partículas al saltar	
-	#if is_jumping and isGrounded:
-	#	var instance = dust.instantiate()
-	#	instance.global_position = $DustMarker2.global_position
-	#	get_parent().add_child(instance)
-	
 	
 	isGrounded = is_on_floor()
 	
@@ -128,14 +127,20 @@ func _physics_process(delta: float) -> void:
 			and (is_on_floor() or (coyoteTimeActual > 0) or dobSal):
 		_reset_afk()
 		aire = true
+		# Si quisiésemos poner partículas al saltar	
+		#if is_jumping and isGrounded:
+		#	var instance = dust.instantiate()
+		#	instance.global_position = $DustMarker2.global_position
+		#	get_parent().add_child(instance)
 		if Input.is_action_pressed("correr"):
 			air_nercia = true
 		velocity.y = JUMP_VELOCITY
 		jumpSound.play()
 		if not is_on_floor() and coyoteTimeActual <= 0:
+			var instance2 = doubleJumpParticles.instantiate()
+			instance2.global_position = $DoubleJumpMarker.global_position
+			get_parent().add_child(instance2)
 			dobSal = false
-			if guanteActivo:
-				_hacer_ataque_guante()
 
 	if Input.is_action_just_released("ui_accept") and velocity.y < 0:
 		velocity.y *= cut_factor
@@ -233,6 +238,7 @@ func _physics_process(delta: float) -> void:
 func apply_powerup(type):
 	match type:
 		"dobSal":
+			doubleJumpPowerUpSound.play()
 			dobSalAct = true
 		"escudo":
 			shieldSound.play()
@@ -261,15 +267,14 @@ func apply_powerup(type):
 				emit_signal("vidas_cambiadas", vidas, escudo)
 				flash(2)
 		"guante":
-			
-			dobSalAct = true
-			guanteActivo = true
-		"cargado":
+			firePowerUpSound.play()
 			ataqueCarg = true
 			iniciar_parpadeo_cargado()
 		"hielo":
+			iceSound.play()
 			proyectil_actual = bala_hielo	
 		"OneUp":
+			oneUpSound.play()
 			GameState.ganar_vida()	
 			
 				
@@ -432,13 +437,6 @@ func recoger_moneda(id):
 		monedas_estado[id] = true
 		coinSound.play()
 		emit_signal("monedas_cambiadas", monedas_estado)
-		
-func _hacer_ataque_guante():
-	var atk = ataqueGuante.instantiate()
-	get_parent().add_child(atk)
-	
-	# debajo del jugador
-	atk.global_position = global_position + Vector2(0, 30)		
 		
 func hacer_ataque_cargado():
 	var atk = ataqueCargado.instantiate()
