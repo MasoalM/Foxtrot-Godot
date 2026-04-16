@@ -36,12 +36,9 @@
 [ext_resource type="Texture2D" uid="uid://ctdnpbddrvlm4" path="res://Sprites/Bloques/DirtBroken.png" id="23_0bvab"]
 [ext_resource type="Texture2D" uid="uid://dxf6c0xlre7h3" path="res://Sprites/Bloques/TroncoGIradoAtravesable.png" id="23_sni5d"]
 [ext_resource type="Texture2D" uid="uid://bgh8ouadkr0y" path="res://Sprites/Bloques/Dirt.png" id="34_51gxm"]
-[ext_resource type="Script" uid="uid://bc3yl0l1o2rb1" path="res://niveles/control.gd" id="38_608v1"]
-[ext_resource type="Texture2D" uid="uid://ca7kef2h3iclf" path="res://Sprites/PowerUps/Heart.png" id="39_7sv1y"]
 [ext_resource type="PackedScene" uid="uid://d0ordmi0yu7tp" path="res://Sprites/Coleccionables/coleccionable.tscn" id="39_608v1"]
-[ext_resource type="Texture2D" uid="uid://c7j8y60gsqd2q" path="res://hud/HealthBar.png" id="39_dg0w2"]
 [ext_resource type="Texture2D" uid="uid://c6hicl8pigqrp" path="res://Sprites/Portals/PortalNivel1.png" id="40_sni5d"]
-[ext_resource type="PackedScene" uid="uid://bbru0hmobasum" path="res://powerUps/CorazonRojo.tscn" id="40_uqflv"]
+[ext_resource type="PackedScene" path="res://powerUps/CorazonRojo.tscn" id="40_uqflv"]
 [ext_resource type="Script" uid="uid://c1scqrsbv82t0" path="res://tutorial.gd" id="40_w30pp"]
 [ext_resource type="Texture2D" uid="uid://bjp53c15uhf5u" path="res://Sprites/E.png" id="40_yf3lr"]
 [ext_resource type="Script" uid="uid://desol7c47hbtl" path="res://Sprites/Portals/portals.gd" id="41_d3inr"]
@@ -52,7 +49,7 @@
 [ext_resource type="AudioStream" uid="uid://dmybnkonokowx" path="res://Sounds/PrePortal.mp3" id="48_x8ox5"]
 [ext_resource type="PackedScene" uid="uid://sw3iu1espuey" path="res://powerUps/guante.tscn" id="50_7sv1y"]
 [ext_resource type="PackedScene" uid="uid://bdq5jvbrb4e5b" path="res://powerUps/itemHielo.tscn" id="50_i4ij1"]
-[ext_resource type="PackedScene" uid="uid://c83oj12tyaneq" path="res://Sprites/Checkpoint/checkpoint.tscn" id="52_2d1pr"]
+[ext_resource type="PackedScene" path="res://Sprites/Checkpoint/checkpoint.tscn" id="52_2d1pr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rn8p"]
 texture = ExtResource("34_51gxm")
@@ -318,10 +315,10 @@ color_ramp = SubResource("GradientTexture1D_dg0w2")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w30pp"]
 size = Vector2(147.91939, 73.91759)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_yf3lr"]
-radius = 50.626984
+[sub_resource type="CircleShape2D" id="CircleShape2D_uqflv"]
+radius = 12.857178
 
-[node name="Node2D2" type="Node2D" unique_id=1979362221]
+[node name="Node2D3" type="Node2D" unique_id=1979362221]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=396328753]
 stream = ExtResource("1_570nr")
@@ -430,92 +427,6 @@ position = Vector2(10650, 337)
 position = Vector2(9315, 488)
 amount = 150
 process_material = SubResource("ParticleProcessMaterial_608v1")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1559233288]
-
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=772487275]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1249.0
-offset_bottom = 461.0
-script = ExtResource("38_608v1")
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control" unique_id=1421845045]
-texture_filter = 1
-layout_mode = 0
-offset_left = 51.0
-offset_top = 41.0
-offset_right = 179.0
-offset_bottom = 105.0
-texture = ExtResource("39_dg0w2")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1090805532]
-layout_mode = 0
-offset_left = 122.0
-offset_top = 56.0
-offset_right = 278.0
-offset_bottom = 91.0
-
-[node name="cora1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=519954009]
-texture_filter = 1
-layout_mode = 2
-
-[node name="cora2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1291268981]
-texture_filter = 1
-layout_mode = 2
-
-[node name="escudo1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=2068122972]
-texture_filter = 1
-layout_mode = 2
-
-[node name="escudo2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1411731843]
-texture_filter = 1
-layout_mode = 2
-
-[node name="HBoxContainerMonedas" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=279312973]
-layout_mode = 0
-offset_left = 115.0
-offset_top = 97.0
-offset_right = 247.0
-offset_bottom = 131.0
-
-[node name="moneda1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=1196292693]
-layout_mode = 2
-
-[node name="moneda3" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=1022365090]
-layout_mode = 2
-
-[node name="moneda2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=279906200]
-layout_mode = 2
-
-[node name="HBoxContainerUP" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1615090760]
-layout_mode = 0
-offset_left = 1124.0
-offset_top = 50.0
-offset_right = 1252.0
-offset_bottom = 98.0
-
-[node name="textoVidas" type="Label" parent="CanvasLayer/Control/HBoxContainerUP" unique_id=838043370]
-layout_mode = 2
-text = "vidas"
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerUP" unique_id=1568452891]
-layout_mode = 2
-texture = ExtResource("39_7sv1y")
-
-[node name="Label" type="Label" parent="CanvasLayer/Control/HBoxContainerUP" unique_id=1850415877]
-layout_mode = 2
-text = ":  "
-
-[node name="HBoxContainerTime" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1381480242]
-layout_mode = 0
-offset_left = 1120.0
-offset_top = 14.0
-offset_right = 1210.0
-offset_bottom = 54.0
-
-[node name="time" type="Label" parent="CanvasLayer/Control/HBoxContainerTime" unique_id=2074681566]
-layout_mode = 2
 
 [node name="Area2D" parent="." unique_id=604219173 instance=ExtResource("39_608v1")]
 light_mask = 7
@@ -639,43 +550,6 @@ position = Vector2(-253.33899, -222.61479)
 scale = Vector2(3.5000005, 5)
 shape = SubResource("RectangleShape2D_w30pp")
 
-[node name="PortalFinNivel" type="Sprite2D" parent="." unique_id=251286700 groups=["Portals"]]
-z_index = -2
-position = Vector2(16882, 14)
-texture = ExtResource("40_sni5d")
-script = ExtResource("41_d3inr")
-escena_destino = "res://niveles/level_selector.tscn"
-
-[node name="PointLight2D" type="PointLight2D" parent="PortalFinNivel" unique_id=1218722798]
-position = Vector2(1, 9.999998)
-scale = Vector2(0.680147, 0.67663515)
-color = Color(0.85, 1, 0, 1)
-energy = 2.0
-texture = ExtResource("8_i12o8")
-
-[node name="Area2D" type="Area2D" parent="PortalFinNivel" unique_id=1997980636 groups=["Portals"]]
-position = Vector2(1, 7)
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PortalFinNivel/Area2D" unique_id=1228712984]
-position = Vector2(-1, 0)
-scale = Vector2(3.5, 5)
-shape = SubResource("CircleShape2D_yf3lr")
-
-[node name="Indicador" type="Sprite2D" parent="PortalFinNivel" unique_id=1651135916]
-texture_filter = 1
-position = Vector2(-1, -72)
-texture = ExtResource("42_d3inr")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PortalFinNivel" unique_id=1938680626]
-stream = ExtResource("47_7ojyf")
-volume_db = 3.0
-
-[node name="PrePortal" type="AudioStreamPlayer2D" parent="PortalFinNivel" unique_id=2002477680]
-stream = ExtResource("48_x8ox5")
-volume_db = -4.0
-
 [node name="Area2D4" parent="." unique_id=116065897 instance=ExtResource("50_i4ij1")]
 position = Vector2(463, 391)
 
@@ -687,6 +561,43 @@ position = Vector2(9311, 487)
 
 [node name="Area2D6" parent="." unique_id=1836981711 instance=ExtResource("40_uqflv")]
 position = Vector2(5082, 234)
+
+[node name="PortalFinNivel" type="Sprite2D" parent="." unique_id=1366909289 groups=["Portals"]]
+z_index = -2
+position = Vector2(4264, 186)
+texture = ExtResource("40_sni5d")
+script = ExtResource("41_d3inr")
+escena_destino = "res://niveles/level_selector.tscn"
+
+[node name="PointLight2D" type="PointLight2D" parent="PortalFinNivel" unique_id=330818816]
+position = Vector2(1, 9.999998)
+scale = Vector2(0.680147, 0.67663515)
+color = Color(0.85, 1, 0, 1)
+energy = 2.0
+texture = ExtResource("8_i12o8")
+
+[node name="Area2D" type="Area2D" parent="PortalFinNivel" unique_id=711635322 groups=["Portals"]]
+position = Vector2(1, 7)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PortalFinNivel/Area2D" unique_id=408549195]
+position = Vector2(-1, 0)
+scale = Vector2(3.5, 5)
+shape = SubResource("CircleShape2D_uqflv")
+
+[node name="Indicador" type="Sprite2D" parent="PortalFinNivel" unique_id=1456721013]
+texture_filter = 1
+position = Vector2(0, -70)
+texture = ExtResource("42_d3inr")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PortalFinNivel" unique_id=2020010129]
+stream = ExtResource("47_7ojyf")
+volume_db = 3.0
+
+[node name="PrePortal" type="AudioStreamPlayer2D" parent="PortalFinNivel" unique_id=350314468]
+stream = ExtResource("48_x8ox5")
+volume_db = -4.0
 
 [connection signal="body_entered" from="E/Area2D" to="E" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="E/Area2D" to="E" method="_on_area_2d_body_exited"]
