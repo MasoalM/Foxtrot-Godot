@@ -41,6 +41,7 @@
 [ext_resource type="PackedScene" uid="uid://d0ordmi0yu7tp" path="res://Sprites/Coleccionables/coleccionable.tscn" id="39_608v1"]
 [ext_resource type="Texture2D" uid="uid://c7j8y60gsqd2q" path="res://hud/HealthBar.png" id="39_dg0w2"]
 [ext_resource type="Texture2D" uid="uid://c6hicl8pigqrp" path="res://Sprites/Portals/PortalNivel1.png" id="40_sni5d"]
+[ext_resource type="PackedScene" uid="uid://bbru0hmobasum" path="res://powerUps/CorazonRojo.tscn" id="40_uqflv"]
 [ext_resource type="Script" uid="uid://c1scqrsbv82t0" path="res://tutorial.gd" id="40_w30pp"]
 [ext_resource type="Texture2D" uid="uid://bjp53c15uhf5u" path="res://Sprites/E.png" id="40_yf3lr"]
 [ext_resource type="Script" uid="uid://desol7c47hbtl" path="res://Sprites/Portals/portals.gd" id="41_d3inr"]
@@ -490,9 +491,9 @@ layout_mode = 2
 [node name="HBoxContainerUP" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1615090760]
 layout_mode = 0
 offset_left = 1124.0
-offset_top = 31.0
-offset_right = 1240.0
-offset_bottom = 76.0
+offset_top = 50.0
+offset_right = 1252.0
+offset_bottom = 98.0
 
 [node name="textoVidas" type="Label" parent="CanvasLayer/Control/HBoxContainerUP" unique_id=838043370]
 layout_mode = 2
@@ -505,6 +506,16 @@ texture = ExtResource("39_7sv1y")
 [node name="Label" type="Label" parent="CanvasLayer/Control/HBoxContainerUP" unique_id=1850415877]
 layout_mode = 2
 text = ":  "
+
+[node name="HBoxContainerTime" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1381480242]
+layout_mode = 0
+offset_left = 1120.0
+offset_top = 14.0
+offset_right = 1210.0
+offset_bottom = 54.0
+
+[node name="time" type="Label" parent="CanvasLayer/Control/HBoxContainerTime" unique_id=2074681566]
+layout_mode = 2
 
 [node name="Area2D" parent="." unique_id=604219173 instance=ExtResource("39_608v1")]
 light_mask = 7
@@ -673,6 +684,9 @@ position = Vector2(5855, 239)
 
 [node name="Area2D5" parent="." unique_id=1406310529 instance=ExtResource("52_2d1pr")]
 position = Vector2(9311, 487)
+
+[node name="Area2D6" parent="." unique_id=1836981711 instance=ExtResource("40_uqflv")]
+position = Vector2(5082, 234)
 
 [connection signal="body_entered" from="E/Area2D" to="E" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="E/Area2D" to="E" method="_on_area_2d_body_exited"]

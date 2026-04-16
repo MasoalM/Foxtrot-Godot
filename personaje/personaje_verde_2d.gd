@@ -73,6 +73,10 @@ var hurt_timer = 0.0
 const HURT_DURATION = 1.0
 
 func _ready():
+	if not GameState.checkpoint_activo:
+		GameState.reiniciar_tiempo()
+	
+	GameState.tiempo_agotado.connect(_on_tiempo_agotado)
 	proyectil_actual = bala
 	
 	if GameState.checkpoint_activo:
@@ -477,6 +481,22 @@ func parar_parpadeo_cargado():
 		tween_parpadeo = null
 	
 	animacion.modulate = Color(1, 1, 1)		
+
+func _on_tiempo_agotado():
+	if is_dead:
+		return
+		
+	is_dead = true
+	bloquearControles = true
+	state_machine.travel("death")
+
+	
+	GameState.vidas_juego = 0
+
+	await get_tree().create_timer(1.0).timeout
+
+	GameState.reiniciar()
+	get_tree().reload_current_scene()
 
 #func _on_area_2d_area_entered(area: Area2D) -> void:
 #	if area.is_in_group("Lianas"):

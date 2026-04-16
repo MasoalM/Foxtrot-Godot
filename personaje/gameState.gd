@@ -7,6 +7,11 @@ var maxVida = 99
 var monedas_estado = [false, false, false]
 
 signal monedas_cambiadas(monedas_estado)
+var tiempo_restante = 50
+
+signal tiempo_cambiado(tiempo)
+signal tiempo_agotado
+
 
 
 var checkpoint_position: Vector2 = Vector2.ZERO
@@ -26,3 +31,17 @@ func reiniciar():
 	checkpoint_activo = false
 	checkpoint_position = Vector2.ZERO
 	emit_signal("vidas_juego_cambiadas", vidas_juego)
+
+func _process(delta):
+	if tiempo_restante > 0:
+		tiempo_restante -= delta
+		emit_signal("tiempo_cambiado", int(tiempo_restante))
+		
+		if tiempo_restante <= 0:
+			tiempo_restante = 0
+			emit_signal("tiempo_agotado")	
+			
+func reiniciar_tiempo():
+	tiempo_restante = 50
+	emit_signal("tiempo_cambiado", tiempo_restante)			
+			

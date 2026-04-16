@@ -4,6 +4,7 @@ extends Control
 @onready var monedas = $HBoxContainerMonedas.get_children()
 @onready var fondo = $TextureRect
 @onready var label_ups = $HBoxContainerUP/Label
+@onready var label_time = $HBoxContainerTime/time
 var fullvida = preload("res://hud/MoxFullHealthBar.png")
 var damagedvida = preload("res://hud/MoxDamagedHealthBar.png")
 var vidaescudo = preload("res://hud/MoxProtectedHealthBar.png")
@@ -15,6 +16,8 @@ var corazon_escudo = preload("res://hud/ShieldHeart.png")
 var moneda_textura = preload("res://Sprites/Coleccionables/Coleccionable.png")
 
 func _ready():
+	GameState.tiempo_cambiado.connect(actualizar_tiempo)
+	actualizar_tiempo(GameState.tiempo_restante)
 	GameState.vidas_juego_cambiadas.connect(actualizar_ups)
 	actualizar_ups(GameState.vidas_juego)
 	for moneda in monedas:
@@ -82,4 +85,7 @@ func actualizar_monedas(monedas_estado):
 			# gris (no recogida)
 			monedas[i].modulate = Color(0.3, 0.3, 0.3)		
 func actualizar_ups(vidas_juego):
-	label_ups.text = "  x" + str(vidas_juego)			
+	label_ups.text = "  x" + str(vidas_juego)		
+	
+func actualizar_tiempo(tiempo):
+	label_time.text = "time :  "+str(tiempo)		
