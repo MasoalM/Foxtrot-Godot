@@ -44,6 +44,7 @@
 [ext_resource type="Script" uid="uid://desol7c47hbtl" path="res://Sprites/Portals/portals.gd" id="45_3dyun"]
 [ext_resource type="Texture2D" uid="uid://cu8lwjcio2np5" path="res://Sprites/F.png" id="46_ucsfi"]
 [ext_resource type="AudioStream" uid="uid://bju45770rly62" path="res://Sounds/Portal.ogg" id="47_fi6uk"]
+[ext_resource type="Texture2D" uid="uid://ca7kef2h3iclf" path="res://Sprites/PowerUps/Heart.png" id="47_mybwg"]
 [ext_resource type="AudioStream" uid="uid://dmybnkonokowx" path="res://Sounds/PrePortal.mp3" id="48_cpomx"]
 [ext_resource type="PackedScene" uid="uid://sw3iu1espuey" path="res://powerUps/guante.tscn" id="50_oaq5l"]
 
@@ -375,63 +376,6 @@ position = Vector2(5455, 175)
 [node name="RigidBody2D2" parent="." unique_id=2136293655 instance=ExtResource("35_773gm")]
 position = Vector2(8192, 50)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1559233288]
-
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=772487275]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 208.0
-offset_bottom = 105.0
-script = ExtResource("37_irq34")
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control" unique_id=1421845045]
-texture_filter = 1
-layout_mode = 0
-offset_left = 51.0
-offset_top = 41.0
-offset_right = 179.0
-offset_bottom = 105.0
-texture = ExtResource("38_2woyh")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1090805532]
-layout_mode = 0
-offset_left = 122.0
-offset_top = 56.0
-offset_right = 278.0
-offset_bottom = 91.0
-
-[node name="cora1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=519954009]
-texture_filter = 1
-layout_mode = 2
-
-[node name="cora2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1291268981]
-texture_filter = 1
-layout_mode = 2
-
-[node name="escudo1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=2068122972]
-texture_filter = 1
-layout_mode = 2
-
-[node name="escudo2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1411731843]
-texture_filter = 1
-layout_mode = 2
-
-[node name="HBoxContainerMonedas" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=279312973]
-layout_mode = 0
-offset_left = 115.0
-offset_top = 97.0
-offset_right = 247.0
-offset_bottom = 131.0
-
-[node name="moneda1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=1196292693]
-layout_mode = 2
-
-[node name="moneda3" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=1022365090]
-layout_mode = 2
-
-[node name="moneda2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=279906200]
-layout_mode = 2
-
 [node name="Area2D" parent="." unique_id=604219173 instance=ExtResource("39_0f0xx")]
 light_mask = 7
 visibility_layer = 7
@@ -509,6 +453,92 @@ volume_db = -4.0
 
 [node name="guante" parent="." unique_id=2119763944 instance=ExtResource("50_oaq5l")]
 position = Vector2(5855, 239)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=698203832]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=992018736]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1249.0
+offset_bottom = 461.0
+script = ExtResource("37_irq34")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control" unique_id=2040993410]
+texture_filter = 1
+layout_mode = 0
+offset_left = 51.0
+offset_top = 41.0
+offset_right = 179.0
+offset_bottom = 105.0
+texture = ExtResource("38_2woyh")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=966767733]
+layout_mode = 0
+offset_left = 122.0
+offset_top = 56.0
+offset_right = 278.0
+offset_bottom = 91.0
+
+[node name="cora1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1147737688]
+texture_filter = 1
+layout_mode = 2
+
+[node name="cora2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=887849276]
+texture_filter = 1
+layout_mode = 2
+
+[node name="escudo1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=966560558]
+texture_filter = 1
+layout_mode = 2
+
+[node name="escudo2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=409871829]
+texture_filter = 1
+layout_mode = 2
+
+[node name="HBoxContainerMonedas" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1019501855]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 97.0
+offset_right = 247.0
+offset_bottom = 131.0
+
+[node name="moneda1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=1930326002]
+layout_mode = 2
+
+[node name="moneda3" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=374480751]
+layout_mode = 2
+
+[node name="moneda2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=1319155748]
+layout_mode = 2
+
+[node name="HBoxContainerUP" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=593064479]
+layout_mode = 0
+offset_left = 1124.0
+offset_top = 50.0
+offset_right = 1252.0
+offset_bottom = 98.0
+
+[node name="textoVidas" type="Label" parent="CanvasLayer/Control/HBoxContainerUP" unique_id=1656483925]
+layout_mode = 2
+text = "vidas"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerUP" unique_id=2046539226]
+layout_mode = 2
+texture = ExtResource("47_mybwg")
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/HBoxContainerUP" unique_id=1976208133]
+layout_mode = 2
+text = ":  "
+
+[node name="HBoxContainerTime" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=615949935]
+layout_mode = 0
+offset_left = 1120.0
+offset_top = 14.0
+offset_right = 1210.0
+offset_bottom = 54.0
+
+[node name="time" type="Label" parent="CanvasLayer/Control/HBoxContainerTime" unique_id=84333912]
+layout_mode = 2
 
 [connection signal="body_entered" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_exited"]

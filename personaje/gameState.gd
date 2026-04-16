@@ -7,7 +7,7 @@ var maxVida = 99
 var monedas_estado = [false, false, false]
 
 signal monedas_cambiadas(monedas_estado)
-var tiempo_restante 
+var tiempo_restante = 300
 
 signal tiempo_cambiado(tiempo)
 signal tiempo_agotado

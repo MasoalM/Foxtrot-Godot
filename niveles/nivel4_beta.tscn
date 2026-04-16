@@ -47,6 +47,7 @@
 [ext_resource type="AudioStream" uid="uid://dmybnkonokowx" path="res://Sounds/PrePortal.mp3" id="44_t1lxu"]
 [ext_resource type="PackedScene" uid="uid://sua7jayjmk8o" path="res://Enemigos/sorceraven.tscn" id="46_t1lxu"]
 [ext_resource type="PackedScene" uid="uid://sw3iu1espuey" path="res://powerUps/guante.tscn" id="47_sph8r"]
+[ext_resource type="Texture2D" uid="uid://ca7kef2h3iclf" path="res://Sprites/PowerUps/Heart.png" id="48_uec6p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_86eud"]
 texture = ExtResource("3_r10fn")
@@ -378,63 +379,6 @@ position = Vector2(9314, 542)
 amount = 120
 process_material = SubResource("ParticleProcessMaterial_an17n")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1950291334]
-
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=471813670]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 208.0
-offset_bottom = 105.0
-script = ExtResource("39_ea8t2")
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control" unique_id=1629611885]
-texture_filter = 1
-layout_mode = 0
-offset_left = 51.0
-offset_top = 41.0
-offset_right = 179.0
-offset_bottom = 105.0
-texture = ExtResource("40_uk1df")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=883572617]
-layout_mode = 0
-offset_left = 122.0
-offset_top = 56.0
-offset_right = 278.0
-offset_bottom = 91.0
-
-[node name="cora1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1722497929]
-texture_filter = 1
-layout_mode = 2
-
-[node name="cora2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=56408876]
-texture_filter = 1
-layout_mode = 2
-
-[node name="escudo1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=538462678]
-texture_filter = 1
-layout_mode = 2
-
-[node name="escudo2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1435551834]
-texture_filter = 1
-layout_mode = 2
-
-[node name="HBoxContainerMonedas" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1745534378]
-layout_mode = 0
-offset_left = 115.0
-offset_top = 97.0
-offset_right = 247.0
-offset_bottom = 131.0
-
-[node name="moneda1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=521398374]
-layout_mode = 2
-
-[node name="moneda3" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=2081587624]
-layout_mode = 2
-
-[node name="moneda2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=880837871]
-layout_mode = 2
-
 [node name="PortalFinNivel" type="Sprite2D" parent="." unique_id=975711507 groups=["Portals"]]
 z_index = -2
 position = Vector2(9664, 393)
@@ -486,6 +430,92 @@ position = Vector2(6362, 292)
 
 [node name="guante" parent="." unique_id=2119763944 instance=ExtResource("47_sph8r")]
 position = Vector2(755, 546)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1841999376]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=502282702]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1249.0
+offset_bottom = 461.0
+script = ExtResource("39_ea8t2")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control" unique_id=1498665808]
+texture_filter = 1
+layout_mode = 0
+offset_left = 51.0
+offset_top = 41.0
+offset_right = 179.0
+offset_bottom = 105.0
+texture = ExtResource("40_uk1df")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1921915397]
+layout_mode = 0
+offset_left = 122.0
+offset_top = 56.0
+offset_right = 278.0
+offset_bottom = 91.0
+
+[node name="cora1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1324275187]
+texture_filter = 1
+layout_mode = 2
+
+[node name="cora2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=2004192134]
+texture_filter = 1
+layout_mode = 2
+
+[node name="escudo1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=829630900]
+texture_filter = 1
+layout_mode = 2
+
+[node name="escudo2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=520021824]
+texture_filter = 1
+layout_mode = 2
+
+[node name="HBoxContainerMonedas" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1441964814]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 97.0
+offset_right = 247.0
+offset_bottom = 131.0
+
+[node name="moneda1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=631837461]
+layout_mode = 2
+
+[node name="moneda3" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=1684175027]
+layout_mode = 2
+
+[node name="moneda2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=1462047645]
+layout_mode = 2
+
+[node name="HBoxContainerUP" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1152052835]
+layout_mode = 0
+offset_left = 1124.0
+offset_top = 50.0
+offset_right = 1252.0
+offset_bottom = 98.0
+
+[node name="textoVidas" type="Label" parent="CanvasLayer/Control/HBoxContainerUP" unique_id=148940854]
+layout_mode = 2
+text = "vidas"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerUP" unique_id=542180016]
+layout_mode = 2
+texture = ExtResource("48_uec6p")
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/HBoxContainerUP" unique_id=244503044]
+layout_mode = 2
+text = ":  "
+
+[node name="HBoxContainerTime" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=2138580266]
+layout_mode = 0
+offset_left = 1120.0
+offset_top = 14.0
+offset_right = 1210.0
+offset_bottom = 54.0
+
+[node name="time" type="Label" parent="CanvasLayer/Control/HBoxContainerTime" unique_id=879906751]
+layout_mode = 2
 
 [connection signal="body_entered" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_exited"]
