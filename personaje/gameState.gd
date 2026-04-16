@@ -1,18 +1,28 @@
 extends Node
 
-var vidas_juego = 3
+signal vidas_juego_cambiadas(vidas)
+
+var vidas_juego = 5
 var maxVida = 99
+var monedas_estado = [false, false, false]
+
+signal monedas_cambiadas(monedas_estado)
+
+
+var checkpoint_position: Vector2 = Vector2.ZERO
+var checkpoint_activo = false
 
 func perder_vida():
 	vidas_juego -= 1
-	
-	print("vidas restantes:", vidas_juego)
-	
+	emit_signal("vidas_juego_cambiadas", vidas_juego)
+
 func ganar_vida():
-	if vidas_juego == maxVida:
-		return
-	vidas_juego += 1
-	print("vidas restantes:", vidas_juego)	
+	if vidas_juego < maxVida:
+		vidas_juego += 1
+		emit_signal("vidas_juego_cambiadas", vidas_juego)
 
 func reiniciar():
 	vidas_juego = 3
+	checkpoint_activo = false
+	checkpoint_position = Vector2.ZERO
+	emit_signal("vidas_juego_cambiadas", vidas_juego)

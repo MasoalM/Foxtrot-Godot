@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c83oj12tyaneq"]
+
+[ext_resource type="Script" uid="uid://b6de74r0bjviw" path="res://Sprites/Checkpoint/checkpoint.gd" id="1_1itmi"]
+[ext_resource type="Texture2D" uid="uid://dftv1q8c4snhl" path="res://Sprites/Checkpoint/Hoguera.png" id="1_wypth"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1itmi"]
+radius = 50.01
+
+[node name="Area2D" type="Area2D" unique_id=1406310529]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_1itmi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=350403116]
+shape = SubResource("CircleShape2D_1itmi")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1058176266]
+texture = ExtResource("1_wypth")
+
+[node name="Respawnpoint" type="Marker2D" parent="." unique_id=1469098015]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -73,10 +73,12 @@ var hurt_timer = 0.0
 const HURT_DURATION = 1.0
 
 func _ready():
-	#add_to_group("player")
 	proyectil_actual = bala
+	
+	if GameState.checkpoint_activo:
+		global_position = GameState.checkpoint_position
+	
 	emit_signal("vidas_cambiadas", vidas, escudo)
-	pass
 
 
 func _reset_afk() -> void:
@@ -404,9 +406,23 @@ func _dañar():
 		emit_signal("vidas_cambiadas", vidas, escudo)
 		if vidas <= 0:
 			is_dead = true
-			GameState.perder_vida()
 			bloquearControles = true
 			state_machine.travel("death")
+
+			GameState.perder_vida()
+
+			await get_tree().create_timer(1.0).timeout
+
+			if GameState.vidas_juego > 0:
+				if GameState.checkpoint_activo:
+					get_tree().reload_current_scene()
+				else:
+					get_tree().reload_current_scene()
+			else:
+				print("mox ha muerto y no le quedan vidas")
+				GameState.reiniciar()
+				get_tree().reload_current_scene()
+				
 		else:
 			is_hurt = true
 			state_machine.travel("hurt")
@@ -433,10 +449,10 @@ func flash(color):
 
 
 func recoger_moneda(id):
-	if not monedas_estado[id]:
-		monedas_estado[id] = true
+	if not GameState.monedas_estado[id]:
+		GameState.monedas_estado[id] = true
 		coinSound.play()
-		emit_signal("monedas_cambiadas", monedas_estado)
+		GameState.emit_signal("monedas_cambiadas", GameState.monedas_estado)
 		
 func hacer_ataque_cargado():
 	var atk = ataqueCargado.instantiate()

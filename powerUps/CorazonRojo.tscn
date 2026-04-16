@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bbru0hmobasum"]
+
+[ext_resource type="Texture2D" uid="uid://bi3obltobk82w" path="res://Sprites/PowerUps/Heart2.png" id="1_50h41"]
+[ext_resource type="Script" uid="uid://cao6vsm5yboo3" path="res://Sprites/PowerUps/corazon_rojo.gd" id="1_te7ao"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_te7ao"]
+radius = 12.0
+
+[node name="Area2D" type="Area2D" unique_id=1836981711]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_te7ao")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2063320528]
+position = Vector2(0.5, 0)
+scale = Vector2(1.03125, 1)
+texture = ExtResource("1_50h41")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=401187445]
+shape = SubResource("CircleShape2D_te7ao")
