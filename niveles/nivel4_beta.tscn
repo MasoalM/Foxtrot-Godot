@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dvbo51xu4dfd5"]
 
 [ext_resource type="AudioStream" uid="uid://ds6ja0a2ard4e" path="res://Music/Level4.ogg" id="1_10d8x"]
+[ext_resource type="Script" uid="uid://cuyvn6hit0t4h" path="res://niveles/nivel.gd" id="1_bjwex"]
 [ext_resource type="PackedScene" uid="uid://t3cps6t21qux" path="res://personaje/personajeVerde_2d.tscn" id="2_86eud"]
 [ext_resource type="Texture2D" uid="uid://5uvn68uac1bp" path="res://Sprites/Bloques/Spikes (1).png" id="3_ayohi"]
 [ext_resource type="Texture2D" uid="uid://bgh8ouadkr0y" path="res://Sprites/Bloques/Dirt.png" id="3_r10fn"]
@@ -281,6 +282,7 @@ color_ramp = SubResource("GradientTexture1D_dg0w2")
 radius = 12.857178
 
 [node name="Node2D" type="Node2D" unique_id=1979362221]
+script = ExtResource("1_bjwex")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1562181617]
 stream = ExtResource("1_10d8x")

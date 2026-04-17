@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b8merf2tnrxmr"]
 
 [ext_resource type="AudioStream" uid="uid://b21swr17qntis" path="res://Music/Level1.ogg" id="1_570nr"]
+[ext_resource type="Script" uid="uid://cuyvn6hit0t4h" path="res://niveles/nivel.gd" id="1_mbk0y"]
 [ext_resource type="PackedScene" uid="uid://t3cps6t21qux" path="res://personaje/personajeVerde_2d.tscn" id="1_t5lia"]
 [ext_resource type="Texture2D" uid="uid://by6ou6ijmk82e" path="res://Sprites/Bloques/Grass.png" id="3_0bvab"]
 [ext_resource type="Texture2D" uid="uid://5uvn68uac1bp" path="res://Sprites/Bloques/Spikes (1).png" id="4_swact"]
@@ -38,7 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://bgh8ouadkr0y" path="res://Sprites/Bloques/Dirt.png" id="34_51gxm"]
 [ext_resource type="PackedScene" uid="uid://d0ordmi0yu7tp" path="res://Sprites/Coleccionables/coleccionable.tscn" id="39_608v1"]
 [ext_resource type="Texture2D" uid="uid://c6hicl8pigqrp" path="res://Sprites/Portals/PortalNivel1.png" id="40_sni5d"]
-[ext_resource type="PackedScene" path="res://powerUps/CorazonRojo.tscn" id="40_uqflv"]
+[ext_resource type="PackedScene" uid="uid://bbru0hmobasum" path="res://powerUps/CorazonRojo.tscn" id="40_uqflv"]
 [ext_resource type="Script" uid="uid://c1scqrsbv82t0" path="res://tutorial.gd" id="40_w30pp"]
 [ext_resource type="Texture2D" uid="uid://bjp53c15uhf5u" path="res://Sprites/E.png" id="40_yf3lr"]
 [ext_resource type="Script" uid="uid://desol7c47hbtl" path="res://Sprites/Portals/portals.gd" id="41_d3inr"]
@@ -49,7 +50,10 @@
 [ext_resource type="AudioStream" uid="uid://dmybnkonokowx" path="res://Sounds/PrePortal.mp3" id="48_x8ox5"]
 [ext_resource type="PackedScene" uid="uid://sw3iu1espuey" path="res://powerUps/guante.tscn" id="50_7sv1y"]
 [ext_resource type="PackedScene" uid="uid://bdq5jvbrb4e5b" path="res://powerUps/itemHielo.tscn" id="50_i4ij1"]
-[ext_resource type="PackedScene" path="res://Sprites/Checkpoint/checkpoint.tscn" id="52_2d1pr"]
+[ext_resource type="Script" uid="uid://bc3yl0l1o2rb1" path="res://niveles/control.gd" id="51_uqflv"]
+[ext_resource type="PackedScene" uid="uid://c83oj12tyaneq" path="res://Sprites/Checkpoint/checkpoint.tscn" id="52_2d1pr"]
+[ext_resource type="Texture2D" uid="uid://c7j8y60gsqd2q" path="res://hud/HealthBar.png" id="52_mbk0y"]
+[ext_resource type="Texture2D" uid="uid://ca7kef2h3iclf" path="res://Sprites/PowerUps/Heart.png" id="53_2gx1n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rn8p"]
 texture = ExtResource("34_51gxm")
@@ -319,6 +323,7 @@ size = Vector2(147.91939, 73.91759)
 radius = 12.857178
 
 [node name="Node2D3" type="Node2D" unique_id=1979362221]
+script = ExtResource("1_mbk0y")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=396328753]
 stream = ExtResource("1_570nr")
@@ -598,6 +603,92 @@ volume_db = 3.0
 [node name="PrePortal" type="AudioStreamPlayer2D" parent="PortalFinNivel" unique_id=350314468]
 stream = ExtResource("48_x8ox5")
 volume_db = -4.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1687286669]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=208325290]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1249.0
+offset_bottom = 461.0
+script = ExtResource("51_uqflv")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control" unique_id=788053934]
+texture_filter = 1
+layout_mode = 0
+offset_left = 51.0
+offset_top = 41.0
+offset_right = 179.0
+offset_bottom = 105.0
+texture = ExtResource("52_mbk0y")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=382354494]
+layout_mode = 0
+offset_left = 122.0
+offset_top = 56.0
+offset_right = 278.0
+offset_bottom = 91.0
+
+[node name="cora1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=781383051]
+texture_filter = 1
+layout_mode = 2
+
+[node name="cora2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1206935336]
+texture_filter = 1
+layout_mode = 2
+
+[node name="escudo1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1543477278]
+texture_filter = 1
+layout_mode = 2
+
+[node name="escudo2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1565753847]
+texture_filter = 1
+layout_mode = 2
+
+[node name="HBoxContainerMonedas" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1206084619]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 97.0
+offset_right = 247.0
+offset_bottom = 131.0
+
+[node name="moneda1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=610194385]
+layout_mode = 2
+
+[node name="moneda3" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=1998395162]
+layout_mode = 2
+
+[node name="moneda2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=1207691060]
+layout_mode = 2
+
+[node name="HBoxContainerUP" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1765554609]
+layout_mode = 0
+offset_left = 1124.0
+offset_top = 50.0
+offset_right = 1252.0
+offset_bottom = 98.0
+
+[node name="textoVidas" type="Label" parent="CanvasLayer/Control/HBoxContainerUP" unique_id=1502708584]
+layout_mode = 2
+text = "vidas"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerUP" unique_id=1124853477]
+layout_mode = 2
+texture = ExtResource("53_2gx1n")
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/HBoxContainerUP" unique_id=1094870100]
+layout_mode = 2
+text = ":  "
+
+[node name="HBoxContainerTime" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1427285411]
+layout_mode = 0
+offset_left = 1120.0
+offset_top = 14.0
+offset_right = 1210.0
+offset_bottom = 54.0
+
+[node name="time" type="Label" parent="CanvasLayer/Control/HBoxContainerTime" unique_id=1000582367]
+layout_mode = 2
 
 [connection signal="body_entered" from="E/Area2D" to="E" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="E/Area2D" to="E" method="_on_area_2d_body_exited"]
