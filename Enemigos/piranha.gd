@@ -9,12 +9,10 @@ extends Node2D
 @export var swim_depth := 50.0
 @export var jump_above_surface := 300.0
 
-
 @export var swim_amplitude := 25.0
 @export var swim_speed := 1.2
 @export var swim_smoothness := 0.1  
 
-#variables de configuracion  de posicion ( meter a mano en cada piranha individualmente en el nivel)
 @export var limiteIzquierda := 0.0
 @export var limiteDerecha := 0.0
 
@@ -30,34 +28,39 @@ var float_time := 0.0
 
 var is_jumping := false
 
+# CONTROL DE ANIMACIONES
+var current_anim = ""
+
+func play_anim(name):
+	if current_anim != name:
+		current_anim = name
+		animated_sprite.play(name)
 
 func _ready():
-	animated_sprite.play("movement")
+	play_anim("movement")
 	surface_y = position.y
 	swim_y = surface_y + swim_depth
 	
 	jump_timer = randf() * jump_interval
 
-
 func _physics_process(delta):
 	jump_timer += delta
 
-	# Movimiento horizontal (siempre activo)
 	velocity.x = speed * direction
 
 	if is_jumping:
-		# Física del salto
 		velocity.y += gravity * delta
 		position += velocity * delta
 
-		# Detectar vuelta al agua
 		if position.y >= swim_y:
 			position.y = swim_y
 			velocity.y = 0
 			is_jumping = false
+			
+			# volver a nadar cuando termina el salto
+			play_anim("movement")
 
 	else:
-		# Nado suave (sin gravedad)
 		_apply_swim(delta)
 		position.x += velocity.x * delta
 
@@ -70,19 +73,15 @@ func _physics_process(delta):
 			if not (cerca_izquierda or cerca_derecha):
 				_jump()
 
-	# Cambio de dirección
 	if position.x <= limiteIzquierda:
 		direction = 1
-		
 	elif position.x >= limiteDerecha:
 		direction = -1
 		
-		
-	$AnimatedSprite2D.flip_h = direction > 0
-		
+	animated_sprite.flip_h = direction > 0
 		
 	_update_rotation(delta)	
-	
+
 func _update_rotation(delta):
 	var visual_velocity = velocity
 	
@@ -93,15 +92,17 @@ func _update_rotation(delta):
 	if visual_velocity.length() > 0.1:
 		var angle = visual_velocity.angle() + deg_to_rad(180)
 		
-		# Ajuste según dirección
 		if direction > 0:
 			angle += PI
 		
-		$AnimatedSprite2D.rotation = lerp_angle($AnimatedSprite2D.rotation, angle, 0.1)
+		animated_sprite.rotation = lerp_angle(animated_sprite.rotation, angle, 0.1)
 
 # --- salto ---
 func _jump():
 	float_time = 0.0
+	
+	# ✅ AQUÍ SE LANZA LA MORDIDA
+	play_anim("bite")
 	
 	var target_y = surface_y - jump_above_surface
 	var distance = swim_y - target_y
@@ -116,3 +117,12 @@ func _apply_swim(delta):
 	var target_y = swim_y + offset
 	
 	position.y = lerp(position.y, target_y, swim_smoothness)
+
+# cuando termina la animación bite
+func _on_AnimatedSprite2D_animation_finished():
+	if current_anim == "bite":
+		play_anim("movement")
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	pass # Replace with function body.

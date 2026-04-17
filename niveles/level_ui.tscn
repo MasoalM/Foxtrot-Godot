@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://bi8u5lyedj4lt"]
+
+[ext_resource type="Script" uid="uid://bc3yl0l1o2rb1" path="res://niveles/control.gd" id="1_3i2k3"]
+[ext_resource type="Texture2D" uid="uid://c7j8y60gsqd2q" path="res://hud/HealthBar.png" id="2_r5rnn"]
+[ext_resource type="Texture2D" uid="uid://6ibedxnblj8w" path="res://Sprites/Clock.png" id="3_3qt84"]
+[ext_resource type="FontFile" uid="uid://t3qeauxnndoj" path="res://font/Retro Gaming.ttf" id="4_e0ytq"]
+[ext_resource type="Texture2D" uid="uid://ca7kef2h3iclf" path="res://Sprites/PowerUps/Heart.png" id="5_tu54p"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0guox"]
+font = ExtResource("4_e0ytq")
+
+[sub_resource type="LabelSettings" id="LabelSettings_kcd17"]
+font = ExtResource("4_e0ytq")
+
+[node name="LevelUi" type="Control" unique_id=274504807]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2119475637]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=848021288]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1249.0
+offset_bottom = 461.0
+script = ExtResource("1_3i2k3")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control" unique_id=657924689]
+texture_filter = 1
+layout_mode = 0
+offset_left = 51.0
+offset_top = 41.0
+offset_right = 179.0
+offset_bottom = 105.0
+texture = ExtResource("2_r5rnn")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=848167580]
+layout_mode = 0
+offset_left = 122.0
+offset_top = 56.0
+offset_right = 278.0
+offset_bottom = 91.0
+
+[node name="cora1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1782111166]
+texture_filter = 1
+layout_mode = 2
+
+[node name="cora2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1948406013]
+texture_filter = 1
+layout_mode = 2
+
+[node name="escudo1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=926537653]
+texture_filter = 1
+layout_mode = 2
+
+[node name="escudo2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1226779806]
+texture_filter = 1
+layout_mode = 2
+
+[node name="HBoxContainerMonedas" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=327697321]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 97.0
+offset_right = 247.0
+offset_bottom = 131.0
+
+[node name="moneda1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=430820962]
+layout_mode = 2
+
+[node name="moneda3" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=1107662558]
+layout_mode = 2
+
+[node name="moneda2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=534043675]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=350357892]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -97.0
+offset_top = 28.0
+offset_right = 31.0
+offset_bottom = 128.0
+grow_horizontal = 0
+alignment = 1
+
+[node name="HBoxContainerTime" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer" unique_id=2025097264]
+custom_minimum_size = Vector2(128, 48)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/VBoxContainer/HBoxContainerTime" unique_id=365867984]
+layout_mode = 2
+texture = ExtResource("3_3qt84")
+expand_mode = 2
+
+[node name="time" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainerTime" unique_id=275907543]
+custom_minimum_size = Vector2(1, 28)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_0guox")
+vertical_alignment = 2
+
+[node name="HBoxContainerUP" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer" unique_id=806975600]
+custom_minimum_size = Vector2(128, 48)
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/VBoxContainer/HBoxContainerUP" unique_id=280263613]
+layout_mode = 2
+texture = ExtResource("5_tu54p")
+expand_mode = 2
+
+[node name="textoVidas" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainerUP" unique_id=1508181735]
+custom_minimum_size = Vector2(1, 28)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_kcd17")
+vertical_alignment = 2

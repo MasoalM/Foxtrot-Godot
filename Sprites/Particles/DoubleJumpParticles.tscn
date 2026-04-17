@@ -55,6 +55,6 @@ frame = 8
 frame_progress = 1.0
 script = ExtResource("10_mn5bj")
 
-[node name="Proyectil" parent="." unique_id=1529313797 instance=ExtResource("11_durea")]
+[node name="Proyectil2" parent="." unique_id=1529313797 instance=ExtResource("11_durea")]
 
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

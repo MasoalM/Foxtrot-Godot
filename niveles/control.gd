@@ -3,8 +3,8 @@ extends Control
 @onready var corazones = $HBoxContainer.get_children()
 @onready var monedas = $HBoxContainerMonedas.get_children()
 @onready var fondo = $TextureRect
-@onready var label_ups = $HBoxContainerUP/Label
-@onready var label_time = $HBoxContainerTime/time
+@onready var label_ups = $VBoxContainer/HBoxContainerUP/textoVidas
+@onready var label_time = $VBoxContainer/HBoxContainerTime/time
 var fullvida = preload("res://hud/MoxFullHealthBar.png")
 var damagedvida = preload("res://hud/MoxDamagedHealthBar.png")
 var vidaescudo = preload("res://hud/MoxProtectedHealthBar.png")
@@ -85,7 +85,7 @@ func actualizar_monedas(monedas_estado):
 			# gris (no recogida)
 			monedas[i].modulate = Color(0.3, 0.3, 0.3)		
 func actualizar_ups(vidas_juego):
-	label_ups.text = "  x" + str(vidas_juego)		
+	label_ups.text = "x" + str(vidas_juego)		
 	
 func actualizar_tiempo(tiempo):
-	label_time.text = "time :  "+str(tiempo)		
+	label_time.text = str(tiempo)		

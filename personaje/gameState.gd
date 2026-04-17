@@ -7,7 +7,7 @@ var maxVida = 99
 var monedas_estado = [false, false, false]
 
 signal monedas_cambiadas(monedas_estado)
-var tiempo_restante = 300
+var tiempo_restante = 40
 var musica_acelerada = false
 
 signal tiempo_cambiado(tiempo)
@@ -42,6 +42,6 @@ func _process(delta):
 			emit_signal("tiempo_agotado")	
 			
 func reiniciar_tiempo():
-	tiempo_restante = 20
+	tiempo_restante = 40
 	emit_signal("tiempo_cambiado", tiempo_restante)			
 			

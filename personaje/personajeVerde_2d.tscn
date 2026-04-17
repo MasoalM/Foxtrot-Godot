@@ -1117,7 +1117,7 @@ volume_db = 4.0
 
 [node name="AudioStreamPlayer2DIce" type="AudioStreamPlayer2D" parent="." unique_id=1040995588]
 stream = ExtResource("19_4bugb")
-volume_db = 1.0
+volume_db = -1.0
 pitch_scale = 1.5
 
 [node name="AudioStreamPlayer2DDoubleJumpPowerUp" type="AudioStreamPlayer2D" parent="." unique_id=617406377]
@@ -1130,7 +1130,7 @@ volume_db = 1.0
 
 [node name="AudioStreamPlayer2DFirePowerUp" type="AudioStreamPlayer2D" parent="." unique_id=1253763831]
 stream = ExtResource("22_6s1wh")
-volume_db = 1.0
+volume_db = -4.0
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

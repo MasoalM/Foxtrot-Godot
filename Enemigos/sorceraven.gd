@@ -16,6 +16,7 @@ var player
 var shoot_timer := 0.0
 
 func _ready():
+	animated_sprite.play("idle")
 	player = get_tree().get_first_node_in_group("player")
 
 func _physics_process(delta):
@@ -29,7 +30,6 @@ func _physics_process(delta):
 	if ve_jugador and is_instance_valid(player):
 		# --- PARADO ---
 		velocity.x = 0
-		#animated_sprite.play("idle")
 		
 		# --- MIRAR AL PLAYER ---
 		if player.global_position.x > global_position.x:
@@ -44,7 +44,6 @@ func _physics_process(delta):
 			animated_sprite.play("preShot")
 			await get_tree().create_timer(0.5).timeout
 			shoot()
-
 	else:
 		# --- MOVIMIENTO NORMAL ---
 		animated_sprite.play("movement")

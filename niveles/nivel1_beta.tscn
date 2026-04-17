@@ -49,11 +49,9 @@
 [ext_resource type="AudioStream" uid="uid://bju45770rly62" path="res://Sounds/Portal.ogg" id="47_7ojyf"]
 [ext_resource type="AudioStream" uid="uid://dmybnkonokowx" path="res://Sounds/PrePortal.mp3" id="48_x8ox5"]
 [ext_resource type="PackedScene" uid="uid://sw3iu1espuey" path="res://powerUps/guante.tscn" id="50_7sv1y"]
-[ext_resource type="PackedScene" uid="uid://bdq5jvbrb4e5b" path="res://powerUps/itemHielo.tscn" id="50_i4ij1"]
-[ext_resource type="Script" uid="uid://bc3yl0l1o2rb1" path="res://niveles/control.gd" id="51_uqflv"]
 [ext_resource type="PackedScene" uid="uid://c83oj12tyaneq" path="res://Sprites/Checkpoint/checkpoint.tscn" id="52_2d1pr"]
-[ext_resource type="Texture2D" uid="uid://c7j8y60gsqd2q" path="res://hud/HealthBar.png" id="52_mbk0y"]
-[ext_resource type="Texture2D" uid="uid://ca7kef2h3iclf" path="res://Sprites/PowerUps/Heart.png" id="53_2gx1n"]
+[ext_resource type="PackedScene" uid="uid://bi8u5lyedj4lt" path="res://niveles/level_ui.tscn" id="52_uqflv"]
+[ext_resource type="AudioStream" uid="uid://bpqhx5sm3hwwo" path="res://Sounds/NoTime.ogg" id="55_2gx1n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rn8p"]
 texture = ExtResource("34_51gxm")
@@ -555,9 +553,6 @@ position = Vector2(-253.33899, -222.61479)
 scale = Vector2(3.5000005, 5)
 shape = SubResource("RectangleShape2D_w30pp")
 
-[node name="Area2D4" parent="." unique_id=116065897 instance=ExtResource("50_i4ij1")]
-position = Vector2(463, 391)
-
 [node name="guante" parent="." unique_id=2119763944 instance=ExtResource("50_7sv1y")]
 position = Vector2(5855, 239)
 
@@ -604,91 +599,12 @@ volume_db = 3.0
 stream = ExtResource("48_x8ox5")
 volume_db = -4.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1687286669]
+[node name="NoTimeSound" type="AudioStreamPlayer" parent="." unique_id=783144097]
+stream = ExtResource("55_2gx1n")
+volume_db = -2.0
+pitch_scale = 0.75
 
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=208325290]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1249.0
-offset_bottom = 461.0
-script = ExtResource("51_uqflv")
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control" unique_id=788053934]
-texture_filter = 1
-layout_mode = 0
-offset_left = 51.0
-offset_top = 41.0
-offset_right = 179.0
-offset_bottom = 105.0
-texture = ExtResource("52_mbk0y")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=382354494]
-layout_mode = 0
-offset_left = 122.0
-offset_top = 56.0
-offset_right = 278.0
-offset_bottom = 91.0
-
-[node name="cora1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=781383051]
-texture_filter = 1
-layout_mode = 2
-
-[node name="cora2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1206935336]
-texture_filter = 1
-layout_mode = 2
-
-[node name="escudo1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1543477278]
-texture_filter = 1
-layout_mode = 2
-
-[node name="escudo2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1565753847]
-texture_filter = 1
-layout_mode = 2
-
-[node name="HBoxContainerMonedas" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1206084619]
-layout_mode = 0
-offset_left = 115.0
-offset_top = 97.0
-offset_right = 247.0
-offset_bottom = 131.0
-
-[node name="moneda1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=610194385]
-layout_mode = 2
-
-[node name="moneda3" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=1998395162]
-layout_mode = 2
-
-[node name="moneda2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerMonedas" unique_id=1207691060]
-layout_mode = 2
-
-[node name="HBoxContainerUP" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1765554609]
-layout_mode = 0
-offset_left = 1124.0
-offset_top = 50.0
-offset_right = 1252.0
-offset_bottom = 98.0
-
-[node name="textoVidas" type="Label" parent="CanvasLayer/Control/HBoxContainerUP" unique_id=1502708584]
-layout_mode = 2
-text = "vidas"
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/HBoxContainerUP" unique_id=1124853477]
-layout_mode = 2
-texture = ExtResource("53_2gx1n")
-
-[node name="Label" type="Label" parent="CanvasLayer/Control/HBoxContainerUP" unique_id=1094870100]
-layout_mode = 2
-text = ":  "
-
-[node name="HBoxContainerTime" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1427285411]
-layout_mode = 0
-offset_left = 1120.0
-offset_top = 14.0
-offset_right = 1210.0
-offset_bottom = 54.0
-
-[node name="time" type="Label" parent="CanvasLayer/Control/HBoxContainerTime" unique_id=1000582367]
-layout_mode = 2
+[node name="LevelUi" parent="." unique_id=274504807 instance=ExtResource("52_uqflv")]
 
 [connection signal="body_entered" from="E/Area2D" to="E" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="E/Area2D" to="E" method="_on_area_2d_body_exited"]
