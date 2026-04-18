@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://duk5en5j45jy1"]
+
+[ext_resource type="Script" uid="uid://bxvcfgjf3uqae" path="res://Otros/geyserbetarea.gd" id="1_0v3hs"]
+[ext_resource type="Texture2D" uid="uid://bkeslfpbf46wv" path="res://Sprites/Bloques/Water2.png" id="2_u51w8"]
+[ext_resource type="Texture2D" uid="uid://sy68klfuondp" path="res://Sprites/Bloques/Water.png" id="3_5shrf"]
+
+[sub_resource type="GDScript" id="GDScript_g0r31"]
+script/source = "extends Node2D
+@export var altura_max = 150.0
+@export var duracion_subida = 0.3
+@export var duracion_cima = 0.4
+@export var duracion_bajada = 0.8
+@export var duracion_pausa = 1.2
+@onready var area = $Area2D
+@onready var area_shape = $Area2D/CollisionShape2D  # <-- añadido
+@onready var suelo = $StaticBody2D
+@onready var suelo_shape = $StaticBody2D/CollisionShape2D
+enum Fase { SUBIDA, CIMA, BAJADA, PAUSA }
+var fase_actual = Fase.PAUSA
+var tiempo_fase = 0.0
+var altura_actual = 0.0
+var helado = 0
+
+func _ready() -> void:
+	suelo_shape.set_deferred(\"disabled\", true)  # <-- corregido: sobre suelo_shape
+
+func _process(delta):
+	tiempo_fase += delta
+	if helado == 0:
+		match fase_actual:
+			Fase.SUBIDA:
+				var t = tiempo_fase / duracion_subida
+				altura_actual = altura_max * (1 - pow(1 - t, 3))
+				if tiempo_fase >= duracion_subida:
+					altura_actual = altura_max
+					_cambiar_fase(Fase.CIMA)
+			Fase.CIMA:
+				altura_actual = altura_max + randf_range(-3.0, 3.0)
+				if tiempo_fase >= duracion_cima:
+					_cambiar_fase(Fase.BAJADA)
+			Fase.BAJADA:
+				var t = tiempo_fase / duracion_bajada
+				altura_actual = altura_max * pow(1 - t, 2)
+				if tiempo_fase >= duracion_bajada:
+					altura_actual = 0
+					_cambiar_fase(Fase.PAUSA)
+			Fase.PAUSA:
+				altura_actual = 0
+				if tiempo_fase >= duracion_pausa:
+					_cambiar_fase(Fase.SUBIDA)
+		area.scale.y = max(0.01, 5 * altura_actual / altura_max)
+		var altura = max(1.0, altura_actual)
+		suelo_shape.shape.size.y = altura
+		suelo.position.y = -altura / 2
+	else:
+		helado -= 1
+		if helado <= 0:
+			# Descongelar: reactivar área, desactivar suelo
+			area.monitoring = true
+			area_shape.set_deferred(\"disabled\", false)   # <-- corregido
+			suelo_shape.set_deferred(\"disabled\", true)   # <-- corregido
+
+func _cambiar_fase(nueva: Fase):
+	fase_actual = nueva
+	tiempo_fase = 0.0
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group(\"ProyectilAliado\"):
+		if helado == 0:
+			helado = 500
+			# Congelar: desactivar área, activar suelo
+			area.monitoring = false
+			area_shape.set_deferred(\"disabled\", true)    # <-- añadido
+			suelo_shape.set_deferred(\"disabled\", false)  # <-- corregido
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x41aw"]
+size = Vector2(45.05311, 101.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0v3hs"]
+size = Vector2(90.84508, 101)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u51w8"]
+size = Vector2(90.14085, 50)
+
+[node name="Node2D" type="Node2D" unique_id=972032776]
+position = Vector2(0, -64)
+scale = Vector2(1.42, 1)
+script = SubResource("GDScript_g0r31")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1018291929]
+scale = Vector2(1.42, 1)
+collision_mask = 3
+script = ExtResource("1_0v3hs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1669165846]
+position = Vector2(-0.24796633, 13.75)
+scale = Vector2(1.42, 1)
+shape = SubResource("RectangleShape2D_x41aw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1926109528]
+position = Vector2(0, -32)
+texture = ExtResource("2_u51w8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1560638179]
+position = Vector2(0, 32)
+scale = Vector2(1.42, 1)
+texture = ExtResource("3_5shrf")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=703415602]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=496146143]
+position = Vector2(-0.35211402, 13.5)
+shape = SubResource("RectangleShape2D_0v3hs")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1537739589]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1746305143]
+position = Vector2(1.1753028e-06, 39)
+shape = SubResource("RectangleShape2D_u51w8")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
