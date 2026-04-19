@@ -22,6 +22,7 @@ var altura_actual = 0.0
 var helado = 0
 
 func _ready() -> void:
+	suelo_shape.shape = suelo_shape.shape.duplicate()  
 	suelo_shape.set_deferred(\"disabled\", true)  # <-- corregido: sobre suelo_shape
 
 func _process(delta):
