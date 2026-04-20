@@ -1,11 +1,14 @@
 extends VBoxContainer
 
-func _ready():
-	for child in get_children():
-		if child is TextureButton:
-			UIManager.register_button(child)
+var pointer_texture = preload("res://Sprites/Pointer.png")
 
-# -- Acciones
+func _ready():
+	Input.set_custom_mouse_cursor(pointer_texture, Input.CURSOR_ARROW)
+	Input.set_custom_mouse_cursor(pointer_texture, Input.CURSOR_POINTING_HAND)
+	
+	UIManager.register_buttons(self)
+
+# -- Acciones --
 
 # General Button Handler
 func _global_pressed() -> void:
@@ -33,3 +36,9 @@ func _on_ajustes_pressed() -> void:
 func _on_salir_pressed() -> void:
 	print("PRESIONADO: SALIR")
 	get_tree().quit()
+
+
+# -- H  --
+
+func _on_mox_nose_pressed() -> void:
+	AudioManager.play("mox_nose", )

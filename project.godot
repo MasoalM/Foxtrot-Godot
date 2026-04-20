@@ -10,19 +10,16 @@ config_version=5
 
 [application]
 
-config/name="Prueba-1"
+config/name="FOXTROT"
 run/main_scene="uid://ej230yybshag"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://ru0bqi3annxs"
-
-[audio]
-
-buses/default_bus_layout=""
 
 [autoload]
 
 UIManager="*uid://f0ybas2rbse4"
 AudioManager="*uid://cc8yanldkmnro"
+SettingsManager="*uid://bo35fslxhsw0d"
 GameState="*uid://blpeeeiaq048p"
 
 [display]
@@ -31,6 +28,7 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/size/mode=3
 window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="uid://b424coh3d15p3"
 
 [global_group]
 

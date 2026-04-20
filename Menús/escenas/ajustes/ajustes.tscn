@@ -1,5 +1,6 @@
-[gd_scene format=3 uid="uid://c6ft1olosnlyo"]
+[gd_scene format=3 uid="uid://by3xha571lqaa"]
 
+[ext_resource type="Script" uid="uid://ddrjia0hvaicm" path="res://Menús/escenas/ajustes/ajustes.gd" id="1_g5rvs"]
 [ext_resource type="Texture2D" uid="uid://c2ykgj5lpibhw" path="res://Menús/assets/fondos/principal_frame.png" id="1_j0vru"]
 [ext_resource type="Texture2D" uid="uid://br4w7x75iyvs0" path="res://Menús/assets/Ajustes.png" id="2_vke5b"]
 [ext_resource type="Texture2D" uid="uid://bmg6eta32vtya" path="res://Menús/assets/botones/Atrás.png" id="3_3fstd"]
@@ -12,15 +13,23 @@
 [ext_resource type="Texture2D" uid="uid://2r3r4tmigqt4" path="res://Menús/assets/slider/SliderBackground.png" id="7_ssa58"]
 [ext_resource type="Texture2D" uid="uid://d0e27abb2bsgj" path="res://Menús/assets/slider/SliderProgress.png" id="8_pxu3a"]
 [ext_resource type="FontFile" uid="uid://coe4gaaihhlww" path="res://Menús/assets/fuentes/Retro Gaming.ttf" id="9_hqfux"]
+[ext_resource type="Texture2D" uid="uid://bnwp4218tika6" path="res://Menús/assets/GraficosAjustes.png" id="11_sc1lx"]
+[ext_resource type="Texture2D" uid="uid://ppbd8gk2yc7y" path="res://Menús/assets/option/SelecciónActual.png" id="12_66xpx"]
+[ext_resource type="Texture2D" uid="uid://b76hjcwgywb3u" path="res://Menús/assets/option/Ajustes.png" id="12_pxu3a"]
+[ext_resource type="Texture2D" uid="uid://yavhpueitbev" path="res://Menús/assets/option/ArrowDown.png" id="13_7oi35"]
+[ext_resource type="Texture2D" uid="uid://ckw70ujuekmrr" path="res://Menús/assets/option/Selección.png" id="13_gvu86"]
+[ext_resource type="Texture2D" uid="uid://d1e08aojlw6fb" path="res://Menús/assets/option/AjustesHover.png" id="13_l5l02"]
+[ext_resource type="Script" uid="uid://d1c47vf1aul24" path="res://Menús/escenas/ajustes/control_gráficos.gd" id="13_q64op"]
 [ext_resource type="AudioStream" uid="uid://doemiotxtfad" path="res://Music/MenuPrincipal.ogg" id="13_sc1lx"]
+[ext_resource type="Texture2D" uid="uid://f1r665yj4yh4" path="res://Menús/assets/option/AjustesDropdownLong.png" id="14_gvu86"]
+[ext_resource type="Texture2D" uid="uid://baicwftnlcimw" path="res://Menús/assets/option/AjustesDropdown.png" id="18_31pkt"]
+[ext_resource type="Texture2D" uid="uid://cx32vm0lobtls" path="res://Menús/assets/option/AjustesDisabled.png" id="19_b775m"]
 
 [sub_resource type="Theme" id="Theme_v4nj8"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v4nj8"]
 texture = ExtResource("7_ssa58")
-texture_margin_left = 2.0
 texture_margin_top = 2.0
-texture_margin_right = 2.0
 texture_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_66xpx"]
@@ -44,16 +53,188 @@ font_color = Color(0.5686275, 0.3529412, 0.24705882, 1)
 shadow_color = Color(0.47843137, 0.29803923, 0.20784314, 1)
 shadow_offset = Vector2(0.5, 0.5)
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_66xpx"]
+diffuse_texture = ExtResource("12_66xpx")
+normal_texture = ExtResource("12_66xpx")
+texture_filter = 1
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_gvu86"]
+diffuse_texture = ExtResource("13_gvu86")
+texture_filter = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gvu86"]
+bg_color = Color(0.6712419, 0.58182, 0.50728035, 0.19607843)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_31pkt"]
+diffuse_texture = ExtResource("18_31pkt")
+texture_filter = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b775m"]
+texture = SubResource("CanvasTexture_31pkt")
+
+[sub_resource type="Theme" id="Theme_gvu86"]
+default_font = ExtResource("9_hqfux")
+default_font_size = 10
+PopupMenu/colors/font_accelerator_color = Color(0.7, 0.7, 0.7, 0.8)
+PopupMenu/colors/font_color = Color(0.5686275, 0.3529412, 0.24705882, 1)
+PopupMenu/colors/font_disabled_color = Color(0.4, 0.4, 0.4, 0.8)
+PopupMenu/colors/font_hover_color = Color(0.52156866, 0.32156864, 0.21960784, 1)
+PopupMenu/colors/font_outline_color = Color(0, 0, 0, 1)
+PopupMenu/colors/font_separator_color = Color(0.875, 0.875, 0.875, 1)
+PopupMenu/colors/font_separator_outline_color = Color(0, 0, 0, 1)
+PopupMenu/colors/title_color = Color(0, 0, 0, 1)
+PopupMenu/colors/title_outline_modulate = Color(0, 0, 0, 1)
+PopupMenu/constants/close_h_offset = 0
+PopupMenu/constants/close_v_offset = 0
+PopupMenu/constants/gutter_compact = 0
+PopupMenu/constants/h_separation = 0
+PopupMenu/constants/icon_max_width = 0
+PopupMenu/constants/indent = 8
+PopupMenu/constants/item_end_padding = 6
+PopupMenu/constants/item_start_padding = 6
+PopupMenu/constants/outline_size = 0
+PopupMenu/constants/resize_margin = 0
+PopupMenu/constants/separator_outline_size = 0
+PopupMenu/constants/title_height = 0
+PopupMenu/constants/title_outline_size = 0
+PopupMenu/constants/v_separation = 4
+PopupMenu/font_sizes/font_separator_size = 10
+PopupMenu/font_sizes/font_size = 10
+PopupMenu/font_sizes/title_font_size = 10
+PopupMenu/fonts/font = ExtResource("9_hqfux")
+PopupMenu/fonts/font_separator = ExtResource("9_hqfux")
+PopupMenu/fonts/title_font = ExtResource("9_hqfux")
+PopupMenu/icons/checked = null
+PopupMenu/icons/checked_disabled = null
+PopupMenu/icons/close = null
+PopupMenu/icons/close_pressed = null
+PopupMenu/icons/radio_checked = SubResource("CanvasTexture_66xpx")
+PopupMenu/icons/radio_checked_disabled = null
+PopupMenu/icons/radio_unchecked = SubResource("CanvasTexture_gvu86")
+PopupMenu/icons/radio_unchecked_disabled = null
+PopupMenu/icons/submenu = null
+PopupMenu/icons/submenu_mirrored = null
+PopupMenu/icons/unchecked = null
+PopupMenu/icons/unchecked_disabled = null
+PopupMenu/styles/embedded_border = null
+PopupMenu/styles/embedded_unfocused_border = null
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_gvu86")
+PopupMenu/styles/labeled_separator_left = null
+PopupMenu/styles/labeled_separator_right = null
+PopupMenu/styles/panel = SubResource("StyleBoxTexture_b775m")
+PopupMenu/styles/separator = null
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_31pkt"]
+content_margin_left = 8.0
+texture = ExtResource("12_pxu3a")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7oi35"]
+content_margin_left = 8.0
+texture = ExtResource("13_l5l02")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l5l02"]
+content_margin_left = 8.0
+texture = ExtResource("12_pxu3a")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g5rvs"]
+content_margin_left = 8.0
+texture = ExtResource("13_l5l02")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mokal"]
+content_margin_left = 8.0
+texture = ExtResource("19_b775m")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_g5rvs"]
+diffuse_texture = ExtResource("14_gvu86")
+texture_filter = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q64op"]
+texture = SubResource("CanvasTexture_g5rvs")
+
+[sub_resource type="Theme" id="Theme_l5l02"]
+default_font = ExtResource("9_hqfux")
+default_font_size = 10
+PopupMenu/colors/font_accelerator_color = Color(0.7, 0.7, 0.7, 0.8)
+PopupMenu/colors/font_color = Color(0.5686275, 0.3529412, 0.24705882, 1)
+PopupMenu/colors/font_disabled_color = Color(0.4, 0.4, 0.4, 0.8)
+PopupMenu/colors/font_hover_color = Color(0.52156866, 0.32156864, 0.21960784, 1)
+PopupMenu/colors/font_outline_color = Color(0, 0, 0, 1)
+PopupMenu/colors/font_separator_color = Color(0.875, 0.875, 0.875, 1)
+PopupMenu/colors/font_separator_outline_color = Color(0, 0, 0, 1)
+PopupMenu/colors/title_color = Color(0, 0, 0, 1)
+PopupMenu/colors/title_outline_modulate = Color(0, 0, 0, 1)
+PopupMenu/constants/close_h_offset = 0
+PopupMenu/constants/close_v_offset = 0
+PopupMenu/constants/gutter_compact = 0
+PopupMenu/constants/h_separation = 0
+PopupMenu/constants/icon_max_width = 0
+PopupMenu/constants/indent = 8
+PopupMenu/constants/item_end_padding = 6
+PopupMenu/constants/item_start_padding = 6
+PopupMenu/constants/outline_size = 0
+PopupMenu/constants/resize_margin = 0
+PopupMenu/constants/separator_outline_size = 0
+PopupMenu/constants/title_height = 0
+PopupMenu/constants/title_outline_size = 0
+PopupMenu/constants/v_separation = 4
+PopupMenu/font_sizes/font_separator_size = 10
+PopupMenu/font_sizes/font_size = 10
+PopupMenu/font_sizes/title_font_size = 10
+PopupMenu/fonts/font = ExtResource("9_hqfux")
+PopupMenu/fonts/font_separator = ExtResource("9_hqfux")
+PopupMenu/fonts/title_font = ExtResource("9_hqfux")
+PopupMenu/icons/checked = null
+PopupMenu/icons/checked_disabled = null
+PopupMenu/icons/close = null
+PopupMenu/icons/close_pressed = null
+PopupMenu/icons/radio_checked = SubResource("CanvasTexture_66xpx")
+PopupMenu/icons/radio_checked_disabled = null
+PopupMenu/icons/radio_unchecked = SubResource("CanvasTexture_gvu86")
+PopupMenu/icons/radio_unchecked_disabled = null
+PopupMenu/icons/submenu = null
+PopupMenu/icons/submenu_mirrored = null
+PopupMenu/icons/unchecked = null
+PopupMenu/icons/unchecked_disabled = null
+PopupMenu/styles/embedded_border = null
+PopupMenu/styles/embedded_unfocused_border = null
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_gvu86")
+PopupMenu/styles/labeled_separator_left = null
+PopupMenu/styles/labeled_separator_right = null
+PopupMenu/styles/panel = SubResource("StyleBoxTexture_q64op")
+PopupMenu/styles/separator = null
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1sj0j"]
+content_margin_left = 8.0
+texture = ExtResource("19_b775m")
+
 [node name="Ajustes" type="Node2D" unique_id=557275682]
 
-[node name="Fondo" type="TextureRect" parent="." unique_id=1825185587]
+[node name="Música Menú" type="AudioStreamPlayer2D" parent="." unique_id=1111754917]
+stream = ExtResource("13_sc1lx")
+volume_db = -8.0
+autoplay = true
+bus = &"Música"
+
+[node name="Control" type="Control" parent="." unique_id=62412516]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_g5rvs")
+
+[node name="Fondo" type="TextureRect" parent="Control" unique_id=1825185587]
+layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 720.0
 texture = ExtResource("1_j0vru")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Menú Ajustes" type="TextureRect" parent="Fondo" unique_id=309003495]
+[node name="Menú Ajustes" type="TextureRect" parent="Control/Fondo" unique_id=309003495]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -68,7 +249,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_vke5b")
 
-[node name="Ajustes" type="VBoxContainer" parent="Fondo/Menú Ajustes" unique_id=1731367363]
+[node name="Ajustes" type="VBoxContainer" parent="Control/Fondo/Menú Ajustes" unique_id=1731367363]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -79,19 +260,21 @@ offset_right = -17.0
 offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 8
 
-[node name="Volumen" type="TextureRect" parent="Fondo/Menú Ajustes/Ajustes" unique_id=1245287399]
+[node name="Volumen" type="TextureRect" parent="Control/Fondo/Menú Ajustes/Ajustes" unique_id=1245287399]
 layout_mode = 2
 theme = SubResource("Theme_v4nj8")
 texture = ExtResource("3_v4nj8")
 script = ExtResource("4_j0vru")
 
-[node name="Música" type="HSlider" parent="Fondo/Menú Ajustes/Ajustes/Volumen" unique_id=146069878]
+[node name="Música" type="HSlider" parent="Control/Fondo/Menú Ajustes/Ajustes/Volumen" unique_id=146069878]
 layout_mode = 0
 offset_left = 113.0
 offset_top = 38.0
 offset_right = 295.0
 offset_bottom = 48.0
+mouse_default_cursor_shape = 2
 theme_override_constants/center_grabber = 1
 theme_override_icons/grabber = ExtResource("4_hqfux")
 theme_override_icons/grabber_highlight = ExtResource("5_j0vru")
@@ -101,7 +284,7 @@ theme_override_styles/grabber_area = SubResource("StyleBoxTexture_66xpx")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_gvu86")
 value = 100.0
 
-[node name="Música Label" type="Label" parent="Fondo/Menú Ajustes/Ajustes/Volumen" unique_id=921470281]
+[node name="Música Label" type="Label" parent="Control/Fondo/Menú Ajustes/Ajustes/Volumen" unique_id=921470281]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -119,12 +302,13 @@ label_settings = SubResource("LabelSettings_j0vru")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Efectos" type="HSlider" parent="Fondo/Menú Ajustes/Ajustes/Volumen" unique_id=154237320]
+[node name="Efectos" type="HSlider" parent="Control/Fondo/Menú Ajustes/Ajustes/Volumen" unique_id=154237320]
 layout_mode = 0
 offset_left = 113.0
 offset_top = 60.0
 offset_right = 295.0
 offset_bottom = 70.0
+mouse_default_cursor_shape = 2
 theme_override_constants/center_grabber = 1
 theme_override_icons/grabber = ExtResource("4_hqfux")
 theme_override_icons/grabber_highlight = ExtResource("5_j0vru")
@@ -134,7 +318,7 @@ theme_override_styles/grabber_area = SubResource("StyleBoxTexture_66xpx")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_gvu86")
 value = 100.0
 
-[node name="Efectos Label" type="Label" parent="Fondo/Menú Ajustes/Ajustes/Volumen" unique_id=23741207]
+[node name="Efectos Label" type="Label" parent="Control/Fondo/Menú Ajustes/Ajustes/Volumen" unique_id=23741207]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -152,7 +336,87 @@ label_settings = SubResource("LabelSettings_j0vru")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Atrás" type="TextureButton" parent="Fondo" unique_id=1395209060]
+[node name="Gráficos" type="TextureRect" parent="Control/Fondo/Menú Ajustes/Ajustes" unique_id=411780993]
+layout_mode = 2
+texture = ExtResource("11_sc1lx")
+script = ExtResource("13_q64op")
+
+[node name="Modo" type="OptionButton" parent="Control/Fondo/Menú Ajustes/Ajustes/Gráficos" unique_id=1947397249]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -12.5
+offset_right = 167.0
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_gvu86")
+theme_override_colors/font_color = Color(0.5686275, 0.3529412, 0.24705882, 1)
+theme_override_colors/font_pressed_color = Color(0.5686275, 0.3529412, 0.24705882, 1)
+theme_override_colors/font_hover_color = Color(0.5212256, 0.32005182, 0.22115207, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.52156866, 0.32156864, 0.21960784, 1)
+theme_override_colors/font_disabled_color = Color(0.32, 0.27093333, 0.24639998, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_31pkt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7oi35")
+theme_override_styles/hover = SubResource("StyleBoxTexture_l5l02")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_g5rvs")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_mokal")
+theme_override_constants/arrow_margin = 5
+theme_override_icons/arrow = ExtResource("13_7oi35")
+selected = 0
+item_count = 2
+popup/item_0/text = "Pantalla Completa"
+popup/item_0/id = 0
+popup/item_1/text = "Ventana"
+popup/item_1/id = 1
+
+[node name="Resolución" type="OptionButton" parent="Control/Fondo/Menú Ajustes/Ajustes/Gráficos" unique_id=1677777603]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = 12.0
+offset_right = 167.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_l5l02")
+theme_override_colors/font_color = Color(0.5686275, 0.3529412, 0.24705882, 1)
+theme_override_colors/font_pressed_color = Color(0.5686275, 0.3529412, 0.24705882, 1)
+theme_override_colors/font_hover_color = Color(0.5212256, 0.32005182, 0.22115207, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.52156866, 0.32156864, 0.21960784, 1)
+theme_override_constants/align_to_largest_stylebox = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_31pkt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7oi35")
+theme_override_styles/hover = SubResource("StyleBoxTexture_l5l02")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_g5rvs")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_1sj0j")
+theme_override_constants/arrow_margin = 5
+theme_override_icons/arrow = ExtResource("13_7oi35")
+item_count = 6
+popup/item_0/text = "960x540p"
+popup/item_0/id = 0
+popup/item_1/text = "1280x720p"
+popup/item_1/id = 1
+popup/item_2/text = "1920x1080p"
+popup/item_2/id = 2
+popup/item_3/text = "2560x1440p"
+popup/item_3/id = 3
+popup/item_4/text = "3840x2160p"
+popup/item_4/id = 4
+popup/item_5/text = "7680x4320p"
+popup/item_5/id = 5
+
+[node name="Atrás" type="TextureButton" parent="Control/Fondo" unique_id=1395209060]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -171,11 +435,8 @@ texture_normal = ExtResource("3_3fstd")
 script = ExtResource("4_yr0eo")
 metadata/tipo = "ATRÁS"
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2145839163]
-stream = ExtResource("13_sc1lx")
-volume_db = -8.0
-autoplay = true
-
-[connection signal="value_changed" from="Fondo/Menú Ajustes/Ajustes/Volumen/Música" to="Fondo/Menú Ajustes/Ajustes/Volumen" method="_on_música_value_changed"]
-[connection signal="value_changed" from="Fondo/Menú Ajustes/Ajustes/Volumen/Efectos" to="Fondo/Menú Ajustes/Ajustes/Volumen" method="_on_efectos_value_changed"]
-[connection signal="pressed" from="Fondo/Atrás" to="Fondo/Atrás" method="_on_pressed"]
+[connection signal="value_changed" from="Control/Fondo/Menú Ajustes/Ajustes/Volumen/Música" to="Control/Fondo/Menú Ajustes/Ajustes/Volumen" method="_on_música_value_changed"]
+[connection signal="value_changed" from="Control/Fondo/Menú Ajustes/Ajustes/Volumen/Efectos" to="Control/Fondo/Menú Ajustes/Ajustes/Volumen" method="_on_efectos_value_changed"]
+[connection signal="item_selected" from="Control/Fondo/Menú Ajustes/Ajustes/Gráficos/Modo" to="Control/Fondo/Menú Ajustes/Ajustes/Gráficos" method="_on_modo_item_selected"]
+[connection signal="item_selected" from="Control/Fondo/Menú Ajustes/Ajustes/Gráficos/Resolución" to="Control/Fondo/Menú Ajustes/Ajustes/Gráficos" method="_on_resolución_item_selected"]
+[connection signal="pressed" from="Control/Fondo/Atrás" to="Control/Fondo/Atrás" method="_on_pressed"]
