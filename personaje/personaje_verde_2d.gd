@@ -72,6 +72,8 @@ const SHOOT_ANIM_MAX = 1.0
 var hurt_timer = 0.0
 const HURT_DURATION = 1.0
 
+var water=false
+
 func _ready():
 	if not GameState.checkpoint_activo:
 		GameState.reiniciar_tiempo()
@@ -118,6 +120,15 @@ func _physics_process(delta: float) -> void:
 		coyoteTimeActual -= 1
 		velocity += get_gravity() * delta
 	else:
+		for i in get_slide_collision_count():
+			var collision = get_slide_collision(i)
+			if collision.get_collider() is TileMap:
+				var tile_data = collision.get_collider().get_cell_tile_data(1, collision.get_collider().local_to_map(collision.get_position()))
+ 				#if tile_data:
+					#print("water:", tile_data.get_custom_data("water"))
+				if tile_data and tile_data.get_custom_data("water"):
+					print("THE END IS  NEVER")
+					water=true
 		coyoteTimeActual = coyoteTime
 		air_nercia = false
 		if dobSalAct == true:
@@ -140,7 +151,12 @@ func _physics_process(delta: float) -> void:
 		#	get_parent().add_child(instance)
 		if Input.is_action_pressed("correr"):
 			air_nercia = true
-		velocity.y = JUMP_VELOCITY
+			
+		if water:
+			velocity.y = JUMP_VELOCITY*0.85
+		else:
+			velocity.y = JUMP_VELOCITY
+		
 		jumpSound.play()
 		if not is_on_floor() and coyoteTimeActual <= 0:
 			var instance2 = doubleJumpParticles.instantiate()
@@ -151,9 +167,17 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_released("ui_accept") and velocity.y < 0:
 		velocity.y *= cut_factor
 
-	vel = velocidad
+	if water:
+		vel=velocidad*0.75
+	else:
+		vel = velocidad
+		
 	if ((not bloquearControles) and Input.is_action_pressed("correr") and is_on_floor()) or air_nercia:
-		vel = velocidad_correr
+		if water:
+			vel=velocidad_correr*0.75
+		else:
+			vel = velocidad_correr
+		
 		correr = true
 	else:
 		correr = false
@@ -238,6 +262,9 @@ func _physics_process(delta: float) -> void:
 			#print("damage:", tile_data.get_custom_data("damage"))
 			if tile_data and tile_data.get_custom_data("damage"):
 				_dañar()
+			if tile_data and tile_data.get_custom_data("water"):
+					print("THE END IS  NEVER")
+					water=true
 	
 
 
@@ -497,6 +524,12 @@ func _on_tiempo_agotado():
 
 	GameState.reiniciar()
 	get_tree().reload_current_scene()
+	
+func set_water():
+	water=true
+	
+func set_waterf():
+	water=false
 
 #func _on_area_2d_area_entered(area: Area2D) -> void:
 #	if area.is_in_group("Lianas"):
