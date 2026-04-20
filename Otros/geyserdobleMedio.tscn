@@ -6,7 +6,7 @@
 
 [sub_resource type="GDScript" id="GDScript_g0r31"]
 script/source = "extends Node2D
-@export var altura_max = 500.0
+@export var altura_max = 250.0
 @export var duracion_subida = 0.3
 @export var duracion_cima = 0.4
 @export var duracion_bajada = 0.8
@@ -15,22 +15,16 @@ script/source = "extends Node2D
 @onready var area_shape = $Area2D/CollisionShape2D  # <-- añadido
 @onready var suelo = $StaticBody2D
 @onready var suelo_shape = $StaticBody2D/CollisionShape2D
-
-@onready var sprite = $Sprite2D  # cambia por el nombre real de tu nodo visual
-
 enum Fase { SUBIDA, CIMA, BAJADA, PAUSA }
 var fase_actual = Fase.PAUSA
 var tiempo_fase = 0.0
 var altura_actual = 0.0
 var helado = 0
-var altura_base_area = 0.0
 
 func _ready() -> void:
-	suelo_shape.shape = suelo_shape.shape.duplicate()
-	area_shape.shape = area_shape.shape.duplicate()  # también duplicar este
-	altura_base_area = area_shape.shape.size.y       # guardar tamaño original
-	suelo_shape.set_deferred(\"disabled\", true)
-	
+	suelo_shape.shape = suelo_shape.shape.duplicate()  
+	suelo_shape.set_deferred(\"disabled\", true)  # <-- corregido: sobre suelo_shape
+
 func _process(delta):
 	tiempo_fase += delta
 	if helado == 0:
@@ -55,15 +49,10 @@ func _process(delta):
 				altura_actual = 0
 				if tiempo_fase >= duracion_pausa:
 					_cambiar_fase(Fase.SUBIDA)
+		area.scale.y = max(0.01, altura_actual / 30.0)
 		var altura = max(1.0, altura_actual)
-		area_shape.shape.size.y = altura
-		area.position.y = -altura / 2
 		suelo_shape.shape.size.y = altura
 		suelo.position.y = -altura / 2
-		sprite.scale.y = max(0.01, altura_actual / altura_base_area)  # <-- visual
-		#var altura = max(1.0, altura_actual)
-		#suelo_shape.shape.size.y = altura
-		#suelo.position.y = -altura / 2
 	else:
 		helado -= 1
 		if helado <= 0:
