@@ -1,32 +1,49 @@
 [gd_scene format=3 uid="uid://bsv2dvqlv8m35"]
 
-[ext_resource type="Script" uid="uid://bxvcfgjf3uqae" path="res://Otros/geyserbetarea.gd" id="1_oocmd"]
+[ext_resource type="Script" path="res://Otros/geyserbetarea.gd" id="1_oocmd"]
 [ext_resource type="Texture2D" uid="uid://bkeslfpbf46wv" path="res://Sprites/Bloques/Water2.png" id="2_covly"]
 [ext_resource type="Texture2D" uid="uid://sy68klfuondp" path="res://Sprites/Bloques/Water.png" id="3_odbtd"]
 
 [sub_resource type="GDScript" id="GDScript_g0r31"]
 script/source = "extends Node2D
+
 @export var altura_max = 250.0
 @export var duracion_subida = 0.3
 @export var duracion_cima = 0.4
 @export var duracion_bajada = 0.8
 @export var duracion_pausa = 1.2
+
 @onready var area = $Area2D
-@onready var area_shape = $Area2D/CollisionShape2D  # <-- añadido
+@onready var area_shape = $Area2D/CollisionShape2D
 @onready var suelo = $StaticBody2D
 @onready var suelo_shape = $StaticBody2D/CollisionShape2D
+
+# Sprites a colorear
+@onready var sprite_main = $Sprite2D
+@onready var sprite_area = $Area2D/Sprite2D
+
 enum Fase { SUBIDA, CIMA, BAJADA, PAUSA }
+
 var fase_actual = Fase.PAUSA
 var tiempo_fase = 0.0
 var altura_actual = 0.0
 var helado = 0
 
+# Colores
+var color_original
+var color_hielo = Color(2.434, 5.788, 5.967, 1.0)
+
 func _ready() -> void:
-	suelo_shape.shape = suelo_shape.shape.duplicate()  
-	suelo_shape.set_deferred(\"disabled\", true)  # <-- corregido: sobre suelo_shape
+	suelo_shape.shape = suelo_shape.shape.duplicate()
+	suelo_shape.set_deferred(\"disabled\", true)
+
+	# Guardar color original real
+	color_original = sprite_main.modulate
+
 
 func _process(delta):
 	tiempo_fase += delta
+
 	if helado == 0:
 		match fase_actual:
 			Fase.SUBIDA:
@@ -35,46 +52,59 @@ func _process(delta):
 				if tiempo_fase >= duracion_subida:
 					altura_actual = altura_max
 					_cambiar_fase(Fase.CIMA)
+
 			Fase.CIMA:
 				altura_actual = altura_max + randf_range(-3.0, 3.0)
 				if tiempo_fase >= duracion_cima:
 					_cambiar_fase(Fase.BAJADA)
+
 			Fase.BAJADA:
 				var t = tiempo_fase / duracion_bajada
 				altura_actual = altura_max * pow(1 - t, 2)
 				if tiempo_fase >= duracion_bajada:
 					altura_actual = 0
 					_cambiar_fase(Fase.PAUSA)
+
 			Fase.PAUSA:
 				altura_actual = 0
 				if tiempo_fase >= duracion_pausa:
 					_cambiar_fase(Fase.SUBIDA)
+
 		area.scale.y = max(0.01, altura_actual / 30.0)
+
 		var altura = max(1.0, altura_actual)
 		suelo_shape.shape.size.y = altura
 		suelo.position.y = -altura / 2
+
 	else:
 		helado -= 1
 		if helado <= 0:
-			# Descongelar: reactivar área, desactivar suelo
-			#area.monitoring = true
-			area_shape.set_deferred(\"disabled\", false)   # <-- corregido
-			suelo_shape.set_deferred(\"disabled\", true)   # <-- corregido
+			_set_color(color_original)
+			area_shape.set_deferred(\"disabled\", false)
+			suelo_shape.set_deferred(\"disabled\", true)
+
 
 func _cambiar_fase(nueva: Fase):
 	fase_actual = nueva
 	tiempo_fase = 0.0
 
+
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group(\"ProyectilHielo\"):
 		if area.has_method(\"morir\"):
 			area.morir()
+
 		if helado == 0:
 			helado = 500
-			# Congelar: desactivar área, activar suelo
-			#area.monitoring = false
-			area_shape.set_deferred(\"disabled\", true)    # <-- añadido
-			suelo_shape.set_deferred(\"disabled\", false)  # <-- corregido
+			_set_color(color_hielo)
+			area_shape.set_deferred(\"disabled\", true)
+			suelo_shape.set_deferred(\"disabled\", false)
+
+
+# Función para colorear ambos sprites
+func _set_color(c: Color):
+	sprite_main.modulate = c
+	sprite_area.modulate = c
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x41aw"]

@@ -554,13 +554,13 @@ scale = Vector2(3.5000005, 5)
 shape = SubResource("RectangleShape2D_w30pp")
 
 [node name="guante" parent="." unique_id=2119763944 instance=ExtResource("50_7sv1y")]
-position = Vector2(5855, 239)
+position = Vector2(6274, 239)
 
 [node name="Area2D5" parent="." unique_id=1406310529 instance=ExtResource("52_2d1pr")]
 position = Vector2(9311, 487)
 
 [node name="Area2D6" parent="." unique_id=1836981711 instance=ExtResource("40_uqflv")]
-position = Vector2(5082, 234)
+position = Vector2(1950, 427)
 
 [node name="PortalFinNivel" type="Sprite2D" parent="." unique_id=1366909289 groups=["Portals"]]
 z_index = -2
