@@ -1,12 +1,12 @@
-[gd_scene format=3 uid="uid://bsv2dvqlv8m35"]
+[gd_scene format=3 uid="uid://bgte26jmivvc3"]
 
-[ext_resource type="Script" uid="uid://bxvcfgjf3uqae" path="res://Otros/geyserbetarea.gd" id="1_oocmd"]
-[ext_resource type="Texture2D" uid="uid://bkeslfpbf46wv" path="res://Sprites/Bloques/Water2.png" id="2_covly"]
-[ext_resource type="Texture2D" uid="uid://sy68klfuondp" path="res://Sprites/Bloques/Water.png" id="3_odbtd"]
+[ext_resource type="Script" uid="uid://bxvcfgjf3uqae" path="res://Otros/geyserbetarea.gd" id="1_tp0yx"]
+[ext_resource type="Texture2D" uid="uid://bkeslfpbf46wv" path="res://Sprites/Bloques/Water2.png" id="2_dxhko"]
+[ext_resource type="Texture2D" uid="uid://sy68klfuondp" path="res://Sprites/Bloques/Water.png" id="3_0pnhc"]
 
 [sub_resource type="GDScript" id="GDScript_g0r31"]
 script/source = "extends Node2D
-@export var altura_max = 250.0
+@export var altura_max = 350.0
 @export var duracion_subida = 0.3
 @export var duracion_cima = 0.4
 @export var duracion_bajada = 0.8
@@ -94,7 +94,7 @@ script = SubResource("GDScript_g0r31")
 [node name="Area2D" type="Area2D" parent="." unique_id=1018291929]
 scale = Vector2(1.42, 1)
 collision_mask = 3
-script = ExtResource("1_oocmd")
+script = ExtResource("1_tp0yx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1669165846]
 position = Vector2(-0.24796633, 13.5)
@@ -103,12 +103,12 @@ shape = SubResource("RectangleShape2D_x41aw")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1926109528]
 position = Vector2(0, -32)
-texture = ExtResource("2_covly")
+texture = ExtResource("2_dxhko")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1560638179]
 position = Vector2(0, 32)
 scale = Vector2(1.42, 1)
-texture = ExtResource("3_odbtd")
+texture = ExtResource("3_0pnhc")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=703415602]
 

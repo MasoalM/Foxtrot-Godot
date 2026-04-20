@@ -57,7 +57,7 @@ func _process(delta):
 		helado -= 1
 		if helado <= 0:
 			# Descongelar: reactivar área, desactivar suelo
-			area.monitoring = true
+			#area.monitoring = true
 			area_shape.set_deferred(\"disabled\", false)   # <-- corregido
 			suelo_shape.set_deferred(\"disabled\", true)   # <-- corregido
 
@@ -66,11 +66,13 @@ func _cambiar_fase(nueva: Fase):
 	tiempo_fase = 0.0
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.is_in_group(\"ProyectilAliado\"):
+	if area.is_in_group(\"ProyectilHielo\"):
+		if area.has_method(\"morir\"):
+			area.morir()
 		if helado == 0:
 			helado = 500
 			# Congelar: desactivar área, activar suelo
-			area.monitoring = false
+			#area.monitoring = false
 			area_shape.set_deferred(\"disabled\", true)    # <-- añadido
 			suelo_shape.set_deferred(\"disabled\", false)  # <-- corregido
 "

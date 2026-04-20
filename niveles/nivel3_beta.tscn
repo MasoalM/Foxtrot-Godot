@@ -54,6 +54,7 @@
 [ext_resource type="AudioStream" uid="uid://bpqhx5sm3hwwo" path="res://Sounds/NoTime.ogg" id="54_c5aqp"]
 [ext_resource type="PackedScene" uid="uid://bsv2dvqlv8m35" path="res://Otros/geyserdobleMedio.tscn" id="54_g8d7h"]
 [ext_resource type="PackedScene" uid="uid://bdq5jvbrb4e5b" path="res://powerUps/itemHielo.tscn" id="55_g8d7h"]
+[ext_resource type="PackedScene" uid="uid://bgte26jmivvc3" path="res://Otros/geyserdobleAlto.tscn" id="55_q56wv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rn8p"]
 texture = ExtResource("3_q0edt")
@@ -537,11 +538,11 @@ position = Vector2(9599.999, 583)
 [node name="Node2D3" parent="." unique_id=215923423 instance=ExtResource("53_c5aqp")]
 position = Vector2(10240, 570)
 
-[node name="Node2D4" parent="." unique_id=119918855 instance=ExtResource("54_g8d7h")]
-position = Vector2(776, 383)
+[node name="Node2D4" parent="." unique_id=1116569177 instance=ExtResource("54_g8d7h")]
+position = Vector2(10497, 571)
 
-[node name="Node2D5" parent="." unique_id=61999754 instance=ExtResource("53_c5aqp")]
-position = Vector2(1026, 384)
+[node name="Node2D5" parent="." unique_id=547520316 instance=ExtResource("55_q56wv")]
+position = Vector2(10752, 572)
 
 [connection signal="body_entered" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_exited"]
