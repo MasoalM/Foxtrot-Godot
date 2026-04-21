@@ -10,7 +10,7 @@ extends CharacterBody2D
 @onready var swordHitSound = $AudioStreamPlayer2DSwordHit
 @onready var hurtSound = $AudioStreamPlayer2DHurt
 
-var speed = 120
+@export var speed = 120
 var player
 var start_position
 var detect_distance = 600
@@ -45,7 +45,7 @@ var is_waiting := false
 var stuck_timer = 0.0
 var last_x = 0.0
 var stuck_time_limit = 0.5
-var lives
+@export var lives = 2
 var espada_scene = preload("res://Enemigos//Espada.tscn")
 
 const HURT_LIVES = 1
@@ -66,7 +66,6 @@ func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	start_position = global_position
 	last_x = global_position.x
-	lives=2
 	patrol_wait_time = patrol_move_duration
 
 
