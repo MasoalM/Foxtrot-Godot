@@ -12,7 +12,7 @@ var jugador_dentro = false
 func _ready() -> void:
 	indicador.visible = false  # Oculto al inicio
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if jugador_dentro and Input.is_action_just_pressed("enter_portal"):
 		luz.energy = 15.0
 		entrar_al_nivel()

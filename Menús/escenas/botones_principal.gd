@@ -41,4 +41,4 @@ func _on_salir_pressed() -> void:
 # -- H  --
 
 func _on_mox_nose_pressed() -> void:
-	AudioManager.play("mox_nose", )
+	AudioManager.play("MoxNose", 0.2)

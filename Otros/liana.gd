@@ -1,6 +1,6 @@
 extends Node2D
 
-func _physics_process(_delta):
+func _physics_process(_delta: float):
 	for child in get_children():
 		if child is RigidBody2D:
 			child.angular_velocity = 0.0  # impedir rotación de segmentos

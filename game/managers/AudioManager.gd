@@ -1,36 +1,43 @@
 extends Node
 
-const AUDIO_UI_PATH = "res://audio/ui/"
+const AUDIO_PATHS = [
+	"res://audio/",
+	"res://Sounds/"
+]
 
 var sounds = {}
 var last_played = {}
 
 func _ready():
-	_load_ui_sounds()
+	for path in AUDIO_PATHS:
+		_load_ui_sounds(path)
 
-func _load_ui_sounds():
-	var directory = DirAccess.open(AUDIO_UI_PATH)
+func _load_ui_sounds(path: String):
+	var directory = DirAccess.open(path)
 	if directory == null:
-		push_error("La carpeta de audios UI no se ha encontrado")
+		push_error("La carpeta %s no se ha encontrado" % path)
 		return
 	
 	directory.list_dir_begin()
 	
 	var file_name = directory.get_next()
 	while file_name != "":
-		if not directory.current_is_dir():
+		if directory.current_is_dir():
+			if file_name != "." and file_name != "..":
+				_load_ui_sounds(path + file_name + "/")
+		else:
 			if file_name.ends_with(".ogg"):
+				var final_path = path + file_name
+				
 				var sound = AudioStreamPlayer.new()
-				var stream = load(AUDIO_UI_PATH + file_name)
+				var stream = load(final_path)
 				sound.stream = stream
 				sound.bus = "Efectos"
 				add_child(sound)
 				
 				var sound_name = file_name.get_basename()
 				sounds[sound_name] = sound
-		
 		file_name = directory.get_next()
-	
 	directory.list_dir_end()
 
 func play(sound_name, pitch := 0.0) -> void:

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://csgorm16kj0mv"]
 
-[ext_resource type="Texture2D" uid="uid://dwroa0ojm2rqf" path="res://Sprites/Bloques/Column.png" id="1_5cgij"]
-[ext_resource type="Script" uid="uid://brdmfpep60oxs" path="res://Otros/liana.gd" id="1_lwmiw"]
+[ext_resource type="Script" path="res://Otros/liana.gd" id="1_lwmiw"]
+[ext_resource type="Texture2D" uid="uid://d2a36nkbccjcu" path="res://Sprites/Vines.png" id="2_lwmiw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lwmiw"]
 radius = 12.0
@@ -22,8 +22,8 @@ collision_mask = 2
 
 [node name="Column" type="Sprite2D" parent="StaticBody2D" unique_id=1677913051]
 texture_filter = 1
-scale = Vector2(0.109375015, 0.49218753)
-texture = ExtResource("1_5cgij")
+scale = Vector2(2, 2.5)
+texture = ExtResource("2_lwmiw")
 
 [node name="Area2D8" type="Area2D" parent="StaticBody2D" unique_id=1629967716 groups=["Lianas"]]
 collision_layer = 128
@@ -48,8 +48,8 @@ angular_damp = 1.5
 
 [node name="Column" type="Sprite2D" parent="RigidBody2D" unique_id=1125570310]
 texture_filter = 1
-scale = Vector2(0.109375015, 0.49218753)
-texture = ExtResource("1_5cgij")
+scale = Vector2(2, 2.5)
+texture = ExtResource("2_lwmiw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=1079944141]
 shape = SubResource("CapsuleShape2D_5cgij")
@@ -78,8 +78,8 @@ angular_damp = 1.5
 
 [node name="Column" type="Sprite2D" parent="RigidBody2D2" unique_id=404935539]
 texture_filter = 1
-scale = Vector2(0.109375015, 0.49218753)
-texture = ExtResource("1_5cgij")
+scale = Vector2(2, 2.5)
+texture = ExtResource("2_lwmiw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2" unique_id=1473053922]
 shape = SubResource("CapsuleShape2D_5cgij")
@@ -108,8 +108,8 @@ angular_damp = 1.5
 
 [node name="Column" type="Sprite2D" parent="RigidBody2D3" unique_id=1231036278]
 texture_filter = 1
-scale = Vector2(0.109375015, 0.49218753)
-texture = ExtResource("1_5cgij")
+scale = Vector2(2, 2.5)
+texture = ExtResource("2_lwmiw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3" unique_id=998042152]
 shape = SubResource("CapsuleShape2D_5cgij")
@@ -138,8 +138,8 @@ angular_damp = 1.5
 
 [node name="Column" type="Sprite2D" parent="RigidBody2D4" unique_id=452694304]
 texture_filter = 1
-scale = Vector2(0.109375015, 0.49218753)
-texture = ExtResource("1_5cgij")
+scale = Vector2(2, 2.5)
+texture = ExtResource("2_lwmiw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D4" unique_id=2048804722]
 shape = SubResource("CapsuleShape2D_5cgij")
@@ -160,8 +160,8 @@ angular_damp = 1.5
 
 [node name="Column" type="Sprite2D" parent="RigidBody2D6" unique_id=1434253867]
 texture_filter = 1
-scale = Vector2(0.109375015, 0.49218753)
-texture = ExtResource("1_5cgij")
+scale = Vector2(2, 2.5)
+texture = ExtResource("2_lwmiw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D6" unique_id=2098023228]
 shape = SubResource("CapsuleShape2D_5cgij")
@@ -182,8 +182,8 @@ angular_damp = 1.5
 
 [node name="Column" type="Sprite2D" parent="RigidBody2D7" unique_id=1056606347]
 texture_filter = 1
-scale = Vector2(0.109375015, 0.49218753)
-texture = ExtResource("1_5cgij")
+scale = Vector2(2, 2.5)
+texture = ExtResource("2_lwmiw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D7" unique_id=1850566694]
 shape = SubResource("CapsuleShape2D_5cgij")

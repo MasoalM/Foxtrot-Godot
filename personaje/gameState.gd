@@ -32,7 +32,7 @@ func reiniciar():
 	checkpoint_position = Vector2.ZERO
 	emit_signal("vidas_juego_cambiadas", vidas_juego)
 
-func _process(delta):
+func _process(delta: float):
 	if tiempo_restante > 0:
 		tiempo_restante -= delta
 		emit_signal("tiempo_cambiado", int(tiempo_restante))
