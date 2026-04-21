@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://duk5en5j45jy1"]
 
-[ext_resource type="Script" path="res://Otros/geyserbetarea.gd" id="1_0v3hs"]
+[ext_resource type="Script" uid="uid://bxvcfgjf3uqae" path="res://Otros/geyserbetarea.gd" id="1_0v3hs"]
 [ext_resource type="Texture2D" uid="uid://bkeslfpbf46wv" path="res://Sprites/Bloques/Water2.png" id="2_u51w8"]
 [ext_resource type="Texture2D" uid="uid://sy68klfuondp" path="res://Sprites/Bloques/Water.png" id="3_5shrf"]
 

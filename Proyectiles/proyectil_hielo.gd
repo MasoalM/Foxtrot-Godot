@@ -49,3 +49,4 @@ func _on_body_entered(body):
 				morir()
 			else:
 				morir()
+		morir()
