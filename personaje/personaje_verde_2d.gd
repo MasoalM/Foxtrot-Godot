@@ -74,6 +74,10 @@ const HURT_DURATION = 1.0
 
 var water=false
 
+var en_liana=false
+var liana_cooldown = 0
+var liana_actual: Area2D = null
+
 func _ready():
 	if not GameState.checkpoint_activo:
 		GameState.reiniciar_tiempo()
@@ -95,176 +99,197 @@ func _reset_afk() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if !isGrounded and is_on_floor():
-		var instance = dust.instantiate()
-		instance.global_position = $DustMarker.global_position
-		get_parent().add_child(instance)
-	
-	if not is_dead:
-		if hurt_timer > 0:
-			hurt_timer -= delta
-			if hurt_timer <= 0:
-				is_hurt = false
-				state_machine.travel("static")
-	
-	isGrounded = is_on_floor()
-	
-	if isShooting:
-		shoot_anim_timeout += delta
-		if shoot_anim_timeout >= SHOOT_ANIM_MAX:
-			isShooting = false
-			shoot_anim_timeout = 0.0
-	_animaciones()
-	# Gravedad
-	if not is_on_floor():
-		coyoteTimeActual -= 1
-		velocity += get_gravity() * delta
-	else:
+	if not en_liana:
+		if liana_cooldown > 0:
+			liana_cooldown -= 1
+		if !isGrounded and is_on_floor():
+			var instance = dust.instantiate()
+			instance.global_position = $DustMarker.global_position
+			get_parent().add_child(instance)
+		
+		if not is_dead:
+			if hurt_timer > 0:
+				hurt_timer -= 1
+				if hurt_timer <= 0:
+					is_hurt = false
+					state_machine.travel("static")
+		
+		isGrounded = is_on_floor()
+		
+		if isShooting:
+			shoot_anim_timeout += delta
+			if shoot_anim_timeout >= SHOOT_ANIM_MAX:
+				isShooting = false
+				shoot_anim_timeout = 0.0
+		_animaciones()
+		# Gravedad
+		if not is_on_floor():
+			coyoteTimeActual -= 1
+			velocity += get_gravity() * delta
+		else:
+			for i in get_slide_collision_count():
+				var collision = get_slide_collision(i)
+				if collision.get_collider() is TileMap:
+					var tile_data = collision.get_collider().get_cell_tile_data(1, collision.get_collider().local_to_map(collision.get_position()))
+	 				#if tile_data:
+						#print("water:", tile_data.get_custom_data("water"))
+					if tile_data and tile_data.get_custom_data("water"):
+						print("THE END IS  NEVER")
+						water=true
+			coyoteTimeActual = coyoteTime
+			air_nercia = false
+			if dobSalAct == true:
+				dobSal = true
+
+		if aire:
+			_reset_afk()
+
+		realAFK += 1
+
+		# Salto
+		if (not bloquearControles) and Input.is_action_just_pressed("ui_accept") \
+				and (is_on_floor() or (coyoteTimeActual > 0) or dobSal):
+			_reset_afk()
+			aire = true
+			# Si quisiésemos poner partículas al saltar	
+			#if is_jumping and isGrounded:
+			#	var instance = dust.instantiate()
+			#	instance.global_position = $DustMarker2.global_position
+			#	get_parent().add_child(instance)
+			if Input.is_action_pressed("correr"):
+				air_nercia = true
+				
+			if water:
+				velocity.y = JUMP_VELOCITY*0.85
+			else:
+				velocity.y = JUMP_VELOCITY
+			
+			jumpSound.play()
+			if not is_on_floor() and coyoteTimeActual <= 0:
+				var instance2 = doubleJumpParticles.instantiate()
+				instance2.global_position = $DoubleJumpMarker.global_position
+				get_parent().add_child(instance2)
+				dobSal = false
+
+		if Input.is_action_just_released("ui_accept") and velocity.y < 0:
+			velocity.y *= cut_factor
+
+		if water:
+			vel=velocidad*0.75
+		else:
+			vel = velocidad
+			
+		if ((not bloquearControles) and Input.is_action_pressed("correr") and is_on_floor()) or air_nercia:
+			if water:
+				vel=velocidad_correr*0.75
+			else:
+				vel = velocidad_correr
+			
+			correr = true
+		else:
+			correr = false
+
+		# Voltear sprite
+		if mirando_derecha and velocity.x < 0:
+			$CharacterGreenFront.scale.x *= -1
+			$Marker2D.position.x *= -1
+			$AnimatedSprite2D.scale.x *= -1
+			mirando_derecha = false
+		if not mirando_derecha and velocity.x > 0:
+			$CharacterGreenFront.scale.x *= -1
+			$AnimatedSprite2D.scale.x *= -1
+			$Marker2D.position.x *= -1
+			mirando_derecha = true
+
+		# Movimiento
+		if is_on_floor():
+			aire = false
+			if not bloquearControles:
+				var direction := Input.get_axis("ui_left", "ui_right")
+				if direction != 0:
+					_reset_afk()
+					velocity.x = move_toward(velocity.x, direction * vel, aceleracion * delta)
+				else:
+					velocity.x = move_toward(velocity.x, 0, friccion * delta)
+		else:
+			if not bloquearControles:
+				var direction := Input.get_axis("ui_left", "ui_right")
+				if direction != 0:
+					velocity.x = move_toward(velocity.x, direction * vel, aceleracion_aire * delta)
+				else:
+					velocity.x = move_toward(velocity.x, 0, friccion * delta)
+
+		# Disparo
+		
+		if shoot_timer > 0:
+			shoot_timer -= delta
+
+		if (not bloquearControles) and Input.is_action_just_pressed("DispararBasico") and (shoot_timer <= 0):
+			_reset_afk()
+
+			# ATAQUE CARGADO
+			if ataqueCarg:
+				ataqueCarg = false
+				parar_parpadeo_cargado()
+				shoot_timer = shoot_cooldown
+				hacer_ataque_cargado()
+				
+				return
+
+			# DISPARO NORMAL
+			if get_tree().get_nodes_in_group("ProyectilAliado").size() < 3:
+				shoot_timer = shoot_cooldown
+				var shoot = proyectil_actual.instantiate()
+				shotSound.play()
+				get_parent().add_child(shoot)
+				shoot.position = $Marker2D.global_position
+
+				if not mirando_derecha:
+					shoot.scale.x *= -1
+					shoot.vel_bala *= -1
+
+		move_and_slide()
+		if is_on_floor() and abs(velocity.x) > velocidad/4:
+			walk_timer -= 0.008
+			if walk_timer <= 0:
+				walkSound.volume_db = randf_range(12, 15)
+				# velocidad de pasos
+				if correr and abs(velocity.x) > velocidad_correr/2:
+					walkSound.pitch_scale = randf_range(2, 2.5)
+					walk_timer = 0.1   # pasos rápidos
+				else: 
+					walkSound.pitch_scale = randf_range(1, 1.5)
+					walk_timer = 0.25  # pasos normales
+				walkSound.play()
 		for i in get_slide_collision_count():
 			var collision = get_slide_collision(i)
 			if collision.get_collider() is TileMap:
 				var tile_data = collision.get_collider().get_cell_tile_data(1, collision.get_collider().local_to_map(collision.get_position()))
- 				#if tile_data:
-					#print("water:", tile_data.get_custom_data("water"))
+	 			#if tile_data:
+				#print("damage:", tile_data.get_custom_data("damage"))
+				if tile_data and tile_data.get_custom_data("damage"):
+					_dañar()
 				if tile_data and tile_data.get_custom_data("water"):
-					print("THE END IS  NEVER")
-					water=true
-		coyoteTimeActual = coyoteTime
-		air_nercia = false
-		if dobSalAct == true:
-			dobSal = true
+						print("THE END IS  NEVER")
+						water=true
+	else:
+		# Movimiento vertical en la liana
+		velocity.x = 0
+		velocity.y = 0
+		var direction_y := Input.get_axis("ui_up", "ui_down")
+		if direction_y != 0:
+			velocity.y = direction_y * velocidad * 0.6
 
-	if aire:
-		_reset_afk()
-
-	realAFK += 1
-
-	# Salto
-	if (not bloquearControles) and Input.is_action_just_pressed("ui_accept") \
-			and (is_on_floor() or (coyoteTimeActual > 0) or dobSal):
-		_reset_afk()
-		aire = true
-		# Si quisiésemos poner partículas al saltar	
-		#if is_jumping and isGrounded:
-		#	var instance = dust.instantiate()
-		#	instance.global_position = $DustMarker2.global_position
-		#	get_parent().add_child(instance)
-		if Input.is_action_pressed("correr"):
-			air_nercia = true
-			
-		if water:
-			velocity.y = JUMP_VELOCITY*0.85
-		else:
+		# Saltar y desacoplarse
+		if Input.is_action_just_pressed("ui_accept"):
+			en_liana = false
+			liana_actual = null
+			liana_cooldown = 15
 			velocity.y = JUMP_VELOCITY
-		
-		jumpSound.play()
-		if not is_on_floor() and coyoteTimeActual <= 0:
-			var instance2 = doubleJumpParticles.instantiate()
-			instance2.global_position = $DoubleJumpMarker.global_position
-			get_parent().add_child(instance2)
-			dobSal = false
+			jumpSound.play()
 
-	if Input.is_action_just_released("ui_accept") and velocity.y < 0:
-		velocity.y *= cut_factor
-
-	if water:
-		vel=velocidad*0.75
-	else:
-		vel = velocidad
-		
-	if ((not bloquearControles) and Input.is_action_pressed("correr") and is_on_floor()) or air_nercia:
-		if water:
-			vel=velocidad_correr*0.75
-		else:
-			vel = velocidad_correr
-		
-		correr = true
-	else:
-		correr = false
-
-	# Voltear sprite
-	if mirando_derecha and velocity.x < 0:
-		$CharacterGreenFront.scale.x *= -1
-		$Marker2D.position.x *= -1
-		$AnimatedSprite2D.scale.x *= -1
-		mirando_derecha = false
-	if not mirando_derecha and velocity.x > 0:
-		$CharacterGreenFront.scale.x *= -1
-		$AnimatedSprite2D.scale.x *= -1
-		$Marker2D.position.x *= -1
-		mirando_derecha = true
-
-	# Movimiento
-	if is_on_floor():
-		aire = false
-		if not bloquearControles:
-			var direction := Input.get_axis("ui_left", "ui_right")
-			if direction != 0:
-				_reset_afk()
-				velocity.x = move_toward(velocity.x, direction * vel, aceleracion * delta)
-			else:
-				velocity.x = move_toward(velocity.x, 0, friccion * delta)
-	else:
-		if not bloquearControles:
-			var direction := Input.get_axis("ui_left", "ui_right")
-			if direction != 0:
-				velocity.x = move_toward(velocity.x, direction * vel, aceleracion_aire * delta)
-			else:
-				velocity.x = move_toward(velocity.x, 0, friccion * delta)
-
-	# Disparo
-	
-	if shoot_timer > 0:
-		shoot_timer -= delta
-
-	if (not bloquearControles) and Input.is_action_just_pressed("DispararBasico") and (shoot_timer <= 0):
-		_reset_afk()
-
-		# ATAQUE CARGADO
-		if ataqueCarg:
-			ataqueCarg = false
-			parar_parpadeo_cargado()
-			shoot_timer = shoot_cooldown
-			hacer_ataque_cargado()
-			
-			return
-
-		# DISPARO NORMAL
-		if get_tree().get_nodes_in_group("ProyectilAliado").size() < 3:
-			shoot_timer = shoot_cooldown
-			var shoot = proyectil_actual.instantiate()
-			shotSound.play()
-			get_parent().add_child(shoot)
-			shoot.position = $Marker2D.global_position
-
-			if not mirando_derecha:
-				shoot.scale.x *= -1
-				shoot.vel_bala *= -1
-
-	move_and_slide()
-	if is_on_floor() and abs(velocity.x) > velocidad/4:
-		walk_timer -= 0.008
-		if walk_timer <= 0:
-			walkSound.volume_db = randf_range(12, 15)
-			# velocidad de pasos
-			if correr and abs(velocity.x) > velocidad_correr/2:
-				walkSound.pitch_scale = randf_range(2, 2.5)
-				walk_timer = 0.1   # pasos rápidos
-			else: 
-				walkSound.pitch_scale = randf_range(1, 1.5)
-				walk_timer = 0.25  # pasos normales
-			walkSound.play()
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
-		if collision.get_collider() is TileMap:
-			var tile_data = collision.get_collider().get_cell_tile_data(1, collision.get_collider().local_to_map(collision.get_position()))
- 			#if tile_data:
-			#print("damage:", tile_data.get_custom_data("damage"))
-			if tile_data and tile_data.get_custom_data("damage"):
-				_dañar()
-			if tile_data and tile_data.get_custom_data("water"):
-					print("THE END IS  NEVER")
-					water=true
+		move_and_slide()
+		_animaciones()
 	
 
 
@@ -327,7 +352,14 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Enemigos"):
 		_dañar()	
-
+	if area.is_in_group("Lianas"):
+		print(liana_cooldown)
+		if liana_cooldown <= 0:
+			en_liana = true
+			liana_actual = area
+			# Transmitir inercia a la liana
+			if liana_actual.has_method("recibir_inercia"):
+				liana_actual.recibir_inercia(velocity)
 func _animaciones() -> void:
 	# Hurt y death tienen prioridad absoluta, nada los interrumpe
 	if is_dead or is_hurt:
@@ -531,6 +563,8 @@ func set_water():
 func set_waterf():
 	water=false
 
-#func _on_area_2d_area_entered(area: Area2D) -> void:
-#	if area.is_in_group("Lianas"):
-#		print("the end is never the end is never the end is never the end is never the end is never the end is never ") 
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	if area.is_in_group("Lianas"):
+		en_liana = false
+		liana_actual = null

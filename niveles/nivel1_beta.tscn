@@ -51,6 +51,7 @@
 [ext_resource type="PackedScene" uid="uid://sw3iu1espuey" path="res://powerUps/guante.tscn" id="50_7sv1y"]
 [ext_resource type="PackedScene" uid="uid://c83oj12tyaneq" path="res://Sprites/Checkpoint/checkpoint.tscn" id="52_2d1pr"]
 [ext_resource type="PackedScene" uid="uid://bi8u5lyedj4lt" path="res://niveles/level_ui.tscn" id="52_uqflv"]
+[ext_resource type="PackedScene" uid="uid://csgorm16kj0mv" path="res://Otros/liana.tscn" id="53_uqflv"]
 [ext_resource type="AudioStream" uid="uid://bpqhx5sm3hwwo" path="res://Sounds/NoTime.ogg" id="55_2gx1n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rn8p"]
@@ -605,6 +606,9 @@ volume_db = -2.0
 pitch_scale = 0.75
 
 [node name="LevelUi" parent="." unique_id=274504807 instance=ExtResource("52_uqflv")]
+
+[node name="Node2D2" parent="." unique_id=972032776 instance=ExtResource("53_uqflv")]
+position = Vector2(963, -133)
 
 [connection signal="body_entered" from="E/Area2D" to="E" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="E/Area2D" to="E" method="_on_area_2d_body_exited"]
