@@ -614,7 +614,7 @@ position = Vector2(963, -133)
 position = Vector2(1337, -123)
 
 [node name="Node2D4" parent="." unique_id=1687771417 instance=ExtResource("53_uqflv")]
-position = Vector2(1566, -111)
+position = Vector2(1679, -129)
 
 [connection signal="body_entered" from="E/Area2D" to="E" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="E/Area2D" to="E" method="_on_area_2d_body_exited"]

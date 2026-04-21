@@ -278,7 +278,6 @@ func _physics_process(delta: float) -> void:
 		if liana_segmento:
 			global_position = liana_segmento.global_position
 
-		# Subir/bajar por la liana moviendo el segmento
 		# Subir/bajar y balancear la liana con las teclas de movimiento
 		if liana_segmento:
 			var direction_y := Input.get_axis("ui_up", "ui_down")
@@ -297,13 +296,14 @@ func _physics_process(delta: float) -> void:
 				$Marker2D.position.x *= -1
 				mirando_derecha = false
 
-
 		if Input.is_action_just_pressed("ui_accept"):
 			en_liana = false
 			liana_actual = null
+			# Heredar la velocidad del segmento para conservar el impulso del balanceo
+			var segment_vel = liana_segmento.linear_velocity if liana_segmento else Vector2.ZERO
 			liana_segmento = null
-			liana_cooldown = 1
-			velocity = Vector2(0, JUMP_VELOCITY)
+			liana_cooldown = 0.5
+			velocity = Vector2(segment_vel.x, JUMP_VELOCITY)
 			# Restaurar física del jugador
 			$CollisionShape2D.disabled = false
 			collision_layer = 1  # el valor original de tu jugador
