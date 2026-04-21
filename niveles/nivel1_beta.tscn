@@ -610,6 +610,12 @@ pitch_scale = 0.75
 [node name="Node2D2" parent="." unique_id=972032776 instance=ExtResource("53_uqflv")]
 position = Vector2(963, -133)
 
+[node name="Node2D3" parent="." unique_id=141927208 instance=ExtResource("53_uqflv")]
+position = Vector2(1337, -123)
+
+[node name="Node2D4" parent="." unique_id=1687771417 instance=ExtResource("53_uqflv")]
+position = Vector2(1566, -111)
+
 [connection signal="body_entered" from="E/Area2D" to="E" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="E/Area2D" to="E" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="SPACE2/Area2D" to="SPACE2" method="_on_area_2d_body_entered"]

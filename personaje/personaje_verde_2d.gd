@@ -102,7 +102,7 @@ func _reset_afk() -> void:
 func _physics_process(delta: float) -> void:
 	if not en_liana:
 		if liana_cooldown > 0:
-			liana_cooldown -= 1
+			liana_cooldown -= delta
 		if !isGrounded and is_on_floor():
 			var instance = dust.instantiate()
 			instance.global_position = $DustMarker.global_position
@@ -270,9 +270,6 @@ func _physics_process(delta: float) -> void:
 				#print("damage:", tile_data.get_custom_data("damage"))
 				if tile_data and tile_data.get_custom_data("damage"):
 					_dañar()
-				if tile_data and tile_data.get_custom_data("water"):
-						print("THE END IS  NEVER")
-						water=true
 	else:
 		if liana_cooldown > 0:
 			liana_cooldown -= delta
@@ -282,18 +279,35 @@ func _physics_process(delta: float) -> void:
 			global_position = liana_segmento.global_position
 
 		# Subir/bajar por la liana moviendo el segmento
+		# Subir/bajar y balancear la liana con las teclas de movimiento
 		if liana_segmento:
 			var direction_y := Input.get_axis("ui_up", "ui_down")
-			liana_segmento.apply_central_force(Vector2(0, direction_y * velocidad * 2))
+			var direction_x := Input.get_axis("ui_left", "ui_right")
+			liana_segmento.apply_central_force(Vector2(direction_x * velocidad * 3, direction_y * velocidad * 2))
 
-		# Saltar y desacoplarse
+			# Voltear sprite según hacia dónde se balancea
+			if direction_x > 0 and not mirando_derecha:
+				$CharacterGreenFront.scale.x *= -1
+				$AnimatedSprite2D.scale.x *= -1
+				$Marker2D.position.x *= -1
+				mirando_derecha = true
+			elif direction_x < 0 and mirando_derecha:
+				$CharacterGreenFront.scale.x *= -1
+				$AnimatedSprite2D.scale.x *= -1
+				$Marker2D.position.x *= -1
+				mirando_derecha = false
+
+
 		if Input.is_action_just_pressed("ui_accept"):
 			en_liana = false
 			liana_actual = null
 			liana_segmento = null
-			liana_cooldown = 1.5
+			liana_cooldown = 1
 			velocity = Vector2(0, JUMP_VELOCITY)
+			# Restaurar física del jugador
 			$CollisionShape2D.disabled = false
+			collision_layer = 1  # el valor original de tu jugador
+			collision_mask = 1   # el valor original de tu jugador
 			jumpSound.play()
 
 		_animaciones()
@@ -363,10 +377,13 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			en_liana = true
 			liana_segmento = area.get_parent()
 			liana_actual = area.owner
-			$CollisionShape2D.disabled = true  # ← evita que empuje la liana
+			var inercia = velocity  # ← guardar ANTES de zerear
 			velocity = Vector2.ZERO
+			$CollisionShape2D.disabled = true
+			collision_layer = 0
+			collision_mask = 0
 			if liana_actual.has_method("recibir_inercia"):
-				liana_actual.recibir_inercia(velocity)
+				liana_actual.recibir_inercia(inercia)  # ← pasar la inercia real
 func _animaciones() -> void:
 	# Hurt y death tienen prioridad absoluta, nada los interrumpe
 	if is_dead or is_hurt:
@@ -573,7 +590,8 @@ func set_waterf():
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	if area.is_in_group("Lianas"):
-		en_liana = false
-		liana_actual = null
-		liana_segmento = null
-		$CollisionShape2D.disabled = false
+		# Solo desacoplar si la salida es natural (no estamos activamente en liana)
+		if not en_liana:
+			liana_actual = null
+			liana_segmento = null
+			$CollisionShape2D.disabled = false
