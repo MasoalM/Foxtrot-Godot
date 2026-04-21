@@ -293,7 +293,7 @@ func _physics_process(delta: float) -> void:
 			# Heredar la velocidad del segmento para conservar el impulso del balanceo
 			var segment_vel = liana_segmento.linear_velocity if liana_segmento else Vector2.ZERO
 			liana_segmento = null
-			liana_cooldown = 0.5
+			liana_cooldown = 0.2
 			velocity = Vector2(segment_vel.x, JUMP_VELOCITY)
 			# Restaurar física del jugador
 			$CollisionShape2D.set_deferred("disabled", false)
@@ -366,15 +366,16 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Lianas"):
 		if liana_cooldown <= 0:
 			en_liana = true
-			liana_segmento = area.get_parent()
-			liana_actual = area.owner
-			var inercia = velocity  # ← guardar ANTES de zerear
-			velocity = Vector2.ZERO
-			$CollisionShape2D.set_deferred("disabled", true)
-			collision_layer = 0
-			collision_mask = 0
-			if liana_actual.has_method("recibir_inercia"):
-				liana_actual.recibir_inercia(inercia)  # ← pasar la inercia real
+			if area.get_parent() is RigidBody2D:
+				liana_segmento = area.get_parent()
+				liana_actual = area.owner
+				var inercia = velocity  # ← guardar ANTES de zerear
+				velocity = Vector2.ZERO
+				$CollisionShape2D.set_deferred("disabled", true)
+				collision_layer = 0
+				collision_mask = 0
+				if liana_actual.has_method("recibir_inercia"):
+					liana_actual.recibir_inercia(inercia)  # ← pasar la inercia real
 func _animaciones() -> void:
 	# Hurt y death tienen prioridad absoluta, nada los interrumpe
 	if is_dead or is_hurt:
