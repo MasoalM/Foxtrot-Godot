@@ -110,7 +110,7 @@ func _physics_process(delta: float) -> void:
 		
 		if not is_dead:
 			if hurt_timer > 0:
-				hurt_timer -= 1
+				hurt_timer -= delta
 				if hurt_timer <= 0:
 					is_hurt = false
 					state_machine.travel("static")
@@ -128,15 +128,6 @@ func _physics_process(delta: float) -> void:
 			coyoteTimeActual -= 1
 			velocity += get_gravity() * delta
 		else:
-			for i in get_slide_collision_count():
-				var collision = get_slide_collision(i)
-				if collision.get_collider() is TileMap:
-					var tile_data = collision.get_collider().get_cell_tile_data(1, collision.get_collider().local_to_map(collision.get_position()))
-	 				#if tile_data:
-						#print("water:", tile_data.get_custom_data("water"))
-					if tile_data and tile_data.get_custom_data("water"):
-						print("THE END IS  NEVER")
-						water=true
 			coyoteTimeActual = coyoteTime
 			air_nercia = false
 			if dobSalAct == true:
