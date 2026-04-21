@@ -10,6 +10,7 @@ extends CharacterBody2D
 @onready var shoot_point = $ShootPoint
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var muerte = $AudioStreamPlayer2DDeath
+@onready var shootSound = $AudioStreamPlayer2DShot
 
 var direction := 1
 var player
@@ -43,6 +44,7 @@ func _physics_process(delta):
 			shoot_timer = shoot_cooldown
 			animated_sprite.play("preShot")
 			await get_tree().create_timer(0.5).timeout
+			shootSound.play()
 			shoot()
 	else:
 		# --- MOVIMIENTO NORMAL ---

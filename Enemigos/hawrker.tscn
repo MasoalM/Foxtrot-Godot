@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dkm3jik5m245f" path="res://Sprites/Enemigos/Hawrker/HawrkerDeathSprites.png" id="5_nd4nf"]
 [ext_resource type="AudioStream" uid="uid://b07go6ttw8dxj" path="res://Sounds/Wolfior/WolfiorHurtSound.ogg" id="7_nd4nf"]
 [ext_resource type="Texture2D" uid="uid://6swigxysokkw" path="res://Sprites/Enemigos/Hawrker/HawrkerPreShot.png" id="7_q2lss"]
+[ext_resource type="AudioStream" uid="uid://cwpbn1gqqu21" path="res://Sounds/HawrkerShot.ogg" id="8_q2lss"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x4fpu"]
 radius = 21.0
@@ -192,5 +193,9 @@ autoplay = "idle"
 stream = ExtResource("7_nd4nf")
 volume_db = 15.0
 pitch_scale = 0.3
+
+[node name="AudioStreamPlayer2DShot" type="AudioStreamPlayer2D" parent="." unique_id=1847388920]
+stream = ExtResource("8_q2lss")
+volume_db = 5.0
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

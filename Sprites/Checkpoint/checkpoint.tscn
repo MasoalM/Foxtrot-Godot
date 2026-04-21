@@ -2,9 +2,27 @@
 
 [ext_resource type="Script" uid="uid://b6de74r0bjviw" path="res://Sprites/Checkpoint/checkpoint.gd" id="1_1itmi"]
 [ext_resource type="Texture2D" uid="uid://dftv1q8c4snhl" path="res://Sprites/Checkpoint/Hoguera.png" id="1_wypth"]
+[ext_resource type="AudioStream" uid="uid://ltwo206gojho" path="res://Sounds/CheckPoint.ogg" id="3_x0rva"]
+[ext_resource type="Texture2D" uid="uid://djp4mcoh2wnil" path="res://Sprites/Efecto y otros/luz.png" id="4_rf30u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1itmi"]
 radius = 50.01
+
+[sub_resource type="Gradient" id="Gradient_rf30u"]
+offsets = PackedFloat32Array(0, 0.55737704, 0.9918033, 1)
+colors = PackedColorArray(0.9764706, 0.89411765, 0, 1, 0.9843137, 0.6627451, 0.26666668, 1, 1, 0, 0.07058824, 1, 0.99607843, 0.11764706, 0.105882354, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2d1pr"]
+gradient = SubResource("Gradient_rf30u")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1adxf"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 60.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, -50, 0)
+color_ramp = SubResource("GradientTexture1D_2d1pr")
 
 [node name="Area2D" type="Area2D" unique_id=1406310529]
 collision_layer = 7
@@ -18,5 +36,17 @@ shape = SubResource("CircleShape2D_1itmi")
 texture = ExtResource("1_wypth")
 
 [node name="Respawnpoint" type="Marker2D" parent="." unique_id=1469098015]
+
+[node name="AudioCheckpoint" type="AudioStreamPlayer" parent="." unique_id=2085535475]
+stream = ExtResource("3_x0rva")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=587186753]
+color = Color(1, 0.5385001, 0.29000002, 1)
+energy = 1.5
+texture = ExtResource("4_rf30u")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1088821078]
+amount = 150
+process_material = SubResource("ParticleProcessMaterial_1adxf")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

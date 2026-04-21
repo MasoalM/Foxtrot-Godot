@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var hitbox = $Hitbox
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var muerte = $AudioStreamPlayer2DDeath
+@onready var shootSound = $AudioStreamPlayer2DShot
 
 @onready var bow = $Bow   
 
@@ -58,6 +59,7 @@ func _physics_process(delta):
 					await get_tree().create_timer(1).timeout
 					shoot()
 					shoot_timer = shoot_cooldown
+					shootSound.play()
 					if !dead:
 						animated_sprite.play("idle")
 		move_and_slide()

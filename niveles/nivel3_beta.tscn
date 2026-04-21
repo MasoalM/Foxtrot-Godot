@@ -339,22 +339,6 @@ radius = 12.292276
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utksw"]
 size = Vector2(147.91939, 73.91759)
 
-[sub_resource type="Gradient" id="Gradient_q6r8m"]
-offsets = PackedFloat32Array(0, 0.55737704, 0.9918033, 1)
-colors = PackedColorArray(0.9764706, 0.89411765, 0, 1, 0.9843137, 0.6627451, 0.26666668, 1, 1, 0, 0.07058824, 1, 0.99607843, 0.11764706, 0.105882354, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_dg0w2"]
-gradient = SubResource("Gradient_q6r8m")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_37e6k"]
-lifetime_randomness = 1.0
-particle_flag_disable_z = true
-direction = Vector3(0, -1, 0)
-spread = 60.0
-initial_velocity_max = 60.0
-gravity = Vector3(0, -50, 0)
-color_ramp = SubResource("GradientTexture1D_dg0w2")
-
 [node name="Node2D" type="Node2D" unique_id=1979362221]
 script = ExtResource("1_5ojtp")
 
@@ -841,19 +825,6 @@ position = Vector2(13603, -214)
 
 [node name="Area2D6" parent="." unique_id=1406310529 instance=ExtResource("60_7xf2h")]
 position = Vector2(8702, 424)
-
-[node name="PointLight2D" type="PointLight2D" parent="Area2D6" unique_id=1845262559]
-texture_filter = 1
-position = Vector2(2, -2)
-scale = Vector2(0.30408216, 0.31919017)
-energy = 2.64
-texture = ExtResource("32_xhdyk")
-texture_scale = 1.98
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Area2D6" unique_id=1463112059]
-position = Vector2(4, 1)
-amount = 150
-process_material = SubResource("ParticleProcessMaterial_37e6k")
 
 [connection signal="body_entered" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_exited"]

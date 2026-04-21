@@ -2,9 +2,9 @@ extends Area2D
 
 @onready var bloqueRotoSound = $AudioStreamPlayer2DBloqueRoto
 
-const dist_max = 90.0
+const dist_max = 500.0
 
-var vel_bala = 300.0
+var vel_bala = 500.0
 var dist = 0.0
 
 func _ready() -> void:

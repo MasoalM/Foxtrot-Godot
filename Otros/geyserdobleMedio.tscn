@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Otros/geyserbetarea.gd" id="1_oocmd"]
 [ext_resource type="Texture2D" uid="uid://bkeslfpbf46wv" path="res://Sprites/Bloques/Water2.png" id="2_covly"]
 [ext_resource type="Texture2D" uid="uid://sy68klfuondp" path="res://Sprites/Bloques/Water.png" id="3_odbtd"]
+[ext_resource type="AudioStream" uid="uid://bxuuf6mwbjp2k" path="res://Sounds/geiser.ogg" id="4_covly"]
 
 [sub_resource type="GDScript" id="GDScript_g0r31"]
 script/source = "extends Node2D
@@ -17,6 +18,7 @@ script/source = "extends Node2D
 @onready var area_shape = $Area2D/CollisionShape2D
 @onready var suelo = $StaticBody2D
 @onready var suelo_shape = $StaticBody2D/CollisionShape2D
+@onready var sound = $AudioStreamPlayer2D
 
 # Sprites a colorear
 @onready var sprite_main = $Sprite2D
@@ -47,6 +49,7 @@ func _process(delta):
 	if helado == 0:
 		match fase_actual:
 			Fase.SUBIDA:
+				sound.play()
 				var t = tiempo_fase / duracion_subida
 				altura_actual = altura_max * (1 - pow(1 - t, 3))
 				if tiempo_fase >= duracion_subida:
@@ -151,6 +154,11 @@ shape = SubResource("RectangleShape2D_0v3hs")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=629982716]
 position = Vector2(1.9073486e-06, 39)
 shape = SubResource("RectangleShape2D_u51w8")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1620886228]
+stream = ExtResource("4_covly")
+volume_db = -5.0
+pitch_scale = 0.85
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

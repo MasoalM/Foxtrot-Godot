@@ -11,12 +11,13 @@ extends CharacterBody2D
 @onready var jumpSound = $AudioStreamPlayer2DJump
 @onready var coinSound = $AudioStreamPlayer2DCoin
 @onready var walkSound = $AudioStreamPlayer2DWalk
+@onready var waterSound = $AudioStreamPlayer2DWater
 @onready var damageSound = $AudioStreamPlayer2DDamage
 @onready var iceSound = $AudioStreamPlayer2DIce
 @onready var doubleJumpPowerUpSound = $AudioStreamPlayer2DDoubleJumpPowerUp
 @onready var oneUpSound = $AudioStreamPlayer2DOneUp
 @onready var firePowerUpSound = $AudioStreamPlayer2DFirePowerUp
-
+@onready var deathSound = $AudioStreamPlayer2DDeath
 
 var monedas_estado = [false, false, false]
 
@@ -244,15 +245,30 @@ func _physics_process(delta: float) -> void:
 		if is_on_floor() and abs(velocity.x) > velocidad/4:
 			walk_timer -= 0.008
 			if walk_timer <= 0:
-				walkSound.volume_db = randf_range(12, 15)
-				# velocidad de pasos
+				
+				# Valores aleatorios comunes
+				var rand_volume = randf_range(12, 15)
+				var rand_pitch = 1.0
+				var next_step_time = 0.25
+				
+				# Velocidad de pasos
 				if correr and abs(velocity.x) > velocidad_correr/2:
-					walkSound.pitch_scale = randf_range(2, 2.5)
-					walk_timer = 0.1   # pasos rápidos
-				else: 
-					walkSound.pitch_scale = randf_range(1, 1.5)
-					walk_timer = 0.25  # pasos normales
-				walkSound.play()
+					rand_pitch = randf_range(2, 2.5)
+					next_step_time = 0.1   # pasos rápidos
+				else:
+					rand_pitch = randf_range(1, 1.5)
+					next_step_time = 0.25  # pasos normales
+				
+				walk_timer = next_step_time
+				
+				if not water:
+					walkSound.volume_db = rand_volume
+					walkSound.pitch_scale = rand_pitch
+					walkSound.play()
+				else:
+					waterSound.volume_db = rand_volume
+					waterSound.pitch_scale = rand_pitch
+					waterSound.play()
 		for i in get_slide_collision_count():
 			var collision = get_slide_collision(i)
 			if collision.get_collider() is TileMap:
@@ -487,6 +503,8 @@ func _dañar():
 		hurt_timer = HURT_DURATION 
 		emit_signal("vidas_cambiadas", vidas, escudo)
 		if vidas <= 0:
+			# parar música?
+			deathSound.play()
 			is_dead = true
 			bloquearControles = true
 			state_machine.travel("death")
