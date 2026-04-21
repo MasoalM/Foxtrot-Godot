@@ -76,7 +76,8 @@ var water=false
 
 var en_liana=false
 var liana_cooldown = 0
-var liana_actual: Area2D = null
+var liana_actual: Node2D = null
+var liana_segmento: RigidBody2D = null
 
 func _ready():
 	if not GameState.checkpoint_activo:
@@ -273,24 +274,29 @@ func _physics_process(delta: float) -> void:
 						print("THE END IS  NEVER")
 						water=true
 	else:
-		# Movimiento vertical en la liana
-		velocity.x = 0
-		velocity.y = 0
-		var direction_y := Input.get_axis("ui_up", "ui_down")
-		if direction_y != 0:
-			velocity.y = direction_y * velocidad * 0.6
+		if liana_cooldown > 0:
+			liana_cooldown -= delta
+
+		# Seguir la posición del segmento, sin física
+		if liana_segmento:
+			global_position = liana_segmento.global_position
+
+		# Subir/bajar por la liana moviendo el segmento
+		if liana_segmento:
+			var direction_y := Input.get_axis("ui_up", "ui_down")
+			liana_segmento.apply_central_force(Vector2(0, direction_y * velocidad * 2))
 
 		# Saltar y desacoplarse
 		if Input.is_action_just_pressed("ui_accept"):
 			en_liana = false
 			liana_actual = null
-			liana_cooldown = 15
-			velocity.y = JUMP_VELOCITY
+			liana_segmento = null
+			liana_cooldown = 1.5
+			velocity = Vector2(0, JUMP_VELOCITY)
+			$CollisionShape2D.disabled = false
 			jumpSound.play()
 
-		move_and_slide()
 		_animaciones()
-	
 
 
 func apply_powerup(type):
@@ -353,11 +359,12 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Enemigos"):
 		_dañar()	
 	if area.is_in_group("Lianas"):
-		print(liana_cooldown)
 		if liana_cooldown <= 0:
 			en_liana = true
-			liana_actual = area
-			# Transmitir inercia a la liana
+			liana_segmento = area.get_parent()
+			liana_actual = area.owner
+			$CollisionShape2D.disabled = true  # ← evita que empuje la liana
+			velocity = Vector2.ZERO
 			if liana_actual.has_method("recibir_inercia"):
 				liana_actual.recibir_inercia(velocity)
 func _animaciones() -> void:
@@ -568,3 +575,5 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 	if area.is_in_group("Lianas"):
 		en_liana = false
 		liana_actual = null
+		liana_segmento = null
+		$CollisionShape2D.disabled = false
