@@ -379,7 +379,10 @@ func _animaciones() -> void:
 	# Hurt y death tienen prioridad absoluta, nada los interrumpe
 	if is_dead or is_hurt:
 		return
-
+		
+	if en_liana:
+		state_machine.travel("vine")
+		return
 	
 	if (not bloquearControles) and Input.is_action_just_pressed("DispararBasico") and (shoot_timer <= 0):
 		if get_tree().get_nodes_in_group("ProyectilAliado").size() < 3:

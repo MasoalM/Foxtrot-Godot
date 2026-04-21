@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dswffqagy103s" path="res://Sprites/Mox/HurtingMoxSprites.png" id="5_no0uw"]
 [ext_resource type="Texture2D" uid="uid://bbt06btyo0jct" path="res://Sprites/Mox/MoxDeathSprites.png" id="5_qlilp"]
 [ext_resource type="Texture2D" uid="uid://duv8vqosolq8i" path="res://Sprites/Mox/IdleMoxSprites.png" id="7_iy0t5"]
+[ext_resource type="Texture2D" uid="uid://dvhty3fc28y1o" path="res://Sprites/Mox/MoxVine.png" id="10_ensr3"]
 [ext_resource type="PackedScene" uid="uid://dd5sb40u5hh3j" path="res://Sprites/Particles/DoubleJumpParticles.tscn" id="11_2n4ny"]
 [ext_resource type="AudioStream" uid="uid://b3p1ioh4e7wyt" path="res://Sounds/Mox/Shot1.ogg" id="11_g88dg"]
 [ext_resource type="PackedScene" uid="uid://bvh1g2k08pj06" path="res://Sprites/Particles/Dust.tscn" id="11_t4j0b"]
@@ -420,6 +421,14 @@ animations = [{
 "loop": true,
 "name": &"static",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_ensr3")
+}],
+"loop": true,
+"name": &"vine",
+"speed": 5.0
 }]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_no0uw"]
@@ -553,6 +562,9 @@ nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_t4j0b")
 nodes/TimeScale/position = Vector2(70, 170)
 node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"static"]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ensr3"]
+animation = &"vine"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wha0b"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6lhxe"]
@@ -677,6 +689,10 @@ switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6s1wh"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6sres"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_44pu0"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_qlilp"]
 states/End/position = Vector2(1334.5, 111.5)
 states/Start/position = Vector2(-318.5, 88.75)
@@ -700,8 +716,10 @@ states/shoot/node = SubResource("AnimationNodeBlendTree_ensr3")
 states/shoot/position = Vector2(572.31134, 82.37372)
 states/static/node = SubResource("AnimationNodeBlendTree_mijjb")
 states/static/position = Vector2(40.997284, 15.34375)
-transitions = ["Start", "static", SubResource("AnimationNodeStateMachineTransition_wha0b"), "static", "idle", SubResource("AnimationNodeStateMachineTransition_6lhxe"), "static", "afk", SubResource("AnimationNodeStateMachineTransition_ldn0h"), "afk", "static", SubResource("AnimationNodeStateMachineTransition_wwv8k"), "idle", "static", SubResource("AnimationNodeStateMachineTransition_3dfmv"), "static", "air", SubResource("AnimationNodeStateMachineTransition_p3aft"), "idle", "air", SubResource("AnimationNodeStateMachineTransition_mxrpc"), "static", "jump", SubResource("AnimationNodeStateMachineTransition_uf2im"), "jump", "static", SubResource("AnimationNodeStateMachineTransition_61byu"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_65df7"), "running", "idle", SubResource("AnimationNodeStateMachineTransition_qlilp"), "idle", "running", SubResource("AnimationNodeStateMachineTransition_t4j0b"), "running", "jump", SubResource("AnimationNodeStateMachineTransition_g88dg"), "jump", "running", SubResource("AnimationNodeStateMachineTransition_mijjb"), "static", "shoot", SubResource("AnimationNodeStateMachineTransition_ycepb"), "idle", "shoot", SubResource("AnimationNodeStateMachineTransition_w0lf6"), "running", "shoot", SubResource("AnimationNodeStateMachineTransition_4bugb"), "air", "shoot", SubResource("AnimationNodeStateMachineTransition_6jq4r"), "air", "fall", SubResource("AnimationNodeStateMachineTransition_fj6vb"), "running", "air", SubResource("AnimationNodeStateMachineTransition_6lti3"), "jump", "hurt", SubResource("AnimationNodeStateMachineTransition_2h4e4"), "air", "hurt", SubResource("AnimationNodeStateMachineTransition_spigs"), "static", "hurt", SubResource("AnimationNodeStateMachineTransition_gpbip"), "shoot", "hurt", SubResource("AnimationNodeStateMachineTransition_vbxrt"), "running", "hurt", SubResource("AnimationNodeStateMachineTransition_2g71k"), "idle", "hurt", SubResource("AnimationNodeStateMachineTransition_vpw83"), "fall", "hurt", SubResource("AnimationNodeStateMachineTransition_g46op"), "air", "death", SubResource("AnimationNodeStateMachineTransition_t1672"), "fall", "death", SubResource("AnimationNodeStateMachineTransition_7gktp"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_3eax2"), "hurt", "death", SubResource("AnimationNodeStateMachineTransition_mi4y5"), "jump", "death", SubResource("AnimationNodeStateMachineTransition_8agln"), "shoot", "death", SubResource("AnimationNodeStateMachineTransition_f7j0c"), "running", "death", SubResource("AnimationNodeStateMachineTransition_kh76p"), "static", "death", SubResource("AnimationNodeStateMachineTransition_mjqyv"), "afk", "death", SubResource("AnimationNodeStateMachineTransition_w7ur1"), "afk", "hurt", SubResource("AnimationNodeStateMachineTransition_4hfmg"), "death", "End", SubResource("AnimationNodeStateMachineTransition_s5xdd"), "jump", "air", SubResource("AnimationNodeStateMachineTransition_ensr3"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_yerff"), "fall", "static", SubResource("AnimationNodeStateMachineTransition_0j4rh"), "hurt", "jump", SubResource("AnimationNodeStateMachineTransition_gls1w"), "hurt", "static", SubResource("AnimationNodeStateMachineTransition_hg7jb"), "hurt", "air", SubResource("AnimationNodeStateMachineTransition_56j4c"), "hurt", "fall", SubResource("AnimationNodeStateMachineTransition_udmhn"), "hurt", "idle", SubResource("AnimationNodeStateMachineTransition_bcxdv"), "hurt", "running", SubResource("AnimationNodeStateMachineTransition_hanm7"), "hurt", "shoot", SubResource("AnimationNodeStateMachineTransition_7nj1h"), "shoot", "static", SubResource("AnimationNodeStateMachineTransition_up0l0"), "shoot", "air", SubResource("AnimationNodeStateMachineTransition_2n4ny"), "shoot", "idle", SubResource("AnimationNodeStateMachineTransition_0j0yh"), "shoot", "running", SubResource("AnimationNodeStateMachineTransition_6s1wh")]
-graph_offset = Vector2(413.3645, 44.598415)
+states/vine/node = SubResource("AnimationNodeAnimation_ensr3")
+states/vine/position = Vector2(-114.65259, -124.65001)
+transitions = ["Start", "static", SubResource("AnimationNodeStateMachineTransition_wha0b"), "static", "idle", SubResource("AnimationNodeStateMachineTransition_6lhxe"), "static", "afk", SubResource("AnimationNodeStateMachineTransition_ldn0h"), "afk", "static", SubResource("AnimationNodeStateMachineTransition_wwv8k"), "idle", "static", SubResource("AnimationNodeStateMachineTransition_3dfmv"), "static", "air", SubResource("AnimationNodeStateMachineTransition_p3aft"), "idle", "air", SubResource("AnimationNodeStateMachineTransition_mxrpc"), "static", "jump", SubResource("AnimationNodeStateMachineTransition_uf2im"), "jump", "static", SubResource("AnimationNodeStateMachineTransition_61byu"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_65df7"), "running", "idle", SubResource("AnimationNodeStateMachineTransition_qlilp"), "idle", "running", SubResource("AnimationNodeStateMachineTransition_t4j0b"), "running", "jump", SubResource("AnimationNodeStateMachineTransition_g88dg"), "jump", "running", SubResource("AnimationNodeStateMachineTransition_mijjb"), "static", "shoot", SubResource("AnimationNodeStateMachineTransition_ycepb"), "idle", "shoot", SubResource("AnimationNodeStateMachineTransition_w0lf6"), "running", "shoot", SubResource("AnimationNodeStateMachineTransition_4bugb"), "air", "shoot", SubResource("AnimationNodeStateMachineTransition_6jq4r"), "air", "fall", SubResource("AnimationNodeStateMachineTransition_fj6vb"), "running", "air", SubResource("AnimationNodeStateMachineTransition_6lti3"), "jump", "hurt", SubResource("AnimationNodeStateMachineTransition_2h4e4"), "air", "hurt", SubResource("AnimationNodeStateMachineTransition_spigs"), "static", "hurt", SubResource("AnimationNodeStateMachineTransition_gpbip"), "shoot", "hurt", SubResource("AnimationNodeStateMachineTransition_vbxrt"), "running", "hurt", SubResource("AnimationNodeStateMachineTransition_2g71k"), "idle", "hurt", SubResource("AnimationNodeStateMachineTransition_vpw83"), "fall", "hurt", SubResource("AnimationNodeStateMachineTransition_g46op"), "air", "death", SubResource("AnimationNodeStateMachineTransition_t1672"), "fall", "death", SubResource("AnimationNodeStateMachineTransition_7gktp"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_3eax2"), "hurt", "death", SubResource("AnimationNodeStateMachineTransition_mi4y5"), "jump", "death", SubResource("AnimationNodeStateMachineTransition_8agln"), "shoot", "death", SubResource("AnimationNodeStateMachineTransition_f7j0c"), "running", "death", SubResource("AnimationNodeStateMachineTransition_kh76p"), "static", "death", SubResource("AnimationNodeStateMachineTransition_mjqyv"), "afk", "death", SubResource("AnimationNodeStateMachineTransition_w7ur1"), "afk", "hurt", SubResource("AnimationNodeStateMachineTransition_4hfmg"), "death", "End", SubResource("AnimationNodeStateMachineTransition_s5xdd"), "jump", "air", SubResource("AnimationNodeStateMachineTransition_ensr3"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_yerff"), "fall", "static", SubResource("AnimationNodeStateMachineTransition_0j4rh"), "hurt", "jump", SubResource("AnimationNodeStateMachineTransition_gls1w"), "hurt", "static", SubResource("AnimationNodeStateMachineTransition_hg7jb"), "hurt", "air", SubResource("AnimationNodeStateMachineTransition_56j4c"), "hurt", "fall", SubResource("AnimationNodeStateMachineTransition_udmhn"), "hurt", "idle", SubResource("AnimationNodeStateMachineTransition_bcxdv"), "hurt", "running", SubResource("AnimationNodeStateMachineTransition_hanm7"), "hurt", "shoot", SubResource("AnimationNodeStateMachineTransition_7nj1h"), "shoot", "static", SubResource("AnimationNodeStateMachineTransition_up0l0"), "shoot", "air", SubResource("AnimationNodeStateMachineTransition_2n4ny"), "shoot", "idle", SubResource("AnimationNodeStateMachineTransition_0j0yh"), "shoot", "running", SubResource("AnimationNodeStateMachineTransition_6s1wh"), "static", "vine", SubResource("AnimationNodeStateMachineTransition_6sres"), "vine", "static", SubResource("AnimationNodeStateMachineTransition_44pu0")]
+graph_offset = Vector2(-513.6526, -234.65001)
 
 [sub_resource type="Animation" id="Animation_no0uw"]
 length = 0.001
@@ -1012,6 +1030,35 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_ensr3"]
+resource_name = "vine"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"vine"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimatedSprite2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"vine"],
+"method": &"play"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_no0uw"]
 _data = {
 &"RESET": SubResource("Animation_no0uw"),
@@ -1024,7 +1071,8 @@ _data = {
 &"jump": SubResource("Animation_wha0b"),
 &"running": SubResource("Animation_ycepb"),
 &"shoot": SubResource("Animation_up0l0"),
-&"static": SubResource("Animation_w0lf6")
+&"static": SubResource("Animation_w0lf6"),
+&"vine": SubResource("Animation_ensr3")
 }
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1006504852]
