@@ -313,8 +313,13 @@ func _physics_process(delta: float) -> void:
 			velocity = Vector2(segment_vel.x, JUMP_VELOCITY)
 			# Restaurar física del jugador
 			$CollisionShape2D.set_deferred("disabled", false)
-			collision_layer = 1  # el valor original de tu jugador
-			collision_mask = 1   # el valor original de tu jugador
+			#########################################################
+			#collision_layer = 1  # el valor original de tu jugador
+			#collision_mask = 1   # el valor original de tu jugador
+			#########################################################
+			collision_layer = 2  # el valor original de tu jugador
+			collision_mask = 133
+			
 			jumpSound.play()
 
 		_animaciones()
@@ -388,10 +393,13 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 				var inercia = velocity  # ← guardar ANTES de zerear
 				velocity = Vector2.ZERO
 				$CollisionShape2D.set_deferred("disabled", true)
+				print(collision_layer)
+				print(collision_mask)
 				collision_layer = 0
 				collision_mask = 0
 				if liana_actual.has_method("recibir_inercia"):
 					liana_actual.recibir_inercia(inercia)  # ← pasar la inercia real
+
 func _animaciones() -> void:
 	# Hurt y death tienen prioridad absoluta, nada los interrumpe
 	if is_dead or is_hurt:

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://csgorm16kj0mv"]
 
-[ext_resource type="Script" path="res://Otros/liana.gd" id="1_lwmiw"]
+[ext_resource type="Script" uid="uid://brdmfpep60oxs" path="res://Otros/liana.gd" id="1_lwmiw"]
 [ext_resource type="Texture2D" uid="uid://d2a36nkbccjcu" path="res://Sprites/Vines.png" id="2_lwmiw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lwmiw"]
@@ -42,7 +42,7 @@ angular_limit_upper = 0.017453292
 [node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1810553470]
 position = Vector2(0, 68)
 collision_layer = 0
-collision_mask = 2
+collision_mask = 0
 linear_damp = 0.75
 angular_damp = 1.5
 
@@ -72,7 +72,7 @@ angular_limit_upper = 0.2268928
 [node name="RigidBody2D2" type="RigidBody2D" parent="." unique_id=701589213]
 position = Vector2(0, 136)
 collision_layer = 0
-collision_mask = 2
+collision_mask = 0
 linear_damp = 0.75
 angular_damp = 1.5
 
@@ -102,7 +102,7 @@ angular_limit_upper = 0.4712389
 [node name="RigidBody2D3" type="RigidBody2D" parent="." unique_id=2114945327]
 position = Vector2(0, 204)
 collision_layer = 0
-collision_mask = 2
+collision_mask = 0
 linear_damp = 0.75
 angular_damp = 1.5
 
@@ -132,7 +132,7 @@ angular_limit_upper = 0.715585
 [node name="RigidBody2D4" type="RigidBody2D" parent="." unique_id=1863245060]
 position = Vector2(0, 272)
 collision_layer = 0
-collision_mask = 2
+collision_mask = 0
 linear_damp = 0.75
 angular_damp = 1.5
 
@@ -154,7 +154,7 @@ shape = SubResource("CapsuleShape2D_lwmiw")
 [node name="RigidBody2D6" type="RigidBody2D" parent="." unique_id=1032755950]
 position = Vector2(0, 340)
 collision_layer = 0
-collision_mask = 2
+collision_mask = 0
 linear_damp = 0.75
 angular_damp = 1.5
 
@@ -176,7 +176,7 @@ shape = SubResource("CapsuleShape2D_lwmiw")
 [node name="RigidBody2D7" type="RigidBody2D" parent="." unique_id=1194765182]
 position = Vector2(0, 408)
 collision_layer = 0
-collision_mask = 2
+collision_mask = 0
 linear_damp = 0.75
 angular_damp = 1.5
 
