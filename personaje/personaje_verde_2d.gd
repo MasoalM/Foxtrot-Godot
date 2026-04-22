@@ -393,8 +393,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 				var inercia = velocity  # ← guardar ANTES de zerear
 				velocity = Vector2.ZERO
 				$CollisionShape2D.set_deferred("disabled", true)
-				print(collision_layer)
-				print(collision_mask)
 				collision_layer = 0
 				collision_mask = 0
 				if liana_actual.has_method("recibir_inercia"):
