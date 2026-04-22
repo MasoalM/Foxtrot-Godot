@@ -50,6 +50,7 @@
 [ext_resource type="PackedScene" uid="uid://cb6oqqy6h61jd" path="res://Enemigos/piranha.tscn" id="48_o00xj"]
 [ext_resource type="AudioStream" uid="uid://bpqhx5sm3hwwo" path="res://Sounds/NoTime.ogg" id="49_ne4c4"]
 [ext_resource type="PackedScene" uid="uid://sw3iu1espuey" path="res://powerUps/guante.tscn" id="50_oaq5l"]
+[ext_resource type="PackedScene" uid="uid://d1kbkbnk0n07s" path="res://Enemigos/BigRanha.tscn" id="51_vq4ol"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rn8p"]
 texture = ExtResource("3_dsjyb")
@@ -488,6 +489,9 @@ jump_above_surface = 600.0
 swim_speed = 2.5
 limiteIzquierda = 13000.0
 limiteDerecha = 16000.0
+
+[node name="Bigranha" parent="." unique_id=826057812 instance=ExtResource("51_vq4ol")]
+position = Vector2(601, 615)
 
 [connection signal="body_entered" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_exited"]
