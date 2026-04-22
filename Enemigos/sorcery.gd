@@ -46,9 +46,7 @@ func _on_body_entered(body):
 		return
 	
 	if body.is_in_group("player"):
-		print("HIT PLAYER")
-	
-	queue_free()
+		queue_free()
 	
 func set_direction_from_target(target_node):
 	if not is_instance_valid(target_node):
