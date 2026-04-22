@@ -172,6 +172,7 @@ animations = [{
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1159300983 groups=["Enemigos"]]
 light_mask = 7
 visibility_layer = 7
+collision_layer = 4
 script = ExtResource("1_cs7vv")
 projectile_scene = ExtResource("2_3nko8")
 
@@ -197,7 +198,7 @@ target_position = Vector2(40, 80)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=255110838 groups=["Enemigos"]]
 position = Vector2(-25, 2)
-collision_layer = 7
+collision_layer = 4
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=92199117 groups=["Enemigos"]]

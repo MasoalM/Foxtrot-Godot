@@ -137,6 +137,11 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 func die():
 	velocity = Vector2.ZERO
 	animated_sprite.play("death")
+	set_collision_layer_value(3, false)
+	$Area2D.set_collision_layer_value(3, false)
+	set_collision_layer_value(4, true)
+	set_deferred("monitoring", false)
+	$Area2D.set_deferred("monitoring", false)
 	muerte.play()
 	set_physics_process(false)
 

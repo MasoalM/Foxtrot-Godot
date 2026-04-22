@@ -377,13 +377,15 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemigos"):
+		print(body)
 		enemigosIn += 1
 		_dañar()
 			
 # Detectar entrada en áreas
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Enemigos"):
-		_dañar()	
+		_dañar()
+		print(area)	
 	if area.is_in_group("Lianas"):
 		if liana_cooldown <= 0:
 			en_liana = true
