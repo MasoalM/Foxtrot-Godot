@@ -44,6 +44,7 @@ func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	surface_y = position.y
 	swim_y = surface_y + swim_depth
+	animated_sprite.modulate = Color(1, 0.3, 0.3)
 	
 	jump_timer = randf() * jump_interval
 
@@ -60,7 +61,7 @@ func _physics_process(delta):
 		# --- VELOCIDAD VARIABLE ---
 		current_speed = speed
 		
-		if abs(diff_x) > 450:
+		if diff_x > 0 and abs(diff_x) > 450:
 			current_speed = speed * 2
 		
 		# Siempre se mueve

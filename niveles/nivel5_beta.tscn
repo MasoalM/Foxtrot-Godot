@@ -480,10 +480,7 @@ pitch_scale = 0.75
 [node name="LevelUi" parent="." unique_id=274504807 instance=ExtResource("47_mybwg")]
 
 [node name="Bigranha" parent="." unique_id=826057812 instance=ExtResource("51_vq4ol")]
-position = Vector2(601, 615)
-speed = 250.0
-jump_above_surface = 600.0
-swim_speed = 2.5
+position = Vector2(600, 647)
 
 [connection signal="body_entered" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_exited"]
