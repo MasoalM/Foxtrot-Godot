@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cuyvn6hit0t4h" path="res://niveles/nivel.gd" id="1_c0rvr"]
 [ext_resource type="AudioStream" uid="uid://bho0of4st26kb" path="res://Music/BOSS.ogg" id="2_c0rvr"]
 [ext_resource type="PackedScene" uid="uid://t3cps6t21qux" path="res://personaje/personajeVerde_2d.tscn" id="3_sam67"]
+[ext_resource type="Script" uid="uid://bpowst78jrhru" path="res://niveles/camera.gd" id="4_h5rf2"]
 [ext_resource type="Texture2D" uid="uid://bgh8ouadkr0y" path="res://Sprites/Bloques/Dirt.png" id="4_irswv"]
 [ext_resource type="Texture2D" uid="uid://by6ou6ijmk82e" path="res://Sprites/Bloques/Grass.png" id="5_iea6l"]
 [ext_resource type="Texture2D" uid="uid://5uvn68uac1bp" path="res://Sprites/Bloques/Spikes (1).png" id="6_15oim"]
@@ -348,6 +349,7 @@ limit_left = 63
 limit_top = -94
 limit_right = 1261
 limit_bottom = 586
+script = ExtResource("4_h5rf2")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1726310753]
 z_index = -1

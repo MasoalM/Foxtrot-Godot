@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cuyvn6hit0t4h" path="res://niveles/nivel.gd" id="1_xmr5h"]
 [ext_resource type="PackedScene" uid="uid://t3cps6t21qux" path="res://personaje/personajeVerde_2d.tscn" id="1_xqqx3"]
+[ext_resource type="Script" uid="uid://bpowst78jrhru" path="res://niveles/camera.gd" id="4_68742"]
 [ext_resource type="Texture2D" uid="uid://5uvn68uac1bp" path="res://Sprites/Bloques/Spikes (1).png" id="4_dccrm"]
 [ext_resource type="Texture2D" uid="uid://bktcuauxvfsik" path="res://Sprites/Bloques/WoodBlock (1).png" id="5_an17n"]
 [ext_resource type="Texture2D" uid="uid://cv1sxq1g5e6ya" path="res://Sprites/Bloques/DamagedWoodBlock (1).png" id="6_bxsc0"]
@@ -273,6 +274,7 @@ limit_left = 0
 limit_top = 0
 limit_right = 10000012
 limit_bottom = 680
+script = ExtResource("4_68742")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1726310753]
 z_index = -1
