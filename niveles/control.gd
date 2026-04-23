@@ -89,3 +89,28 @@ func actualizar_ups(vidas_juego):
 	
 func actualizar_tiempo(tiempo):
 	label_time.text = str(tiempo)		
+	
+func enviar_resultado(nivel_id: int, puntos: int, jugador_id: int):
+	var http = HTTPRequest.new()
+	add_child(http)
+
+	var url = "http://localhost/api/guardar_progreso.php"
+
+	var data = {
+		"jugador_id": jugador_id,
+		"nivel_id": nivel_id,
+		"tiempo": GameState.tiempo_restante,
+		"puntos": puntos,
+		"coleccionables": GameState.monedas_estado
+	}
+
+	var json = JSON.stringify(data)
+	var headers = ["Content-Type: application/json"]
+
+	http.request(url, headers, HTTPClient.METHOD_POST, json)
+
+	http.request_completed.connect(_on_request_completed)	
+
+func _on_request_completed(result, response_code, headers, body):
+	var response = JSON.parse_string(body.get_string_from_utf8())
+	print("Respuesta servidor: ", response)	

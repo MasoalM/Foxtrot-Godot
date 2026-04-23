@@ -102,6 +102,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		dead = true
 		set_collision_layer_value(1, false)
 		set_collision_layer_value(4, true)
+		$Hitbox.set_collision_layer_value(1, false)
 		set_deferred("monitoring", false)
 		remove_from_group("Enemigos")
 		animated_sprite.play("death")

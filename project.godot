@@ -21,6 +21,7 @@ UIManager="*uid://libsr5emcm67"
 AudioManager="*uid://cc8yanldkmnro"
 SettingsManager="*uid://bo35fslxhsw0d"
 GameState="*uid://blpeeeiaq048p"
+APIclient="*uid://dqyskfk5xmdjw"
 
 [display]
 
