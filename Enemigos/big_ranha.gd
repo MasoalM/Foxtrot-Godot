@@ -2,15 +2,15 @@ extends Node2D
 
 @onready var animated_sprite = $AnimatedSprite2D
 
-@export var speed := 80.0
+@export var speed := 250.0
 @export var jump_interval := 5.0
 @export var gravity := 600.0
 
 @export var swim_depth := 50.0
-@export var jump_above_surface := 300.0
+@export var jump_above_surface := 600.0
 
 @export var swim_amplitude := 25.0
-@export var swim_speed := 1.2
+@export var swim_speed := 2.5
 @export var swim_smoothness := 0.1  
 
 @export var limiteIzquierda := 0.0
@@ -31,7 +31,7 @@ var is_jumping := false
 # CONTROL DE ANIMACIONES
 var current_anim = ""
 
-
+var current_speed 
 var player 
 
 func play_anim(name):
@@ -50,10 +50,22 @@ func _ready():
 func _physics_process(delta):
 	jump_timer += delta
 
-	if player:
-		var dir = sign(player.global_position.x - global_position.x)
-		velocity.x = dir * speed
-		direction = dir
+	if player and not is_jumping:
+		var diff_x = player.global_position.x - global_position.x
+		
+		# Solo cambia dirección si está fuera del margen
+		if abs(diff_x) > 100:
+			direction = sign(diff_x)
+			
+		# --- VELOCIDAD VARIABLE ---
+		current_speed = speed
+		
+		if abs(diff_x) > 450:
+			current_speed = speed * 2
+		
+		# Siempre se mueve
+		velocity.x = direction * current_speed	
+	
 
 	if is_jumping:
 		velocity.y += gravity * delta
@@ -80,10 +92,7 @@ func _physics_process(delta):
 			if not (cerca_izquierda or cerca_derecha):
 				_jump()
 
-	if position.x <= limiteIzquierda:
-		direction = 1
-	elif position.x >= limiteDerecha:
-		direction = -1
+	
 		
 	animated_sprite.flip_h = direction > 0
 		
@@ -108,7 +117,7 @@ func _update_rotation(delta):
 func _jump():
 	float_time = 0.0
 	
-	# ✅ AQUÍ SE LANZA LA MORDIDA
+	#  AQUÍ SE LANZA LA MORDIDA
 	play_anim("bite")
 	
 	var target_y = surface_y - jump_above_surface

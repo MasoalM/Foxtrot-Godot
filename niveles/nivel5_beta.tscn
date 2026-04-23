@@ -47,7 +47,6 @@
 [ext_resource type="AudioStream" uid="uid://bju45770rly62" path="res://Sounds/Portal.ogg" id="47_fi6uk"]
 [ext_resource type="PackedScene" uid="uid://bi8u5lyedj4lt" path="res://niveles/level_ui.tscn" id="47_mybwg"]
 [ext_resource type="AudioStream" uid="uid://dmybnkonokowx" path="res://Sounds/PrePortal.mp3" id="48_cpomx"]
-[ext_resource type="PackedScene" uid="uid://cb6oqqy6h61jd" path="res://Enemigos/piranha.tscn" id="48_o00xj"]
 [ext_resource type="AudioStream" uid="uid://bpqhx5sm3hwwo" path="res://Sounds/NoTime.ogg" id="49_ne4c4"]
 [ext_resource type="PackedScene" uid="uid://sw3iu1espuey" path="res://powerUps/guante.tscn" id="50_oaq5l"]
 [ext_resource type="PackedScene" uid="uid://d1kbkbnk0n07s" path="res://Enemigos/BigRanha.tscn" id="51_vq4ol"]
@@ -480,18 +479,11 @@ pitch_scale = 0.75
 
 [node name="LevelUi" parent="." unique_id=274504807 instance=ExtResource("47_mybwg")]
 
-[node name="piranha41" parent="." unique_id=1966710050 instance=ExtResource("48_o00xj")]
-modulate = Color(1, 0, 0, 1)
-position = Vector2(951, 608)
-scale = Vector2(2, 2)
-speed = 200.0
-jump_above_surface = 600.0
-swim_speed = 2.5
-limiteIzquierda = 13000.0
-limiteDerecha = 16000.0
-
 [node name="Bigranha" parent="." unique_id=826057812 instance=ExtResource("51_vq4ol")]
 position = Vector2(601, 615)
+speed = 250.0
+jump_above_surface = 600.0
+swim_speed = 2.5
 
 [connection signal="body_entered" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_exited"]

@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cgsm4lu0k83vw" path="res://Sprites/Enemigos/Piranha/PiranhaMovementSprites.png" id="4_vxv30"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0k0gg"]
-radius = 22.0
-height = 68.0
+radius = 53.0
+height = 172.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q731u"]
 atlas = ExtResource("2_6lcv8")
@@ -77,13 +77,15 @@ collision_layer = 7
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1537314012 groups=["Enemigos"]]
-position = Vector2(1, 0)
+position = Vector2(5, -5)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_0k0gg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=392173291]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1605070562]
+position = Vector2(8, -9)
+scale = Vector2(2.6875, 2.3203127)
 sprite_frames = SubResource("SpriteFrames_q731u")
 animation = &"bite"
 
