@@ -81,6 +81,7 @@ var liana_actual: Node2D = null
 var liana_segmento: RigidBody2D = null
 
 func _ready():
+	get_tree().debug_collisions_hint = true
 	if not GameState.checkpoint_activo:
 		GameState.reiniciar_tiempo()
 	

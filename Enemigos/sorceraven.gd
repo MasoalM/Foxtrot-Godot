@@ -15,12 +15,19 @@ extends CharacterBody2D
 var direction := 1
 var player
 var shoot_timer := 0.0
+var wall_time := 0.0
+var stuck_time := 0.0
+var last_x := 0.0
+
+var wall_cooldown := 1.0
+var wall_timer := 0.0
 
 func _ready():
 	animated_sprite.play("idle")
 	player = get_tree().get_first_node_in_group("player")
 
 func _physics_process(delta):
+	wall_timer -= delta
 	# --- GRAVEDAD ---
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -56,10 +63,28 @@ func _physics_process(delta):
 			_flip()
 
 		# --- DETECTAR PARED ---
-		if is_on_wall():
+		if is_on_wall() and wall_timer <= 0.0:
 			_flip()
+			wall_timer = wall_cooldown	
+			
 
 	move_and_slide()
+
+	
+
+	var moved = abs(global_position.x - last_x)
+
+	# si debería moverse pero casi no avanza → está atascado
+	if abs(velocity.x) > 1 and moved < 1:
+		stuck_time += delta
+		
+		if stuck_time > 0.5:
+			_flip()
+			stuck_time = 0.0
+	else:
+		stuck_time = 0.0
+
+	last_x = global_position.x
 
 	# --- FLIP VISUAL ---
 	animated_sprite.flip_h = direction > 0
@@ -117,7 +142,7 @@ func can_see_player():
 	var dir = target_pos - origin
 	
 	ray_vision.global_position = origin
-	ray_vision.target_position = dir.normalized() * 800
+	ray_vision.target_position = dir.normalized() * 300
 	ray_vision.force_raycast_update()
 
 	if ray_vision.is_colliding():
