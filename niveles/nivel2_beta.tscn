@@ -35,7 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://6rcs6agfvdu0" path="res://powerUps/escudo.tscn" id="33_sdkmw"]
 [ext_resource type="PackedScene" uid="uid://b1ftwkgwp40yb" path="res://powerUps/vida.tscn" id="34_lh55y"]
 [ext_resource type="PackedScene" uid="uid://cv4mf7w2d3xe0" path="res://Otros/jungFrond.tscn" id="36_l0x8k"]
-[ext_resource type="Texture2D" uid="uid://yna61wn5d72r" path="res://Sprites/Coleccionables/Coleccionable.png" id="36_no0i1"]
+[ext_resource type="PackedScene" uid="uid://d0ordmi0yu7tp" path="res://Sprites/Coleccionables/coleccionable.tscn" id="36_vdsh4"]
 [ext_resource type="AudioStream" uid="uid://dbuxhiplotkmh" path="res://Music/Level2.ogg" id="38_g6lol"]
 [ext_resource type="PackedScene" uid="uid://bjtf1vhnso0ys" path="res://Enemigos/hawrker.tscn" id="39_unt6w"]
 [ext_resource type="PackedScene" uid="uid://digj45m3nsyp4" path="res://Enemigos/wolfior.tscn" id="40_dccrm"]
@@ -325,29 +325,19 @@ position = Vector2(2298, 354)
 [node name="RigidBody2D2" parent="." unique_id=2136293655 instance=ExtResource("34_lh55y")]
 position = Vector2(402, -44)
 
-[node name="Coleccionable3" type="Sprite2D" parent="." unique_id=66914831]
-texture_filter = 1
-position = Vector2(11521, 38)
-scale = Vector2(2, 2)
-texture = ExtResource("36_no0i1")
-
-[node name="Coleccionable2" type="Sprite2D" parent="." unique_id=204832148]
-texture_filter = 1
-position = Vector2(4319, 102)
-scale = Vector2(2, 2)
-texture = ExtResource("36_no0i1")
-
-[node name="Coleccionable" type="Sprite2D" parent="." unique_id=465529049]
-texture_filter = 1
-position = Vector2(8929, 97)
-scale = Vector2(2, 2)
-texture = ExtResource("36_no0i1")
+[node name="Coleccionable2" parent="." unique_id=604219173 instance=ExtResource("36_vdsh4")]
+position = Vector2(8929, 111)
+coin_id = 1
 
 [node name="Node2D" parent="." unique_id=220363280 instance=ExtResource("36_l0x8k")]
 position = Vector2(8594, 552)
 
 [node name="CharacterBody2D23" parent="." unique_id=547989863 instance=ExtResource("40_dccrm")]
 position = Vector2(13782, 466)
+
+[node name="Coleccionable3" parent="." unique_id=1501560063 instance=ExtResource("36_vdsh4")]
+position = Vector2(11522.001, 29)
+coin_id = 2
 
 [node name="CharacterBody2D24" parent="." unique_id=1317905347 instance=ExtResource("40_dccrm")]
 position = Vector2(13618, 466)
@@ -533,6 +523,9 @@ volume_db = 3.0
 [node name="PrePortal" type="AudioStreamPlayer2D" parent="PortalFinNivel" unique_id=560822391]
 stream = ExtResource("45_kx3d6")
 volume_db = -4.0
+
+[node name="Coleccionable1" parent="." unique_id=1190789331 instance=ExtResource("36_vdsh4")]
+position = Vector2(4323.0005, 100)
 
 [connection signal="body_entered" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_exited"]

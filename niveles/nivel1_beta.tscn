@@ -406,39 +406,17 @@ position = Vector2(10650, 337)
 light_mask = 7
 visibility_layer = 7
 position = Vector2(7898, 466)
-scale = Vector2(0.5, 0.5)
 coin_id = 1
-
-[node name="PointLight2D3" type="PointLight2D" parent="Area2D" unique_id=2108516218]
-position = Vector2(1, 1.0000005)
-scale = Vector2(0.35, 0.35)
-texture = ExtResource("8_i12o8")
-texture_scale = 1.98
 
 [node name="Area2D2" parent="." unique_id=1172429116 instance=ExtResource("39_608v1")]
 z_index = -2
 position = Vector2(4369, 582)
-scale = Vector2(0.5, 0.5)
-
-[node name="PointLight2D4" type="PointLight2D" parent="Area2D2" unique_id=1851262997]
-z_index = -2
-position = Vector2(-0.9999995, -4.7683716e-07)
-scale = Vector2(0.35, 0.35)
-texture = ExtResource("8_i12o8")
-texture_scale = 1.98
 
 [node name="Area2D3" parent="." unique_id=134276004 instance=ExtResource("39_608v1")]
 light_mask = 2
 visibility_layer = 2
 position = Vector2(10704, -37)
-scale = Vector2(0.5, 0.5)
 coin_id = 2
-
-[node name="PointLight2D5" type="PointLight2D" parent="Area2D3" unique_id=1573273547]
-position = Vector2(1.0000001, 4.7683716e-07)
-scale = Vector2(0.35, 0.35)
-texture = ExtResource("8_i12o8")
-texture_scale = 1.98
 
 [node name="E" type="Node2D" parent="." unique_id=604811084]
 rotation = 0.0007608196

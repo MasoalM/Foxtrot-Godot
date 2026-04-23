@@ -4,7 +4,7 @@ extends Area2D
 
 const dist_max = 120.0
 
-var vel_bala = 450.0
+var vel_bala = 500.0
 var dist = 0.0
 
 # Called when the node enters the scene tree for the first time.

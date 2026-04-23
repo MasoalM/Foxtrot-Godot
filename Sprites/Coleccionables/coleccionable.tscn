@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://lb1yx00sjnic" path="res://Sprites/Coleccionables/coleccionable.gd" id="1_md3o7"]
 [ext_resource type="Texture2D" uid="uid://yna61wn5d72r" path="res://Sprites/Coleccionables/Coleccionable.png" id="2_vm83f"]
+[ext_resource type="Texture2D" uid="uid://djp4mcoh2wnil" path="res://Sprites/Efecto y otros/luz.png" id="3_kaj6c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_at0t5"]
 radius = 51.0392
@@ -14,12 +15,21 @@ script = ExtResource("1_md3o7")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1341662953]
 texture_filter = 1
 position = Vector2(-1, 9.536743e-07)
-scale = Vector2(2.875, 2.703125)
+scale = Vector2(2, 2)
 texture = ExtResource("2_vm83f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1690089329]
 light_mask = 7
 visibility_layer = 7
+position = Vector2(-0.99999994, 0)
+scale = Vector2(0.7, 0.7)
 shape = SubResource("CircleShape2D_at0t5")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1380753620]
+position = Vector2(1.1920929e-07, 1.8189894e-12)
+scale = Vector2(0.4745628, 0.47246128)
+color = Color(1, 1, 0, 1)
+energy = 1.5
+texture = ExtResource("3_kaj6c")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

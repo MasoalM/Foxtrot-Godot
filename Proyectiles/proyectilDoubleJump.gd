@@ -4,7 +4,7 @@ extends Area2D
 
 const dist_max = 500.0
 
-var vel_bala = 500.0
+var vel_bala = 600.0
 var dist = 0.0
 
 func _ready() -> void:

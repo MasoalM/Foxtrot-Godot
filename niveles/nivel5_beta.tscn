@@ -37,7 +37,6 @@
 [ext_resource type="Texture2D" uid="uid://bkeslfpbf46wv" path="res://Sprites/Bloques/Water2.png" id="29_vq4ol"]
 [ext_resource type="Texture2D" uid="uid://dwroa0ojm2rqf" path="res://Sprites/Bloques/Column.png" id="30_ey0g0"]
 [ext_resource type="Texture2D" uid="uid://djp4mcoh2wnil" path="res://Sprites/Efecto y otros/luz.png" id="32_xxc7i"]
-[ext_resource type="PackedScene" uid="uid://dtcw45iyc4vgd" path="res://powerUps/dobleSalto.tscn" id="33_1minu"]
 [ext_resource type="PackedScene" uid="uid://6rcs6agfvdu0" path="res://powerUps/escudo.tscn" id="34_cw12d"]
 [ext_resource type="PackedScene" uid="uid://b1ftwkgwp40yb" path="res://powerUps/vida.tscn" id="35_773gm"]
 [ext_resource type="PackedScene" uid="uid://d0ordmi0yu7tp" path="res://Sprites/Coleccionables/coleccionable.tscn" id="39_0f0xx"]
@@ -385,9 +384,6 @@ position = Vector2(-1035, -1141)
 texture = ExtResource("32_xxc7i")
 texture_scale = 14.87
 
-[node name="StaticBody2D" parent="." unique_id=1752570427 instance=ExtResource("33_1minu")]
-position = Vector2(292, -17)
-
 [node name="RigidBody2D" parent="." unique_id=637563091 instance=ExtResource("34_cw12d")]
 position = Vector2(5455, 175)
 
@@ -398,39 +394,17 @@ position = Vector2(8192, 50)
 light_mask = 7
 visibility_layer = 7
 position = Vector2(7898, 466)
-scale = Vector2(0.5, 0.5)
 coin_id = 1
-
-[node name="PointLight2D3" type="PointLight2D" parent="Area2D" unique_id=2108516218]
-position = Vector2(1, 1.0000005)
-scale = Vector2(0.35, 0.35)
-texture = ExtResource("32_xxc7i")
-texture_scale = 1.98
 
 [node name="Area2D2" parent="." unique_id=1172429116 instance=ExtResource("39_0f0xx")]
 z_index = -2
 position = Vector2(4369, 582)
-scale = Vector2(0.5, 0.5)
-
-[node name="PointLight2D4" type="PointLight2D" parent="Area2D2" unique_id=1851262997]
-z_index = -2
-position = Vector2(-0.9999995, -4.7683716e-07)
-scale = Vector2(0.35, 0.35)
-texture = ExtResource("32_xxc7i")
-texture_scale = 1.98
 
 [node name="Area2D3" parent="." unique_id=134276004 instance=ExtResource("39_0f0xx")]
 light_mask = 2
 visibility_layer = 2
 position = Vector2(10704, -37)
-scale = Vector2(0.5, 0.5)
 coin_id = 2
-
-[node name="PointLight2D5" type="PointLight2D" parent="Area2D3" unique_id=1573273547]
-position = Vector2(1.0000001, 4.7683716e-07)
-scale = Vector2(0.35, 0.35)
-texture = ExtResource("32_xxc7i")
-texture_scale = 1.98
 
 [node name="PortalFinNivel" type="Sprite2D" parent="." unique_id=251286700 groups=["Portals"]]
 z_index = -2

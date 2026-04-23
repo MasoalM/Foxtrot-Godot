@@ -39,7 +39,6 @@
 [ext_resource type="PackedScene" uid="uid://dtcw45iyc4vgd" path="res://powerUps/dobleSalto.tscn" id="33_dvpod"]
 [ext_resource type="PackedScene" uid="uid://6rcs6agfvdu0" path="res://powerUps/escudo.tscn" id="34_x8vmk"]
 [ext_resource type="PackedScene" uid="uid://b1ftwkgwp40yb" path="res://powerUps/vida.tscn" id="35_3vl3f"]
-[ext_resource type="Texture2D" uid="uid://yna61wn5d72r" path="res://Sprites/Coleccionables/Coleccionable.png" id="37_3myl4"]
 [ext_resource type="PackedScene" uid="uid://digj45m3nsyp4" path="res://Enemigos/wolfior.tscn" id="44_6f0j1"]
 [ext_resource type="PackedScene" uid="uid://cb6oqqy6h61jd" path="res://Enemigos/piranha.tscn" id="45_y6dms"]
 [ext_resource type="Texture2D" uid="uid://c6hicl8pigqrp" path="res://Sprites/Portals/PortalNivel1.png" id="46_xradi"]
@@ -60,6 +59,7 @@
 [ext_resource type="PackedScene" uid="uid://bbru0hmobasum" path="res://powerUps/CorazonRojo.tscn" id="58_rs6mn"]
 [ext_resource type="PackedScene" uid="uid://csgorm16kj0mv" path="res://Otros/liana.tscn" id="59_utksw"]
 [ext_resource type="PackedScene" uid="uid://c83oj12tyaneq" path="res://Sprites/Checkpoint/checkpoint.tscn" id="60_7xf2h"]
+[ext_resource type="PackedScene" uid="uid://d0ordmi0yu7tp" path="res://Sprites/Coleccionables/coleccionable.tscn" id="60_q6r8m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rn8p"]
 texture = ExtResource("3_q0edt")
@@ -378,7 +378,7 @@ layer_5/name = "water"
 layer_5/tile_data = PackedInt32Array(524344, 31, 0, 524343, 31, 0, 524342, 31, 0, 524341, 31, 0, 524340, 31, 0, 524339, 31, 0, 524338, 31, 0, 524337, 31, 0, 524336, 31, 0, 524335, 31, 0, 524334, 31, 0, 524333, 31, 0, 524332, 31, 0, 524331, 31, 0, 524330, 31, 0, 524329, 31, 0, 524328, 31, 0, 524327, 31, 0, 524326, 31, 0, 524325, 31, 0, 524324, 31, 0, 524323, 31, 0, 524322, 31, 0, 524321, 31, 0, 524320, 31, 0, 524319, 31, 0, 524318, 31, 0, 524317, 31, 0, 524316, 31, 0, 524315, 31, 0, 524314, 31, 0)
 
 [node name="PointLight2D5" type="PointLight2D" parent="." unique_id=1573273547]
-position = Vector2(14358.001, 56)
+position = Vector2(14253, 87)
 scale = Vector2(0.10956534, 0.15925807)
 texture = ExtResource("32_xhdyk")
 texture_scale = 1.98
@@ -391,7 +391,7 @@ texture = ExtResource("32_xhdyk")
 texture_scale = 1.98
 
 [node name="PointLight2D3" type="PointLight2D" parent="." unique_id=2108516218]
-position = Vector2(7773.9277, 420.2975)
+position = Vector2(7791.9995, 418.99997)
 scale = Vector2(0.3194546, 0.37604526)
 texture = ExtResource("32_xhdyk")
 texture_scale = 1.98
@@ -416,25 +416,6 @@ position = Vector2(5343, 515)
 
 [node name="RigidBody2D2" parent="." unique_id=2136293655 instance=ExtResource("35_3vl3f")]
 position = Vector2(8158, 309)
-
-[node name="Coleccionable3" type="Sprite2D" parent="." unique_id=66914831]
-texture_filter = 1
-position = Vector2(14357, 54)
-scale = Vector2(2, 2)
-texture = ExtResource("37_3myl4")
-
-[node name="Coleccionable2" type="Sprite2D" parent="." unique_id=204832148]
-z_index = -2
-texture_filter = 1
-position = Vector2(11140.637, 94.0844)
-scale = Vector2(2, 2)
-texture = ExtResource("37_3myl4")
-
-[node name="Coleccionable" type="Sprite2D" parent="." unique_id=465529049]
-texture_filter = 1
-position = Vector2(7775.9272, 416.2975)
-scale = Vector2(2, 2)
-texture = ExtResource("37_3myl4")
 
 [node name="CharacterBody2D8" parent="." unique_id=547989863 instance=ExtResource("44_6f0j1")]
 modulate = Color(1, 0, 0, 1)
@@ -825,6 +806,17 @@ position = Vector2(13603, -214)
 
 [node name="Area2D6" parent="." unique_id=1406310529 instance=ExtResource("60_7xf2h")]
 position = Vector2(8702, 424)
+
+[node name="Area2D7" parent="." unique_id=604219173 instance=ExtResource("60_q6r8m")]
+position = Vector2(7792, 419)
+
+[node name="Area2D8" parent="." unique_id=1545410951 instance=ExtResource("60_q6r8m")]
+position = Vector2(11134, 93)
+coin_id = 1
+
+[node name="Area2D9" parent="." unique_id=1878375805 instance=ExtResource("60_q6r8m")]
+position = Vector2(14258, 87)
+coin_id = 2
 
 [connection signal="body_entered" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_exited"]

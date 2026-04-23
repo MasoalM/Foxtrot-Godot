@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://cp5pub8lyfwwh"]
+
+[ext_resource type="Texture2D" uid="uid://ypafyky4dcp" path="res://Sprites/Enemigos/BOSS/Idle0Hits/BossDefinitivoIdle1.png" id="1_naidi"]
+[ext_resource type="Texture2D" uid="uid://dgd66b70e77h4" path="res://Sprites/Enemigos/BOSS/Idle0Hits/BossDefinitivoIdle2.png" id="2_i5rsb"]
+[ext_resource type="Texture2D" uid="uid://b6vq8bi7wp5su" path="res://Sprites/Enemigos/BOSS/Idle0Hits/BossDefinitivoIdle3.png" id="3_8teny"]
+[ext_resource type="Texture2D" uid="uid://caq481lw3bcmn" path="res://Sprites/Enemigos/BOSS/Idle0Hits/BossDefinitivoIdle4.png" id="4_eae3g"]
+[ext_resource type="Texture2D" uid="uid://celrylb6cnk1f" path="res://Sprites/Enemigos/BOSS/Idle1Hit/BossDefinitivoIdle1Hit1.png" id="5_4befi"]
+[ext_resource type="Texture2D" uid="uid://cst1mscykm3d3" path="res://Sprites/Enemigos/BOSS/Idle1Hit/BossDefinitivoIdle1Hit2.png" id="6_c0gxf"]
+[ext_resource type="Texture2D" uid="uid://ddrokwmr6hvmk" path="res://Sprites/Enemigos/BOSS/Idle1Hit/BossDefinitivoIdle1Hit3.png" id="7_2jmdy"]
+[ext_resource type="Texture2D" uid="uid://kcb0kufddnx3" path="res://Sprites/Enemigos/BOSS/Idle1Hit/BossDefinitivoIdle1Hit4.png" id="8_2h6gn"]
+[ext_resource type="Texture2D" uid="uid://blo4nkof7h6su" path="res://Sprites/Enemigos/BOSS/Idle2Hits/BossDefinitivoIdle2Hits1.png" id="9_hwuvl"]
+[ext_resource type="Texture2D" uid="uid://bekbpdpj588n" path="res://Sprites/Enemigos/BOSS/Idle2Hits/BossDefinitivoIdle2Hits2.png" id="10_4xg5j"]
+[ext_resource type="Texture2D" uid="uid://di85yv0jxbhre" path="res://Sprites/Enemigos/BOSS/Idle2Hits/BossDefinitivoIdle2Hits3.png" id="11_qc0o5"]
+[ext_resource type="Texture2D" uid="uid://bbq5saj2nqqvm" path="res://Sprites/Enemigos/BOSS/Idle2Hits/BossDefinitivoIdle2Hits4.png" id="12_7j4eu"]
+[ext_resource type="Texture2D" uid="uid://c8el1eagp2ww7" path="res://Sprites/Enemigos/BOSS/Idle3Hits/BossDefinitivoIdle3Hits1.png" id="13_jjhlj"]
+[ext_resource type="Texture2D" uid="uid://ch78nxmosr1e8" path="res://Sprites/Enemigos/BOSS/Idle3Hits/BossDefinitivoIdle3Hits2.png" id="14_lma75"]
+[ext_resource type="Texture2D" uid="uid://bokhotmbdkl71" path="res://Sprites/Enemigos/BOSS/Idle3Hits/BossDefinitivoIdle3Hits3.png" id="15_luofu"]
+[ext_resource type="Texture2D" uid="uid://crypcfndqd3cm" path="res://Sprites/Enemigos/BOSS/Idle3Hits/BossDefinitivoIdle3Hits4.png" id="16_jix7o"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5qnxw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_naidi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_i5rsb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8teny")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_eae3g")
+}],
+"loop": true,
+"name": &"idle0hits",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_4befi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_c0gxf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2jmdy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2h6gn")
+}],
+"loop": true,
+"name": &"idle1hit",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_hwuvl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_4xg5j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_qc0o5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_7j4eu")
+}],
+"loop": true,
+"name": &"idle2hits",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_jjhlj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_lma75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_luofu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_jix7o")
+}],
+"loop": true,
+"name": &"idle3hits",
+"speed": 15.0
+}]
+
+[node name="Boss" type="Node2D" unique_id=884704565]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=838737398]
+sprite_frames = SubResource("SpriteFrames_5qnxw")
+animation = &"idle0hits"
+autoplay = "idle0hits"
+frame_progress = 0.9470914

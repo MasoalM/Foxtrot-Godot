@@ -36,7 +36,6 @@
 [ext_resource type="PackedScene" uid="uid://dtcw45iyc4vgd" path="res://powerUps/dobleSalto.tscn" id="32_hu74c"]
 [ext_resource type="PackedScene" uid="uid://6rcs6agfvdu0" path="res://powerUps/escudo.tscn" id="33_sh013"]
 [ext_resource type="PackedScene" uid="uid://b1ftwkgwp40yb" path="res://powerUps/vida.tscn" id="34_nc06k"]
-[ext_resource type="Texture2D" uid="uid://yna61wn5d72r" path="res://Sprites/Coleccionables/Coleccionable.png" id="35_6kidr"]
 [ext_resource type="PackedScene" uid="uid://cv4mf7w2d3xe0" path="res://Otros/jungFrond.tscn" id="36_6aqdr"]
 [ext_resource type="PackedScene" uid="uid://bjtf1vhnso0ys" path="res://Enemigos/hawrker.tscn" id="38_ijlxt"]
 [ext_resource type="Texture2D" uid="uid://c6hicl8pigqrp" path="res://Sprites/Portals/PortalNivel1.png" id="41_cc4s7"]
@@ -49,6 +48,7 @@
 [ext_resource type="PackedScene" uid="uid://bi8u5lyedj4lt" path="res://niveles/level_ui.tscn" id="48_uec6p"]
 [ext_resource type="PackedScene" uid="uid://c83oj12tyaneq" path="res://Sprites/Checkpoint/checkpoint.tscn" id="49_bjwex"]
 [ext_resource type="AudioStream" uid="uid://bpqhx5sm3hwwo" path="res://Sounds/NoTime.ogg" id="50_7y6eg"]
+[ext_resource type="PackedScene" uid="uid://d0ordmi0yu7tp" path="res://Sprites/Coleccionables/coleccionable.tscn" id="50_opcjv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_86eud"]
 texture = ExtResource("3_r10fn")
@@ -305,21 +305,9 @@ scale = Vector2(0.10956534, 0.15925807)
 texture = ExtResource("31_qk3jb")
 texture_scale = 1.98
 
-[node name="PointLight2D4" type="PointLight2D" parent="." unique_id=1851262997]
-position = Vector2(5759.0005, 156)
-scale = Vector2(0.27029946, 0.3390918)
-texture = ExtResource("31_qk3jb")
-texture_scale = 1.98
-
 [node name="PointLight2D3" type="PointLight2D" parent="." unique_id=2108516218]
 position = Vector2(8928, 96)
 scale = Vector2(0.3194546, 0.37604526)
-texture = ExtResource("31_qk3jb")
-texture_scale = 1.98
-
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1736189160]
-texture_filter = 1
-position = Vector2(13302, -35)
 texture = ExtResource("31_qk3jb")
 texture_scale = 1.98
 
@@ -341,24 +329,6 @@ position = Vector2(4356, 67)
 
 [node name="RigidBody2D2" parent="." unique_id=2136293655 instance=ExtResource("34_nc06k")]
 position = Vector2(402, -44)
-
-[node name="Coleccionable3" type="Sprite2D" parent="." unique_id=66914831]
-texture_filter = 1
-position = Vector2(13296, -35)
-scale = Vector2(2, 2)
-texture = ExtResource("35_6kidr")
-
-[node name="Coleccionable2" type="Sprite2D" parent="." unique_id=204832148]
-texture_filter = 1
-position = Vector2(5759, 159)
-scale = Vector2(2, 2)
-texture = ExtResource("35_6kidr")
-
-[node name="Coleccionable" type="Sprite2D" parent="." unique_id=465529049]
-texture_filter = 1
-position = Vector2(8929, 97)
-scale = Vector2(2, 2)
-texture = ExtResource("35_6kidr")
 
 [node name="Node2D" parent="." unique_id=220363280 instance=ExtResource("36_6aqdr")]
 position = Vector2(8661, 521)
@@ -439,6 +409,17 @@ position = Vector2(10244, 425)
 
 [node name="RigidBody2D3" parent="." unique_id=917221941 instance=ExtResource("33_sh013")]
 position = Vector2(12352, 170)
+
+[node name="Area2D" parent="." unique_id=604219173 instance=ExtResource("50_opcjv")]
+position = Vector2(5762, 144)
+
+[node name="Area2D2" parent="." unique_id=816645255 instance=ExtResource("50_opcjv")]
+position = Vector2(8831, 193)
+coin_id = 1
+
+[node name="Area2D3" parent="." unique_id=2121880747 instance=ExtResource("50_opcjv")]
+position = Vector2(13304, -31)
+coin_id = 2
 
 [connection signal="body_entered" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_exited"]
