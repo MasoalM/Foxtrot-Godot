@@ -17,6 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://b6ueq1ia1s4i2" path="res://Menús/assets/fondos/MoxAniFondo6.png" id="15_gir83"]
 [ext_resource type="Texture2D" uid="uid://dedn0xq1lfde" path="res://Menús/assets/fondos/MoxAniFondo7.png" id="16_olrbs"]
 [ext_resource type="Texture2D" uid="uid://pp8tto0suolf" path="res://Menús/assets/fondos/MoxAniFondo8.png" id="17_rc1ya"]
+[ext_resource type="Texture2D" uid="uid://bv8dr4mx3t6n0" path="res://Menús/assets/logo/LogoProvisional1.png" id="18_um5fd"]
+[ext_resource type="Texture2D" uid="uid://b6lhmgppwuek3" path="res://Menús/assets/logo/LogoProvisional2.png" id="19_gir83"]
+[ext_resource type="Texture2D" uid="uid://b8k8cgfbphg4q" path="res://Menús/assets/logo/LogoProvisional3.png" id="20_olrbs"]
+[ext_resource type="Texture2D" uid="uid://clwsfcpof8uvv" path="res://Menús/assets/logo/LogoProvisional4.png" id="21_rc1ya"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h4avt"]
 animations = [{
@@ -92,6 +96,26 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_jvwso"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_um5fd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_gir83")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_olrbs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_rc1ya")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="MenúPrincipal" type="Node2D" unique_id=347318251]
 
 [node name="Música Menú" type="AudioStreamPlayer2D" parent="." unique_id=703604580]
@@ -117,9 +141,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -128.0
-offset_top = -291.0
+offset_top = -223.0
 offset_right = 128.0
-offset_bottom = -87.0
+offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_x568q")
@@ -171,6 +195,12 @@ scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_h4avt")
 animation = &"bubble"
 autoplay = "bubble"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Menú Principal" unique_id=2020468221]
+position = Vector2(648, 68)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_jvwso")
+autoplay = "default"
 
 [connection signal="pressed" from="Menú Principal/Botones/Cargar Partida" to="Menú Principal/Botones" method="_on_cargar_partida_pressed"]
 [connection signal="pressed" from="Menú Principal/Botones/Nueva Partida" to="Menú Principal/Botones" method="_on_nueva_partida_pressed"]
