@@ -49,6 +49,7 @@
 [ext_resource type="AudioStream" uid="uid://dmybnkonokowx" path="res://Sounds/PrePortal.mp3" id="48_cpomx"]
 [ext_resource type="AudioStream" uid="uid://bpqhx5sm3hwwo" path="res://Sounds/NoTime.ogg" id="49_ne4c4"]
 [ext_resource type="PackedScene" uid="uid://sw3iu1espuey" path="res://powerUps/guante.tscn" id="50_oaq5l"]
+[ext_resource type="PackedScene" uid="uid://c83oj12tyaneq" path="res://Sprites/Checkpoint/checkpoint.tscn" id="51_dsjyb"]
 [ext_resource type="PackedScene" uid="uid://d1kbkbnk0n07s" path="res://Enemigos/BigRanha.tscn" id="51_vq4ol"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rn8p"]
@@ -386,6 +387,9 @@ position = Vector2(-1035, -1141)
 texture = ExtResource("32_xxc7i")
 texture_scale = 14.87
 
+[node name="RigidBody2D3" parent="." unique_id=917221941 instance=ExtResource("34_cw12d")]
+position = Vector2(7200, 170)
+
 [node name="RigidBody2D" parent="." unique_id=637563091 instance=ExtResource("34_cw12d")]
 position = Vector2(5455, 175)
 
@@ -410,16 +414,17 @@ coin_id = 2
 
 [node name="PortalFinNivel" type="Sprite2D" parent="." unique_id=251286700 groups=["Portals"]]
 z_index = -2
-position = Vector2(7566, 324)
+position = Vector2(7568, 266)
+scale = Vector2(2, 2)
 texture = ExtResource("44_p2uki")
 script = ExtResource("45_3dyun")
-escena_destino = "res://niveles/level_selector.tscn"
+escena_destino = "res://niveles/nivel5_bossFight.tscn"
 
 [node name="PointLight2D" type="PointLight2D" parent="PortalFinNivel" unique_id=1218722798]
 position = Vector2(1, 9.999998)
 scale = Vector2(0.680147, 0.67663515)
-color = Color(0.85, 1, 0, 1)
-energy = 2.0
+color = Color(1, 0, 0, 1)
+energy = 5.0
 texture = ExtResource("32_xxc7i")
 
 [node name="Area2D" type="Area2D" parent="PortalFinNivel" unique_id=1997980636 groups=["Portals"]]
@@ -457,6 +462,12 @@ pitch_scale = 0.75
 
 [node name="Bigranha" parent="." unique_id=826057812 instance=ExtResource("51_vq4ol")]
 position = Vector2(600, 647)
+
+[node name="Area2D6" parent="." unique_id=1406310529 instance=ExtResource("51_dsjyb")]
+position = Vector2(4289, 230)
+
+[node name="Area2D5" parent="." unique_id=1045420692 instance=ExtResource("51_dsjyb")]
+position = Vector2(7070, 167)
 
 [connection signal="body_entered" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_exited"]

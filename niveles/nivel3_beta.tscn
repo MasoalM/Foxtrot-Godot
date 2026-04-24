@@ -647,16 +647,6 @@ position = Vector2(13733, 748)
 limiteIzquierda = 13000.0
 limiteDerecha = 14000.0
 
-[node name="piranha41" parent="." unique_id=1741780248 instance=ExtResource("45_y6dms")]
-modulate = Color(1, 0, 0, 1)
-position = Vector2(13788, 666)
-scale = Vector2(2, 2)
-speed = 200.0
-jump_above_surface = 600.0
-swim_speed = 2.5
-limiteIzquierda = 13000.0
-limiteDerecha = 16000.0
-
 [node name="piranha42" parent="." unique_id=169249739 instance=ExtResource("45_y6dms")]
 position = Vector2(13707, 637)
 limiteIzquierda = 13000.0
