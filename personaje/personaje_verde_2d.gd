@@ -402,66 +402,126 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 					liana_actual.recibir_inercia(inercia)  # ← pasar la inercia real
 
 func _animaciones() -> void:
-	# Hurt y death tienen prioridad absoluta, nada los interrumpe
-	if is_dead or is_hurt:
-		return
+	if proyectil_actual == bala_hielo:
+		# Hurt y death tienen prioridad absoluta, nada los interrumpe
+		if is_dead or is_hurt:
+			return
+			
+		if en_liana:
+			state_machine.travel("vineIce")
+			return
 		
-	if en_liana:
-		state_machine.travel("vine")
-		return
-	
-	if (not bloquearControles) and Input.is_action_just_pressed("DispararBasico") and (shoot_timer <= 0):
-		if get_tree().get_nodes_in_group("ProyectilAliado").size() < 3:
-			isShooting = true
-			if ataqueCarg:
-				state_machine.travel("super_shoot")
-			else:	
-				state_machine.travel("shoot")
+		if (not bloquearControles) and Input.is_action_just_pressed("DispararBasico") and (shoot_timer <= 0):
+			if get_tree().get_nodes_in_group("ProyectilAliado").size() < 3:
+				isShooting = true
+				state_machine.travel("shootIce")
+				return
+
+		if isShooting:
 			return
 
-	if isShooting:
-		return
+		if is_jumping:
+			return
 
-	if is_jumping:
-		return
+		if is_fall:
+			return
 
-	if is_fall:
-		return
+		# Transición aire → aterrizaje
+		if state_machine.get_current_node() == "airIce" and is_on_floor():
+			is_fall = true
+			state_machine.travel("fallIce")
+			return
 
-	# Transición aire → aterrizaje
-	if state_machine.get_current_node() == "air" and is_on_floor():
-		is_fall = true
-		state_machine.travel("fall")
-		return
+		# En el aire
+		if not is_on_floor():
+			state_machine.travel("airIce")
+			return
 
-	# En el aire
-	if not is_on_floor():
-		state_machine.travel("air")
-		return
+		# Salto (solo se registra estando en el suelo)
+		if (not bloquearControles) and Input.is_action_just_pressed("ui_accept"):
+			is_jumping = true
+			state_machine.travel("jumpIce")
+			return
 
-	# Salto (solo se registra estando en el suelo)
-	if (not bloquearControles) and Input.is_action_just_pressed("ui_accept"):
-		is_jumping = true
-		state_machine.travel("jump")
-		return
+		# AFK: se activa si se supera el umbral de inactividad
+		if realAFK >= afk and not afkAnimation:
+			afkAnimation = true
+			state_machine.travel("afkIce")
+			return
 
-	# AFK: se activa si se supera el umbral de inactividad
-	if realAFK >= afk and not afkAnimation:
-		afkAnimation = true
-		state_machine.travel("afk")
-		return
+		# Mientras AFK está activo, no cambiar de animación
+		if afkAnimation:
+			return
 
-	# Mientras AFK está activo, no cambiar de animación
-	if afkAnimation:
-		return
+		# Animaciones de movimiento en suelo
+		if velocity.x == 0:
+			state_machine.travel("staticIce")
+		elif abs(velocity.x) < velocidad_correr:
+			state_machine.travel("idleIce")
+		else:
+			state_machine.travel("runningIce")
+		
+	else:	
+		# Hurt y death tienen prioridad absoluta, nada los interrumpe
+		if is_dead or is_hurt:
+			return
+			
+		if en_liana:
+			state_machine.travel("vine")
+			return
+		
+		if (not bloquearControles) and Input.is_action_just_pressed("DispararBasico") and (shoot_timer <= 0):
+			if get_tree().get_nodes_in_group("ProyectilAliado").size() < 3:
+				isShooting = true
+				if ataqueCarg:
+					state_machine.travel("super_shoot")
+				else:	
+					state_machine.travel("shoot")
+				return
 
-	# Animaciones de movimiento en suelo
-	if velocity.x == 0:
-		state_machine.travel("static")
-	elif abs(velocity.x) < velocidad_correr:
-		state_machine.travel("idle")
-	else:
-		state_machine.travel("running")
+		if isShooting:
+			return
+
+		if is_jumping:
+			return
+
+		if is_fall:
+			return
+
+		# Transición aire → aterrizaje
+		if state_machine.get_current_node() == "air" and is_on_floor():
+			is_fall = true
+			state_machine.travel("fall")
+			return
+
+		# En el aire
+		if not is_on_floor():
+			state_machine.travel("air")
+			return
+
+		# Salto (solo se registra estando en el suelo)
+		if (not bloquearControles) and Input.is_action_just_pressed("ui_accept"):
+			is_jumping = true
+			state_machine.travel("jump")
+			return
+
+		# AFK: se activa si se supera el umbral de inactividad
+		if realAFK >= afk and not afkAnimation:
+			afkAnimation = true
+			state_machine.travel("afk")
+			return
+
+		# Mientras AFK está activo, no cambiar de animación
+		if afkAnimation:
+			return
+
+		# Animaciones de movimiento en suelo
+		if velocity.x == 0:
+			state_machine.travel("static")
+		elif abs(velocity.x) < velocidad_correr:
+			state_machine.travel("idle")
+		else:
+			state_machine.travel("running")
 
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
@@ -470,19 +530,35 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 			queue_free()
 			
 		"hurt":
-			state_machine.travel("static")
+			if proyectil_actual == bala_hielo:
+				state_machine.travel("staticIce")
+			else:
+				state_machine.travel("static")
 		
 		"shoot":
 			isShooting = false
 			is_jumping = false
 			is_fall = false
 			#state_machine.travel("static")
+		"shootIce":
+			isShooting = false
+			is_jumping = false
+			is_fall = false
 		"jump":
 			# Al acabar el impulso visual, pasar a la animación de vuelo
 			is_jumping = false
 			state_machine.travel("air")
+			
+		"jumpIce":
+			# Al acabar el impulso visual, pasar a la animación de vuelo
+			is_jumping = false
+			state_machine.travel("airIce")
 
 		"fall":
+			# Al acabar el aterrizaje, volver al estado normal
+			is_fall = false
+			
+		"fallIce":
 			# Al acabar el aterrizaje, volver al estado normal
 			is_fall = false
 
@@ -491,6 +567,11 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 			afkAnimation = false  # ← era "==" antes, bug corregido
 			realAFK = 0
 			state_machine.travel("static")
+		"afkIce":
+			# Al acabar el AFK, esperar el mismo tiempo antes de repetir
+			afkAnimation = false  # ← era "==" antes, bug corregido
+			realAFK = 0
+			state_machine.travel("staticIce")
 
 func _dañar():
 		if is_hurt or is_dead:
