@@ -14,6 +14,11 @@ signal vidas_juego_cambiadas(vidas)
 
 var vidas_juego = 5
 var maxVida = 99
+var tiempo_activo = false
+
+func _ready():
+	
+	set_process(true)
 
 func perder_vida():
 	vidas_juego -= 1
@@ -23,6 +28,10 @@ func ganar_vida():
 	if vidas_juego < maxVida:
 		vidas_juego += 1
 		emit_signal("vidas_juego_cambiadas", vidas_juego)
+		
+func _process(delta):
+	if tiempo_activo:
+		actualizar_tiempo(delta)
 
 # =========================
 #  COLECCIONABLES
@@ -67,6 +76,7 @@ func reiniciar_tiempo():
 # =========================
 var checkpoint_position: Vector2 = Vector2.ZERO
 var checkpoint_activo = false
+var checkpoint_tiempo: float = 0.0
 
 # =========================
 #  RESET DE NIVEL
@@ -74,6 +84,7 @@ var checkpoint_activo = false
 func resetear_nivel():
 	resetear_monedas()
 	reiniciar_tiempo()
+	vidas_juego = 5
 	checkpoint_activo = false
 	checkpoint_position = Vector2.ZERO
 	

@@ -122,7 +122,20 @@ func _apply_swim(delta):
 func _on_AnimatedSprite2D_animation_finished():
 	if current_anim == "bite":
 		play_anim("movement")
-
+func congelar():
+	print("congelado")
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	pass # Replace with function body.
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("ProyectilHielo"):
+		animated_sprite.modulate = Color(0.1, 0.6, 1)
+
+		set_physics_process(false)
+
+		await get_tree().create_timer(2.0).timeout
+
+		set_physics_process(true)
+		animated_sprite.modulate = Color(1, 1, 1)

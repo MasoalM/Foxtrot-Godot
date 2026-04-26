@@ -16,6 +16,7 @@ var corazon_escudo = preload("res://hud/ShieldHeart.png")
 var moneda_textura = preload("res://Sprites/Coleccionables/Coleccionable.png")
 
 func _ready():
+	GameState.tiempo_activo = true
 	GameState.tiempo_cambiado.connect(actualizar_tiempo)
 	actualizar_tiempo(GameState.tiempo_restante)
 	GameState.vidas_juego_cambiadas.connect(actualizar_ups)

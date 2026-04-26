@@ -399,7 +399,7 @@ texture = ExtResource("32_xhdyk")
 texture_scale = 1.98
 
 [node name="PointLight2D6" type="PointLight2D" parent="." unique_id=737344459]
-position = Vector2(16736, 65.000015)
+position = Vector2(16713.998, 76.00001)
 scale = Vector2(2.027684, 1.1722213)
 energy = 1.15
 texture = ExtResource("32_xhdyk")
@@ -809,6 +809,9 @@ coin_id = 1
 [node name="Area2D9" parent="." unique_id=1878375805 instance=ExtResource("60_q6r8m")]
 position = Vector2(14258, 87)
 coin_id = 2
+
+[node name="Area2D10" parent="." unique_id=1941752473 instance=ExtResource("55_g8d7h")]
+position = Vector2(579, 411)
 
 [connection signal="body_entered" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_exited"]

@@ -81,16 +81,17 @@ var liana_actual: Node2D = null
 var liana_segmento: RigidBody2D = null
 
 func _ready():
-	#get_tree().debug_collisions_hint = true
 	if not GameState.checkpoint_activo:
 		GameState.reiniciar_tiempo()
-	
+	else:#en caso de haber pillado el checkpoint volvemos al tiempo que habia cuando lo cogimos
+		GameState.tiempo_restante = GameState.checkpoint_tiempo
+		GameState.emit_signal("tiempo_cambiado", int(GameState.tiempo_restante))
+		
 	GameState.tiempo_agotado.connect(_on_tiempo_agotado)
 	proyectil_actual = bala
-	
 	if GameState.checkpoint_activo:
 		global_position = GameState.checkpoint_position
-	
+
 	emit_signal("vidas_cambiadas", vidas, escudo)
 
 
@@ -606,14 +607,16 @@ func _dañar():
 
 			await get_tree().create_timer(1.0).timeout
 
-			if GameState.vidas_juego > 0:
+			if GameState.vidas_juego > -1:
+				# antes estaba en 0 pero le resta las vidas_juego antes de llegar aqui ,oops 
 				if GameState.checkpoint_activo:
 					get_tree().reload_current_scene()
 				else:
+					GameState.resetear_monedas()
 					get_tree().reload_current_scene()
 			else:
 				print("mox ha muerto y no le quedan vidas")
-				GameState.reiniciar()
+				GameState.resetear_nivel()
 				get_tree().reload_current_scene()
 				
 		else:
@@ -684,7 +687,7 @@ func _on_tiempo_agotado():
 
 	await get_tree().create_timer(1.0).timeout
 
-	GameState.reiniciar()
+	GameState.resetear_nivel()
 	get_tree().reload_current_scene()
 	
 func set_water():
