@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8gs8ujabdruu"
-path="res://.godot/imported/templo.png-1d1f98cb6a00bde86bf3fff4c6f47295.ctex"
+uid="uid://cgo8dfktxm8mt"
+path="res://.godot/imported/temploCasc.png-ac5a7367bc5743113d79120c4ff5ac1e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/parallax/Cataratas/templo.png"
-dest_files=["res://.godot/imported/templo.png-1d1f98cb6a00bde86bf3fff4c6f47295.ctex"]
+source_file="res://Sprites/parallax/Cataratas/temploCasc.png"
+dest_files=["res://.godot/imported/temploCasc.png-ac5a7367bc5743113d79120c4ff5ac1e.ctex"]
 
 [params]
 
