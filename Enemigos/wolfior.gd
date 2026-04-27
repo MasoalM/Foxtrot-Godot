@@ -60,7 +60,7 @@ var freeze_timer = 0.0
 
 
 func _ready():
-	get_tree().debug_collisions_hint = false
+	get_tree().debug_collisions_hint = true
 	
 	add_to_group("Enemigos")
 	player = get_tree().get_first_node_in_group("player")

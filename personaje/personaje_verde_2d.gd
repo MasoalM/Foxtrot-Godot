@@ -52,7 +52,6 @@ var isGrounded = true
 
 var proyectil_actual
 var dobSalAct = false
-var guanteActivo = false
 var dobSal = false
 var ataqueCarg = false
 var tween_parpadeo
@@ -81,6 +80,7 @@ var liana_actual: Node2D = null
 var liana_segmento: RigidBody2D = null
 
 func _ready():
+	get_tree().debug_collisions_hint = true
 	if not GameState.checkpoint_activo:
 		GameState.reiniciar_tiempo()
 	else:#en caso de haber pillado el checkpoint volvemos al tiempo que habia cuando lo cogimos
