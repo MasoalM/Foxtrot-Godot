@@ -20,6 +20,7 @@ extends CharacterBody2D
 @onready var deathSound = $AudioStreamPlayer2DDeath
 
 var monedas_estado = [false, false, false]
+var deathScreen = preload("res://niveles/DeathScreen.tscn")
 
 signal vidas_cambiadas(vidas, escudo)
 signal monedas_cambiadas(monedas_estado)
@@ -607,7 +608,7 @@ func _dañar():
 
 			await get_tree().create_timer(1.0).timeout
 
-			if GameState.vidas_juego > -1:
+			if GameState.vidas_juego > 0:
 				# antes estaba en 0 pero le resta las vidas_juego antes de llegar aqui ,oops 
 				if GameState.checkpoint_activo:
 					get_tree().reload_current_scene()
@@ -616,9 +617,7 @@ func _dañar():
 					get_tree().reload_current_scene()
 			else:
 				print("mox ha muerto y no le quedan vidas")
-				GameState.resetear_nivel()
-				get_tree().reload_current_scene()
-				
+				get_tree().root.add_child(deathScreen.instantiate())
 		else:
 			is_hurt = true
 			state_machine.travel("hurt")
@@ -681,14 +680,10 @@ func _on_tiempo_agotado():
 	is_dead = true
 	bloquearControles = true
 	state_machine.travel("death")
-
-	
 	GameState.vidas_juego = 0
-
 	await get_tree().create_timer(1.0).timeout
-
-	GameState.resetear_nivel()
-	get_tree().reload_current_scene()
+	
+	get_tree().root.add_child(deathScreen.instantiate())
 	
 func set_water():
 	water=true

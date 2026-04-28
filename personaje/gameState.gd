@@ -55,7 +55,7 @@ func resetear_monedas():
 signal tiempo_cambiado(tiempo)
 signal tiempo_agotado
 
-var tiempo_restante = 120.0
+var tiempo_restante = 241.0
 var musica_acelerada = false
 
 func actualizar_tiempo(delta):
@@ -68,7 +68,7 @@ func actualizar_tiempo(delta):
 			emit_signal("tiempo_agotado")
 
 func reiniciar_tiempo():
-	tiempo_restante = 120
+	tiempo_restante = 241
 	emit_signal("tiempo_cambiado", tiempo_restante)
 
 # =========================

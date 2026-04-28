@@ -8,7 +8,7 @@ func _ready():
 	musica.pitch_scale = 1
 
 func _process(_delta: float):
-	if GameState.tiempo_restante <= 21 and not musica_acelerada: # El and not musica_acelerada es para que no asigne el valor constantemente
+	if GameState.tiempo_restante <= 61 and not musica_acelerada: # El and not musica_acelerada es para que no asigne el valor constantemente
 		musica.stop()
 		noTimeSound.play()
 		musica_acelerada = true
