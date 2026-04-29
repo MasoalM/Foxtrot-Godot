@@ -14,18 +14,17 @@ collision_mask = 7
 script = ExtResource("1_1n3i7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1060228680 groups=["ProyectilAliado", "ataqueCargado"]]
-position = Vector2(159, 1)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_5f1c6")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1257452750]
 modulate = Color(1, 0.3987948, 0.3423099, 1)
-position = Vector2(160, 7)
+position = Vector2(0, 7)
 scale = Vector2(2, 2)
 texture = ExtResource("2_sfl78")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=2122808382]
-position = Vector2(161.00002, -8.077936e-28)
+position = Vector2(-1.1920929e-07, -1.148e-41)
 scale = Vector2(0.4986089, 0.25903615)
 color = Color(1, 0.5015858, 0.44138303, 1)
 energy = 2.0
