@@ -545,6 +545,11 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 			is_jumping = false
 			is_fall = false
 			#state_machine.travel("static")
+		"super_shoot":
+			isShooting = false
+			is_jumping = false
+			is_fall = false
+		
 		"shootIce":
 			isShooting = false
 			is_jumping = false
