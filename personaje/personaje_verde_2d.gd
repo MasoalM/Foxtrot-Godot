@@ -583,7 +583,10 @@ func _dañar():
 		damageSound.play()
 		if escudo > 0:
 			is_hurt = true;
-			state_machine.travel("hurt")
+			if proyectil_actual == bala_hielo:
+				state_machine.travel("hurtIce")
+			else:
+				state_machine.travel("hurt")
 			escudo -= 1
 			# Reemplaza las dos líneas "is_hurt = true" por esto en ambos sitios:	
 			is_hurt = true
@@ -602,7 +605,10 @@ func _dañar():
 			deathSound.play()
 			is_dead = true
 			bloquearControles = true
-			state_machine.travel("death")
+			if proyectil_actual == bala_hielo:
+				state_machine.travel("deathIce")
+			else:
+				state_machine.travel("death")
 
 			GameState.perder_vida()
 
@@ -620,7 +626,10 @@ func _dañar():
 				get_tree().root.add_child(deathScreen.instantiate())
 		else:
 			is_hurt = true
-			state_machine.travel("hurt")
+			if proyectil_actual == bala_hielo:
+				state_machine.travel("hurtIce")
+			else:
+				state_machine.travel("hurt")
 			flash(3)
 			
 
@@ -679,7 +688,10 @@ func _on_tiempo_agotado():
 		
 	is_dead = true
 	bloquearControles = true
-	state_machine.travel("death")
+	if proyectil_actual == bala_hielo:
+		state_machine.travel("deathIce")
+	else:
+		state_machine.travel("death")
 	GameState.vidas_juego = 0
 	await get_tree().create_timer(1.0).timeout
 	
