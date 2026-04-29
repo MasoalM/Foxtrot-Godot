@@ -22,26 +22,34 @@ func morir():
 	queue_free()
 	
 func _on_body_entered(body):
-	if visible:
-		if body is TileMap:
-			var tilemap = body
+	if not visible:
+		return
+		
+	if body is TileMap:
+		var tilemap = body
 			
-			var offset = Vector2(32 if vel_bala > 0 else -32, 0)
-			var pos = tilemap.to_local(global_position + offset)
-			var cell = tilemap.local_to_map(pos)
+		var offset = Vector2(32 if vel_bala > 0 else -32, 0)
+		var pos = tilemap.to_local(global_position + offset)
+		var cell = tilemap.local_to_map(pos)
 
-			var tile_data = tilemap.get_cell_tile_data(0, cell)
+		var tile_data = tilemap.get_cell_tile_data(0, cell)
 
-			if tile_data == null:
-				return
+		if tile_data == null:
+			cell= tilemap.local_to_map(tilemap.to_local(global_position))
+			tile_data = tilemap.get_cell_tile_data(0, cell)
+	
+		if tile_data == null:
+			morir()
+			return
 
-			var destructible = tile_data.get_custom_data("destructible")
+		var destructible = tile_data.get_custom_data("destructible")
 
-			if destructible:
-				bloqueRotoSound.play()
-				tilemap.erase_cell(0, cell)
-				visible = false
-				await get_tree().create_timer(0.2).timeout
+		if destructible:
+			bloqueRotoSound.play()
+			tilemap.erase_cell(0, cell)
+			visible = false
+			await get_tree().create_timer(0.2).timeout
+			if is_instance_valid(self):
 				morir()
-			else:
-				morir()
+		else:
+			morir()
