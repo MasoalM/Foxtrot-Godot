@@ -225,14 +225,12 @@ func _physics_process(delta: float) -> void:
 
 		if (not bloquearControles) and Input.is_action_just_pressed("DispararBasico") and (shoot_timer <= 0):
 			_reset_afk()
-
 			# ATAQUE CARGADO
 			if ataqueCarg:
 				ataqueCarg = false
 				parar_parpadeo_cargado()
 				shoot_timer = shoot_cooldown
 				hacer_ataque_cargado()
-				
 				return
 
 			# DISPARO NORMAL
@@ -681,7 +679,10 @@ func recoger_moneda(id):
 func hacer_ataque_cargado():
 	var atk = ataqueCargado.instantiate()
 	get_parent().add_child(atk)
-	atk.global_position = global_position
+	atk.global_position = $Marker2D.global_position
+	if not mirando_derecha:
+		atk.scale.x *= -1
+		atk.vel_bala *= -1
 	
 func iniciar_parpadeo_cargado():
 	if tween_parpadeo:
