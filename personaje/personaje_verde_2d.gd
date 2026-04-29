@@ -117,7 +117,10 @@ func _physics_process(delta: float) -> void:
 				hurt_timer -= delta
 				if hurt_timer <= 0:
 					is_hurt = false
-					state_machine.travel("static")
+					if proyectil_actual == bala_hielo:
+						state_machine.travel("staticIce")
+					else:
+						state_machine.travel("static")
 		
 		isGrounded = is_on_floor()
 		
@@ -574,11 +577,21 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 			afkAnimation = false  # ← era "==" antes, bug corregido
 			realAFK = 0
 			state_machine.travel("staticIce")
+			
+		"deathIce":
+			queue_free()
+			
+		"hurtIce":
+			if proyectil_actual == bala_hielo:
+				state_machine.travel("staticIce")
 
 func _dañar():
 		if is_hurt or is_dead:
 			return
-		state_machine.travel("static")
+		if proyectil_actual == bala_hielo:
+			state_machine.travel("staticIce")
+		else:
+			state_machine.travel("static")
 		#  Primero escudo
 		damageSound.play()
 		if escudo > 0:
