@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://crcs63tw6jcxy"]
+
+[sub_resource type="GDScript" id="GDScript_o7g68"]
+script/source = "extends StaticBody2D
+
+# La plataforma ya tiene one_way activado en el CollisionShape2D del inspector:
+# → CollisionShape2D → One Way Collision = true
+# Esto hace que se pueda atravesar de abajo a arriba automáticamente en Godot 4.
+
+func _ready():
+	# Asegura que one_way esté activo por código también
+	for child in get_children():
+		if child is CollisionShape2D:
+			child.one_way_collision = true"
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=1290972402]
+script = SubResource("GDScript_o7g68")

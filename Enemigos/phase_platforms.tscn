@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://gbct1kgainuc"]
+
+[ext_resource type="Texture2D" uid="uid://bssotcpjiq12r" path="res://Sprites/Bloques/BossPlatform.png" id="1_cfi5a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ecoi8"]
+size = Vector2(63, 41)
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=751077886]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1402352766]
+texture = ExtResource("1_cfi5a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1402187287]
+position = Vector2(-0.5, -11.5)
+shape = SubResource("RectangleShape2D_ecoi8")

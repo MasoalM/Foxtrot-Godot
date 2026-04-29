@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ctyikf2m6nhqr"]
+
+[ext_resource type="Script" uid="uid://dunm5nylrrnk8" path="res://Enemigos/homing_ball.gd" id="1_vgwab"]
+[ext_resource type="Texture2D" uid="uid://cg5pifyxb4fwl" path="res://Sprites/Proyectiles/BossShot.png" id="2_r6xd8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r6xd8"]
+
+[node name="Area2D" type="Area2D" unique_id=1104687433 groups=["Enemigos"]]
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1_vgwab")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1350479442]
+texture = ExtResource("2_r6xd8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=432814082]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_r6xd8")

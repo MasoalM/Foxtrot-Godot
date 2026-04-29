@@ -9,6 +9,7 @@ var dist = 0.0
 
 func _ready() -> void:
 	add_to_group("ProyectilAliado")
+	add_to_group("DoubleJumpShot")
 
 func _process(delta: float) -> void:
 	if visible:
