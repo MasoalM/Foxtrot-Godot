@@ -549,6 +549,7 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 			isShooting = false
 			is_jumping = false
 			is_fall = false
+			state_machine.travel("staticIce")
 		"jump":
 			# Al acabar el impulso visual, pasar a la animación de vuelo
 			is_jumping = false
@@ -566,6 +567,7 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 		"fallIce":
 			# Al acabar el aterrizaje, volver al estado normal
 			is_fall = false
+			state_machine.travel("staticIce")
 
 		"afk":
 			# Al acabar el AFK, esperar el mismo tiempo antes de repetir

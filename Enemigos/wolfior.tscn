@@ -277,7 +277,6 @@ animations = [{
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=547989863]
 collision_layer = 4
-collision_mask = 3
 script = ExtResource("1_3yp3h")
 
 [node name="hitboxAtaque" type="Area2D" parent="." unique_id=2122217189]
