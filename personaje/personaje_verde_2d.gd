@@ -104,6 +104,10 @@ func _reset_afk() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if global_position.y > 1000:
+		_muerte_instantanea()
+		return
+	
 	if not en_liana:
 		if liana_cooldown > 0:
 			liana_cooldown -= delta
@@ -721,6 +725,34 @@ func set_water():
 	
 func set_waterf():
 	water=false
+	
+func _muerte_instantanea():
+	if is_dead:
+		return
+
+	is_dead = true
+	bloquearControles = true
+
+	deathSound.play()
+
+	if proyectil_actual == bala_hielo:
+		state_machine.travel("deathIce")
+	else:
+		state_machine.travel("death")
+
+	# Mata directamente (ignora escudo y vida actual)
+	GameState.perder_vida()
+
+	await get_tree().create_timer(1.0).timeout
+
+	if GameState.vidas_juego > 0:
+		if GameState.checkpoint_activo:
+			get_tree().reload_current_scene()
+		else:
+			GameState.resetear_monedas()
+			get_tree().reload_current_scene()
+	else:
+		get_tree().root.add_child(deathScreen.instantiate())	
 
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
