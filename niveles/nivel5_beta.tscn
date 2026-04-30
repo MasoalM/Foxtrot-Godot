@@ -214,13 +214,13 @@ texture_region_size = Vector2i(64, 64)
 texture = ExtResource("28_2twbf")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
-0:0/0/modulate = Color(1, 0, 0, 1)
+0:0/0/modulate = Color(0.4666667, 0, 1, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_th76g"]
 texture = ExtResource("29_vq4ol")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
-0:0/0/modulate = Color(1, 0, 0, 1)
+0:0/0/modulate = Color(0.4666667, 0, 1, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_608v1"]
 texture = ExtResource("24_i5qhc")

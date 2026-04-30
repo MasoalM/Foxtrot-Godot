@@ -30,7 +30,6 @@
 [ext_resource type="Texture2D" uid="uid://cqx6fj8wrtj5o" path="res://Sprites/Bloques/ruinBlock.png" id="27_6xwiq"]
 [ext_resource type="Texture2D" uid="uid://sy68klfuondp" path="res://Sprites/Bloques/Water.png" id="28_xw1jl"]
 [ext_resource type="Texture2D" uid="uid://bkeslfpbf46wv" path="res://Sprites/Bloques/Water2.png" id="29_4ruh8"]
-[ext_resource type="Texture2D" uid="uid://bssotcpjiq12r" path="res://Sprites/Bloques/BossPlatform.png" id="30_d8qp1"]
 [ext_resource type="Texture2D" uid="uid://ctdnpbddrvlm4" path="res://Sprites/Bloques/DirtBroken.png" id="30_e6d2e"]
 [ext_resource type="Texture2D" uid="uid://dhj8neb2jgy8x" path="res://Sprites/Bloques/WoodPlatform64x64.png" id="31_31ul5"]
 [ext_resource type="Texture2D" uid="uid://dftv1q8c4snhl" path="res://Sprites/Checkpoint/Hoguera.png" id="32_75sr7"]
@@ -207,16 +206,19 @@ texture_region_size = Vector2i(64, 64)
 texture = ExtResource("28_xw1jl")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
-0:0/0/modulate = Color(1, 0, 0, 1)
+0:0/0/modulate = Color(0.4666667, 0, 1, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_th76g"]
 texture = ExtResource("29_4ruh8")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
-0:0/0/modulate = Color(1, 0, 0, 1)
+0:0/0/modulate = Color(0.4666667, 0, 1, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r70wt"]
+load_path = "res://.godot/imported/BossPlatform.png-179eea84ed6d135253b0d99f2fe23f19.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h5rf2"]
-texture = ExtResource("30_d8qp1")
+texture = SubResource("CompressedTexture2D_r70wt")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, -22.578957, -32, -22.578957)
@@ -374,7 +376,7 @@ layer_4/name = "Cubierta"
 [node name="LevelUi" parent="." unique_id=274504807 instance=ExtResource("49_04mww")]
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1479181828]
-color = Color(1, 0, 0.099999905, 1)
+color = Color(0.78447294, 0.11464273, 0.99999994, 1)
 energy = 1.25
 
 [node name="Boss" parent="." unique_id=884704565 groups=["Enemigos"] instance=ExtResource("38_cnv7i")]

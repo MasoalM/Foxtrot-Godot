@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bssotcpjiq12r"
-path="res://.godot/imported/BossPlatform.png-179eea84ed6d135253b0d99f2fe23f19.ctex"
+uid="uid://b0mnqnb4th0bn"
+path="res://.godot/imported/BossPlatform5.png-9ec1a9b6cb81f29f3ada217cc3f69f99.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Bloques/BossPlatform.png"
-dest_files=["res://.godot/imported/BossPlatform.png-179eea84ed6d135253b0d99f2fe23f19.ctex"]
+source_file="res://Sprites/Bloques/BossPlatform5.png"
+dest_files=["res://.godot/imported/BossPlatform5.png-9ec1a9b6cb81f29f3ada217cc3f69f99.ctex"]
 
 [params]
 
