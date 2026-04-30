@@ -28,6 +28,8 @@ var float_time := 0.0
 
 var is_jumping := false
 
+var congelado := false
+
 # CONTROL DE ANIMACIONES
 var current_anim = ""
 
@@ -37,6 +39,7 @@ func play_anim(name):
 		animated_sprite.play(name)
 
 func _ready():
+	
 	play_anim("movement")
 	surface_y = position.y
 	swim_y = surface_y + swim_depth
@@ -101,7 +104,7 @@ func _update_rotation(delta):
 func _jump():
 	float_time = 0.0
 	
-	# ✅ AQUÍ SE LANZA LA MORDIDA
+	#  AQUÍ SE LANZA LA MORDIDA
 	play_anim("bite")
 	
 	var target_y = surface_y - jump_above_surface
@@ -131,11 +134,16 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("ProyectilHielo"):
+		if congelado:
+			return
+		
+		congelado = true
+		
 		animated_sprite.modulate = Color(0.1, 0.6, 1)
-
 		set_physics_process(false)
-
+		
 		await get_tree().create_timer(2.0).timeout
-
+		
+		congelado = false
 		set_physics_process(true)
 		animated_sprite.modulate = Color(1, 1, 1)

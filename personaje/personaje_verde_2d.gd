@@ -384,14 +384,19 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Enemigos"):
-		print(body)
-		enemigosIn += 1
+	
+	if body.is_in_group("Enemigos") and not body.congelado:
+		
 		_dañar()
-			
+		enemigosIn += 1
+	
 # Detectar entrada en áreas
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Enemigos"):
+		var enemigo = area.get_parent()
+		if enemigo.has_method("congelado") or "congelado" in enemigo:
+			if enemigo.congelado:
+				return
 		_dañar()
 		print(area)	
 	if area.is_in_group("Lianas"):
@@ -740,7 +745,7 @@ func _muerte_instantanea():
 	else:
 		state_machine.travel("death")
 
-	# Mata directamente (ignora escudo y vida actual)
+	#  Mata directamente (ignora escudo y vida actual)
 	GameState.perder_vida()
 
 	await get_tree().create_timer(1.0).timeout
