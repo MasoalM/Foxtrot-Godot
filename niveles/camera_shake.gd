@@ -1,3 +1,4 @@
+# camera.gd
 extends Camera2D
 
 @export var max_offset := Vector2(10.0, 8.0)
@@ -9,6 +10,8 @@ extends Camera2D
 
 var trauma := 0.0
 var time := 0.0
+var intensity_multiplier := 1.0
+var shake_enabled := true
 
 @onready var noise := FastNoiseLite.new()
 
@@ -21,17 +24,16 @@ func _process(delta: float) -> void:
 	target_pos.x += offset_x
 	global_position = target_pos.round()
 
+	if not shake_enabled:
+		offset = Vector2.ZERO
+		rotation = 0.0
+		return
+
 	time += delta
 	trauma = max(trauma - decay * delta, 0.0)
 
-	# Oscila suavemente entre 0 y 1
-	# cycle_duration = tiempo de un ciclo completo (sube + baja)
-	# Oscila entre 0 y 1
-	var wave := (sin(time * (TAU / cycle_duration)) + 1.0) / 2.0
-
-	# Hace que el pico fuerte dure muy poco
+	var wave := ((sin(time * (TAU / cycle_duration)) + 1.0) / 2.0) * intensity_multiplier
 	wave = pow(wave, 4.0)
-
 	var intensity := wave + trauma * trauma
 
 	offset = Vector2(
@@ -41,4 +43,16 @@ func _process(delta: float) -> void:
 	rotation = noise.get_noise_1d(time * 10.0 + 50.0) * max_roll * intensity
 
 func add_trauma(amount: float) -> void:
+	if not shake_enabled:
+		return
 	trauma = min(trauma + amount, 1.0)
+
+func set_intensity_multiplier(v: float) -> void:
+	intensity_multiplier = v
+
+func stop_shake() -> void:
+	shake_enabled = false
+	trauma = 0.0
+	intensity_multiplier = 0.0
+	offset = Vector2.ZERO
+	rotation = 0.0

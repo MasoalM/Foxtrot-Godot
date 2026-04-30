@@ -3,44 +3,71 @@ extends Area2D
 @export var speed := 250.0
 @export var turn_speed := 2.0
 @export var lifetime := 5.0
+
 var velocity := Vector2.ZERO
 var target: Node2D = null
 var shooter: Node2D = null
 var _lifetime_timer := 0.0
+var _dead := false
 
 func _ready():
 	add_to_group("EnemyBall")
-	collision_layer = 4   # capa propia de la bola
-	collision_mask = 2    # detecta al jugador (capa 2)
-	monitoring = false
-	await get_tree().process_frame
+	add_to_group("Enemigos")
+	collision_layer = 4
+	collision_mask = 2
 	monitoring = true
+	monitorable = true
+	body_entered.connect(_on_body_hit)
+	area_entered.connect(_on_area_hit)
 
 func _physics_process(delta):
+	if _dead:
+		return
+
 	_lifetime_timer += delta
 	if _lifetime_timer >= lifetime:
-		queue_free()
+		_morir()
 		return
 
 	if target == null or not is_instance_valid(target):
 		position += velocity * delta
 		return
 
-	var desired_direction = (target.global_position - global_position).normalized()
-	var current_direction = velocity.normalized()
-	var new_direction = current_direction.lerp(desired_direction, turn_speed * delta).normalized()
+	var desired_direction := (target.global_position - global_position).normalized()
+	var current_direction := velocity.normalized()
+	var new_direction := current_direction.lerp(desired_direction, turn_speed * delta).normalized()
 	velocity = new_direction * speed
 	position += velocity * delta
 
 	if velocity.length() > 0.1:
 		rotation = velocity.angle()
 
-func _on_body_entered(body):
+func _on_body_hit(body):
+	if _dead:
+		return
 	if body == shooter:
 		return
 	if body.is_in_group("player"):
 		body._dañar()
-		queue_free()
+		_morir()
+
+func _on_area_hit(area):
+	if _dead:
+		return
+	var parent = area.get_parent()
+	if parent == shooter:
+		return
+	if area.is_in_group("player") or parent.is_in_group("player"):
+		var p = area if area.is_in_group("player") else parent
+		if p.has_method("_dañar"):
+			p._dañar()
+		_morir()
+
+func _morir():
+	if _dead:
+		return
+	_dead = true
+	call_deferred("queue_free")
 
 func set_direction_from_target(target_node):
 	if not is_instance_valid(target_node):

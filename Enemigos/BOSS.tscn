@@ -20,7 +20,6 @@
 [ext_resource type="PackedScene" uid="uid://ctyikf2m6nhqr" path="res://Enemigos/homing_ball.tscn" id="17_8teny"]
 [ext_resource type="AudioStream" uid="uid://cdgb4iftj70eo" path="res://Sounds/MadBoss.ogg" id="19_eae3g"]
 [ext_resource type="AudioStream" uid="uid://bju45770rly62" path="res://Sounds/Portal.ogg" id="20_c0gxf"]
-[ext_resource type="AudioStream" uid="uid://dmybnkonokowx" path="res://Sounds/PrePortal.mp3" id="21_2jmdy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5qnxw"]
 animations = [{
@@ -136,7 +135,7 @@ volume_db = -5.0
 pitch_scale = 0.75
 
 [node name="Death" type="AudioStreamPlayer2D" parent="." unique_id=778852785]
-stream = ExtResource("21_2jmdy")
+stream = ExtResource("19_eae3g")
 volume_db = 10.0
 pitch_scale = 0.25
 attenuation = 4.594792
