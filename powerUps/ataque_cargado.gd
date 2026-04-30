@@ -6,16 +6,17 @@ const dist_max = 135.0
 
 var vel_bala = 300.0
 var dist = 0.0
+var direccion = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	add_to_group("ProyectilAliado")
-	pass # Replace with function body.
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if visible:
-		position.x += vel_bala * delta
+		position.x += vel_bala * direccion * delta
 		dist += 1
 		if dist > dist_max:
 			morir()
@@ -29,7 +30,7 @@ func _on_body_entered(body):
 		if body is TileMap:
 			var tilemap = body
 			
-			var offset = Vector2(32 if vel_bala > 0 else -32, 0)
+			var offset = Vector2(32 if direccion > 0 else -32, 0)
 			var pos = tilemap.to_local(global_position + offset)
 			var cell = tilemap.local_to_map(pos)
 
@@ -48,3 +49,9 @@ func _on_body_entered(body):
 				morir()
 			else:
 				morir()
+				
+func set_direccion(dir):
+	direccion = dir
+	
+	# Girar sprite correctamente
+	$Sprite2D.flip_h = direccion < 0				

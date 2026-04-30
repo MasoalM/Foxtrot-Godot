@@ -680,9 +680,7 @@ func hacer_ataque_cargado():
 	var atk = ataqueCargado.instantiate()
 	get_parent().add_child(atk)
 	atk.global_position = $Marker2D.global_position
-	if not mirando_derecha:
-		atk.scale.x *= -1
-		atk.vel_bala *= -1
+	atk.set_direccion(-1 if not mirando_derecha else 1)
 	
 func iniciar_parpadeo_cargado():
 	if tween_parpadeo:

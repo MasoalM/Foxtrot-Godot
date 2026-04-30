@@ -557,6 +557,9 @@ pitch_scale = 0.75
 
 [node name="LevelUi" parent="." unique_id=274504807 instance=ExtResource("52_uqflv")]
 
+[node name="guante2" parent="." unique_id=1243764099 instance=ExtResource("50_7sv1y")]
+position = Vector2(417, 406)
+
 [connection signal="body_entered" from="E/Area2D" to="E" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="E/Area2D" to="E" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="SPACE2/Area2D" to="SPACE2" method="_on_area_2d_body_entered"]
