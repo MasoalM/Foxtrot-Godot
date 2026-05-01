@@ -17,9 +17,11 @@ config/icon="uid://ru0bqi3annxs"
 
 [autoload]
 
-UIManager="*uid://libsr5emcm67"
+UIManager="*uid://f0ybas2rbse4"
+SettingsManager="*uid://b5y613e0l6pq"
 AudioManager="*uid://cc8yanldkmnro"
-SettingsManager="*uid://bo35fslxhsw0d"
+SaveManager="*uid://4j3q1gcqa65b"
+Utils="*uid://c4ha00aatr1cu"
 GameState="*uid://blpeeeiaq048p"
 APIclient="*uid://dqyskfk5xmdjw"
 

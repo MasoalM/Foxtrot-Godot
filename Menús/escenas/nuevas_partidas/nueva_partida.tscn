@@ -1,0 +1,364 @@
+[gd_scene format=3 uid="uid://dehmmxw242van"]
+
+[ext_resource type="Texture2D" uid="uid://c2ykgj5lpibhw" path="res://Menús/assets/fondos/principal_frame.png" id="1_7pwmc"]
+[ext_resource type="Script" uid="uid://b2qd2oh5fiek4" path="res://Menús/escenas/nuevas_partidas/nueva_partida.gd" id="1_swxto"]
+[ext_resource type="Texture2D" uid="uid://d0u0qj6010kog" path="res://Menús/assets/Partidas.png" id="2_mnvhs"]
+[ext_resource type="Texture2D" uid="uid://bmdfl3e5dy2b2" path="res://Menús/assets/slots/Default.png" id="5_41pga"]
+[ext_resource type="Texture2D" uid="uid://cqocc12s5wg8v" path="res://Menús/assets/InformaciónSmall.png" id="6_bmxco"]
+[ext_resource type="FontFile" uid="uid://coe4gaaihhlww" path="res://Menús/assets/fuentes/Retro Gaming.ttf" id="6_hit81"]
+[ext_resource type="Texture2D" uid="uid://d00dd23rvjiex" path="res://Menús/assets/botones/Crear.png" id="7_1j5l8"]
+[ext_resource type="Texture2D" uid="uid://bmg6eta32vtya" path="res://Menús/assets/botones/Atrás.png" id="9_mxp65"]
+[ext_resource type="Texture2D" uid="uid://b3m7ipvfd0ydx" path="res://Menús/assets/botones/CrearDesactivado.png" id="9_swxto"]
+[ext_resource type="Texture2D" uid="uid://obqelxbtqjo" path="res://Menús/assets/botones/Eliminar.png" id="10_sh5el"]
+[ext_resource type="Script" uid="uid://i8al5r4kf4uc" path="res://Menús/botones/atrás.gd" id="10_swdyn"]
+[ext_resource type="Texture2D" uid="uid://wd5pjcnbnk4" path="res://Menús/assets/ConfirmarCrearPartida.png" id="11_41pga"]
+[ext_resource type="Texture2D" uid="uid://bs02xb2xsc73s" path="res://Menús/assets/botones/Eliminar Desactivado.png" id="11_yrub4"]
+[ext_resource type="Texture2D" uid="uid://jgej215r4378" path="res://Menús/assets/botones/Sí.png" id="13_a28s2"]
+[ext_resource type="Texture2D" uid="uid://bbybg50rsx45t" path="res://Menús/assets/botones/No.png" id="14_by7dk"]
+[ext_resource type="Texture2D" uid="uid://cxmobo22xnlt1" path="res://Menús/assets/ConfirmarEliminar.png" id="17_lnoug"]
+[ext_resource type="Texture2D" uid="uid://cvreewbs00cjy" path="res://Menús/assets/ConfirmarIrreversible.png" id="18_tsh27"]
+[ext_resource type="Texture2D" uid="uid://bjikh6tyskptp" path="res://Menús/assets/botones/Continuar.png" id="19_055xu"]
+[ext_resource type="Texture2D" uid="uid://dep4qx12hwgpi" path="res://Menús/assets/Eliminar.png" id="20_m8cy2"]
+[ext_resource type="Texture2D" uid="uid://blotabol7xtic" path="res://Menús/assets/botones/Aceptar.png" id="21_us5el"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mq6uq"]
+font = ExtResource("6_hit81")
+font_size = 12
+font_color = Color(0.47843137, 0.3019608, 0.21568628, 1)
+
+[sub_resource type="Theme" id="Theme_pom26"]
+default_base_scale = 0.1
+default_font = ExtResource("6_hit81")
+default_font_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8osr7"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.5686275, 0.3529412, 0.24705882, 1)
+border_width_bottom = 2
+border_color = Color(0.47843137, 0.29803923, 0.20784314, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ia3j"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.57, 0.3534, 0.2451, 0.78431374)
+border_width_bottom = 1
+border_color = Color(0.48, 0.2976, 0.20639999, 0.78431374)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bmxco"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.44705883, 0.27450982, 0.1882353, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[node name="Nuevas Partidas" type="Node2D" unique_id=794783180]
+
+[node name="Control" type="Control" parent="." unique_id=1280346089]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_swxto")
+
+[node name="Fondo" type="TextureRect" parent="Control" unique_id=1934115705]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("1_7pwmc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Menú" type="VBoxContainer" parent="Control/Fondo" unique_id=1339177290]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -110.0
+offset_right = 200.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -2
+
+[node name="Menú Partidas" type="TextureRect" parent="Control/Fondo/Menú" unique_id=106809379]
+layout_mode = 2
+texture = ExtResource("2_mnvhs")
+
+[node name="Partidas" type="HBoxContainer" parent="Control/Fondo/Menú/Menú Partidas" unique_id=577084145]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.0
+offset_bottom = 53.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 48
+alignment = 1
+
+[node name="A" type="TextureButton" parent="Control/Fondo/Menú/Menú Partidas/Partidas" unique_id=1776619107]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_41pga")
+
+[node name="B" type="TextureButton" parent="Control/Fondo/Menú/Menú Partidas/Partidas" unique_id=1252321017]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_41pga")
+
+[node name="C" type="TextureButton" parent="Control/Fondo/Menú/Menú Partidas/Partidas" unique_id=1420855598]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_41pga")
+
+[node name="Información" type="TextureRect" parent="Control/Fondo/Menú" unique_id=716571358]
+visible = false
+layout_mode = 2
+texture = ExtResource("6_bmxco")
+
+[node name="InfoCargar" type="VBoxContainer" parent="Control/Fondo/Menú/Información" unique_id=841579215]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = -35.0
+offset_right = 165.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Partida seleccionada" type="Label" parent="Control/Fondo/Menú/Información/InfoCargar" unique_id=1409157525]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/line_spacing = 3
+label_settings = SubResource("LabelSettings_mq6uq")
+horizontal_alignment = 1
+
+[node name="Introducir nombre" type="LineEdit" parent="Control/Fondo/Menú/Información/InfoCargar" unique_id=1453329008]
+layout_mode = 2
+size_flags_vertical = 4
+theme = SubResource("Theme_pom26")
+theme_override_colors/font_color = Color(0.88235295, 0.6509804, 0.41960785, 1)
+theme_override_colors/font_selected_color = Color(0.88235295, 0.6509804, 0.41960785, 1)
+theme_override_colors/font_placeholder_color = Color(0.88, 0.6512, 0.42240003, 0.58431375)
+theme_override_colors/caret_color = Color(0.8, 0.592, 0.38400003, 1)
+theme_override_colors/selection_color = Color(0.42, 0.2604, 0.1806, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_8osr7")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_4ia3j")
+theme_override_styles/focus = SubResource("StyleBoxFlat_bmxco")
+placeholder_text = "Nombre de la partida"
+
+[node name="Botones" type="HBoxContainer" parent="Control/Fondo" unique_id=646312632]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 460.5
+offset_right = 840.0
+offset_bottom = 508.5
+size_flags_vertical = 4
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="Botones Cargar" type="HBoxContainer" parent="Control/Fondo/Botones" unique_id=18990128]
+layout_mode = 2
+
+[node name="Crear" type="TextureButton" parent="Control/Fondo/Botones/Botones Cargar" unique_id=533321956]
+layout_mode = 2
+texture_normal = ExtResource("7_1j5l8")
+texture_disabled = ExtResource("9_swxto")
+
+[node name="Eliminar" type="TextureButton" parent="Control/Fondo/Botones/Botones Cargar" unique_id=70780610]
+layout_mode = 2
+texture_normal = ExtResource("10_sh5el")
+texture_disabled = ExtResource("11_yrub4")
+
+[node name="Atrás" type="TextureButton" parent="Control/Fondo/Botones/Botones Cargar" unique_id=288176465]
+custom_minimum_size = Vector2(64, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("9_mxp65")
+script = ExtResource("10_swdyn")
+
+[node name="Menú Confirmar" type="VBoxContainer" parent="Control/Fondo" unique_id=641093742]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -80.0
+offset_right = 210.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Confirmar" type="TextureRect" parent="Control/Fondo/Menú Confirmar" unique_id=1452954269]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("11_41pga")
+
+[node name="Botones" type="HBoxContainer" parent="Control/Fondo/Menú Confirmar/Confirmar" unique_id=629040623]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -65.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Sí" type="TextureButton" parent="Control/Fondo/Menú Confirmar/Confirmar/Botones" unique_id=1341375103]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("13_a28s2")
+
+[node name="No" type="TextureButton" parent="Control/Fondo/Menú Confirmar/Confirmar/Botones" unique_id=989506843]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("14_by7dk")
+
+[node name="Menú Eliminar" type="VBoxContainer" parent="Control/Fondo" unique_id=1622581671]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Confirmar Eliminar" type="TextureRect" parent="Control/Fondo/Menú Eliminar" unique_id=1672354180]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("17_lnoug")
+
+[node name="Botones" type="HBoxContainer" parent="Control/Fondo/Menú Eliminar/Confirmar Eliminar" unique_id=905302596]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -65.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Sí" type="TextureButton" parent="Control/Fondo/Menú Eliminar/Confirmar Eliminar/Botones" unique_id=1222610269]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("13_a28s2")
+
+[node name="No" type="TextureButton" parent="Control/Fondo/Menú Eliminar/Confirmar Eliminar/Botones" unique_id=913688386]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("14_by7dk")
+
+[node name="Reconfirmar Eliminar" type="TextureRect" parent="Control/Fondo/Menú Eliminar" unique_id=1695290570]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("18_tsh27")
+
+[node name="Botones" type="HBoxContainer" parent="Control/Fondo/Menú Eliminar/Reconfirmar Eliminar" unique_id=532597517]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -65.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Continuar" type="TextureButton" parent="Control/Fondo/Menú Eliminar/Reconfirmar Eliminar/Botones" unique_id=313251103]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("19_055xu")
+
+[node name="Atras" type="TextureButton" parent="Control/Fondo/Menú Eliminar/Reconfirmar Eliminar/Botones" unique_id=412019455]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("9_mxp65")
+
+[node name="Eliminado" type="TextureRect" parent="Control/Fondo/Menú Eliminar" unique_id=1331183989]
+visible = false
+layout_mode = 2
+texture = ExtResource("20_m8cy2")
+
+[node name="Aceptar" type="TextureButton" parent="Control/Fondo/Menú Eliminar/Eliminado" unique_id=196058130]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -65.0
+offset_right = 64.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("21_us5el")
+
+[connection signal="pressed" from="Control/Fondo/Menú/Menú Partidas/Partidas/A" to="Control" method="_on_slot_pressed" flags=18 binds= ["A"]]
+[connection signal="pressed" from="Control/Fondo/Menú/Menú Partidas/Partidas/B" to="Control" method="_on_slot_pressed" flags=18 binds= ["B"]]
+[connection signal="pressed" from="Control/Fondo/Menú/Menú Partidas/Partidas/C" to="Control" method="_on_slot_pressed" flags=18 binds= ["C"]]
+[connection signal="pressed" from="Control/Fondo/Botones/Botones Cargar/Crear" to="Control" method="_on_crear_pressed"]
+[connection signal="pressed" from="Control/Fondo/Botones/Botones Cargar/Eliminar" to="Control" method="_on_eliminar_pressed"]
+[connection signal="pressed" from="Control/Fondo/Botones/Botones Cargar/Atrás" to="Control/Fondo/Botones/Botones Cargar/Atrás" method="_on_pressed"]
+[connection signal="pressed" from="Control/Fondo/Menú Confirmar/Confirmar/Botones/Sí" to="Control" method="_on_sí_pressed" binds= [true]]
+[connection signal="pressed" from="Control/Fondo/Menú Confirmar/Confirmar/Botones/No" to="Control" method="_on_no_pressed"]
+[connection signal="pressed" from="Control/Fondo/Menú Eliminar/Confirmar Eliminar/Botones/Sí" to="Control" method="_on_sí_pressed" binds= [false]]
+[connection signal="pressed" from="Control/Fondo/Menú Eliminar/Confirmar Eliminar/Botones/No" to="Control" method="_on_no_pressed"]
+[connection signal="pressed" from="Control/Fondo/Menú Eliminar/Reconfirmar Eliminar/Botones/Continuar" to="Control" method="_on_continuar_pressed"]
+[connection signal="pressed" from="Control/Fondo/Menú Eliminar/Reconfirmar Eliminar/Botones/Atras" to="Control" method="_on_atras_pressed"]
+[connection signal="pressed" from="Control/Fondo/Menú Eliminar/Eliminado/Aceptar" to="Control" method="_on_aceptar_pressed"]

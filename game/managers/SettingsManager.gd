@@ -49,11 +49,11 @@ func apply_settings():
 	_apply_video()
 
 func _apply_audio():
-	var musica_vol : float = get_setting("audio", "musica")
-	var efectos_vol : float = get_setting("audio", "efectos")
+	var musica_vol = get_setting("audio", "musica")
+	var efectos_vol = get_setting("audio", "efectos")
 	
-	var musica_bus : int = AudioServer.get_bus_index("Música")
-	var efectos_bus : int = AudioServer.get_bus_index("Efectos")
+	var musica_bus = AudioServer.get_bus_index("Música")
+	var efectos_bus = AudioServer.get_bus_index("Efectos")
 	
 	AudioServer.set_bus_volume_db(musica_bus, linear_to_db(musica_vol))
 	AudioServer.set_bus_volume_db(efectos_bus, linear_to_db(efectos_vol))
@@ -68,3 +68,7 @@ func _apply_video():
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	
+	
+	
+	
