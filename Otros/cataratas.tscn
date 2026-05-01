@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dihqhojsoy4ry" path="res://Sprites/parallax/JungFrond/Jungla_Fondo.png" id="1_s7hio"]
 [ext_resource type="Texture2D" uid="uid://dpds5s6uf7ejc" path="res://Sprites/parallax/JungFrond/Jungla_Montañas.png" id="2_82ato"]
-[ext_resource type="Texture2D" uid="uid://dxjagi5ucrv6w" path="res://Sprites/parallax/JungFrond/Jungla_TronchonAplastador.png" id="3_36n5p"]
+[ext_resource type="Texture2D" uid="uid://c2ytb58hotedd" path="res://Sprites/parallax/Cataratas/cascada.png" id="3_s7hio"]
 [ext_resource type="Texture2D" uid="uid://bbki7bxpcr417" path="res://Sprites/parallax/Cataratas/bosMuyAtr.png" id="4_s7hio"]
 [ext_resource type="Texture2D" uid="uid://b22r135660l4y" path="res://Sprites/parallax/JungFrond/Jungla_palmerasTrasHierbas.png" id="6_fld6f"]
 [ext_resource type="Texture2D" uid="uid://xmr881qtb2ap" path="res://Sprites/parallax/JungFrond/Jungla_Hierbas.png" id="7_dtvy1"]
@@ -50,14 +50,23 @@ texture = ExtResource("2_82ato")
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground" unique_id=601798151]
 position = Vector2(1138, -30)
 motion_scale = Vector2(0.3, 1)
-motion_mirroring = Vector2(1318, 0)
+motion_mirroring = Vector2(3456, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer3" unique_id=577565173]
-visible = false
 texture_filter = 1
-position = Vector2(621, 342.5)
-scale = Vector2(3.4322917, 3.4953706)
-texture = ExtResource("3_36n5p")
+position = Vector2(-562, 391.99997)
+scale = Vector2(3, 3)
+texture = ExtResource("3_s7hio")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer3" unique_id=838081035]
+position = Vector2(590, 392.00003)
+scale = Vector2(3, 3)
+texture = ExtResource("3_s7hio")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer3" unique_id=1705569745]
+position = Vector2(1742, 392.00003)
+scale = Vector2(3, 3)
+texture = ExtResource("3_s7hio")
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground" unique_id=2050375956]
 position = Vector2(1138, -30)
@@ -117,11 +126,16 @@ texture = ExtResource("7_dtvy1")
 [node name="ParallaxLayer8" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground" unique_id=661113167]
 position = Vector2(1138, -30)
 motion_scale = Vector2(0.624, 1)
-motion_mirroring = Vector2(2391, 0)
+motion_mirroring = Vector2(4788, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer8" unique_id=123856190]
 texture_filter = 1
 position = Vector2(59, 402.00003)
+scale = Vector2(3, 3)
+texture = ExtResource("8_82ato")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer8" unique_id=819519673]
+position = Vector2(2453, 402)
 scale = Vector2(3, 3)
 texture = ExtResource("8_82ato")
 
