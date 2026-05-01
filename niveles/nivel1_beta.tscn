@@ -354,19 +354,6 @@ position = Vector2(14293.299, 475.37866)
 [node name="CharacterBody2D4" parent="." unique_id=50032239 instance=ExtResource("6_c62jp")]
 position = Vector2(7129, 90)
 
-[node name="PointLight2D6" type="PointLight2D" parent="." unique_id=737344459]
-position = Vector2(16736, 65.000015)
-scale = Vector2(2.027684, 1.1722213)
-energy = 1.15
-texture = ExtResource("8_i12o8")
-texture_scale = 1.98
-
-[node name="PointLight2D2" type="PointLight2D" parent="." unique_id=1316857474]
-visible = false
-position = Vector2(-1035, -1141)
-texture = ExtResource("8_i12o8")
-texture_scale = 14.87
-
 [node name="StaticBody2D" parent="." unique_id=1752570427 instance=ExtResource("9_vp4r3")]
 position = Vector2(292, -17)
 

@@ -300,25 +300,6 @@ layer_2/name = "damage"
 layer_3/name = "damageL"
 layer_3/tile_data = PackedInt32Array(524346, 10, 0, 524347, 10, 0, 524348, 10, 0, 524349, 10, 0, 524350, 10, 0, 524351, 10, 0, 524352, 10, 0, 524353, 10, 0, 524354, 10, 0, 524355, 10, 0, 524356, 10, 0, 524357, 10, 0, 524358, 10, 0, 262232, 10, 0, 262231, 10, 0, 262230, 10, 0, 262229, 10, 0, 262228, 10, 0, 262227, 10, 0, 262226, 10, 0, 262225, 10, 0, 262224, 10, 0, 262223, 10, 0, 262222, 10, 0, 262221, 10, 0, 262220, 10, 0, 262219, 10, 0)
 
-[node name="PointLight2D5" type="PointLight2D" parent="." unique_id=1573273547]
-position = Vector2(10707, -29)
-scale = Vector2(0.10956534, 0.15925807)
-texture = ExtResource("31_qk3jb")
-texture_scale = 1.98
-
-[node name="PointLight2D3" type="PointLight2D" parent="." unique_id=2108516218]
-position = Vector2(8928, 96)
-scale = Vector2(0.3194546, 0.37604526)
-texture = ExtResource("31_qk3jb")
-texture_scale = 1.98
-
-[node name="PointLight2D6" type="PointLight2D" parent="." unique_id=737344459]
-position = Vector2(16736, 65.000015)
-scale = Vector2(2.027684, 1.1722213)
-energy = 1.15
-texture = ExtResource("31_qk3jb")
-texture_scale = 1.98
-
 [node name="StaticBody2D" parent="." unique_id=1752570427 instance=ExtResource("32_hu74c")]
 position = Vector2(890, 550)
 

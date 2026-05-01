@@ -382,32 +382,6 @@ layer_4/name = "Cubierta"
 layer_5/name = "water"
 layer_5/tile_data = PackedInt32Array(524344, 31, 0, 524343, 31, 0, 524342, 31, 0, 524341, 31, 0, 524340, 31, 0, 524339, 31, 0, 524338, 31, 0, 524337, 31, 0, 524336, 31, 0, 524335, 31, 0, 524334, 31, 0, 524333, 31, 0, 524332, 31, 0, 524331, 31, 0, 524330, 31, 0, 524329, 31, 0, 524328, 31, 0, 524327, 31, 0, 524326, 31, 0, 524325, 31, 0, 524324, 31, 0, 524323, 31, 0, 524322, 31, 0, 524321, 31, 0, 524320, 31, 0, 524319, 31, 0, 524318, 31, 0, 524317, 31, 0, 524316, 31, 0, 524315, 31, 0, 524314, 31, 0)
 
-[node name="PointLight2D5" type="PointLight2D" parent="." unique_id=1573273547]
-position = Vector2(14253, 87)
-scale = Vector2(0.10956534, 0.15925807)
-texture = ExtResource("32_xhdyk")
-texture_scale = 1.98
-
-[node name="PointLight2D4" type="PointLight2D" parent="." unique_id=1851262997]
-z_index = -2
-position = Vector2(11141.637, 93.0844)
-scale = Vector2(0.2033645, 0.29222414)
-texture = ExtResource("32_xhdyk")
-texture_scale = 1.98
-
-[node name="PointLight2D3" type="PointLight2D" parent="." unique_id=2108516218]
-position = Vector2(7791.9995, 418.99997)
-scale = Vector2(0.3194546, 0.37604526)
-texture = ExtResource("32_xhdyk")
-texture_scale = 1.98
-
-[node name="PointLight2D6" type="PointLight2D" parent="." unique_id=737344459]
-position = Vector2(16713.998, 76.00001)
-scale = Vector2(2.027684, 1.1722213)
-energy = 1.15
-texture = ExtResource("32_xhdyk")
-texture_scale = 1.98
-
 [node name="PointLight2D2" type="PointLight2D" parent="." unique_id=1316857474]
 position = Vector2(-1199, -1141)
 texture = ExtResource("32_xhdyk")
