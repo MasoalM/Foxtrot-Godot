@@ -6,6 +6,8 @@ var noTimeSound: AudioStreamPlayer
 var musica_acelerada = false
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	
 	var scene = get_tree().current_scene.scene_file_path
 	if scene != "res://niveles/level_selector.tscn" or "res://niveles/nivel5_bossFight.tscn":
 		noTimeSound = AudioManager.get_sound("NoTime")

@@ -120,6 +120,8 @@ func handle_ontop_menu(visibility: bool):
 
 func _on_sí_pressed() -> void:
 	SaveManager.load_game(selected_slot)
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	get_tree().change_scene_to_file("res://niveles/level_selector.tscn")
 	
 	AudioManager.play("click")
@@ -129,7 +131,3 @@ func _on_no_pressed() -> void:
 	confirmar.visible = false
 	
 	AudioManager.play("back_click")
-
-
-func _on_a_pressed(source: BaseButton, extra_arg_0: String) -> void:
-	pass # Replace with function body.

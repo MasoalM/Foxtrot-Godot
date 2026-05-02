@@ -4,6 +4,7 @@ extends VBoxContainer
 var pointer_texture = preload("res://Sprites/Pointer.png")
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	UIManager.register_buttons(self)
 	
 	Input.set_custom_mouse_cursor(pointer_texture, Input.CURSOR_ARROW)
