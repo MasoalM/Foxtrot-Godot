@@ -354,7 +354,7 @@ func apply_powerup(type):
 			if cantidad > 0:
 				escudo += cantidad
 				escudo = clamp(escudo, 0, 2)
-			flash(1)	
+			flash(1)
 
 			emit_signal("vidas_cambiadas", vidas, escudo)
 		"vida":
@@ -369,23 +369,25 @@ func apply_powerup(type):
 			iniciar_parpadeo_cargado()
 		"hielo":
 			iceSound.play()
-			proyectil_actual = bala_hielo	
+			proyectil_actual = bala_hielo
 		"OneUp":
 			oneUpSound.play()
-			GameState.ganar_vida()	
-			
-				
+			GameState.ganar_vida()
 
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	print("AREA BODY: " + str(body))
+	if body.is_in_group("Enemigos"):
+		if body.has_method("congelado") or "congelado" in body:
+			if body.congelado:
+				return
+		
+		_dañar()
+		enemigosIn += 1
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Enemigos"):
 		enemigosIn -= 1
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Enemigos") and not body.congelado:
-		_dañar()
-		enemigosIn += 1
-	
 # Detectar entrada en áreas
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Enemigos"):
@@ -393,8 +395,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		if enemigo.has_method("congelado") or "congelado" in enemigo:
 			if enemigo.congelado:
 				return
+		
 		_dañar()
-		print(area)	
+		print("AREA ENEMIGO: " + str(area))
+	
 	if area.is_in_group("Lianas"):
 		if liana_cooldown <= 0:
 			en_liana = true
@@ -408,6 +412,14 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 				collision_mask = 0
 				if liana_actual.has_method("recibir_inercia"):
 					liana_actual.recibir_inercia(inercia)  # ← pasar la inercia real
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	if area.is_in_group("Lianas"):
+		# Solo desacoplar si la salida es natural (no estamos activamente en liana)
+		if not en_liana:
+			liana_actual = null
+			liana_segmento = null
+			$CollisionShape2D.set_deferred("disabled", false)
 
 func _animaciones() -> void:
 	if proyectil_actual == bala_hielo:
@@ -424,43 +436,43 @@ func _animaciones() -> void:
 				isShooting = true
 				state_machine.travel("shootIce")
 				return
-
+		
 		if isShooting:
 			return
-
+		
 		if is_jumping:
 			return
-
+		
 		if is_fall:
 			return
-
+		
 		# Transición aire → aterrizaje
 		if state_machine.get_current_node() == "airIce" and is_on_floor():
 			is_fall = true
 			state_machine.travel("fallIce")
 			return
-
+		
 		# En el aire
 		if not is_on_floor():
 			state_machine.travel("airIce")
 			return
-
+		
 		# Salto (solo se registra estando en el suelo)
 		if (not bloquearControles) and Input.is_action_just_pressed("ui_accept"):
 			is_jumping = true
 			state_machine.travel("jumpIce")
 			return
-
+		
 		# AFK: se activa si se supera el umbral de inactividad
 		if realAFK >= afk and not afkAnimation:
 			afkAnimation = true
 			state_machine.travel("afkIce")
 			return
-
+		
 		# Mientras AFK está activo, no cambiar de animación
 		if afkAnimation:
 			return
-
+		
 		# Animaciones de movimiento en suelo
 		if velocity.x == 0:
 			state_machine.travel("staticIce")
@@ -486,13 +498,13 @@ func _animaciones() -> void:
 				else:	
 					state_machine.travel("shoot")
 				return
-
+		
 		if isShooting:
 			return
-
+		
 		if is_jumping:
 			return
-
+		
 		if is_fall:
 			return
 
@@ -501,28 +513,28 @@ func _animaciones() -> void:
 			is_fall = true
 			state_machine.travel("fall")
 			return
-
+		
 		# En el aire
 		if not is_on_floor():
 			state_machine.travel("air")
 			return
-
+		
 		# Salto (solo se registra estando en el suelo)
 		if (not bloquearControles) and Input.is_action_just_pressed("ui_accept"):
 			is_jumping = true
 			state_machine.travel("jump")
 			return
-
+		
 		# AFK: se activa si se supera el umbral de inactividad
 		if realAFK >= afk and not afkAnimation:
 			afkAnimation = true
 			state_machine.travel("afk")
 			return
-
+		
 		# Mientras AFK está activo, no cambiar de animación
 		if afkAnimation:
 			return
-
+		
 		# Animaciones de movimiento en suelo
 		if velocity.x == 0:
 			state_machine.travel("static")
@@ -598,10 +610,12 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 func _dañar():
 		if is_hurt or is_dead:
 			return
+		
 		if proyectil_actual == bala_hielo:
 			state_machine.travel("staticIce")
 		else:
 			state_machine.travel("static")
+		
 		#  Primero escudo
 		damageSound.play()
 		if escudo > 0:
@@ -723,10 +737,10 @@ func _on_tiempo_agotado():
 	get_tree().root.add_child(deathScreen.instantiate())
 	
 func set_water():
-	water=true
+	water = true
 	
 func set_waterf():
-	water=false
+	water = false
 	
 func _muerte_instantanea():
 	if is_dead:
@@ -755,12 +769,3 @@ func _muerte_instantanea():
 			get_tree().reload_current_scene()
 	else:
 		get_tree().root.add_child(deathScreen.instantiate())	
-
-
-func _on_area_2d_area_exited(area: Area2D) -> void:
-	if area.is_in_group("Lianas"):
-		# Solo desacoplar si la salida es natural (no estamos activamente en liana)
-		if not en_liana:
-			liana_actual = null
-			liana_segmento = null
-			$CollisionShape2D.set_deferred("disabled", false)
