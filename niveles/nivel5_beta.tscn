@@ -345,7 +345,7 @@ autoplay = true
 [node name="CharacterBody2D5" parent="." unique_id=1006504852 groups=["player"] instance=ExtResource("2_vq4ol")]
 z_index = -1
 texture_filter = 1
-position = Vector2(7000, 200)
+position = Vector2(335, 415)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D5" unique_id=1548526242]
 position = Vector2(305, -708)
