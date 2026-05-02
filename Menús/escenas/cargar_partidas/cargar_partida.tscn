@@ -26,7 +26,7 @@ font = ExtResource("7_4g1lt")
 font_size = 10
 font_color = Color(0.47843137, 0.3019608, 0.21568628, 1)
 
-[node name="Cargar Partidas" type="Node2D" unique_id=1187043667]
+[node name="Cargar Partidas" type="CanvasLayer" unique_id=1525220563]
 
 [node name="Control" type="Control" parent="." unique_id=2072525009]
 layout_mode = 3

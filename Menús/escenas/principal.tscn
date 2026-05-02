@@ -116,7 +116,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="MenúPrincipal" type="Node2D" unique_id=347318251]
+[node name="MenúPrincipal" type="CanvasLayer" unique_id=325566166]
 
 [node name="Música Menú" type="AudioStreamPlayer2D" parent="." unique_id=703604580]
 stream = ExtResource("9_x568q")

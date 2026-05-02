@@ -211,7 +211,7 @@ PopupMenu/styles/separator = null
 content_margin_left = 8.0
 texture = ExtResource("19_b775m")
 
-[node name="Ajustes" type="Node2D" unique_id=557275682]
+[node name="Ajustes" type="CanvasLayer" unique_id=1686647855]
 
 [node name="Música Menú" type="AudioStreamPlayer2D" parent="." unique_id=1111754917]
 stream = ExtResource("13_sc1lx")

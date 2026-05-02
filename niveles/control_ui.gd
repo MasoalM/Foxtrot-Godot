@@ -38,14 +38,13 @@ func _ready():
 func actualizar_vidas(vidas, escudo):
 	var max_vidas = 2
 	var max_escudo = 2
-
+	
 	vidas = clamp(vidas, 0, max_vidas)
 	escudo = clamp(escudo, 0, max_escudo)
-
+	
 	var total = corazones.size()
-
+	
 	for i in range(total):
-
 		#  VIDAS (siempre visibles)
 		if i < max_vidas:
 			corazones[i].visible = true
@@ -54,16 +53,16 @@ func actualizar_vidas(vidas, escudo):
 				corazones[i].texture = corazon_rojo
 			else:
 				corazones[i].texture = corazon_gris
-
+		
 		#  ESCUDO
 		else:
 			var index_escudo = i - max_vidas
-
+			
 			# ocultar slots de escudos no usados
 			if escudo == 0:
 				corazones[i].visible = false
 				continue
-
+			
 			# mostrar solo los necesarios
 			if index_escudo < escudo:
 				corazones[i].visible = true
@@ -77,8 +76,8 @@ func actualizar_vidas(vidas, escudo):
 		if vidas == max_vidas:
 			fondo.texture = fullvida
 		else:
-			fondo.texture = damagedvida			
-			
+			fondo.texture = damagedvida
+
 func actualizar_monedas(monedas_estado):
 	for i in range(monedas.size()):
 		monedas[i].texture = moneda_textura  # siempre la misma

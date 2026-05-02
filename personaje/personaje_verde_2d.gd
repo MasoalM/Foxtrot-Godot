@@ -20,7 +20,7 @@ extends CharacterBody2D
 @onready var deathSound = $AudioStreamPlayer2DDeath
 
 var monedas_estado = [false, false, false]
-var deathScreen = preload("res://niveles/DeathScreen.tscn")
+var deathScreen = preload("res://Menús/escenas/death_screen/death_screen.tscn")
 
 signal vidas_cambiadas(vidas, escudo)
 
@@ -70,7 +70,7 @@ var shoot_anim_timeout = 0.0
 const SHOOT_ANIM_MAX = 1.0
 
 var hurt_timer = 0.0
-const HURT_DURATION = 1.0
+const HURT_DURATION = 1.5
 
 var water = false
 
@@ -637,6 +637,7 @@ func _dañar():
 		emit_signal("vidas_cambiadas", vidas, escudo)
 		if vidas <= 0:
 			# parar música?
+			flash(3)
 			deathSound.play()
 			is_dead = true
 			bloquearControles = true
@@ -650,7 +651,7 @@ func _dañar():
 			await get_tree().create_timer(1.0).timeout
 
 			if GameState.vidas_juego > 0:
-				# antes estaba en 0 pero le resta las vidas_juego antes de llegar aqui ,oops 
+				# antes estaba en 0 pero le resta las vidas_juego antes de llegar aqui ,oops
 				if GameState.checkpoint_activo:
 					get_tree().reload_current_scene()
 				else:
@@ -676,14 +677,14 @@ func flash(color):
 		if color == 2:
 			animacion.modulate = Color(0.2, 1, 0.2)
 		if color == 1:
-			animacion.modulate = Color(0.1, 0.6, 1)	
+			animacion.modulate = Color(0.1, 0.6, 1)
 		await get_tree().create_timer(0.15).timeout
 		
 		animacion.modulate = Color(1, 1, 1)  
 		await get_tree().create_timer(0.15).timeout
 
 	# asegurar que termina limpio
-	animacion.modulate = Color(1, 1, 1)			
+	animacion.modulate = Color(1, 1, 1)
 	
 
 
