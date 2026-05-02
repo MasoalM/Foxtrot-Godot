@@ -1,19 +1,14 @@
 extends Area2D
 
-
-
 const dist_max = 120.0
 
 var vel_bala = 500.0
 var dist = 0.0
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	add_to_group("ProyectilAliado")
 	add_to_group("ProyectilHielo")
-	pass # Replace with function body.
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if visible:
 		position.x += vel_bala * delta
@@ -43,6 +38,7 @@ func _on_body_entered(body):
 			var destructible = tile_data.get_custom_data("destructible")
 
 			if destructible:
+				AudioManager.play("BrokenWoodBlock")
 				tilemap.erase_cell(0, cell)
 				visible = false
 				await get_tree().create_timer(0.2).timeout

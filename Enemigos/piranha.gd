@@ -33,13 +33,12 @@ var congelado := false
 # CONTROL DE ANIMACIONES
 var current_anim = ""
 
-func play_anim(name):
-	if current_anim != name:
-		current_anim = name
-		animated_sprite.play(name)
+func play_anim(anim_name):
+	if current_anim != anim_name:
+		current_anim = anim_name
+		animated_sprite.play(anim_name)
 
 func _ready():
-	
 	play_anim("movement")
 	surface_y = position.y
 	swim_y = surface_y + swim_depth
@@ -85,7 +84,7 @@ func _physics_process(delta):
 		
 	_update_rotation(delta)	
 
-func _update_rotation(delta):
+func _update_rotation(_delta):
 	var visual_velocity = velocity
 	
 	if not is_jumping:

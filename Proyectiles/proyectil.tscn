@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://2mqogathkaob" path="res://Proyectiles/proyectil.gd" id="1_1hd88"]
 [ext_resource type="Texture2D" uid="uid://bww6sqbj1rc6k" path="res://Sprites/Mox/MoxSht.png" id="2_1hd88"]
 [ext_resource type="Texture2D" uid="uid://djp4mcoh2wnil" path="res://Sprites/Efecto y otros/luz.png" id="3_8al7i"]
-[ext_resource type="AudioStream" uid="uid://bo3v3bl6nrqp7" path="res://Sounds/BrokenWoodBlock.ogg" id="4_82vof"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1hd88"]
 radius = 7.0
@@ -31,8 +30,5 @@ scale = Vector2(0.4986089, 0.25903615)
 color = Color(0.26278073, 0.08150122, 0.75880307, 1)
 energy = 2.0
 texture = ExtResource("3_8al7i")
-
-[node name="AudioStreamPlayer2DBloqueRoto" type="AudioStreamPlayer2D" parent="." unique_id=2077954969]
-stream = ExtResource("4_82vof")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

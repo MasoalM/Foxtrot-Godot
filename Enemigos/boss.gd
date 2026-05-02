@@ -64,6 +64,8 @@ var camera: Node
 @onready var platform_manager = $"../PlatformManager"
 
 func _ready():
+	GameState.tiempo_activo = false
+	
 	camera = get_tree().get_first_node_in_group("camera")
 	_set_phase(0)
 	hitbox_head.area_entered.connect(_on_head_area_hit)
@@ -357,14 +359,18 @@ func _set_phase(phase: int):
 func _on_head_area_hit(area: Area2D):
 	if not area.is_in_group("DoubleJumpShot"):
 		return
+	
 	if is_immune:
 		if camera:
 			camera.add_trauma(0.2)
 		return
+	
 	area.morirahora()
 	sfx_hit.play()
+
 	if camera:
 		camera.add_trauma(0.8)
+	
 	_advance_phase()
 
 func _advance_phase():

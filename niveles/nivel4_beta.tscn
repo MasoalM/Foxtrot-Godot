@@ -48,7 +48,6 @@
 [ext_resource type="PackedScene" uid="uid://sw3iu1espuey" path="res://powerUps/guante.tscn" id="47_sph8r"]
 [ext_resource type="PackedScene" uid="uid://bi8u5lyedj4lt" path="res://niveles/level_ui.tscn" id="48_uec6p"]
 [ext_resource type="PackedScene" uid="uid://c83oj12tyaneq" path="res://Sprites/Checkpoint/checkpoint.tscn" id="49_bjwex"]
-[ext_resource type="AudioStream" uid="uid://bpqhx5sm3hwwo" path="res://Sounds/NoTime.ogg" id="50_7y6eg"]
 [ext_resource type="PackedScene" uid="uid://d0ordmi0yu7tp" path="res://Sprites/Coleccionables/coleccionable.tscn" id="50_opcjv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_86eud"]
@@ -378,11 +377,6 @@ position = Vector2(6362, 292)
 
 [node name="guante" parent="." unique_id=2119763944 instance=ExtResource("47_sph8r")]
 position = Vector2(10351, 559)
-
-[node name="NoTimeSound" type="AudioStreamPlayer" parent="." unique_id=1962239320]
-stream = ExtResource("50_7y6eg")
-volume_db = -2.0
-pitch_scale = 0.75
 
 [node name="LevelUi" parent="." unique_id=274504807 instance=ExtResource("48_uec6p")]
 

@@ -59,3 +59,10 @@ func play(sound_name, pitch := 0.0) -> void:
 		sound.pitch_scale = 1.0
 
 	sound.play()
+
+func get_sound(sound_name) -> AudioStreamPlayer:
+	if not sounds.has(sound_name):
+		push_error("El sonido '" + sound_name + "' no existe.")
+		return
+	
+	return sounds.get(sound_name)

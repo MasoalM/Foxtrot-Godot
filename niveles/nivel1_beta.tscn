@@ -16,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://djp4mcoh2wnil" path="res://Sprites/Efecto y otros/luz.png" id="8_i12o8"]
 [ext_resource type="Texture2D" uid="uid://bg67x8awhtuch" path="res://Sprites/Bloques/GrassRuinTransition.png" id="9_dwfvv"]
 [ext_resource type="Texture2D" uid="uid://dndppuovdw37x" path="res://Sprites/Bloques/WoodPlatform64x64v2.png" id="9_ktdkw"]
-[ext_resource type="PackedScene" uid="uid://dtcw45iyc4vgd" path="res://powerUps/dobleSalto.tscn" id="9_vp4r3"]
 [ext_resource type="Texture2D" uid="uid://uo1swjyosu5i" path="res://Sprites/Bloques/DirtRuinTransition.png" id="10_dbe8u"]
 [ext_resource type="Texture2D" uid="uid://cmsdu8ecv8xpm" path="res://Sprites/Bloques/WoodPlatform64x64v3.png" id="10_ovebw"]
 [ext_resource type="PackedScene" uid="uid://6rcs6agfvdu0" path="res://powerUps/escudo.tscn" id="10_tc1tu"]
@@ -52,7 +51,6 @@
 [ext_resource type="PackedScene" uid="uid://sw3iu1espuey" path="res://powerUps/guante.tscn" id="50_7sv1y"]
 [ext_resource type="PackedScene" uid="uid://c83oj12tyaneq" path="res://Sprites/Checkpoint/checkpoint.tscn" id="52_2d1pr"]
 [ext_resource type="PackedScene" uid="uid://bi8u5lyedj4lt" path="res://niveles/level_ui.tscn" id="52_uqflv"]
-[ext_resource type="AudioStream" uid="uid://bpqhx5sm3hwwo" path="res://Sounds/NoTime.ogg" id="55_2gx1n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rn8p"]
 texture = ExtResource("34_51gxm")
@@ -320,7 +318,7 @@ position = Vector2(284.29984, 398.6304)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D5" unique_id=1548526242]
 position = Vector2(305, -708)
-limit_left = 2
+limit_left = 0
 limit_top = -18
 limit_right = 10000014
 limit_bottom = 662
@@ -353,9 +351,6 @@ position = Vector2(14293.299, 475.37866)
 
 [node name="CharacterBody2D4" parent="." unique_id=50032239 instance=ExtResource("6_c62jp")]
 position = Vector2(7129, 90)
-
-[node name="StaticBody2D" parent="." unique_id=1752570427 instance=ExtResource("9_vp4r3")]
-position = Vector2(292, -17)
 
 [node name="RigidBody2D" parent="." unique_id=637563091 instance=ExtResource("10_tc1tu")]
 position = Vector2(5455, 175)
@@ -536,11 +531,6 @@ volume_db = 3.0
 [node name="PrePortal" type="AudioStreamPlayer2D" parent="PortalFinNivel" unique_id=350314468]
 stream = ExtResource("48_x8ox5")
 volume_db = -4.0
-
-[node name="NoTimeSound" type="AudioStreamPlayer" parent="." unique_id=783144097]
-stream = ExtResource("55_2gx1n")
-volume_db = -2.0
-pitch_scale = 0.75
 
 [node name="LevelUi" parent="." unique_id=274504807 instance=ExtResource("52_uqflv")]
 

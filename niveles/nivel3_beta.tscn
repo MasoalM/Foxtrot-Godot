@@ -50,7 +50,6 @@
 [ext_resource type="PackedScene" uid="uid://c0tuke05vvcv2" path="res://Otros/cataratas.tscn" id="50_u5i5k"]
 [ext_resource type="PackedScene" uid="uid://bi8u5lyedj4lt" path="res://niveles/level_ui.tscn" id="53_5ojtp"]
 [ext_resource type="PackedScene" uid="uid://duk5en5j45jy1" path="res://Otros/geyserdoble.tscn" id="53_c5aqp"]
-[ext_resource type="AudioStream" uid="uid://bpqhx5sm3hwwo" path="res://Sounds/NoTime.ogg" id="54_c5aqp"]
 [ext_resource type="PackedScene" uid="uid://bsv2dvqlv8m35" path="res://Otros/geyserdobleMedio.tscn" id="54_g8d7h"]
 [ext_resource type="PackedScene" uid="uid://bdq5jvbrb4e5b" path="res://powerUps/itemHielo.tscn" id="55_g8d7h"]
 [ext_resource type="PackedScene" uid="uid://bgte26jmivvc3" path="res://Otros/geyserdobleAlto.tscn" id="55_q56wv"]
@@ -354,7 +353,7 @@ autoplay = true
 [node name="CharacterBody2D5" parent="." unique_id=1006504852 groups=["player"] instance=ExtResource("2_s6an7")]
 z_index = -1
 texture_filter = 1
-position = Vector2(364, 415)
+position = Vector2(16000, 415)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D5" unique_id=1548526242]
 position = Vector2(305, -708)
@@ -694,11 +693,6 @@ position = Vector2(1642, 49)
 
 [node name="Area2D4" parent="." unique_id=116065897 instance=ExtResource("55_g8d7h")]
 position = Vector2(9240, 426)
-
-[node name="NoTimeSound" type="AudioStreamPlayer" parent="." unique_id=319502975]
-stream = ExtResource("54_c5aqp")
-volume_db = -2.0
-pitch_scale = 0.75
 
 [node name="LevelUi" parent="." unique_id=274504807 instance=ExtResource("53_5ojtp")]
 

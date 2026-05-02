@@ -34,10 +34,10 @@ var current_anim = ""
 var current_speed 
 var player 
 
-func play_anim(name):
-	if current_anim != name:
-		current_anim = name
-		animated_sprite.play(name)
+func play_anim(anim_name):
+	if current_anim != anim_name:
+		current_anim = anim_name
+		animated_sprite.play(anim_name)
 
 func _ready():
 	play_anim("movement")
@@ -79,7 +79,6 @@ func _physics_process(delta):
 			
 			# volver a nadar cuando termina el salto
 			play_anim("movement")
-
 	else:
 		_apply_swim(delta)
 		position.x += velocity.x * delta
@@ -92,14 +91,14 @@ func _physics_process(delta):
 			
 			if not (cerca_izquierda or cerca_derecha):
 				_jump()
-
 	
-		
+	
+	
 	animated_sprite.flip_h = direction > 0
-		
-	_update_rotation(delta)	
+	
+	_update_rotation(delta)
 
-func _update_rotation(delta):
+func _update_rotation(_delta):
 	var visual_velocity = velocity
 	
 	if not is_jumping:

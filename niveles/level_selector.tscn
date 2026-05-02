@@ -350,9 +350,9 @@ texture_filter = 1
 position = Vector2(284.29984, 398.6304)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D5" unique_id=1548526242]
-position = Vector2(305, -708)
-limit_left = 4
-limit_top = -2
+position = Vector2(304, -708)
+limit_left = 0
+limit_top = 0
 limit_right = 10000016
 limit_bottom = 678
 script = ExtResource("3_l713b")

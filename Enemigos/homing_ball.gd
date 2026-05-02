@@ -66,6 +66,7 @@ func _on_area_hit(area):
 func _morir():
 	if _dead:
 		return
+	
 	_dead = true
 	call_deferred("queue_free")
 

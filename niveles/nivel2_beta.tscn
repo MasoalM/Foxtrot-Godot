@@ -48,7 +48,6 @@
 [ext_resource type="PackedScene" uid="uid://bi8u5lyedj4lt" path="res://niveles/level_ui.tscn" id="46_tcwlf"]
 [ext_resource type="PackedScene" uid="uid://csgorm16kj0mv" path="res://Otros/liana.tscn" id="47_xmr5h"]
 [ext_resource type="PackedScene" uid="uid://c83oj12tyaneq" path="res://Sprites/Checkpoint/checkpoint.tscn" id="48_68742"]
-[ext_resource type="AudioStream" uid="uid://bpqhx5sm3hwwo" path="res://Sounds/NoTime.ogg" id="48_vdsh4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qhqn8"]
 texture = ExtResource("4_dccrm")
@@ -417,11 +416,6 @@ position = Vector2(1314, 416)
 
 [node name="CharacterBody2D11" parent="." unique_id=1406930614 instance=ExtResource("40_dccrm")]
 position = Vector2(6486, 335)
-
-[node name="NoTimeSound" type="AudioStreamPlayer" parent="." unique_id=83843425]
-stream = ExtResource("48_vdsh4")
-volume_db = -2.0
-pitch_scale = 0.75
 
 [node name="LevelUi" parent="." unique_id=274504807 instance=ExtResource("46_tcwlf")]
 

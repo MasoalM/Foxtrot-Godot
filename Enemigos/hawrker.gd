@@ -1,6 +1,5 @@
 extends CharacterBody2D
-@onready var hand = $Hand
-@onready var sword = $Hand/Sword
+
 @export var gravity := 900
 @export var shoot_distance := 400
 @export var shoot_cooldown := 1.5
@@ -96,10 +95,11 @@ func shoot():
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("ProyectilAliado"):
 		if area.has_method("morir"):
-			
 			area.morir()
+		
 		if !dead:
 			bow.queue_free()
+		
 		dead = true
 		set_collision_layer_value(1, false)
 		set_collision_layer_value(4, true)

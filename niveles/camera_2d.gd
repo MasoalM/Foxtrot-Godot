@@ -19,22 +19,22 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	else:
-		dobSal=true
+		dobSal = true
 	
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and (is_on_floor() or dobSal):
 		velocity.y = JUMP_VELOCITY
 		if not is_on_floor():
-			dobSal=false
+			dobSal = false
 		
-	vel=velocidad
+	vel = velocidad
 	
 	if Input.is_action_pressed("correr"):
-		vel=velocidad_correr
+		vel = velocidad_correr
 
-	if mirando_derecha && velocity.x<0:
-		$CharacterGreenFront.scale.x*=-1
-		$Marker2D.position.x*=-1
+	if mirando_derecha && velocity.x < 0:
+		$CharacterGreenFront.scale.x *= -1
+		$Marker2D.position.x *= -1
 		#scale.x *= -1
 		mirando_derecha = false
 

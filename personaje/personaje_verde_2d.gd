@@ -23,7 +23,6 @@ var monedas_estado = [false, false, false]
 var deathScreen = preload("res://niveles/DeathScreen.tscn")
 
 signal vidas_cambiadas(vidas, escudo)
-signal monedas_cambiadas(monedas_estado)
 
 const velocidad = 300.0
 const velocidad_correr = 450.0
@@ -73,9 +72,9 @@ const SHOOT_ANIM_MAX = 1.0
 var hurt_timer = 0.0
 const HURT_DURATION = 1.0
 
-var water=false
+var water = false
 
-var en_liana=false
+var en_liana = false
 var liana_cooldown = 0
 var liana_actual: Node2D = null
 var liana_segmento: RigidBody2D = null
@@ -382,11 +381,8 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Enemigos"):
 		enemigosIn -= 1
 
-
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	
 	if body.is_in_group("Enemigos") and not body.congelado:
-		
 		_dañar()
 		enemigosIn += 1
 	
@@ -711,7 +707,7 @@ func parar_parpadeo_cargado():
 	animacion.modulate = Color(1, 1, 1)		
 
 func _on_tiempo_agotado():
-	if is_dead:
+	if is_dead or not GameState.tiempo_activo:
 		return
 		
 	is_dead = true
@@ -720,6 +716,7 @@ func _on_tiempo_agotado():
 		state_machine.travel("deathIce")
 	else:
 		state_machine.travel("death")
+		
 	GameState.vidas_juego = 0
 	await get_tree().create_timer(1.0).timeout
 	

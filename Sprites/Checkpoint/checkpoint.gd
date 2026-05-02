@@ -4,6 +4,7 @@ extends Area2D
 @onready var sound = $AudioCheckpoint
 @onready var light = $PointLight2D
 @onready var particles = $GPUParticles2D
+
 var activado = false
 
 func _on_body_entered(body):

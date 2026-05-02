@@ -22,13 +22,15 @@ func _process(_delta: float) -> void:
 		entrar_al_nivel()
 
 func entrar_al_nivel():
+	GameState.checkpoint_activo = false
+	GameState.tiempo_activo = false
+	
 	#  Only detect level if it's a real level scene
 	if escena_destino.begins_with("res://niveles/nivel"):
 		nivel = obtener_id_nivel_desde_ruta(escena_destino)
 		print("el nivel es: ", nivel)
 
 		if nivel != -1:
-			
 			GameState.entrandoNivel(nivel)
 
 	if escena_destino == "res://niveles/level_selector.tscn":
@@ -50,7 +52,7 @@ func entrar_al_nivel():
 	if jugador:
 		jugador.bloquearControles = true
 		jugador.velocity.x = 0
-
+	
 	await get_tree().create_timer(1.0).timeout
 	get_tree().change_scene_to_file(escena_destino)
 	
@@ -59,7 +61,7 @@ func obtener_id_nivel_desde_ruta(ruta: String) -> int:
 	var prefijo = "res://niveles/nivel"
 	
 	if not ruta.begins_with(prefijo):
-				return -1
+		return -1
 	
 	var resto = ruta.substr(prefijo.length())
 	
@@ -69,7 +71,7 @@ func obtener_id_nivel_desde_ruta(ruta: String) -> int:
 	return -1
 	
 
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered(body: CharacterBody2D):
 	print("body entró: ", body.name)
 	if body.is_in_group("player"):
 		jugador_dentro = true
@@ -77,7 +79,7 @@ func _on_area_2d_body_entered(body):
 		prePortalSound.play()
 		luz.energy = 4.0
 
-func _on_area_2d_body_exited(body):
+func _on_area_2d_body_exited(body: CharacterBody2D):
 	if body.is_in_group("player"):
 		jugador_dentro = false
 		indicador.visible = false  # Ocultar imagen

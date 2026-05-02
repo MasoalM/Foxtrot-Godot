@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bi8u5lyedj4lt"]
 
-[ext_resource type="Script" uid="uid://bc3yl0l1o2rb1" path="res://niveles/control.gd" id="1_3i2k3"]
+[ext_resource type="Script" uid="uid://bc3yl0l1o2rb1" path="res://niveles/control_ui.gd" id="1_3i2k3"]
 [ext_resource type="Texture2D" uid="uid://c7j8y60gsqd2q" path="res://hud/HealthBar.png" id="2_r5rnn"]
 [ext_resource type="Texture2D" uid="uid://6ibedxnblj8w" path="res://Sprites/Clock.png" id="3_3qt84"]
 [ext_resource type="FontFile" uid="uid://t3qeauxnndoj" path="res://font/Retro Gaming.ttf" id="4_e0ytq"]

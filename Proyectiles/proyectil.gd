@@ -1,7 +1,5 @@
 extends Area2D
 
-@onready var bloqueRotoSound = $AudioStreamPlayer2DBloqueRoto
-
 const dist_max = 45.0
 
 var vel_bala = 600.0
@@ -45,7 +43,7 @@ func _on_body_entered(body):
 		var destructible = tile_data.get_custom_data("destructible")
 
 		if destructible:
-			bloqueRotoSound.play()
+			AudioManager.play("BrokenWoodBlock")
 			tilemap.erase_cell(0, cell)
 			visible = false
 			await get_tree().create_timer(0.2).timeout

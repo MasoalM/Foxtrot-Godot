@@ -17,7 +17,6 @@ var maxVida = 99
 var tiempo_activo = false
 
 func _ready():
-	
 	set_process(true)
 
 func perder_vida():
@@ -36,6 +35,7 @@ func _process(delta):
 # =========================
 #  COLECCIONABLES
 # =========================
+
 signal monedas_cambiadas(monedas_estado)
 
 var monedas_estado = [false, false, false]
