@@ -375,7 +375,6 @@ func apply_powerup(type):
 			GameState.ganar_vida()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("AREA BODY: " + str(body))
 	if body.is_in_group("Enemigos"):
 		if body.has_method("congelado") or "congelado" in body:
 			if body.congelado:
@@ -397,7 +396,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 				return
 		
 		_dañar()
-		print("AREA ENEMIGO: " + str(area))
 	
 	if area.is_in_group("Lianas"):
 		if liana_cooldown <= 0:

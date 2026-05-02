@@ -49,7 +49,7 @@
 [ext_resource type="AudioStream" uid="uid://dmybnkonokowx" path="res://Sounds/PrePortal.mp3" id="48_cpomx"]
 [ext_resource type="PackedScene" uid="uid://sw3iu1espuey" path="res://powerUps/guante.tscn" id="50_oaq5l"]
 [ext_resource type="PackedScene" uid="uid://c83oj12tyaneq" path="res://Sprites/Checkpoint/checkpoint.tscn" id="51_dsjyb"]
-[ext_resource type="PackedScene" uid="uid://d1kbkbnk0n07s" path="res://Enemigos/BigRanha.tscn" id="51_vq4ol"]
+[ext_resource type="PackedScene" uid="uid://d1kbkbnk0n07s" path="res://Enemigos/big_ranha.tscn" id="51_vq4ol"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rn8p"]
 texture = ExtResource("3_dsjyb")
@@ -116,6 +116,7 @@ texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, -26.699612, -32, -26.699612)
 0:0/0/physics_layer_0/polygon_0/one_way = true
+0:0/0/custom_data_2 = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_570nr"]
 texture = ExtResource("10_trbb6")
@@ -123,6 +124,7 @@ texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, -26.699612, -32, -26.699612)
 0:0/0/physics_layer_0/polygon_0/one_way = true
+0:0/0/custom_data_2 = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d3inr"]
 texture = ExtResource("11_tvdrq")
@@ -258,6 +260,7 @@ texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, -26.699612, -32, -26.699612)
 0:0/0/physics_layer_0/polygon_0/one_way = true
+0:0/0/custom_data_2 = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vp4r3"]
 texture = ExtResource("26_jqrli")
@@ -297,6 +300,8 @@ custom_data_layer_0/name = "destructible"
 custom_data_layer_0/type = 1
 custom_data_layer_1/name = "damage"
 custom_data_layer_1/type = 1
+custom_data_layer_2/name = "pass_through"
+custom_data_layer_2/type = 1
 sources/0 = SubResource("TileSetAtlasSource_5rn8p")
 sources/1 = SubResource("TileSetAtlasSource_i12o8")
 sources/4 = SubResource("TileSetAtlasSource_tc1tu")

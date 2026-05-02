@@ -71,7 +71,7 @@ func get_shot_velocity(target_pos: Vector2) -> Vector2:
 	vel.x = displacement.x / time
 	vel.y = (displacement.y / time) - (0.5 * gravity * time)
 
-	return vel	
+	return vel
 
 
 func shoot():
@@ -109,4 +109,4 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		animated_sprite.play("death")
 		muerte.play()
 		await get_tree().create_timer(1.8).timeout
-		queue_free()	
+		queue_free()

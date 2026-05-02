@@ -219,14 +219,14 @@ texture = ExtResource("26_q0edt")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-0:0/0/custom_data_2 = true
+0:0/0/custom_data_3 = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t5mwo"]
 texture = ExtResource("27_3qka7")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 32, 32, 32, 32, 32, -32, 32)
-0:0/0/custom_data_2 = true
+0:0/0/custom_data_3 = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_608v1"]
 texture = ExtResource("24_y0ukx")
@@ -304,8 +304,10 @@ custom_data_layer_0/name = "destructible"
 custom_data_layer_0/type = 1
 custom_data_layer_1/name = "damage"
 custom_data_layer_1/type = 1
-custom_data_layer_2/name = "water"
+custom_data_layer_2/name = "pass_through"
 custom_data_layer_2/type = 1
+custom_data_layer_3/name = "water"
+custom_data_layer_3/type = 1
 sources/0 = SubResource("TileSetAtlasSource_5rn8p")
 sources/1 = SubResource("TileSetAtlasSource_i12o8")
 sources/4 = SubResource("TileSetAtlasSource_tc1tu")

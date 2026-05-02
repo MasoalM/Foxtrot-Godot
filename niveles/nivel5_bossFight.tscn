@@ -37,7 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://bg67x8awhtuch" path="res://Sprites/Bloques/GrassRuinTransition.png" id="34_3net6"]
 [ext_resource type="Texture2D" uid="uid://uo1swjyosu5i" path="res://Sprites/Bloques/DirtRuinTransition.png" id="35_awm4o"]
 [ext_resource type="Texture2D" uid="uid://dwroa0ojm2rqf" path="res://Sprites/Bloques/Column.png" id="36_kgjhr"]
-[ext_resource type="PackedScene" uid="uid://cp5pub8lyfwwh" path="res://Enemigos/BOSS.tscn" id="38_cnv7i"]
+[ext_resource type="PackedScene" uid="uid://cp5pub8lyfwwh" path="res://Enemigos/boss.tscn" id="38_cnv7i"]
 [ext_resource type="Script" uid="uid://bc3yl0l1o2rb1" path="res://niveles/control_ui.gd" id="38_n3o3y"]
 [ext_resource type="Texture2D" uid="uid://c7j8y60gsqd2q" path="res://hud/HealthBar.png" id="39_t6ux0"]
 [ext_resource type="Texture2D" uid="uid://ca7kef2h3iclf" path="res://Sprites/PowerUps/Heart.png" id="40_6e8d5"]
@@ -302,6 +302,8 @@ custom_data_layer_0/name = "destructible"
 custom_data_layer_0/type = 1
 custom_data_layer_1/name = "damage"
 custom_data_layer_1/type = 1
+custom_data_layer_2/name = "pass_through"
+custom_data_layer_2/type = 1
 sources/0 = SubResource("TileSetAtlasSource_5rn8p")
 sources/1 = SubResource("TileSetAtlasSource_i12o8")
 sources/4 = SubResource("TileSetAtlasSource_tc1tu")
