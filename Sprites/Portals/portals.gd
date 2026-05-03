@@ -29,6 +29,7 @@ func entrar_al_nivel():
 	if escena_destino.begins_with("res://niveles/nivel"):
 		nivel = obtener_id_nivel_desde_ruta(escena_destino)
 		print("el nivel es: ", nivel)
+		
 
 		if nivel != -1:
 			GameState.entrandoNivel(nivel)
@@ -36,6 +37,7 @@ func entrar_al_nivel():
 	if escena_destino == "res://niveles/level_selector.tscn":
 		print(GameState.obtener_resultado())
 		APIclient.enviar_resultado(GameState.obtener_resultado())
+		GameState.resetear_monedas()
 
 	#  Safety check
 	if escena_destino == "":
