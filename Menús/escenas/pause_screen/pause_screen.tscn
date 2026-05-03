@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://k8rl6r36urit"]
+
+[ext_resource type="Script" uid="uid://d3y3hbsces023" path="res://Menús/escenas/pause_screen/pause_screen.gd" id="1_8ndoo"]
+[ext_resource type="Texture2D" uid="uid://cmrypuwamqj3r" path="res://Menús/assets/Pausa.png" id="2_uch6f"]
+[ext_resource type="Texture2D" uid="uid://djpyerxdw0q4u" path="res://Menús/assets/botones/Reanudar.png" id="3_dq0oh"]
+[ext_resource type="Texture2D" uid="uid://cppd4mtt2ypgn" path="res://Menús/assets/botones/Ajustes.png" id="4_momuc"]
+[ext_resource type="FontFile" uid="uid://t3qeauxnndoj" path="res://font/Retro Gaming.ttf" id="6_dq0oh"]
+[ext_resource type="Texture2D" uid="uid://qm5nijdh1m8e" path="res://Menús/assets/botones/Salir.png" id="6_npxob"]
+
+[sub_resource type="Theme" id="Theme_momuc"]
+default_font = ExtResource("6_dq0oh")
+default_font_size = 24
+
+[node name="PauseScreen" type="CanvasLayer" unique_id=1421780813]
+script = ExtResource("1_8ndoo")
+
+[node name="Control" type="Control" parent="." unique_id=1108728989]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Fondo" type="ColorRect" parent="Control" unique_id=171337061]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.07058824, 0.08235294, 0.15294118, 0.19607843)
+
+[node name="Menú" type="TextureRect" parent="Control/Fondo" unique_id=1038284806]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -150.0
+offset_right = 210.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_uch6f")
+
+[node name="Botones" type="VBoxContainer" parent="Control/Fondo/Menú" unique_id=89337197]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -118.0
+offset_right = 128.0
+offset_bottom = 162.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Reanudar" type="TextureButton" parent="Control/Fondo/Menú/Botones" unique_id=744512107]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_dq0oh")
+
+[node name="Ajustes" type="TextureButton" parent="Control/Fondo/Menú/Botones" unique_id=1706729158]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_momuc")
+
+[node name="Volver al selector" type="TextureButton" parent="Control/Fondo/Menú/Botones" unique_id=942663673]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="Salir al menú principal" type="TextureButton" parent="Control/Fondo/Menú/Botones" unique_id=1027584652]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6_npxob")
+
+[node name="BajoDesarrollo" type="Label" parent="Control/Fondo" unique_id=1503285730]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -310.5
+offset_top = 75.0
+offset_right = 310.5
+offset_bottom = 106.0
+grow_horizontal = 2
+theme = SubResource("Theme_momuc")
+theme_override_colors/font_color = Color(0.7897282, 0, 0.15272468, 1)
+text = "EL MENÚ DE PAUSA ESTÁ BAJO DESARROLLO
+ALGUNAS FUNCIONES PUEDEN NO FUNCIONAR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Control/Fondo/Menú/Botones/Reanudar" to="." method="_on_reanudar_pressed"]

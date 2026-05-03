@@ -95,5 +95,7 @@ func animate(button, target_scale):
 	
 	var tween = create_tween()
 	button.set_meta("tween", tween)
+	
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tween.tween_property(button, "scale", target_scale, 0.08)\
 		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
