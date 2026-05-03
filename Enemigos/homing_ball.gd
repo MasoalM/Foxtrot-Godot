@@ -3,7 +3,6 @@ extends Area2D
 @export var speed := 250.0
 @export var turn_speed := 2.0
 @export var lifetime := 5.0
-
 var velocity := Vector2.ZERO
 var target: Node2D = null
 var shooter: Node2D = null
@@ -13,6 +12,7 @@ var _dead := false
 func _ready():
 	add_to_group("EnemyBall")
 	add_to_group("Enemigos")
+	add_to_group("OwlBossBall")
 	collision_layer = 4
 	collision_mask = 2
 	monitoring = true
@@ -23,22 +23,27 @@ func _ready():
 func _physics_process(delta):
 	if _dead:
 		return
-
 	_lifetime_timer += delta
 	if _lifetime_timer >= lifetime:
 		_morir()
 		return
 
+	# Detección manual de proyectiles aliados por proximidad
+	for bala in get_tree().get_nodes_in_group("ProyectilAliado"):
+		if is_instance_valid(bala):
+			if global_position.distance_to(bala.global_position) < 30.0:
+				bala.morir()
+				_morir()
+				return
+
 	if target == null or not is_instance_valid(target):
 		position += velocity * delta
 		return
-
 	var desired_direction := (target.global_position - global_position).normalized()
 	var current_direction := velocity.normalized()
 	var new_direction := current_direction.lerp(desired_direction, turn_speed * delta).normalized()
 	velocity = new_direction * speed
 	position += velocity * delta
-
 	if velocity.length() > 0.1:
 		rotation = velocity.angle()
 
@@ -51,8 +56,12 @@ func _on_body_hit(body):
 		body._dañar()
 		_morir()
 
-func _on_area_hit(area):
+func _on_area_hit(area: Area2D):
 	if _dead:
+		return
+	if area.is_in_group("ProyectilAliado"):
+		area.morir()
+		_morir()
 		return
 	var parent = area.get_parent()
 	if parent == shooter:
@@ -66,7 +75,6 @@ func _on_area_hit(area):
 func _morir():
 	if _dead:
 		return
-	
 	_dead = true
 	call_deferred("queue_free")
 

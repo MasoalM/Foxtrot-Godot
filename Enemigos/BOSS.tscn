@@ -94,7 +94,8 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8teny"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_eae3g"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_4befi"]
+radius = 3.7404673
 
 [node name="BOSS" type="CharacterBody2D" unique_id=2105881948]
 collision_layer = 4
@@ -121,9 +122,14 @@ shape = SubResource("CircleShape2D_8teny")
 
 [node name="HitboxBody" type="Area2D" parent="." unique_id=218645061 groups=["Enemigos"]]
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitboxBody" unique_id=152531577]
+scale = Vector2(20, 20)
+shape = SubResource("CircleShape2D_4befi")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxBody" unique_id=2133145430]
-scale = Vector2(23, 10)
-shape = SubResource("CircleShape2D_eae3g")
+position = Vector2(2.3841858e-07, 0)
+scale = Vector2(60, 15)
+shape = SubResource("CircleShape2D_4befi")
 
 [node name="MadBoss" type="AudioStreamPlayer2D" parent="." unique_id=951522089]
 stream = ExtResource("19_eae3g")
