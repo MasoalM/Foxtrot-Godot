@@ -53,6 +53,7 @@
 [ext_resource type="PackedScene" uid="uid://df5ks5eqy4hrt" path="res://Otros/geyserlavadoble.tscn" id="51_vq4ol"]
 [ext_resource type="PackedScene" uid="uid://yt1oxn5jwfqo" path="res://Otros/geyserlavadobleAlto.tscn" id="52_dsjyb"]
 [ext_resource type="PackedScene" uid="uid://r3gphtt6ecbw" path="res://Otros/geyserlavadobleMedio.tscn" id="53_th76g"]
+[ext_resource type="PackedScene" uid="uid://c0pg6o11j4nrg" path="res://Enemigos/ruedaTemplo.tscn" id="54_o58ik"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rn8p"]
 texture = ExtResource("3_dsjyb")
@@ -466,6 +467,9 @@ position = Vector2(2816, 579)
 
 [node name="Node2D3" parent="." unique_id=549933414 instance=ExtResource("53_th76g")]
 position = Vector2(2641, 578)
+
+[node name="RigidBody2D4" parent="." unique_id=677796148 instance=ExtResource("54_o58ik")]
+position = Vector2(1097, -533)
 
 [connection signal="body_entered" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_exited"]

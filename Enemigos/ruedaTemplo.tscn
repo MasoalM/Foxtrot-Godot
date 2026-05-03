@@ -1,24 +1,25 @@
 [gd_scene format=3 uid="uid://c0pg6o11j4nrg"]
 
-[ext_resource type="Texture2D" uid="uid://ckppm6utea157" path="res://Sprites/Enemies/Default/saw_b.png" id="1_5wejg"]
+[ext_resource type="Texture2D" uid="uid://bthw7bhk4t5j3" path="res://Sprites/Enemigos/RuinsWheel.png" id="1_prvix"]
 [ext_resource type="Script" uid="uid://dneughl5app25" path="res://Enemigos/area_2d.gd" id="2_prvix"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_prvix"]
-radius = 31.016125
+radius = 23.021729
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5wejg"]
-radius = 31.06445
+radius = 24.0
 
 [node name="RigidBody2D" type="RigidBody2D" unique_id=677796148]
 
 [node name="SawB" type="Sprite2D" parent="." unique_id=32117148]
-position = Vector2(0, -1)
-texture = ExtResource("1_5wejg")
+texture_filter = 1
+texture = ExtResource("1_prvix")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=614849374]
 shape = SubResource("CircleShape2D_prvix")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=18484528]
+collision_mask = 3
 script = ExtResource("2_prvix")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=977859805]

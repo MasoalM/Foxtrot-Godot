@@ -13,5 +13,5 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body):
-	if body.is_in_group("player"):
-		get_tree().quit()
+	if body.has_method("_dañar"):
+		body._dañar()
