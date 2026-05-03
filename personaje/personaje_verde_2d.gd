@@ -744,7 +744,6 @@ func set_waterf():
 func _muerte_instantanea():
 	if is_dead:
 		return
-
 	is_dead = true
 	bloquearControles = true
 

@@ -47,9 +47,9 @@
 [ext_resource type="AudioStream" uid="uid://bju45770rly62" path="res://Sounds/Portal.ogg" id="47_fi6uk"]
 [ext_resource type="PackedScene" uid="uid://bi8u5lyedj4lt" path="res://niveles/level_ui.tscn" id="47_mybwg"]
 [ext_resource type="AudioStream" uid="uid://dmybnkonokowx" path="res://Sounds/PrePortal.mp3" id="48_cpomx"]
+[ext_resource type="PackedScene" uid="uid://bt4xicflvyk83" path="res://Otros/lava.tscn" id="50_2twbf"]
 [ext_resource type="PackedScene" uid="uid://sw3iu1espuey" path="res://powerUps/guante.tscn" id="50_oaq5l"]
 [ext_resource type="PackedScene" uid="uid://c83oj12tyaneq" path="res://Sprites/Checkpoint/checkpoint.tscn" id="51_dsjyb"]
-[ext_resource type="PackedScene" uid="uid://d1kbkbnk0n07s" path="res://Enemigos/big_ranha.tscn" id="51_vq4ol"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rn8p"]
 texture = ExtResource("3_dsjyb")
@@ -446,7 +446,7 @@ position = Vector2(5855, 239)
 
 [node name="LevelUi" parent="." unique_id=274504807 instance=ExtResource("47_mybwg")]
 
-[node name="Bigranha" parent="." unique_id=826057812 instance=ExtResource("51_vq4ol")]
+[node name="Bigranha" parent="." unique_id=826057812]
 position = Vector2(600, 647)
 
 [node name="Area2D6" parent="." unique_id=1406310529 instance=ExtResource("51_dsjyb")]
@@ -454,6 +454,9 @@ position = Vector2(4289, 230)
 
 [node name="Area2D5" parent="." unique_id=1045420692 instance=ExtResource("51_dsjyb")]
 position = Vector2(7070, 167)
+
+[node name="Area2D4" parent="." unique_id=851504275 instance=ExtResource("50_2twbf")]
+position = Vector2(3701, 560)
 
 [connection signal="body_entered" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_exited"]
