@@ -86,7 +86,6 @@ func _physics_process(delta):
 	# --- FLIP VISUAL ---
 	animated_sprite.flip_h = direction > 0
 
-
 func _flip():
 	direction *= -1
 	
@@ -97,8 +96,6 @@ func _flip():
 	if ray_vision:
 		ray_vision.target_position.x = abs(ray_vision.target_position.x) * direction
 
-
-
 func shoot():
 	if projectile_scene == null:
 		return
@@ -107,14 +104,12 @@ func shoot():
 		return
 	
 	var bullet = projectile_scene.instantiate()
-	
 	var dir = sign(player.global_position.x - global_position.x)
 	
 	if dir == 0:
 		dir = 1
 	
 	bullet.global_position = shoot_point.global_position + Vector2(dir * 20, 0)
-	
 	bullet.set_target(player)
 	bullet.set_shooter(self)
 	bullet.set_direction_from_target(player)
@@ -122,12 +117,10 @@ func shoot():
 	get_parent().add_child(bullet)
 	
 	# opcional (si implementaste shooter en el proyectil)
-	if "shooter" in bullet:
-		bullet.shooter = self
-	
-	get_parent().add_child(bullet)
-
-
+	#if "shooter" in bullet:
+		#bullet.shooter = self
+	#
+	#get_parent().add_child(bullet)
 
 func can_see_player():
 	if not is_instance_valid(player) or ray_vision == null:
