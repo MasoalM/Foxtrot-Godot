@@ -40,7 +40,7 @@ ProyectilAliado=""
 Enemigos=""
 ataqueCargado=""
 ProyectilHielo=""
-Level=""
+Gameplay="El jugador no está entre menís, está dentro del level selector o algún nivel."
 
 [input]
 

@@ -15,7 +15,7 @@ func _process(_delta: float) -> void:
 # -- Pause Menu Handler --
 
 func can_pause() -> bool:
-	return get_tree().current_scene != null and get_tree().current_scene.is_in_group("Level")
+	return get_tree().current_scene != null and get_tree().current_scene.is_in_group("Gameplay")
 
 func handle_pause():
 	if get_tree().paused:

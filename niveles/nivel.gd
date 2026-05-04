@@ -6,7 +6,7 @@ var noTimeSound: AudioStreamPlayer
 var musica_acelerada = false
 
 func _ready():
-	add_to_group("Level")
+	add_to_group("Gameplay")
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
 	var scene = get_tree().current_scene.scene_file_path

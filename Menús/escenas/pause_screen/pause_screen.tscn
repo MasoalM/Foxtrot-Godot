@@ -4,8 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://cmrypuwamqj3r" path="res://Menús/assets/Pausa.png" id="2_uch6f"]
 [ext_resource type="Texture2D" uid="uid://djpyerxdw0q4u" path="res://Menús/assets/botones/Reanudar.png" id="3_dq0oh"]
 [ext_resource type="Texture2D" uid="uid://cppd4mtt2ypgn" path="res://Menús/assets/botones/Ajustes.png" id="4_momuc"]
+[ext_resource type="Texture2D" uid="uid://bajg3lrxjo5ru" path="res://Menús/assets/botones/Salir del Nivel.png" id="5_06v8l"]
+[ext_resource type="Texture2D" uid="uid://42q4c8kgq4ke" path="res://Menús/assets/Salida.png" id="6_06v8l"]
 [ext_resource type="FontFile" uid="uid://t3qeauxnndoj" path="res://font/Retro Gaming.ttf" id="6_dq0oh"]
-[ext_resource type="Texture2D" uid="uid://qm5nijdh1m8e" path="res://Menús/assets/botones/Salir.png" id="6_npxob"]
+[ext_resource type="Texture2D" uid="uid://c4iqjuupd12d6" path="res://Menús/assets/botones/Selector de Niveles.png" id="7_cqc5r"]
+[ext_resource type="Texture2D" uid="uid://b6c0c13rra11h" path="res://Menús/assets/botones/Menú Principal.png" id="8_f8boe"]
+[ext_resource type="Texture2D" uid="uid://gtt3plcfsdf4" path="res://Menús/assets/botones/Salir Escritorio.png" id="9_l6mxg"]
+[ext_resource type="Texture2D" uid="uid://bmg6eta32vtya" path="res://Menús/assets/botones/Atrás.png" id="10_bxypm"]
 
 [sub_resource type="Theme" id="Theme_momuc"]
 default_font = ExtResource("6_dq0oh")
@@ -26,7 +31,7 @@ offset_right = 1280.0
 offset_bottom = 720.0
 color = Color(0.07058824, 0.08235294, 0.15294118, 0.19607843)
 
-[node name="Menú" type="TextureRect" parent="Control/Fondo" unique_id=1038284806]
+[node name="Menú de pausa" type="TextureRect" parent="Control/Fondo" unique_id=1038284806]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -41,7 +46,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_uch6f")
 
-[node name="Botones" type="VBoxContainer" parent="Control/Fondo/Menú" unique_id=89337197]
+[node name="Botones" type="VBoxContainer" parent="Control/Fondo/Menú de pausa" unique_id=89337197]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -49,32 +54,86 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -128.0
-offset_top = -118.0
+offset_top = -125.0
 offset_right = 128.0
-offset_bottom = 162.0
+offset_bottom = 155.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Reanudar" type="TextureButton" parent="Control/Fondo/Menú/Botones" unique_id=744512107]
+[node name="Reanudar" type="TextureButton" parent="Control/Fondo/Menú de pausa/Botones" unique_id=744512107]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("3_dq0oh")
 
-[node name="Ajustes" type="TextureButton" parent="Control/Fondo/Menú/Botones" unique_id=1706729158]
+[node name="Ajustes" type="TextureButton" parent="Control/Fondo/Menú de pausa/Botones" unique_id=1706729158]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("4_momuc")
 
-[node name="Volver al selector" type="TextureButton" parent="Control/Fondo/Menú/Botones" unique_id=942663673]
+[node name="Salir del nivel" type="TextureButton" parent="Control/Fondo/Menú de pausa/Botones" unique_id=1027584652]
 layout_mode = 2
 mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_06v8l")
 
-[node name="Salir al menú principal" type="TextureButton" parent="Control/Fondo/Menú/Botones" unique_id=1027584652]
+[node name="Menú de salida" type="TextureRect" parent="Control/Fondo" unique_id=304715768]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.0
+offset_top = -185.0
+offset_right = 215.0
+offset_bottom = 185.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_06v8l")
+
+[node name="Botones" type="VBoxContainer" parent="Control/Fondo/Menú de salida" unique_id=1112043765]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -75.0
+offset_right = 160.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Selector de niveles" type="TextureButton" parent="Control/Fondo/Menú de salida/Botones" unique_id=1409181497]
 layout_mode = 2
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("6_npxob")
+texture_normal = ExtResource("7_cqc5r")
+
+[node name="Menú principal" type="TextureButton" parent="Control/Fondo/Menú de salida/Botones" unique_id=972410849]
+layout_mode = 2
+texture_normal = ExtResource("8_f8boe")
+
+[node name="Salir al escritorio" type="TextureButton" parent="Control/Fondo/Menú de salida/Botones" unique_id=760842383]
+layout_mode = 2
+texture_normal = ExtResource("9_l6mxg")
+
+[node name="Atrás" type="TextureButton" parent="Control/Fondo/Menú de salida" unique_id=2061171553]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = 5.0
+offset_right = 64.0
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("10_bxypm")
 
 [node name="BajoDesarrollo" type="Label" parent="Control/Fondo" unique_id=1503285730]
 layout_mode = 1
@@ -93,4 +152,9 @@ ALGUNAS FUNCIONES PUEDEN NO FUNCIONAR"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="Control/Fondo/Menú/Botones/Reanudar" to="." method="_on_reanudar_pressed"]
+[connection signal="pressed" from="Control/Fondo/Menú de pausa/Botones/Reanudar" to="." method="_on_reanudar_pressed"]
+[connection signal="pressed" from="Control/Fondo/Menú de pausa/Botones/Salir del nivel" to="." method="_on_salir_pressed"]
+[connection signal="pressed" from="Control/Fondo/Menú de salida/Botones/Selector de niveles" to="." method="_on_selector_de_niveles_pressed"]
+[connection signal="pressed" from="Control/Fondo/Menú de salida/Botones/Menú principal" to="." method="_on_menú_principal_pressed"]
+[connection signal="pressed" from="Control/Fondo/Menú de salida/Botones/Salir al escritorio" to="." method="_on_salir_al_escritorio_pressed"]
+[connection signal="pressed" from="Control/Fondo/Menú de salida/Atrás" to="." method="_on_atrás_pressed"]

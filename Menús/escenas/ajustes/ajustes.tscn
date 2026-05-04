@@ -416,7 +416,7 @@ popup/item_4/id = 4
 popup/item_5/text = "7680x4320p"
 popup/item_5/id = 5
 
-[node name="Atrás" type="TextureButton" parent="Control/Fondo" unique_id=1395209060]
+[node name="Atrás" type="TextureButton" parent="Control/Fondo/Menú Ajustes" unique_id=1395209060]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -439,4 +439,4 @@ metadata/tipo = "ATRÁS"
 [connection signal="value_changed" from="Control/Fondo/Menú Ajustes/Ajustes/Volumen/Efectos" to="Control/Fondo/Menú Ajustes/Ajustes/Volumen" method="_on_efectos_value_changed"]
 [connection signal="item_selected" from="Control/Fondo/Menú Ajustes/Ajustes/Gráficos/Modo" to="Control/Fondo/Menú Ajustes/Ajustes/Gráficos" method="_on_modo_item_selected"]
 [connection signal="item_selected" from="Control/Fondo/Menú Ajustes/Ajustes/Gráficos/Resolución" to="Control/Fondo/Menú Ajustes/Ajustes/Gráficos" method="_on_resolución_item_selected"]
-[connection signal="pressed" from="Control/Fondo/Atrás" to="Control/Fondo/Atrás" method="_on_pressed"]
+[connection signal="pressed" from="Control/Fondo/Menú Ajustes/Atrás" to="Control/Fondo/Menú Ajustes/Atrás" method="_on_pressed"]
