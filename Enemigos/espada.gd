@@ -21,6 +21,7 @@ func set_direction(dir):
 
 func _ready():
 	add_to_group("Enemigos")
+	
 	if direction == 1:
 		start_rotation = deg_to_rad(0)
 		end_rotation = deg_to_rad(180)

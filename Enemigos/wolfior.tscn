@@ -295,6 +295,7 @@ shape = SubResource("CapsuleShape2D_3yp3h")
 collision_mask = 3
 
 [node name="EspadaIdle" type="Node2D" parent="." unique_id=56523616]
+z_index = -2
 
 [node name="sword" type="Sprite2D" parent="EspadaIdle" unique_id=1035658033]
 texture_filter = 1
@@ -303,7 +304,7 @@ scale = Vector2(-1, 1)
 texture = ExtResource("3_ayysr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1654619215]
-z_index = -2
+z_index = -3
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_6pt4v")
 animation = &"death"
