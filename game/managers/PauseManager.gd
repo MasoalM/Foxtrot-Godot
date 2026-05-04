@@ -5,6 +5,7 @@ var pause_menu
 func _ready() -> void:
 	var scene = preload("res://Menús/escenas/pause_screen/pause_screen.tscn")
 	pause_menu = scene.instantiate()
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	get_tree().root.add_child.call_deferred(pause_menu)
 
@@ -18,10 +19,15 @@ func can_pause() -> bool:
 	return get_tree().current_scene != null and get_tree().current_scene.is_in_group("Gameplay")
 
 func handle_pause():
-	if get_tree().paused:
-		resume()
+	if pause_menu.visible:
+		if pause_menu.is_on_submenu():
+			pause_menu.back_to_main()
+		else:
+			resume()
+			AudioManager.play("click")
 	else:
 		pause()
+		AudioManager.play("click")
 
 func pause():
 	get_tree().paused = true

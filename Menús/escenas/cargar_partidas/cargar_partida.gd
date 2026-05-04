@@ -84,8 +84,13 @@ func _on_slot_pressed(button, slot_id) -> void:
 	AudioManager.play("click")
 
 func _on_jugar_pressed():
+	SaveManager.load_game(selected_slot)
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	handle_ontop_menu(false)
 	confirmar.visible = true
+	
+	get_tree().change_scene_to_file("res://niveles/level_selector.tscn")
 	
 	AudioManager.play("click")
 	print("Cargar partida: ", selected_slot)

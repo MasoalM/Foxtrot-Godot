@@ -6,15 +6,215 @@
 [ext_resource type="Texture2D" uid="uid://cppd4mtt2ypgn" path="res://Menús/assets/botones/Ajustes.png" id="4_momuc"]
 [ext_resource type="Texture2D" uid="uid://bajg3lrxjo5ru" path="res://Menús/assets/botones/Salir del Nivel.png" id="5_06v8l"]
 [ext_resource type="Texture2D" uid="uid://42q4c8kgq4ke" path="res://Menús/assets/Salida.png" id="6_06v8l"]
-[ext_resource type="FontFile" uid="uid://t3qeauxnndoj" path="res://font/Retro Gaming.ttf" id="6_dq0oh"]
 [ext_resource type="Texture2D" uid="uid://c4iqjuupd12d6" path="res://Menús/assets/botones/Selector de Niveles.png" id="7_cqc5r"]
+[ext_resource type="Texture2D" uid="uid://br4w7x75iyvs0" path="res://Menús/assets/Ajustes.png" id="7_kcbi8"]
+[ext_resource type="Texture2D" uid="uid://dmdb335knl2vi" path="res://Menús/assets/VolumenAjustes.png" id="8_bbwiw"]
 [ext_resource type="Texture2D" uid="uid://b6c0c13rra11h" path="res://Menús/assets/botones/Menú Principal.png" id="8_f8boe"]
+[ext_resource type="Script" uid="uid://bdx40tfvje2gi" path="res://Menús/escenas/ajustes/control_volumen.gd" id="9_crkn8"]
 [ext_resource type="Texture2D" uid="uid://gtt3plcfsdf4" path="res://Menús/assets/botones/Salir Escritorio.png" id="9_l6mxg"]
 [ext_resource type="Texture2D" uid="uid://bmg6eta32vtya" path="res://Menús/assets/botones/Atrás.png" id="10_bxypm"]
+[ext_resource type="Texture2D" uid="uid://bo1dsrq6pake8" path="res://Menús/assets/slider/SliderGrabber.png" id="10_klptx"]
+[ext_resource type="Texture2D" uid="uid://cj4i6fq31scpf" path="res://Menús/assets/slider/SliderGrabberHighlight.png" id="11_5i2yt"]
+[ext_resource type="Texture2D" uid="uid://calpby5nn4040" path="res://Menús/assets/slider/SliderGrabberDisabled.png" id="12_x0g47"]
+[ext_resource type="Texture2D" uid="uid://2r3r4tmigqt4" path="res://Menús/assets/slider/SliderBackground.png" id="13_cr2og"]
+[ext_resource type="Texture2D" uid="uid://d0e27abb2bsgj" path="res://Menús/assets/slider/SliderProgress.png" id="14_pdm4h"]
+[ext_resource type="FontFile" uid="uid://coe4gaaihhlww" path="res://Menús/assets/fuentes/Retro Gaming.ttf" id="15_4evw2"]
+[ext_resource type="Texture2D" uid="uid://bnwp4218tika6" path="res://Menús/assets/GraficosAjustes.png" id="16_055wp"]
+[ext_resource type="Script" uid="uid://d1c47vf1aul24" path="res://Menús/escenas/ajustes/control_gráficos.gd" id="17_8gdnq"]
+[ext_resource type="Texture2D" uid="uid://ppbd8gk2yc7y" path="res://Menús/assets/option/SelecciónActual.png" id="18_2cbff"]
+[ext_resource type="Texture2D" uid="uid://ckw70ujuekmrr" path="res://Menús/assets/option/Selección.png" id="19_1xn4r"]
+[ext_resource type="Texture2D" uid="uid://baicwftnlcimw" path="res://Menús/assets/option/AjustesDropdown.png" id="20_4qx5v"]
+[ext_resource type="Texture2D" uid="uid://b76hjcwgywb3u" path="res://Menús/assets/option/Ajustes.png" id="21_tao3r"]
+[ext_resource type="Texture2D" uid="uid://d1e08aojlw6fb" path="res://Menús/assets/option/AjustesHover.png" id="22_nym8o"]
+[ext_resource type="Texture2D" uid="uid://cx32vm0lobtls" path="res://Menús/assets/option/AjustesDisabled.png" id="23_e6xtf"]
+[ext_resource type="Texture2D" uid="uid://yavhpueitbev" path="res://Menús/assets/option/ArrowDown.png" id="24_kslt8"]
+[ext_resource type="Texture2D" uid="uid://f1r665yj4yh4" path="res://Menús/assets/option/AjustesDropdownLong.png" id="25_x751n"]
 
-[sub_resource type="Theme" id="Theme_momuc"]
-default_font = ExtResource("6_dq0oh")
-default_font_size = 24
+[sub_resource type="Theme" id="Theme_5lpet"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_33udb"]
+texture = ExtResource("13_cr2og")
+texture_margin_top = 2.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c8uoe"]
+texture = ExtResource("14_pdm4h")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_glkq4"]
+texture = ExtResource("14_pdm4h")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_qycri"]
+font = ExtResource("15_4evw2")
+font_size = 15
+font_color = Color(0.5686275, 0.3529412, 0.24705882, 1)
+shadow_color = Color(0.47843137, 0.29803923, 0.20784314, 1)
+shadow_offset = Vector2(0.5, 0.5)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_66xpx"]
+diffuse_texture = ExtResource("18_2cbff")
+normal_texture = ExtResource("18_2cbff")
+texture_filter = 1
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_gvu86"]
+diffuse_texture = ExtResource("19_1xn4r")
+texture_filter = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gvu86"]
+bg_color = Color(0.6712419, 0.58182, 0.50728035, 0.19607843)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_bve2j"]
+diffuse_texture = ExtResource("20_4qx5v")
+texture_filter = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b775m"]
+texture = SubResource("CanvasTexture_bve2j")
+
+[sub_resource type="Theme" id="Theme_of52i"]
+default_font = ExtResource("15_4evw2")
+default_font_size = 10
+PopupMenu/colors/font_accelerator_color = Color(0.7, 0.7, 0.7, 0.8)
+PopupMenu/colors/font_color = Color(0.5686275, 0.3529412, 0.24705882, 1)
+PopupMenu/colors/font_disabled_color = Color(0.4, 0.4, 0.4, 0.8)
+PopupMenu/colors/font_hover_color = Color(0.52156866, 0.32156864, 0.21960784, 1)
+PopupMenu/colors/font_outline_color = Color(0, 0, 0, 1)
+PopupMenu/colors/font_separator_color = Color(0.875, 0.875, 0.875, 1)
+PopupMenu/colors/font_separator_outline_color = Color(0, 0, 0, 1)
+PopupMenu/colors/title_color = Color(0, 0, 0, 1)
+PopupMenu/colors/title_outline_modulate = Color(0, 0, 0, 1)
+PopupMenu/constants/close_h_offset = 0
+PopupMenu/constants/close_v_offset = 0
+PopupMenu/constants/gutter_compact = 0
+PopupMenu/constants/h_separation = 0
+PopupMenu/constants/icon_max_width = 0
+PopupMenu/constants/indent = 8
+PopupMenu/constants/item_end_padding = 6
+PopupMenu/constants/item_start_padding = 6
+PopupMenu/constants/outline_size = 0
+PopupMenu/constants/resize_margin = 0
+PopupMenu/constants/separator_outline_size = 0
+PopupMenu/constants/title_height = 0
+PopupMenu/constants/title_outline_size = 0
+PopupMenu/constants/v_separation = 4
+PopupMenu/font_sizes/font_separator_size = 10
+PopupMenu/font_sizes/font_size = 10
+PopupMenu/font_sizes/title_font_size = 10
+PopupMenu/fonts/font = ExtResource("15_4evw2")
+PopupMenu/fonts/font_separator = ExtResource("15_4evw2")
+PopupMenu/fonts/title_font = ExtResource("15_4evw2")
+PopupMenu/icons/checked = null
+PopupMenu/icons/checked_disabled = null
+PopupMenu/icons/close = null
+PopupMenu/icons/close_pressed = null
+PopupMenu/icons/radio_checked = SubResource("CanvasTexture_66xpx")
+PopupMenu/icons/radio_checked_disabled = null
+PopupMenu/icons/radio_unchecked = SubResource("CanvasTexture_gvu86")
+PopupMenu/icons/radio_unchecked_disabled = null
+PopupMenu/icons/submenu = null
+PopupMenu/icons/submenu_mirrored = null
+PopupMenu/icons/unchecked = null
+PopupMenu/icons/unchecked_disabled = null
+PopupMenu/styles/embedded_border = null
+PopupMenu/styles/embedded_unfocused_border = null
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_gvu86")
+PopupMenu/styles/labeled_separator_left = null
+PopupMenu/styles/labeled_separator_right = null
+PopupMenu/styles/panel = SubResource("StyleBoxTexture_b775m")
+PopupMenu/styles/separator = null
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_olley"]
+content_margin_left = 8.0
+texture = ExtResource("21_tao3r")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2iuic"]
+content_margin_left = 8.0
+texture = ExtResource("22_nym8o")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jiwwk"]
+content_margin_left = 8.0
+texture = ExtResource("21_tao3r")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t8rnp"]
+content_margin_left = 8.0
+texture = ExtResource("22_nym8o")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s8mc8"]
+content_margin_left = 8.0
+texture = ExtResource("23_e6xtf")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_46qhb"]
+diffuse_texture = ExtResource("25_x751n")
+texture_filter = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q64op"]
+texture = SubResource("CanvasTexture_46qhb")
+
+[sub_resource type="Theme" id="Theme_3klf0"]
+default_font = ExtResource("15_4evw2")
+default_font_size = 10
+PopupMenu/colors/font_accelerator_color = Color(0.7, 0.7, 0.7, 0.8)
+PopupMenu/colors/font_color = Color(0.5686275, 0.3529412, 0.24705882, 1)
+PopupMenu/colors/font_disabled_color = Color(0.4, 0.4, 0.4, 0.8)
+PopupMenu/colors/font_hover_color = Color(0.52156866, 0.32156864, 0.21960784, 1)
+PopupMenu/colors/font_outline_color = Color(0, 0, 0, 1)
+PopupMenu/colors/font_separator_color = Color(0.875, 0.875, 0.875, 1)
+PopupMenu/colors/font_separator_outline_color = Color(0, 0, 0, 1)
+PopupMenu/colors/title_color = Color(0, 0, 0, 1)
+PopupMenu/colors/title_outline_modulate = Color(0, 0, 0, 1)
+PopupMenu/constants/close_h_offset = 0
+PopupMenu/constants/close_v_offset = 0
+PopupMenu/constants/gutter_compact = 0
+PopupMenu/constants/h_separation = 0
+PopupMenu/constants/icon_max_width = 0
+PopupMenu/constants/indent = 8
+PopupMenu/constants/item_end_padding = 6
+PopupMenu/constants/item_start_padding = 6
+PopupMenu/constants/outline_size = 0
+PopupMenu/constants/resize_margin = 0
+PopupMenu/constants/separator_outline_size = 0
+PopupMenu/constants/title_height = 0
+PopupMenu/constants/title_outline_size = 0
+PopupMenu/constants/v_separation = 4
+PopupMenu/font_sizes/font_separator_size = 10
+PopupMenu/font_sizes/font_size = 10
+PopupMenu/font_sizes/title_font_size = 10
+PopupMenu/fonts/font = ExtResource("15_4evw2")
+PopupMenu/fonts/font_separator = ExtResource("15_4evw2")
+PopupMenu/fonts/title_font = ExtResource("15_4evw2")
+PopupMenu/icons/checked = null
+PopupMenu/icons/checked_disabled = null
+PopupMenu/icons/close = null
+PopupMenu/icons/close_pressed = null
+PopupMenu/icons/radio_checked = SubResource("CanvasTexture_66xpx")
+PopupMenu/icons/radio_checked_disabled = null
+PopupMenu/icons/radio_unchecked = SubResource("CanvasTexture_gvu86")
+PopupMenu/icons/radio_unchecked_disabled = null
+PopupMenu/icons/submenu = null
+PopupMenu/icons/submenu_mirrored = null
+PopupMenu/icons/unchecked = null
+PopupMenu/icons/unchecked_disabled = null
+PopupMenu/styles/embedded_border = null
+PopupMenu/styles/embedded_unfocused_border = null
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_gvu86")
+PopupMenu/styles/labeled_separator_left = null
+PopupMenu/styles/labeled_separator_right = null
+PopupMenu/styles/panel = SubResource("StyleBoxTexture_q64op")
+PopupMenu/styles/separator = null
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ekehy"]
+content_margin_left = 8.0
+texture = ExtResource("23_e6xtf")
 
 [node name="PauseScreen" type="CanvasLayer" unique_id=1421780813]
 script = ExtResource("1_8ndoo")
@@ -77,6 +277,207 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("5_06v8l")
 
+[node name="Menú Ajustes" type="TextureRect" parent="Control/Fondo" unique_id=1259843885]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -195.0
+offset_top = -190.0
+offset_right = 195.0
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_kcbi8")
+
+[node name="Ajustes" type="VBoxContainer" parent="Control/Fondo/Menú Ajustes" unique_id=1393854409]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = 55.0
+offset_right = -17.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="Volumen" type="TextureRect" parent="Control/Fondo/Menú Ajustes/Ajustes" unique_id=308116220]
+layout_mode = 2
+theme = SubResource("Theme_5lpet")
+texture = ExtResource("8_bbwiw")
+script = ExtResource("9_crkn8")
+
+[node name="Música" type="HSlider" parent="Control/Fondo/Menú Ajustes/Ajustes/Volumen" unique_id=783320334]
+layout_mode = 0
+offset_left = 113.0
+offset_top = 38.0
+offset_right = 295.0
+offset_bottom = 48.0
+mouse_default_cursor_shape = 2
+theme_override_constants/center_grabber = 1
+theme_override_icons/grabber = ExtResource("10_klptx")
+theme_override_icons/grabber_highlight = ExtResource("11_5i2yt")
+theme_override_icons/grabber_disabled = ExtResource("12_x0g47")
+theme_override_styles/slider = SubResource("StyleBoxTexture_33udb")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_c8uoe")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_glkq4")
+value = 100.0
+
+[node name="Música Label" type="Label" parent="Control/Fondo/Menú Ajustes/Ajustes/Volumen" unique_id=905990753]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -55.0
+offset_top = -10.0
+offset_right = -13.0
+offset_bottom = 10.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "100%"
+label_settings = SubResource("LabelSettings_qycri")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Efectos" type="HSlider" parent="Control/Fondo/Menú Ajustes/Ajustes/Volumen" unique_id=1641352458]
+layout_mode = 0
+offset_left = 113.0
+offset_top = 60.0
+offset_right = 295.0
+offset_bottom = 70.0
+mouse_default_cursor_shape = 2
+theme_override_constants/center_grabber = 1
+theme_override_icons/grabber = ExtResource("10_klptx")
+theme_override_icons/grabber_highlight = ExtResource("11_5i2yt")
+theme_override_icons/grabber_disabled = ExtResource("12_x0g47")
+theme_override_styles/slider = SubResource("StyleBoxTexture_33udb")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_c8uoe")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_glkq4")
+value = 100.0
+
+[node name="Efectos Label" type="Label" parent="Control/Fondo/Menú Ajustes/Ajustes/Volumen" unique_id=588478356]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -55.0
+offset_top = 12.0
+offset_right = -13.0
+offset_bottom = 32.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "100%"
+label_settings = SubResource("LabelSettings_qycri")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Gráficos" type="TextureRect" parent="Control/Fondo/Menú Ajustes/Ajustes" unique_id=606330635]
+layout_mode = 2
+texture = ExtResource("16_055wp")
+script = ExtResource("17_8gdnq")
+
+[node name="Modo" type="OptionButton" parent="Control/Fondo/Menú Ajustes/Ajustes/Gráficos" unique_id=503513358]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -12.5
+offset_right = 167.0
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_of52i")
+theme_override_colors/font_color = Color(0.5686275, 0.3529412, 0.24705882, 1)
+theme_override_colors/font_pressed_color = Color(0.5686275, 0.3529412, 0.24705882, 1)
+theme_override_colors/font_hover_color = Color(0.5212256, 0.32005182, 0.22115207, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.52156866, 0.32156864, 0.21960784, 1)
+theme_override_colors/font_disabled_color = Color(0.32, 0.27093333, 0.24639998, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_olley")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2iuic")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jiwwk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_t8rnp")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_s8mc8")
+theme_override_constants/arrow_margin = 5
+theme_override_icons/arrow = ExtResource("24_kslt8")
+selected = 0
+item_count = 2
+popup/item_0/text = "Pantalla Completa"
+popup/item_0/id = 0
+popup/item_1/text = "Ventana"
+popup/item_1/id = 1
+
+[node name="Resolución" type="OptionButton" parent="Control/Fondo/Menú Ajustes/Ajustes/Gráficos" unique_id=146134174]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = 12.0
+offset_right = 167.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_3klf0")
+theme_override_colors/font_color = Color(0.5686275, 0.3529412, 0.24705882, 1)
+theme_override_colors/font_pressed_color = Color(0.5686275, 0.3529412, 0.24705882, 1)
+theme_override_colors/font_hover_color = Color(0.5212256, 0.32005182, 0.22115207, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.52156866, 0.32156864, 0.21960784, 1)
+theme_override_constants/align_to_largest_stylebox = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_olley")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2iuic")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jiwwk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_t8rnp")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_ekehy")
+theme_override_constants/arrow_margin = 5
+theme_override_icons/arrow = ExtResource("24_kslt8")
+item_count = 6
+popup/item_0/text = "960x540p"
+popup/item_0/id = 0
+popup/item_1/text = "1280x720p"
+popup/item_1/id = 1
+popup/item_2/text = "1920x1080p"
+popup/item_2/id = 2
+popup/item_3/text = "2560x1440p"
+popup/item_3/id = 3
+popup/item_4/text = "3840x2160p"
+popup/item_4/id = 4
+popup/item_5/text = "7680x4320p"
+popup/item_5/id = 5
+
+[node name="Atrás" type="TextureButton" parent="Control/Fondo/Menú Ajustes" unique_id=264141266]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = 195.0
+offset_right = 64.0
+offset_bottom = 243.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("10_bxypm")
+metadata/tipo = "ATRÁS"
+
 [node name="Menú de salida" type="TextureRect" parent="Control/Fondo" unique_id=304715768]
 visible = false
 layout_mode = 1
@@ -135,25 +536,14 @@ grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("10_bxypm")
 
-[node name="BajoDesarrollo" type="Label" parent="Control/Fondo" unique_id=1503285730]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -310.5
-offset_top = 75.0
-offset_right = 310.5
-offset_bottom = 106.0
-grow_horizontal = 2
-theme = SubResource("Theme_momuc")
-theme_override_colors/font_color = Color(0.7897282, 0, 0.15272468, 1)
-text = "EL MENÚ DE PAUSA ESTÁ BAJO DESARROLLO
-ALGUNAS FUNCIONES PUEDEN NO FUNCIONAR"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [connection signal="pressed" from="Control/Fondo/Menú de pausa/Botones/Reanudar" to="." method="_on_reanudar_pressed"]
+[connection signal="pressed" from="Control/Fondo/Menú de pausa/Botones/Ajustes" to="." method="_on_ajustes_pressed"]
 [connection signal="pressed" from="Control/Fondo/Menú de pausa/Botones/Salir del nivel" to="." method="_on_salir_pressed"]
+[connection signal="value_changed" from="Control/Fondo/Menú Ajustes/Ajustes/Volumen/Música" to="Control/Fondo/Menú Ajustes/Ajustes/Volumen" method="_on_música_value_changed"]
+[connection signal="value_changed" from="Control/Fondo/Menú Ajustes/Ajustes/Volumen/Efectos" to="Control/Fondo/Menú Ajustes/Ajustes/Volumen" method="_on_efectos_value_changed"]
+[connection signal="item_selected" from="Control/Fondo/Menú Ajustes/Ajustes/Gráficos/Modo" to="Control/Fondo/Menú Ajustes/Ajustes/Gráficos" method="_on_modo_item_selected"]
+[connection signal="item_selected" from="Control/Fondo/Menú Ajustes/Ajustes/Gráficos/Resolución" to="Control/Fondo/Menú Ajustes/Ajustes/Gráficos" method="_on_resolución_item_selected"]
+[connection signal="pressed" from="Control/Fondo/Menú Ajustes/Atrás" to="." method="_on_atrás_pressed"]
 [connection signal="pressed" from="Control/Fondo/Menú de salida/Botones/Selector de niveles" to="." method="_on_selector_de_niveles_pressed"]
 [connection signal="pressed" from="Control/Fondo/Menú de salida/Botones/Menú principal" to="." method="_on_menú_principal_pressed"]
 [connection signal="pressed" from="Control/Fondo/Menú de salida/Botones/Salir al escritorio" to="." method="_on_salir_al_escritorio_pressed"]

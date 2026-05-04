@@ -164,6 +164,33 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("11_jcf34")
 script = ExtResource("12_4ss5i")
 
+[node name="Menú Ninguna Partida" type="VBoxContainer" parent="Control/Fondo" unique_id=919807930]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -195.0
+offset_top = -75.0
+offset_right = 195.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="Ninguna Partida" type="TextureRect" parent="Control/Fondo/Menú Ninguna Partida" unique_id=1679909877]
+layout_mode = 2
+texture = ExtResource("17_3l7kw")
+
+[node name="Nueva Partida" type="TextureButton" parent="Control/Fondo/Menú Ninguna Partida" unique_id=189420288]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("18_eu6g3")
+
 [node name="Menú Confirmar" type="VBoxContainer" parent="Control/Fondo" unique_id=965418816]
 visible = false
 layout_mode = 1
@@ -207,38 +234,9 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("16_vmqjn")
 
-[node name="Menú Ninguna Partida" type="VBoxContainer" parent="Control/Fondo" unique_id=919807930]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 24
-
-[node name="Ninguna Partida" type="TextureRect" parent="Control/Fondo/Menú Ninguna Partida" unique_id=1679909877]
-layout_mode = 2
-texture = ExtResource("17_3l7kw")
-
-[node name="Nueva Partida" type="TextureButton" parent="Control/Fondo/Menú Ninguna Partida" unique_id=189420288]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("18_eu6g3")
-
 [connection signal="pressed" from="Control/Fondo/Menú/Menú Partidas/Partidas/A" to="Control" method="_on_slot_pressed" flags=18 binds= ["A"]]
 [connection signal="pressed" from="Control/Fondo/Menú/Menú Partidas/Partidas/B" to="Control" method="_on_slot_pressed" flags=18 binds= ["B"]]
 [connection signal="pressed" from="Control/Fondo/Menú/Menú Partidas/Partidas/C" to="Control" method="_on_slot_pressed" flags=18 binds= ["C"]]
 [connection signal="pressed" from="Control/Fondo/Botones/Jugar" to="Control" method="_on_jugar_pressed"]
 [connection signal="pressed" from="Control/Fondo/Botones/Atrás" to="Control/Fondo/Botones/Atrás" method="_on_pressed"]
-[connection signal="pressed" from="Control/Fondo/Menú Confirmar/Confirmar/Botones/Sí" to="Control" method="_on_sí_pressed"]
-[connection signal="pressed" from="Control/Fondo/Menú Confirmar/Confirmar/Botones/No" to="Control" method="_on_no_pressed"]
 [connection signal="pressed" from="Control/Fondo/Menú Ninguna Partida/Nueva Partida" to="Control" method="_on_nueva_partida_pressed"]

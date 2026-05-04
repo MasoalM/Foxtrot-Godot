@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @onready var pausa = $"Control/Fondo/Menú de pausa"
+@onready var ajustes = $"Control/Fondo/Menú Ajustes"
 @onready var salida = $"Control/Fondo/Menú de salida"
 
 var pointer_texture = preload("res://Sprites/Pointer.png")
@@ -26,6 +27,16 @@ func show_menu():
 func hide_menu():
 	visible = false
 
+func is_on_submenu():
+	return ajustes.visible or salida.visible
+
+func back_to_main():
+	pausa.visible = true
+	salida.visible = false
+	ajustes.visible = false
+	
+	AudioManager.play("click")
+
 func handle_leaving():
 	PauseManager.resume()
 	
@@ -43,6 +54,12 @@ func handle_leaving():
 func _on_reanudar_pressed() -> void:
 	print("REANUDAR")
 	PauseManager.resume()
+	AudioManager.play("click")
+
+func _on_ajustes_pressed() -> void:
+	pausa.visible = false
+	ajustes.visible = true
+	
 	AudioManager.play("click")
 
 func _on_salir_pressed() -> void:
@@ -69,7 +86,4 @@ func _on_salir_al_escritorio_pressed() -> void:
 	get_tree().quit()
 
 func _on_atrás_pressed() -> void:
-	pausa.visible = true
-	salida.visible = false
-	
-	AudioManager.play("click")
+	back_to_main()
