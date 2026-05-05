@@ -60,13 +60,14 @@ var freeze_timer = 0.0
 
 
 func _ready():
-	#get_tree().debug_collisions_hint = true
-	
 	add_to_group("Enemigos")
 	player = get_tree().get_first_node_in_group("player")
 	start_position = global_position
 	last_x = global_position.x
 	patrol_wait_time = patrol_move_duration
+	# Hacer el shape único para esta instancia
+	var shape_node = hitbox.get_node("CollisionShape2D")
+	shape_node.shape = shape_node.shape.duplicate()
 
 
 func _physics_process(delta):
