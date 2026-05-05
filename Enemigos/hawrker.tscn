@@ -10,8 +10,8 @@
 [ext_resource type="AudioStream" uid="uid://cwpbn1gqqu21" path="res://Sounds/HawrkerShot.ogg" id="8_q2lss"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x4fpu"]
-radius = 21.0
-height = 50.0
+radius = 27.0
+height = 56.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dm53f"]
 radius = 29.0

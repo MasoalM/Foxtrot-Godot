@@ -85,7 +85,7 @@ func shoot():
 		var bullet = projectile_scene.instantiate()
 		get_parent().add_child(bullet)
 
-		var spawn_point = bow.get_node("Marker2D")
+		var spawn_point = bow.get_node("Marker2D")  
 
 		bullet.global_position = spawn_point.global_position
 		bullet.shooter = self

@@ -51,6 +51,10 @@ var espada_scene = preload("res://Enemigos//Espada.tscn")
 const HURT_LIVES = 1
 const DEATH_LIVES = 0
 
+var base_radius
+var base_height
+var attacking = false
+
 #congelar
 var congelado = false
 var freeze_timer = 0.0
@@ -60,6 +64,10 @@ var freeze_timer = 0.0
 
 
 func _ready():
+	
+	var shape = hitbox.get_node("CollisionShape2D").shape as CapsuleShape2D
+	base_radius = shape.radius
+	base_height = shape.height
 	#get_tree().debug_collisions_hint = true
 	
 	add_to_group("Enemigos")
@@ -238,8 +246,66 @@ func can_see_player():
 		return false
 	return false
 	
-	
 func attack():
+	if lives <= 0 or attacking:
+		return
+		
+	if !is_instance_valid(player):
+		return
+
+	attacking = true
+
+	var espada = espada_scene.instantiate()
+
+	var offset_x = 20
+	var dir = 1
+
+	if player.global_position.x < global_position.x:
+		offset_x = -20
+		dir = -1
+	
+	if is_instance_valid(espada_idle):
+		espada_idle.visible = false
+
+	add_child(espada)
+	espada.position = Vector2(offset_x, 20)
+
+	if espada.has_method("set_direction"):
+		espada.set_direction(dir)
+
+	# --- HITBOX ---
+	hitbox.monitoring = true
+
+	var shape_node = hitbox.get_node("CollisionShape2D")
+
+	# 🔴 CLAVE: duplicar el shape para evitar acumulación
+	shape_node.shape = shape_node.shape.duplicate()
+
+	var shape = shape_node.shape as CapsuleShape2D
+
+	# Usar valores base (NO los actuales)
+	shape.radius = base_radius * 2
+	shape.height = base_height
+
+	if dir == -1:
+		shape_node.position.x = -base_radius
+	else:
+		shape_node.position.x = base_radius
+
+	await get_tree().create_timer(0.25).timeout
+
+	# Restaurar valores base
+	shape.radius = base_radius
+	shape.height = base_height
+	shape_node.position.x = 0
+
+	if is_instance_valid(espada_idle):
+		espada_idle.visible = true
+
+	attacking = false	
+	
+	
+func attack2():
 	if lives > 0:
 		if !is_instance_valid(player):
 			return

@@ -107,8 +107,8 @@ func obtener_resultado() -> Dictionary:
 		"nivel_id": nivel,
 		"tiempo": tiempo_restante,
 		"puntuacion": 0,
-		"c1": monedas_estado[0] if 1 else 0,
-		"c2": monedas_estado[1] if 1 else 0,
-		"c3": monedas_estado[2] if 1 else 0
+		"c1": 1 if monedas_estado[0] else 0,
+		"c2": 1 if monedas_estado[1] else 0,
+		"c3": 1 if monedas_estado[2] else 0
 	}
 	
