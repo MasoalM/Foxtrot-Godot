@@ -473,7 +473,7 @@ position = Vector2(2641, 578)
 position = Vector2(1097, -533)
 
 [node name="RigidBody2D5" parent="." unique_id=9191560 instance=ExtResource("55_bshhl")]
-position = Vector2(995, 353)
+position = Vector2(2528, 418)
 
 [connection signal="body_entered" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_exited"]

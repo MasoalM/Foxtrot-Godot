@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://riso2eg0icnt"]
+
+[ext_resource type="Script" uid="uid://j2o1lr88g6t7" path="res://Proyectiles/proyectil_torreta.gd" id="1_50y06"]
+[ext_resource type="Texture2D" uid="uid://dfu6lb8k4h32u" path="res://Sprites/Proyectiles/Arrow.png" id="2_50y06"]
+[ext_resource type="Texture2D" uid="uid://djp4mcoh2wnil" path="res://Sprites/Efecto y otros/luz.png" id="3_rlf8e"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1hd88"]
+radius = 7.0
+height = 40.0
+
+[node name="Proyectil" type="Area2D" unique_id=1529313797]
+light_mask = 512
+visibility_layer = 7
+z_index = -2
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_50y06")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1055736728]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_1hd88")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1311440186]
+texture_filter = 1
+position = Vector2(0.20269573, -0.06756732)
+rotation = -0.67744046
+scale = Vector2(2.3426368, 1.8992828)
+texture = ExtResource("2_50y06")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=508917827]
+position = Vector2(10, 6.7762636e-21)
+scale = Vector2(0.4986089, 0.25903615)
+color = Color(0.26278073, 0.08150122, 0.75880307, 1)
+energy = 2.0
+texture = ExtResource("3_rlf8e")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
