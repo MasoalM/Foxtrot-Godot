@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cbfxwrm0nrkil"]
 
+[ext_resource type="Script" uid="uid://cv0lmbdpnhih" path="res://Enemigos/torreta.gd" id="1_a1a64"]
 [ext_resource type="Texture2D" uid="uid://dj0d7kysoxui5" path="res://Sprites/Enemigos/RuinShooter.png" id="1_hp5rg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a1a64"]
@@ -9,6 +10,7 @@ size = Vector2(64, 24)
 size = Vector2(34, 24)
 
 [node name="RigidBody2D" type="RigidBody2D" unique_id=9191560]
+script = ExtResource("1_a1a64")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2117115171]
 texture_filter = 1
@@ -21,3 +23,6 @@ shape = SubResource("RectangleShape2D_a1a64")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=797523724]
 position = Vector2(-1, -4)
 shape = SubResource("RectangleShape2D_hp5rg")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1100862579]
+position = Vector2(-43, -3)
