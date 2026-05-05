@@ -220,13 +220,13 @@ texture_region_size = Vector2i(64, 64)
 texture = ExtResource("28_2twbf")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
-0:0/0/modulate = Color(0.4666667, 0, 1, 1)
+0:0/0/modulate = Color(1, 0, 0.8333335, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_th76g"]
 texture = ExtResource("29_vq4ol")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
-0:0/0/modulate = Color(0.4666667, 0, 1, 1)
+0:0/0/modulate = Color(1, 0, 0.8333335, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_608v1"]
 texture = ExtResource("24_i5qhc")
@@ -454,19 +454,19 @@ position = Vector2(5855, 239)
 [node name="Area2D6" parent="." unique_id=1406310529 instance=ExtResource("51_dsjyb")]
 position = Vector2(4289, 230)
 
-[node name="Area2D5" parent="." unique_id=1045420692 instance=ExtResource("51_dsjyb")]
-position = Vector2(7070, 167)
-
 [node name="Area2D4" parent="." unique_id=851504275 instance=ExtResource("50_2twbf")]
 position = Vector2(3701, 560)
 
 [node name="Node2D" parent="." unique_id=972032776 instance=ExtResource("51_vq4ol")]
+modulate = Color(1, 0, 0.8352941, 1)
 position = Vector2(2171, 584)
 
 [node name="Node2D2" parent="." unique_id=1780017495 instance=ExtResource("52_dsjyb")]
+modulate = Color(1, 0, 0.8352941, 1)
 position = Vector2(2816, 579)
 
 [node name="Node2D3" parent="." unique_id=549933414 instance=ExtResource("53_th76g")]
+modulate = Color(1, 0, 0.8352941, 1)
 position = Vector2(2641, 578)
 
 [node name="RigidBody2D4" parent="." unique_id=677796148 instance=ExtResource("54_o58ik")]

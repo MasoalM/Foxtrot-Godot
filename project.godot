@@ -13,7 +13,7 @@ config_version=5
 config/name="FOXTROT"
 run/main_scene="uid://ej230yybshag"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="uid://ru0bqi3annxs"
+config/icon="uid://bn7wpw2qs3085"
 
 [autoload]
 

@@ -33,7 +33,6 @@
 [ext_resource type="Texture2D" uid="uid://uo1swjyosu5i" path="res://Sprites/Bloques/DirtRuinTransition.png" id="28_j01b1"]
 [ext_resource type="Texture2D" uid="uid://dwroa0ojm2rqf" path="res://Sprites/Bloques/Column.png" id="29_srddr"]
 [ext_resource type="Texture2D" uid="uid://djp4mcoh2wnil" path="res://Sprites/Efecto y otros/luz.png" id="31_elm21"]
-[ext_resource type="PackedScene" uid="uid://dtcw45iyc4vgd" path="res://powerUps/dobleSalto.tscn" id="32_qo2to"]
 [ext_resource type="PackedScene" uid="uid://6rcs6agfvdu0" path="res://powerUps/escudo.tscn" id="33_sdkmw"]
 [ext_resource type="PackedScene" uid="uid://b1ftwkgwp40yb" path="res://powerUps/vida.tscn" id="34_lh55y"]
 [ext_resource type="PackedScene" uid="uid://cv4mf7w2d3xe0" path="res://Otros/jungFrond.tscn" id="36_l0x8k"]
@@ -320,14 +319,8 @@ layer_2/name = "Decoración"
 layer_2/z_index = 1
 layer_2/tile_data = PackedInt32Array(393305, 65537, 3, 393306, 65537, 3, 393307, 65537, 3, 393313, 65537, 3, 393314, 65537, 3, 393318, 65537, 3, 393320, 65537, 3, 393309, 65537, 268435459, 393310, 65537, 268435459, 393316, 65537, 268435459, 393308, 131073, 3, 393311, 131073, 3, 393312, 131073, 3, 393315, 131073, 3, 393317, 131073, 268435459, 393319, 131073, 268435459, 393321, 65537, 3, 393322, 131073, 268435459, 393323, 131073, 268435459, 393297, 65537, 1, 393298, 131073, 3, 393299, 65537, 3, 393300, 131073, 3, 393301, 131073, 3, 458830, 131073, 3, 458828, 131073, 3, 458829, 131073, 268435459, 458832, 131073, 268435459, 458831, 65537, 3, 458827, 65537, 3, 458752, 65537, 3, 458753, 65537, 3, 458754, 131073, 3, 458757, 65537, 3, 458755, 131073, 3, 458758, 131073, 3, 458756, 131073, 268435459, 524514, 131073, 268435459, 524515, 131073, 268435459, 458985, 65537, 1, 458986, 131073, 268435459, 524521, 196609, 3, 393452, 65537, 1, 458988, 196609, 3, 524516, 65537, 3, 524517, 65537, 3, 524519, 65537, 268435459, 524520, 131073, 3, 524518, 131073, 3, 393454, 131073, 3, 393456, 131073, 3, 393453, 131073, 268435459, 393455, 131073, 268435459, 458987, 65537, 3, 458833, 196609, 3)
 
-[node name="StaticBody2D" parent="." unique_id=1752570427 instance=ExtResource("32_qo2to")]
-position = Vector2(292, -17)
-
 [node name="RigidBody2D" parent="." unique_id=637563091 instance=ExtResource("33_sdkmw")]
 position = Vector2(2298, 354)
-
-[node name="RigidBody2D2" parent="." unique_id=2136293655 instance=ExtResource("34_lh55y")]
-position = Vector2(402, -44)
 
 [node name="Coleccionable2" parent="." unique_id=604219173 instance=ExtResource("36_vdsh4")]
 position = Vector2(8929, 111)
