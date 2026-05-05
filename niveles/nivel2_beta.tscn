@@ -377,10 +377,6 @@ position = Vector2(14052, 232)
 texture_filter = 1
 position = Vector2(13411, 233)
 
-[node name="CharacterBody2D20" parent="." unique_id=741167048 instance=ExtResource("39_unt6w")]
-texture_filter = 1
-position = Vector2(11548, 104)
-
 [node name="CharacterBody2D28" parent="." unique_id=753687274 instance=ExtResource("39_unt6w")]
 texture_filter = 1
 position = Vector2(12575, 33)

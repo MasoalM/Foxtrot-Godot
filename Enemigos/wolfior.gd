@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var jumpSound = $AudioStreamPlayer2DJump
 @onready var swordHitSound = $AudioStreamPlayer2DSwordHit
 @onready var hurtSound = $AudioStreamPlayer2DHurt
+@onready var freezeSound = $AudioStreamPlayer2DFreeze
 
 @export var speed = 120
 var player
@@ -352,15 +353,10 @@ func muerte():
 	await get_tree().create_timer(1.8).timeout
 	queue_free()
 	
-	
-
-	
-		
-		
-	
 func congelar(tiempo):
 	if congelado:
 		return
+	freezeSound.play()
 	
 	congelado = true
 	freeze_timer = tiempo
