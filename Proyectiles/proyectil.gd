@@ -53,6 +53,8 @@ func _on_body_entered(body):
 				morir()
 		else:
 			morir()
+	else:
+			morir()
 
 func _on_area_entered(area: Area2D) -> void:
 	if not visible:
