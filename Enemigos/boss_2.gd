@@ -9,7 +9,8 @@ extends CharacterBody2D
 @export var frame_speed := 8.0
 @export var bounds_x := Vector2(320, 1024)   # min X, max X
 @export var bounds_y := Vector2(-450, 340)   # min Y, max Y
-@export var bounds_y2 := Vector2(-1240, 340)   # min Y, max Y
+@export var bounds_y2 := Vector2(-2720.0, 340)   # min Y, max Y
+@export var bounds_y3 := Vector2(-4508.0,340) 
 var current_phase := 0
 var is_dead := false
 
@@ -76,6 +77,7 @@ var stun_timer := 0.0
 # ---- Platforms ----
 @onready var platform_manager = $"../PlatformManager"
 @onready var platform_manager2 = $"../PlatformManager2"
+@onready var platform_manager3 = $"../PlatformManager3"
 
 func _ready():
 	
@@ -166,18 +168,26 @@ func _trigger_stun():
 	if camera:
 		camera.add_trauma(1.2)
 	# Bajar mucho: apuntar al fondo del área
-	if current_phase==1:
-		move_target = Vector2(
-			randf_range(bounds_x.x + 40.0, bounds_x.y - 40.0),
-			bounds_y2.y +200
-		)
-		has_reached_top = false
-	else: 
-		move_target = Vector2(
+	match current_phase:
+		0:
+			move_target = Vector2(
 			randf_range(bounds_x.x + 40.0, bounds_x.y - 40.0),
 			bounds_y.y +200
-		)
-		has_reached_top = false
+			)
+			has_reached_top = false
+		1:
+			move_target = Vector2(
+				randf_range(bounds_x.x + 40.0, bounds_x.y - 40.0),
+				bounds_y2.y +200
+			)
+			has_reached_top = false
+		2:
+			move_target = Vector2(
+			randf_range(bounds_x.x + 40.0, bounds_x.y - 40.0),
+			bounds_y3.y +200
+			)
+			has_reached_top = false
+			
 
 # -----------------------------------------------
 # MOVIMIENTO ALEATORIO
@@ -192,14 +202,20 @@ func _process_movement(delta):
 		velocity = velocity.lerp(desired, delta * velocity_smooth)
 		return
 	# ¿Ha llegado arriba?
-	if current_phase==0:
-		if not has_reached_top and global_position.y <= bounds_y.x + top_margin:
-			has_reached_top = true
-			_pick_new_target()
-	else:
-		if not has_reached_top and global_position.y <= bounds_y2.x + top_margin:
-			has_reached_top = true
-			_pick_new_target()
+	match current_phase:
+		0:
+			if not has_reached_top and global_position.y <= bounds_y.x + top_margin:
+				has_reached_top = true
+				_pick_new_target()
+		1:
+			if not has_reached_top and global_position.y <= bounds_y2.x + top_margin:
+				has_reached_top = true
+				_pick_new_target()
+		2:
+			if not has_reached_top and global_position.y <= bounds_y3.x + top_margin:
+				has_reached_top = true
+				_pick_new_target()
+	
 
 	# Actualizar objetivo periódicamente
 	target_timer -= delta
@@ -220,18 +236,26 @@ func _pick_new_target():
 	var new_x := randf_range(bounds_x.x + 40.0, bounds_x.y - 40.0)
 	var new_y: float
 
-	if current_phase==0:
-		if has_reached_top:
-			# Oscila por encima y por debajo del techo
-			new_y = bounds_y.x + randf_range(-top_float_range * 0.3, top_float_range)
-		else:
-			new_y = bounds_y.x
-	else:
-		if has_reached_top:
-			# Oscila por encima y por debajo del techo
-			new_y = bounds_y2.x + randf_range(-top_float_range * 0.3, top_float_range)
-		else:
-			new_y = bounds_y2.x
+	match current_phase:
+		0:
+			if has_reached_top:
+				# Oscila por encima y por debajo del techo
+				new_y = bounds_y.x + randf_range(-top_float_range * 0.3, top_float_range)
+			else:
+				new_y = bounds_y.x
+		1:
+			if has_reached_top:
+				# Oscila por encima y por debajo del techo
+				new_y = bounds_y2.x + randf_range(-top_float_range * 0.3, top_float_range)
+			else:
+				new_y = bounds_y2.x
+		2:
+			if has_reached_top:
+				# Oscila por encima y por debajo del techo
+				new_y = bounds_y3.x + randf_range(-top_float_range * 0.3, top_float_range)
+			else:
+				new_y = bounds_y3.x
+	
 
 	move_target = Vector2(new_x, new_y)
 # -----------------------------------------------
@@ -382,6 +406,9 @@ func _set_phase(phase: int):
 	sprite.play("idle")
 	shoot_timer = shoot_interval
 
+	if phase == 1:
+		move_speed += 40.0
+
 	if phase == 3:
 		charge_timer = charge_interval
 		move_speed += 20.0
@@ -424,6 +451,8 @@ func _advance_phase():
 		_set_phase(current_phase + 1)
 		if (current_phase==1):
 			platform_manager2.start()
+		if (current_phase==2):
+			platform_manager3.start()
 		if camera:
 			camera.add_trauma(1.0)
 		_flash_transition()
