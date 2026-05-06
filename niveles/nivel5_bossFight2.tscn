@@ -538,3 +538,9 @@ position = Vector2(1251, -3487)
 
 [node name="RigidBody2D5" parent="." unique_id=1082650923 instance=ExtResource("50_twdg6")]
 position = Vector2(1251, -3999)
+
+[node name="RigidBody2D6" parent="." unique_id=788352537 instance=ExtResource("45_lc37a")]
+position = Vector2(153, -1427)
+
+[node name="RigidBody2D7" parent="." unique_id=1021166374 instance=ExtResource("45_lc37a")]
+position = Vector2(153, -3859)
