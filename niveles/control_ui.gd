@@ -5,6 +5,7 @@ extends Control
 @onready var fondo = $TextureRect
 @onready var label_ups = $VBoxContainer/HBoxContainerUP/textoVidas
 @onready var label_time = $VBoxContainer/HBoxContainerTime/time
+@onready var label_puntos = $VBoxContainer/HBoxContainerPuntos/textoPuntuacion
 
 var fullvida = preload("res://hud/MoxFullHealthBar.png")
 var damagedvida = preload("res://hud/MoxDamagedHealthBar.png")
@@ -17,6 +18,7 @@ var corazon_escudo = preload("res://hud/ShieldHeart.png")
 var moneda_textura = preload("res://Sprites/Coleccionables/Coleccionable.png")
 
 func _ready():
+	
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	
 	GameState.tiempo_activo = true
@@ -25,6 +27,8 @@ func _ready():
 	
 	GameState.vidas_juego_cambiadas.connect(actualizar_ups)
 	actualizar_ups(GameState.vidas_juego)
+	GameState.puntuacion_cambiada.connect(actualizar_puntuacion)
+	actualizar_puntuacion(GameState.puntuacion)
 	
 	for moneda in monedas:
 		moneda.texture = moneda_textura
@@ -35,7 +39,8 @@ func _ready():
 		GameState.monedas_cambiadas.connect(actualizar_monedas)
 		actualizar_monedas(GameState.monedas_estado)
 		actualizar_vidas(player.vidas, player.escudo)
-	
+func actualizar_puntuacion(puntos):
+	label_puntos.text = str(puntos)	
 
 func actualizar_vidas(vidas, escudo):
 	var max_vidas = 2

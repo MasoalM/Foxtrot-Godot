@@ -36,8 +36,10 @@ func entrar_al_nivel():
 
 	if escena_destino == "res://niveles/level_selector.tscn":
 		print(GameState.obtener_resultado())
+		GameState.sumar_puntos(GameState.tiempo_restante)
 		APIclient.enviar_resultado(GameState.obtener_resultado())
 		GameState.resetear_monedas()
+		GameState.resetear_puntos()
 
 	#  Safety check
 	if escena_destino == "":

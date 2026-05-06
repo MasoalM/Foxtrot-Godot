@@ -94,19 +94,39 @@ func shoot():
 	
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("ProyectilAliado"):
+		
 		if area.has_method("morir"):
 			area.morir()
-		
+
 		if !dead:
 			bow.queue_free()
-		
+
 		dead = true
+
+		# PUNTOS
+		GameState.sumar_puntos(10)
+
+		# POPUP VISUAL
+		var popup = preload("res://personaje/PointPopup.tscn").instantiate()
+		get_tree().current_scene.add_child(popup)
+
+		popup.global_position = global_position + Vector2(0, -40)
+
+		popup.setup("+10")
+
 		set_collision_layer_value(1, false)
 		set_collision_layer_value(4, true)
+
 		$Hitbox.set_collision_layer_value(1, false)
+
 		set_deferred("monitoring", false)
+
 		remove_from_group("Enemigos")
+
 		animated_sprite.play("death")
+
 		muerte.play()
+
 		await get_tree().create_timer(1.8).timeout
+		
 		queue_free()

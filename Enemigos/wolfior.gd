@@ -11,6 +11,8 @@ extends CharacterBody2D
 @onready var hurtSound = $AudioStreamPlayer2DHurt
 @onready var freezeSound = $AudioStreamPlayer2DFreeze
 
+var popup_scene = preload("res://personaje/PointPopup.tscn")
+
 @export var speed = 120
 var player
 var start_position
@@ -52,6 +54,10 @@ var espada_scene = preload("res://Enemigos//Espada.tscn")
 const HURT_LIVES = 1
 const DEATH_LIVES = 0
 
+
+var base_radius
+var base_height
+
 #congelar
 var congelado = false
 var freeze_timer = 0.0
@@ -61,6 +67,10 @@ var freeze_timer = 0.0
 
 
 func _ready():
+	var shape = hitbox.get_node("CollisionShape2D").shape as CapsuleShape2D
+
+	base_radius = shape.radius
+	base_height = shape.height
 	add_to_group("Enemigos")
 	player = get_tree().get_first_node_in_group("player")
 	start_position = global_position
@@ -337,6 +347,15 @@ func muerte():
 		
 	lives = 0
 	
+	# SUMAR PUNTOS
+	GameState.sumar_puntos(10)
+
+	# POPUP VISUAL
+	var popup = preload("res://personaje/PointPopup.tscn").instantiate()
+	get_tree().current_scene.add_child(popup)
+	popup.global_position = global_position + Vector2(0, -40)
+	popup.setup("+10")
+
 	aullidoMuerte.play()
 
 	set_collision_layer_value(3, false)
@@ -351,6 +370,7 @@ func muerte():
 	animated_sprite.play("death")
 
 	await get_tree().create_timer(1.8).timeout
+	
 	queue_free()
 	
 func congelar(tiempo):

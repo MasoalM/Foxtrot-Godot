@@ -11,10 +11,12 @@ var nivel
 #  VIDAS
 # =========================
 signal vidas_juego_cambiadas(vidas)
+signal puntuacion_cambiada(puntos)
 
 var vidas_juego = 5
 var maxVida = 99
 var tiempo_activo = false
+var puntuacion = 0
 
 func _ready():
 	set_process(true)
@@ -95,6 +97,24 @@ func entrandoNivel(niv: int):
 	nivel = niv
 	print("en gameState el nivel ya es : ", nivel )
 	
+
+func sumar_puntos(cantidad):
+	puntuacion += cantidad
+	emit_signal("puntuacion_cambiada", puntuacion)
+	
+func resetear_puntos():
+	puntuacion = 0
+	emit_signal("puntuacion_cambiada", puntuacion)
+
+func restar_puntos(cantidad: int):
+	puntuacion -= cantidad
+	
+	# evitar negativos
+	if puntuacion < 0:
+		puntuacion = 0
+		
+	emit_signal("puntuacion_cambiada", puntuacion)	
+	
 	
 		
 
@@ -106,7 +126,7 @@ func obtener_resultado() -> Dictionary:
 		"jugador_id": jugador_id,
 		"nivel_id": nivel,
 		"tiempo": tiempo_restante,
-		"puntuacion": 0,
+		"puntuacion": puntuacion,
 		"c1": monedas_estado[0] if 1 else 0,
 		"c2": monedas_estado[1] if 1 else 0,
 		"c3": monedas_estado[2] if 1 else 0

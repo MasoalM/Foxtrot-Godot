@@ -5,6 +5,8 @@ extends CharacterBody2D
 @export var shoot_cooldown := 5.0
 @export var projectile_scene: PackedScene
 
+var popup_scene = preload("res://personaje/PointPopup.tscn")
+
 @onready var ray_suelo = $RayCastSuelo
 @onready var ray_vision = $RayCastVision
 @onready var shoot_point = $ShootPoint
@@ -152,14 +154,32 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 
 func die():
 	velocity = Vector2.ZERO
+
+	# PUNTOS
+	GameState.sumar_puntos(10)
+
+	# POPUP VISUAL
+	var popup = preload("res://personaje/PointPopup.tscn").instantiate()
+	get_tree().current_scene.add_child(popup)
+
+	popup.global_position = global_position + Vector2(0, -40)
+
+	popup.setup("+10")
+
 	animated_sprite.play("death")
+
 	set_collision_layer_value(3, false)
 	$Area2D.set_collision_layer_value(3, false)
+
 	set_collision_layer_value(4, true)
+
 	set_deferred("monitoring", false)
 	$Area2D.set_deferred("monitoring", false)
+
 	muerte.play()
+
 	set_physics_process(false)
 	
 	await get_tree().create_timer(3).timeout
+	
 	queue_free()

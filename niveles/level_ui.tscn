@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://6ibedxnblj8w" path="res://Sprites/Clock.png" id="3_3qt84"]
 [ext_resource type="FontFile" uid="uid://t3qeauxnndoj" path="res://font/Retro Gaming.ttf" id="4_e0ytq"]
 [ext_resource type="Texture2D" uid="uid://ca7kef2h3iclf" path="res://Sprites/PowerUps/Heart.png" id="5_tu54p"]
+[ext_resource type="Texture2D" uid="uid://bthw7bhk4t5j3" path="res://Sprites/Enemigos/RuinsWheel.png" id="6_r5rnn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0guox"]
 font = ExtResource("4_e0ytq")
@@ -78,10 +79,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -97.0
-offset_top = 28.0
-offset_right = 31.0
-offset_bottom = 128.0
+offset_left = -100.0
+offset_top = 5.0
+offset_right = 28.0
+offset_bottom = 132.0
 grow_horizontal = 0
 alignment = 1
 
@@ -115,3 +116,17 @@ custom_minimum_size = Vector2(1, 28)
 layout_mode = 2
 label_settings = SubResource("LabelSettings_kcd17")
 vertical_alignment = 2
+
+[node name="HBoxContainerPuntos" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer" unique_id=960306961]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/VBoxContainer/HBoxContainerPuntos" unique_id=491921035]
+texture_filter = 1
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("6_r5rnn")
+expand_mode = 2
+
+[node name="textoPuntuacion" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainerPuntos" unique_id=1232213388]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_e0ytq")
