@@ -249,6 +249,9 @@ func _physics_process(delta: float) -> void:
 					shoot.vel_bala *= -1
 
 		move_and_slide()
+		# Daño continuo por contacto
+		if enemigosIn > 0 and not is_hurt and not is_dead:
+			_dañar()
 		if is_on_floor() and abs(velocity.x) > velocidad/4:
 			walk_timer -= 0.008
 			if walk_timer <= 0:
@@ -387,36 +390,52 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Enemigos"):
 		enemigosIn -= 1
 
-# Detectar entrada en áreas
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Enemigos"):
 		var enemigo = area.get_parent()
+
 		if enemigo.has_method("congelado") or "congelado" in enemigo:
 			if enemigo.congelado:
 				return
-		
+
+		enemigosIn += 1
+
 		_dañar()
 	
 	if area.is_in_group("Lianas"):
 		if liana_cooldown <= 0:
 			en_liana = true
+			
 			if area.get_parent() is RigidBody2D:
 				liana_segmento = area.get_parent()
 				liana_actual = area.owner
-				var inercia = velocity  # ← guardar ANTES de zerear
+				
+				var inercia = velocity
+				
 				velocity = Vector2.ZERO
+				
 				$CollisionShape2D.set_deferred("disabled", true)
+				
 				collision_layer = 0
 				collision_mask = 0
+				
 				if liana_actual.has_method("recibir_inercia"):
-					liana_actual.recibir_inercia(inercia)  # ← pasar la inercia real
-
+					liana_actual.recibir_inercia(inercia)
+					
 func _on_area_2d_area_exited(area: Area2D) -> void:
+	
+	if area.is_in_group("Enemigos"):
+		enemigosIn -= 1
+
+		if enemigosIn < 0:
+			enemigosIn = 0
+
 	if area.is_in_group("Lianas"):
 		# Solo desacoplar si la salida es natural (no estamos activamente en liana)
 		if not en_liana:
 			liana_actual = null
 			liana_segmento = null
+			
 			$CollisionShape2D.set_deferred("disabled", false)
 
 func _animaciones() -> void:

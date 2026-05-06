@@ -8,6 +8,8 @@ radius = 7.0
 height = 66.0
 
 [node name="Area2D" type="Area2D" unique_id=570638121 groups=["Enemigos"]]
+light_mask = 4
+visibility_layer = 4
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_5xcw1")
