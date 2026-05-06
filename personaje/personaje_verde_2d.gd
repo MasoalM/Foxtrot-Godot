@@ -60,7 +60,7 @@ var mirando_derecha = true
 var air_nercia = false
 var coyoteTimeActual = coyoteTime
 
-var vidas = 2
+var vidas = 99
 var escudo = 0
 var enemigosIn = 0
 
@@ -228,6 +228,7 @@ func _physics_process(delta: float) -> void:
 
 		if (not bloquearControles) and Input.is_action_just_pressed("DispararBasico") and (shoot_timer <= 0):
 			_reset_afk()
+
 			# ATAQUE CARGADO
 			if ataqueCarg:
 				ataqueCarg = false
@@ -239,10 +240,19 @@ func _physics_process(delta: float) -> void:
 			# DISPARO NORMAL
 			if get_tree().get_nodes_in_group("ProyectilAliado").size() < 3:
 				shoot_timer = shoot_cooldown
+				
 				var shoot = proyectil_actual.instantiate()
+				
 				shotSound.play()
 				get_parent().add_child(shoot)
+
 				shoot.position = $Marker2D.global_position
+
+				# OFFSET DEL PROYECTIL
+				if mirando_derecha:
+					shoot.position.x -= 12
+				else:
+					shoot.position.x += 12
 
 				if not mirando_derecha:
 					shoot.scale.x *= -1
