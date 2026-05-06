@@ -70,7 +70,14 @@ func actualizar_tiempo(delta):
 			emit_signal("tiempo_agotado")
 
 func reiniciar_tiempo():
-	tiempo_restante = 241
+
+	match nivel:
+		5:
+			tiempo_restante = 361
+		
+		_:
+			tiempo_restante = 241
+
 	emit_signal("tiempo_cambiado", tiempo_restante)
 
 # =========================
@@ -94,7 +101,19 @@ func entrandoNivel(niv: int):
 	if niv == null:
 		print("ERROR: nivel no definido")
 		return {}
+
 	nivel = niv
+
+	# Tiempo por nivel
+	match nivel:
+		5:
+			tiempo_restante = 361  # 241 + 120
+		
+		_:
+			tiempo_restante = 241
+
+	emit_signal("tiempo_cambiado", int(tiempo_restante))
+
 	print("en gameState el nivel ya es : ", nivel )
 	
 
