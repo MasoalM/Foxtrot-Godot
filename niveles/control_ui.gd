@@ -40,7 +40,8 @@ func _ready():
 		actualizar_monedas(GameState.monedas_estado)
 		actualizar_vidas(player.vidas, player.escudo)
 func actualizar_puntuacion(puntos):
-	label_puntos.text = str(puntos)	
+	#label_puntos.text = str(puntos)	
+	pass
 
 func actualizar_vidas(vidas, escudo):
 	var max_vidas = 2

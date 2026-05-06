@@ -111,7 +111,6 @@ ball_scene = ExtResource("17_8teny")
 sprite_frames = SubResource("SpriteFrames_5qnxw")
 animation = &"idle0hits"
 autoplay = "idle0hits"
-frame_progress = 0.9470914
 
 [node name="HitboxHead" type="Area2D" parent="." unique_id=815748404]
 

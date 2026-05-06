@@ -9,6 +9,7 @@ extends CharacterBody2D
 @export var frame_speed := 8.0
 @export var bounds_x := Vector2(320, 1024)   # min X, max X
 @export var bounds_y := Vector2(-450, 340)   # min Y, max Y
+@export var bounds_y2 := Vector2(-1240, 340)   # min Y, max Y
 var current_phase := 0
 var is_dead := false
 
@@ -19,6 +20,7 @@ var is_dead := false
 @export var target_change_interval := 2.0   # cada cuánto cambia de objetivo
 @export var velocity_smooth := 4.0          # suavidad (más alto = más brusco)
 @export var top_margin := 60.0              # margen para considerar que "llegó arriba"
+@export var top_float_range := 150.0   # margen de subida/bajada en la zona alta
 var move_target := Vector2.ZERO
 var target_timer := 0.0
 var has_reached_top := false
@@ -50,6 +52,13 @@ var rainbow_time := 0.0
 # ---- Cámara ----
 var camera: Node
 
+# ---- Aturdimiento ----
+@export var hits_to_stun := 5
+@export var stun_duration := 5.0
+var immune_hit_count := 0
+var is_stunned := false
+var stun_timer := 0.0
+
 # ---- Referencias ----
 @onready var sprite := $AnimatedSprite2D
 @onready var hitbox_head := $HitboxHead
@@ -66,21 +75,26 @@ var camera: Node
 
 # ---- Platforms ----
 @onready var platform_manager = $"../PlatformManager"
+@onready var platform_manager2 = $"../PlatformManager2"
 
 func _ready():
-	GameState.tiempo_activo = false
 	
+	GameState.tiempo_activo = false
 	camera = get_tree().get_first_node_in_group("camera")
 	_set_phase(0)
 	hitbox_head.area_entered.connect(_on_head_area_hit)
-	move_target = global_position  # parte desde donde está
+	move_target = global_position
 	_pick_new_target()
+	# --- NUEVO ---
+	_start_immunity()
+	hitbox_body.area_entered.connect(_on_hitbox_body_area_entered)
 
 func _physics_process(delta):
 	if is_dead:
 		return
 
 	_process_immunity(delta)
+	_process_stun(delta)
 	_process_rainbow(delta)
 
 	if charging:
@@ -135,15 +149,57 @@ func _stop_immunity_aura():
 		immunity_tween.kill()
 		immunity_tween = null
 	sprite.modulate = Color.WHITE
+	
+func _flash_red():
+	sfx_hit.play()
+	var tween := create_tween()
+	tween.tween_property(sprite, "modulate", Color(2.0, 0.2, 0.2, 1.0), 0.05)
+	tween.tween_property(sprite, "modulate", Color(0.5, 0.1, 1.0, 1.0), 0.15)
+
+func _trigger_stun():
+	if is_stunned:
+		return
+	is_stunned = true
+	stun_timer = stun_duration
+	is_immune = false
+	_stop_immunity_aura()
+	if camera:
+		camera.add_trauma(1.2)
+	# Bajar mucho: apuntar al fondo del área
+	if current_phase==1:
+		move_target = Vector2(
+			randf_range(bounds_x.x + 40.0, bounds_x.y - 40.0),
+			bounds_y2.y +200
+		)
+		has_reached_top = false
+	else: 
+		move_target = Vector2(
+			randf_range(bounds_x.x + 40.0, bounds_x.y - 40.0),
+			bounds_y.y +200
+		)
+		has_reached_top = false
 
 # -----------------------------------------------
 # MOVIMIENTO ALEATORIO
 # -----------------------------------------------
 func _process_movement(delta):
+	if is_stunned:
+		# Solo moverse hacia el punto de stun
+		var desired := (move_target - global_position)
+		if desired.length() > move_speed:
+			desired = desired.normalized() * move_speed
+		
+		velocity = velocity.lerp(desired, delta * velocity_smooth)
+		return
 	# ¿Ha llegado arriba?
-	if not has_reached_top and global_position.y <= bounds_y.x + top_margin:
-		has_reached_top = true
-		_pick_new_target()
+	if current_phase==0:
+		if not has_reached_top and global_position.y <= bounds_y.x + top_margin:
+			has_reached_top = true
+			_pick_new_target()
+	else:
+		if not has_reached_top and global_position.y <= bounds_y2.x + top_margin:
+			has_reached_top = true
+			_pick_new_target()
 
 	# Actualizar objetivo periódicamente
 	target_timer -= delta
@@ -164,19 +220,25 @@ func _pick_new_target():
 	var new_x := randf_range(bounds_x.x + 40.0, bounds_x.y - 40.0)
 	var new_y: float
 
-	if has_reached_top:
-		# Mantenerse en la zona alta con pequeña variación
-		new_y = bounds_y.x + randf_range(0.0, top_margin * 1.2)
+	if current_phase==0:
+		if has_reached_top:
+			# Oscila por encima y por debajo del techo
+			new_y = bounds_y.x + randf_range(-top_float_range * 0.3, top_float_range)
+		else:
+			new_y = bounds_y.x
 	else:
-		# Siempre apunta al techo: sube inevitablemente
-		new_y = bounds_y.x
+		if has_reached_top:
+			# Oscila por encima y por debajo del techo
+			new_y = bounds_y2.x + randf_range(-top_float_range * 0.3, top_float_range)
+		else:
+			new_y = bounds_y2.x
 
 	move_target = Vector2(new_x, new_y)
 # -----------------------------------------------
 # DISPARO
 # -----------------------------------------------
 func _process_shoot(delta):
-	if is_dead:
+	if is_dead or is_stunned:
 		return
 	shoot_timer -= delta
 	if shoot_timer <= 0.0:
@@ -342,7 +404,8 @@ func _set_phase(phase: int):
 func _on_head_area_hit(area: Area2D):
 	if not area.is_in_group("DoubleJumpShot"):
 		return
-	
+
+
 	if is_immune:
 		if camera:
 			camera.add_trauma(0.2)
@@ -359,6 +422,8 @@ func _on_head_area_hit(area: Area2D):
 func _advance_phase():
 	if current_phase < 3:
 		_set_phase(current_phase + 1)
+		if (current_phase==1):
+			platform_manager2.start()
 		if camera:
 			camera.add_trauma(1.0)
 		_flash_transition()
@@ -446,3 +511,23 @@ func _die():
 func _acelerar_musica():
 	var tween := create_tween()
 	tween.tween_property(music, "pitch_scale", 1.3, 1.5).set_trans(Tween.TRANS_SINE)
+
+
+func _on_hitbox_body_area_entered(area: Area2D) -> void:
+	if area.is_in_group("ProyectilAliado") and not is_immune and not is_stunned:
+		_flash_red()
+		immune_hit_count += 1
+		if immune_hit_count >= hits_to_stun:
+			immune_hit_count = 0
+			_trigger_stun()
+		return
+	pass # Replace with function body.
+	
+func _process_stun(delta):
+	if not is_stunned:
+		return
+	stun_timer -= delta
+	if stun_timer <= 0.0:
+		is_stunned = false
+		shoot_timer = shoot_interval  # reset para no disparar nada más salir
+		_pick_new_target()

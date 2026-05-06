@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://cy0n7mpysjx47"]
+
+[ext_resource type="Script" uid="uid://cqrqo5hfxa8s0" path="res://Enemigos/boss_2.gd" id="1_kty0q"]
+[ext_resource type="Texture2D" uid="uid://ypafyky4dcp" path="res://Sprites/Enemigos/BOSS/Idle0Hits/BossDefinitivoIdle1.png" id="2_lfaag"]
+[ext_resource type="Texture2D" uid="uid://dgd66b70e77h4" path="res://Sprites/Enemigos/BOSS/Idle0Hits/BossDefinitivoIdle2.png" id="3_lcr7x"]
+[ext_resource type="Texture2D" uid="uid://b6vq8bi7wp5su" path="res://Sprites/Enemigos/BOSS/Idle0Hits/BossDefinitivoIdle3.png" id="4_q1ifj"]
+[ext_resource type="Texture2D" uid="uid://caq481lw3bcmn" path="res://Sprites/Enemigos/BOSS/Idle0Hits/BossDefinitivoIdle4.png" id="5_4tutw"]
+[ext_resource type="Texture2D" uid="uid://celrylb6cnk1f" path="res://Sprites/Enemigos/BOSS/Idle1Hit/BossDefinitivoIdle1Hit1.png" id="6_tp6e4"]
+[ext_resource type="Texture2D" uid="uid://cst1mscykm3d3" path="res://Sprites/Enemigos/BOSS/Idle1Hit/BossDefinitivoIdle1Hit2.png" id="7_wt3gv"]
+[ext_resource type="Texture2D" uid="uid://ddrokwmr6hvmk" path="res://Sprites/Enemigos/BOSS/Idle1Hit/BossDefinitivoIdle1Hit3.png" id="8_wf65g"]
+[ext_resource type="Texture2D" uid="uid://kcb0kufddnx3" path="res://Sprites/Enemigos/BOSS/Idle1Hit/BossDefinitivoIdle1Hit4.png" id="9_8gttv"]
+[ext_resource type="Texture2D" uid="uid://blo4nkof7h6su" path="res://Sprites/Enemigos/BOSS/Idle2Hits/BossDefinitivoIdle2Hits1.png" id="10_62ko0"]
+[ext_resource type="Texture2D" uid="uid://bekbpdpj588n" path="res://Sprites/Enemigos/BOSS/Idle2Hits/BossDefinitivoIdle2Hits2.png" id="11_r6lem"]
+[ext_resource type="Texture2D" uid="uid://di85yv0jxbhre" path="res://Sprites/Enemigos/BOSS/Idle2Hits/BossDefinitivoIdle2Hits3.png" id="12_ce1hu"]
+[ext_resource type="Texture2D" uid="uid://bbq5saj2nqqvm" path="res://Sprites/Enemigos/BOSS/Idle2Hits/BossDefinitivoIdle2Hits4.png" id="13_7f33g"]
+[ext_resource type="Texture2D" uid="uid://c8el1eagp2ww7" path="res://Sprites/Enemigos/BOSS/Idle3Hits/BossDefinitivoIdle3Hits1.png" id="14_rara8"]
+[ext_resource type="Texture2D" uid="uid://ch78nxmosr1e8" path="res://Sprites/Enemigos/BOSS/Idle3Hits/BossDefinitivoIdle3Hits2.png" id="15_joq4i"]
+[ext_resource type="Texture2D" uid="uid://bokhotmbdkl71" path="res://Sprites/Enemigos/BOSS/Idle3Hits/BossDefinitivoIdle3Hits3.png" id="16_2vayr"]
+[ext_resource type="Texture2D" uid="uid://crypcfndqd3cm" path="res://Sprites/Enemigos/BOSS/Idle3Hits/BossDefinitivoIdle3Hits4.png" id="17_uiaxj"]
+[ext_resource type="PackedScene" uid="uid://ctyikf2m6nhqr" path="res://Enemigos/homing_ball.tscn" id="18_0bc4v"]
+[ext_resource type="AudioStream" uid="uid://cdgb4iftj70eo" path="res://Sounds/MadBoss.ogg" id="19_cvxuq"]
+[ext_resource type="AudioStream" uid="uid://bju45770rly62" path="res://Sounds/Portal.ogg" id="20_2e0v0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5qnxw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_lfaag")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lcr7x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_q1ifj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4tutw")
+}],
+"loop": true,
+"name": &"idle0hits",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_tp6e4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wt3gv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wf65g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8gttv")
+}],
+"loop": true,
+"name": &"idle1hit",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_62ko0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_r6lem")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ce1hu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_7f33g")
+}],
+"loop": true,
+"name": &"idle2hits",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_rara8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_joq4i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_2vayr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_uiaxj")
+}],
+"loop": true,
+"name": &"idle3hits",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8teny"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4befi"]
+radius = 3.7404673
+
+[node name="BOSS" type="CharacterBody2D" unique_id=2105881948]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_kty0q")
+phase_1_frames = Array[Texture2D]([ExtResource("2_lfaag"), ExtResource("3_lcr7x"), ExtResource("4_q1ifj"), ExtResource("5_4tutw")])
+phase_2_frames = Array[Texture2D]([ExtResource("6_tp6e4"), ExtResource("7_wt3gv"), ExtResource("8_wf65g"), ExtResource("9_8gttv")])
+phase_3_frames = Array[Texture2D]([ExtResource("10_62ko0"), ExtResource("11_r6lem"), ExtResource("12_ce1hu"), ExtResource("13_7f33g")])
+phase_4_frames = Array[Texture2D]([ExtResource("14_rara8"), ExtResource("15_joq4i"), ExtResource("16_2vayr"), ExtResource("17_uiaxj")])
+ball_scene = ExtResource("18_0bc4v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1096179978]
+sprite_frames = SubResource("SpriteFrames_5qnxw")
+animation = &"idle0hits"
+autoplay = "idle0hits"
+
+[node name="HitboxHead" type="Area2D" parent="." unique_id=815748404]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxHead" unique_id=49053858]
+position = Vector2(0, -90)
+scale = Vector2(4.5, 3)
+shape = SubResource("CircleShape2D_8teny")
+
+[node name="HitboxBody" type="Area2D" parent="." unique_id=218645061 groups=["Enemigos"]]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitboxBody" unique_id=152531577]
+scale = Vector2(20, 20)
+shape = SubResource("CircleShape2D_4befi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxBody" unique_id=2133145430]
+position = Vector2(2.3841858e-07, 0)
+scale = Vector2(60, 15)
+shape = SubResource("CircleShape2D_4befi")
+
+[node name="MadBoss" type="AudioStreamPlayer2D" parent="." unique_id=951522089]
+stream = ExtResource("19_cvxuq")
+volume_db = 10.0
+
+[node name="Shot" type="AudioStreamPlayer2D" parent="." unique_id=1025116359]
+stream = ExtResource("20_2e0v0")
+volume_db = -5.0
+pitch_scale = 0.75
+
+[node name="Death" type="AudioStreamPlayer2D" parent="." unique_id=778852785]
+stream = ExtResource("19_cvxuq")
+volume_db = 10.0
+pitch_scale = 0.25
+attenuation = 4.594792
