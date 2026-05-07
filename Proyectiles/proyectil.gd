@@ -1,7 +1,6 @@
 extends Area2D
 
-const dist_max = 45.0
-
+const dist_max = 450  # Ajusta este multiplicador según necesites
 var vel_bala = 600.0
 var dist = 0.0
 
@@ -10,8 +9,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if visible:
-		position.x += vel_bala * delta
-		dist += 1
+		var mov = vel_bala * delta
+		position.x += mov
+		dist += mov  # ← acumula la distancia real recorrida en píxeles
 		if dist > dist_max:
 			morir()
 	
