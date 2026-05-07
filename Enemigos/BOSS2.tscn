@@ -122,6 +122,7 @@ shape = SubResource("CircleShape2D_8teny")
 [node name="HitboxBody" type="Area2D" parent="." unique_id=218645061 groups=["Enemigos"]]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HitboxBody" unique_id=152531577]
+position = Vector2(0, 44.999996)
 scale = Vector2(20, 20)
 shape = SubResource("CircleShape2D_4befi")
 

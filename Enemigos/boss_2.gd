@@ -8,7 +8,7 @@ extends CharacterBody2D
 @export var phase_4_frames: Array[Texture2D] = []
 @export var frame_speed := 8.0
 @export var bounds_x := Vector2(320, 1024)   # min X, max X
-@export var bounds_y := Vector2(-450, 340)   # min Y, max Y
+@export var bounds_y := Vector2(-380, 340)   # min Y, max Y
 @export var bounds_y2 := Vector2(-2720.0, 340)   # min Y, max Y
 @export var bounds_y3 := Vector2(-4508.0,340) 
 var current_phase := 0

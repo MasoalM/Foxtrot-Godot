@@ -60,7 +60,7 @@ var mirando_derecha = true
 var air_nercia = false
 var coyoteTimeActual = coyoteTime
 
-var vidas = 99
+var vidas = 2
 var escudo = 0
 var enemigosIn = 0
 
