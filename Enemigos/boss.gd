@@ -7,21 +7,17 @@ extends CharacterBody2D
 @export var phase_3_frames: Array[Texture2D] = []
 @export var phase_4_frames: Array[Texture2D] = []
 @export var frame_speed := 8.0
-@export var bounds_x := Vector2(320, 1024)   # min X, max X
-@export var bounds_y := Vector2(-450, 340)   # min Y, max Y
 var current_phase := 0
 var is_dead := false
 
 # ---- Movimiento ----
+@export var move_speed := 80.0
 @export var move_duration := 1.2
 @export var move_pause := 0.8
-@export var move_speed := 80.0
-@export var target_change_interval := 2.0   # cada cuánto cambia de objetivo
-@export var velocity_smooth := 4.0          # suavidad (más alto = más brusco)
-@export var top_margin := 60.0              # margen para considerar que "llegó arriba"
-var move_target := Vector2.ZERO
-var target_timer := 0.0
-var has_reached_top := false
+var move_timer := 0.0
+var pause_timer := 0.0
+var moving := false
+var move_direction := Vector2.ZERO
 
 # ---- Disparo ----
 @export var shoot_interval := 3.0
@@ -73,8 +69,7 @@ func _ready():
 	camera = get_tree().get_first_node_in_group("camera")
 	_set_phase(0)
 	hitbox_head.area_entered.connect(_on_head_area_hit)
-	move_target = global_position  # parte desde donde está
-	_pick_new_target()
+	_start_new_move()
 
 func _physics_process(delta):
 	if is_dead:
@@ -140,38 +135,61 @@ func _stop_immunity_aura():
 # MOVIMIENTO ALEATORIO
 # -----------------------------------------------
 func _process_movement(delta):
-	# ¿Ha llegado arriba?
-	if not has_reached_top and global_position.y <= bounds_y.x + top_margin:
-		has_reached_top = true
-		_pick_new_target()
+	if moving:
+		move_timer -= delta
+		velocity = move_direction * move_speed
 
-	# Actualizar objetivo periódicamente
-	target_timer -= delta
-	if target_timer <= 0.0:
-		_pick_new_target()
+		var bounds_x := Vector2(150, 950)
+		var bounds_y := Vector2(150, 450)
 
-	# Velocidad deseada hacia el objetivo
-	var desired := (move_target - global_position)
-	if desired.length() > move_speed:
-		desired = desired.normalized() * move_speed
+		if global_position.x <= bounds_x.x:
+			move_direction.x = abs(move_direction.x)
+		elif global_position.x >= bounds_x.y:
+			move_direction.x = -abs(move_direction.x)
 
-	# Lerp suave de velocidad
-	velocity = velocity.lerp(desired, delta * velocity_smooth)
+		if global_position.y <= bounds_y.x:
+			move_direction.y = abs(move_direction.y)
+		elif global_position.y >= bounds_y.y:
+			move_direction.y = -abs(move_direction.y)
 
-func _pick_new_target():
-	target_timer = randf_range(target_change_interval * 0.6, target_change_interval)
+		if velocity.length() > 0 and get_real_velocity().length() < 5.0:
+			_start_new_move()
+			return
 
-	var new_x := randf_range(bounds_x.x + 40.0, bounds_x.y - 40.0)
-	var new_y: float
-
-	if has_reached_top:
-		# Mantenerse en la zona alta con pequeña variación
-		new_y = bounds_y.x + randf_range(0.0, top_margin * 1.2)
+		if move_timer <= 0.0:
+			moving = false
+			velocity = Vector2.ZERO
+			pause_timer = randf_range(0.3, move_pause)
 	else:
-		# Siempre apunta al techo: sube inevitablemente
-		new_y = bounds_y.x
+		pause_timer -= delta
+		velocity = Vector2.ZERO
+		if pause_timer <= 0.0:
+			_start_new_move()
 
-	move_target = Vector2(new_x, new_y)
+func _start_new_move():
+	var directions = [
+		Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN,
+		Vector2(-1, -1).normalized(), Vector2(1, -1).normalized(),
+		Vector2(-1,  1).normalized(), Vector2(1,  1).normalized(),
+	]
+	var weights = [3, 3, 2, 1, 2, 2, 1, 1]
+	var pool: Array[Vector2] = []
+	for i in range(directions.size()):
+		for j in range(weights[i]):
+			pool.append(directions[i])
+
+	var new_dir: Vector2
+	var attempts := 0
+	while attempts < 10:
+		new_dir = pool[randi() % pool.size()]
+		if new_dir != move_direction:
+			break
+		attempts += 1
+
+	move_direction = new_dir
+	move_timer = randf_range(0.6, move_duration)
+	moving = true
+
 # -----------------------------------------------
 # DISPARO
 # -----------------------------------------------
@@ -295,8 +313,7 @@ func _process_charge(delta):
 			camera.add_trauma(0.7)
 		sprite.play("idle")
 		charge_timer = charge_interval
-		move_target = global_position  # parte desde donde está
-		_pick_new_target()
+		_start_new_move()
 
 # -----------------------------------------------
 # FASES
