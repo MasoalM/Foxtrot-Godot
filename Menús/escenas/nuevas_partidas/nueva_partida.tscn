@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cqocc12s5wg8v" path="res://Menús/assets/InformaciónSmall.png" id="6_bmxco"]
 [ext_resource type="FontFile" uid="uid://coe4gaaihhlww" path="res://Menús/assets/fuentes/Retro Gaming.ttf" id="6_hit81"]
 [ext_resource type="Texture2D" uid="uid://d00dd23rvjiex" path="res://Menús/assets/botones/Crear.png" id="7_1j5l8"]
+[ext_resource type="FontFile" uid="uid://t3qeauxnndoj" path="res://font/Retro Gaming.ttf" id="7_tsh27"]
 [ext_resource type="Texture2D" uid="uid://bmg6eta32vtya" path="res://Menús/assets/botones/Atrás.png" id="9_mxp65"]
 [ext_resource type="Texture2D" uid="uid://b3m7ipvfd0ydx" path="res://Menús/assets/botones/CrearDesactivado.png" id="9_swxto"]
 [ext_resource type="Texture2D" uid="uid://obqelxbtqjo" path="res://Menús/assets/botones/Eliminar.png" id="10_sh5el"]
@@ -76,6 +77,11 @@ expand_margin_left = 2.0
 expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_055xu"]
+font = ExtResource("7_tsh27")
+font_size = 8
+font_color = Color(0.80784315, 0.105882354, 0.12156863, 1)
 
 [node name="Nuevas Partidas" type="CanvasLayer" unique_id=564192259]
 
@@ -163,7 +169,7 @@ offset_right = 165.0
 offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 8
 
 [node name="Partida seleccionada" type="Label" parent="Control/Fondo/Menú/Información/InfoCargar" unique_id=1409157525]
 layout_mode = 2
@@ -185,6 +191,17 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_8osr7")
 theme_override_styles/read_only = SubResource("StyleBoxFlat_4ia3j")
 theme_override_styles/focus = SubResource("StyleBoxFlat_bmxco")
 placeholder_text = "Nombre de la partida"
+
+[node name="Carácteres máximos" type="Label" parent="Control/Fondo/Menú/Información/InfoCargar/Introducir nombre" unique_id=509093457]
+visible = false
+layout_mode = 0
+offset_top = 27.0
+offset_right = 330.0
+offset_bottom = 38.0
+text = "LONGITUD MÁXIMA DE 24 CARÁCTERES ALCANZADA"
+label_settings = SubResource("LabelSettings_055xu")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Botones" type="HBoxContainer" parent="Control/Fondo" unique_id=646312632]
 layout_mode = 0
@@ -352,6 +369,7 @@ texture_normal = ExtResource("21_us5el")
 [connection signal="pressed" from="Control/Fondo/Menú/Menú Partidas/Partidas/A" to="Control" method="_on_slot_pressed" flags=18 binds= ["A"]]
 [connection signal="pressed" from="Control/Fondo/Menú/Menú Partidas/Partidas/B" to="Control" method="_on_slot_pressed" flags=18 binds= ["B"]]
 [connection signal="pressed" from="Control/Fondo/Menú/Menú Partidas/Partidas/C" to="Control" method="_on_slot_pressed" flags=18 binds= ["C"]]
+[connection signal="text_changed" from="Control/Fondo/Menú/Información/InfoCargar/Introducir nombre" to="Control" method="_on_introducir_nombre_text_changed"]
 [connection signal="pressed" from="Control/Fondo/Botones/Botones Cargar/Crear" to="Control" method="_on_crear_pressed"]
 [connection signal="pressed" from="Control/Fondo/Botones/Botones Cargar/Eliminar" to="Control" method="_on_eliminar_pressed"]
 [connection signal="pressed" from="Control/Fondo/Botones/Botones Cargar/Atrás" to="Control/Fondo/Botones/Botones Cargar/Atrás" method="_on_pressed"]

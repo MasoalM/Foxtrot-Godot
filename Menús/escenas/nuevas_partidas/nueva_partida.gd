@@ -12,6 +12,9 @@ extends Control
 @onready var botones = $Fondo/Botones
 @onready var confirmar = $"Fondo/Menú Confirmar"
 
+@onready var crear_button: TextureButton = $"Fondo/Botones/Botones Cargar/Crear"
+@onready var eliminar_button: TextureButton = $"Fondo/Botones/Botones Cargar/Eliminar"
+
 @onready var confirmar_eliminar = $"Fondo/Menú Eliminar/Confirmar Eliminar"
 @onready var reconfirmar_eliminar = $"Fondo/Menú Eliminar/Reconfirmar Eliminar"
 @onready var eliminado = $"Fondo/Menú Eliminar/Eliminado"
@@ -84,11 +87,22 @@ func _on_eliminar_pressed():
 	AudioManager.play("click")
 
 
+# -- Writing Actions --
+
+func _on_introducir_nombre_text_changed(text: String) -> void:
+	var max_chars = $"Fondo/Menú/Información/InfoCargar/Introducir nombre/Carácteres máximos"
+	
+	if text.length() > 24:
+		max_chars.visible = true
+		crear_button.disabled = true
+	else:
+		max_chars.visible = false
+		crear_button.disabled = false
+
+
 # -- Update Buttons --
 
 func update_crear_button():
-	var crear_button: TextureButton = $"Fondo/Botones/Botones Cargar/Crear"
-	
 	if selected_slot == null or SaveManager._exists(selected_slot):
 		crear_button.disabled = true
 		crear_button.mouse_default_cursor_shape = TextureButton.CURSOR_ARROW
@@ -97,8 +111,6 @@ func update_crear_button():
 		crear_button.mouse_default_cursor_shape = TextureButton.CURSOR_POINTING_HAND
 
 func update_eliminar_button():
-	var eliminar_button: TextureButton = $"Fondo/Botones/Botones Cargar/Eliminar"
-	
 	if selected_slot != null and SaveManager._exists(selected_slot):
 		eliminar_button.disabled = false
 		eliminar_button.mouse_default_cursor_shape = TextureButton.CURSOR_POINTING_HAND
