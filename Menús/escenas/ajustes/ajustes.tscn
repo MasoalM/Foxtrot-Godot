@@ -10,11 +10,13 @@
 [ext_resource type="FontFile" uid="uid://coe4gaaihhlww" path="res://Menús/assets/fuentes/Retro Gaming.ttf" id="9_hqfux"]
 [ext_resource type="Texture2D" uid="uid://bnwp4218tika6" path="res://Menús/assets/GraficosAjustes.png" id="11_sc1lx"]
 [ext_resource type="Texture2D" uid="uid://ppbd8gk2yc7y" path="res://Menús/assets/option/SelecciónActual.png" id="12_66xpx"]
+[ext_resource type="Texture2D" uid="uid://cor2sxhry6706" path="res://Menús/assets/option/SelecciónActualDisabled.png" id="12_gvu86"]
 [ext_resource type="Texture2D" uid="uid://b76hjcwgywb3u" path="res://Menús/assets/option/Ajustes.png" id="12_pxu3a"]
 [ext_resource type="Texture2D" uid="uid://yavhpueitbev" path="res://Menús/assets/option/ArrowDown.png" id="13_7oi35"]
 [ext_resource type="Texture2D" uid="uid://ckw70ujuekmrr" path="res://Menús/assets/option/Selección.png" id="13_gvu86"]
 [ext_resource type="Texture2D" uid="uid://d1e08aojlw6fb" path="res://Menús/assets/option/AjustesHover.png" id="13_l5l02"]
 [ext_resource type="Script" uid="uid://d1c47vf1aul24" path="res://Menús/escenas/ajustes/control_gráficos.gd" id="13_q64op"]
+[ext_resource type="Texture2D" uid="uid://br5v2wl1dbyoi" path="res://Menús/assets/option/SelecciónDisabled.png" id="14_31pkt"]
 [ext_resource type="Texture2D" uid="uid://f1r665yj4yh4" path="res://Menús/assets/option/AjustesDropdownLong.png" id="14_gvu86"]
 [ext_resource type="Texture2D" uid="uid://baicwftnlcimw" path="res://Menús/assets/option/AjustesDropdown.png" id="18_31pkt"]
 [ext_resource type="Texture2D" uid="uid://cx32vm0lobtls" path="res://Menús/assets/option/AjustesDisabled.png" id="19_b775m"]
@@ -107,9 +109,9 @@ PopupMenu/icons/checked_disabled = null
 PopupMenu/icons/close = null
 PopupMenu/icons/close_pressed = null
 PopupMenu/icons/radio_checked = SubResource("CanvasTexture_66xpx")
-PopupMenu/icons/radio_checked_disabled = null
+PopupMenu/icons/radio_checked_disabled = ExtResource("12_gvu86")
 PopupMenu/icons/radio_unchecked = SubResource("CanvasTexture_gvu86")
-PopupMenu/icons/radio_unchecked_disabled = null
+PopupMenu/icons/radio_unchecked_disabled = ExtResource("14_31pkt")
 PopupMenu/icons/submenu = null
 PopupMenu/icons/submenu_mirrored = null
 PopupMenu/icons/unchecked = null
@@ -186,9 +188,9 @@ PopupMenu/icons/checked_disabled = null
 PopupMenu/icons/close = null
 PopupMenu/icons/close_pressed = null
 PopupMenu/icons/radio_checked = SubResource("CanvasTexture_66xpx")
-PopupMenu/icons/radio_checked_disabled = null
+PopupMenu/icons/radio_checked_disabled = ExtResource("12_gvu86")
 PopupMenu/icons/radio_unchecked = SubResource("CanvasTexture_gvu86")
-PopupMenu/icons/radio_unchecked_disabled = null
+PopupMenu/icons/radio_unchecked_disabled = ExtResource("14_31pkt")
 PopupMenu/icons/submenu = null
 PopupMenu/icons/submenu_mirrored = null
 PopupMenu/icons/unchecked = null

@@ -2,31 +2,41 @@ extends TextureRect
 
 @onready var musica_slider = $"Música"
 @onready var musica_label = $"Música Label"
+
 @onready var efectos_slider = $"Efectos"
 @onready var efectos_label = $"Efectos Label"
 
 func _ready() -> void:
-	var musica_vol = SettingsManager.get_setting("audio", "musica")
-	var efectos_vol = SettingsManager.get_setting("audio", "efectos")
+	refresh()
+
+func refresh():
+	var data = SettingsManager.data
 	
-	var musica_final_vol = int(musica_vol * 100)
-	musica_label.text = str(musica_final_vol) + "%"
-	musica_slider.value = musica_final_vol
+	var musica_vol: int = int(data.musica * 100)
+	musica_slider.value = musica_vol
+	musica_label.text = str(musica_vol) + "%"
 	
-	var efectos_final_vol = int(efectos_vol * 100)
-	efectos_label.text = str(efectos_final_vol) + "%"
-	efectos_slider.value = efectos_final_vol
+	var efectos_vol: int = int(data.efectos * 100)
+	efectos_slider.value = efectos_vol
+	efectos_label.text = str(efectos_vol) + "%"
+
+
+# -- Sliders --
 
 func _on_música_value_changed(value: float) -> void:
+	var normalized = value / 100
+	
 	musica_label.text = str(int(value)) + "%"
 	
-	var normalized = value / 100
-	SettingsManager.save_setting("audio", "musica", normalized)
+	SettingsManager.data.musica = normalized
 	SettingsManager.apply_settings()
+	SettingsManager.save_from_data()
 
 func _on_efectos_value_changed(value: float) -> void:
+	var normalized = value / 100
+	
 	efectos_label.text = str(int(value)) + "%"
 	
-	var normalized = value / 100
-	SettingsManager.save_setting("audio", "efectos", normalized)
+	SettingsManager.data.efectos = normalized
 	SettingsManager.apply_settings()
+	SettingsManager.save_from_data()

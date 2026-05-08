@@ -52,7 +52,7 @@ func back_to_main():
 	salida.visible = false
 	ajustes.visible = false
 	
-	AudioManager.play("click")
+	AudioManager.play("back_click")
 
 func handle_leaving():
 	PauseManager.resume()
