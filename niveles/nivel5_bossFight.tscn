@@ -6,8 +6,8 @@
 [ext_resource type="Script" uid="uid://dqv5682iatep7" path="res://niveles/camera_shake.gd" id="4_h5rf2"]
 [ext_resource type="Texture2D" uid="uid://bgh8ouadkr0y" path="res://Sprites/Bloques/Dirt.png" id="4_irswv"]
 [ext_resource type="Texture2D" uid="uid://by6ou6ijmk82e" path="res://Sprites/Bloques/Grass.png" id="5_iea6l"]
-[ext_resource type="Texture2D" uid="uid://5uvn68uac1bp" path="res://Sprites/Bloques/Spikes (1).png" id="6_15oim"]
 [ext_resource type="Texture2D" uid="uid://bktcuauxvfsik" path="res://Sprites/Bloques/WoodBlock (1).png" id="7_en8wy"]
+[ext_resource type="Texture2D" uid="uid://dso2t3joxpt18" path="res://Sprites/Bloques/Spikes.png" id="7_r70wt"]
 [ext_resource type="Texture2D" uid="uid://cv1sxq1g5e6ya" path="res://Sprites/Bloques/DamagedWoodBlock (1).png" id="8_li0mn"]
 [ext_resource type="Texture2D" uid="uid://1c6fp8kosfun" path="res://Sprites/Bloques/DirtPlant.png" id="9_en1dt"]
 [ext_resource type="Texture2D" uid="uid://c7nc24uommd57" path="res://Sprites/Bloques/RuinBlock1.png" id="10_i5tbd"]
@@ -72,7 +72,7 @@ texture_region_size = Vector2i(64, 64)
 3:3/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qhqn8"]
-texture = ExtResource("6_15oim")
+texture = ExtResource("7_r70wt")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-25.76823, -0.31045914, 26.699615, -0.6209221, 32, 32, -32, 32)

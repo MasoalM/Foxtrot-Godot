@@ -86,12 +86,12 @@ func _ready():
 	else:#en caso de haber pillado el checkpoint volvemos al tiempo que habia cuando lo cogimos
 		GameState.tiempo_restante = GameState.checkpoint_tiempo
 		GameState.emit_signal("tiempo_cambiado", int(GameState.tiempo_restante))
-		
+	
 	GameState.tiempo_agotado.connect(_on_tiempo_agotado)
 	proyectil_actual = bala
 	if GameState.checkpoint_activo:
 		global_position = GameState.checkpoint_position
-
+	
 	emit_signal("vidas_cambiadas", vidas, escudo)
 
 
@@ -262,10 +262,10 @@ func _physics_process(delta: float) -> void:
 		# Daño continuo por contacto
 		if enemigosIn > 0 and not is_hurt and not is_dead:
 			_dañar()
+		
 		if is_on_floor() and abs(velocity.x) > velocidad/4:
 			walk_timer -= 0.008
 			if walk_timer <= 0:
-				
 				# Valores aleatorios comunes
 				var rand_volume = randf_range(12, 15)
 				var rand_pitch = 1.0
@@ -289,28 +289,31 @@ func _physics_process(delta: float) -> void:
 					waterSound.volume_db = rand_volume
 					waterSound.pitch_scale = rand_pitch
 					waterSound.play()
+		
 		for i in get_slide_collision_count():
 			var collision = get_slide_collision(i)
 			if collision.get_collider() is TileMap:
-				var tile_data = collision.get_collider().get_cell_tile_data(1, collision.get_collider().local_to_map(collision.get_position()))
-	 			#if tile_data:
-				#print("damage:", tile_data.get_custom_data("damage"))
+				var tilemap = collision.get_collider()
+				var local_pos = tilemap.to_local(global_position + Vector2(0, 12))
+				var cell = tilemap.local_to_map(local_pos)
+				
+				var tile_data = tilemap.get_cell_tile_data(1, cell)
 				if tile_data and tile_data.get_custom_data("damage"):
 					_dañar()
 	else:
 		if liana_cooldown > 0:
 			liana_cooldown -= delta
-
+		
 		# Seguir la posición del segmento, sin física
 		if liana_segmento:
 			global_position = liana_segmento.global_position
-
+		
 		# Subir/bajar y balancear la liana con las teclas de movimiento
 		if liana_segmento:
 			var direction_y := Input.get_axis("ui_up", "ui_down")
 			var direction_x := Input.get_axis("ui_left", "ui_right")
 			liana_segmento.apply_central_force(Vector2(direction_x * velocidad * 3, direction_y * velocidad * 2))
-
+			
 			# Voltear sprite según hacia dónde se balancea
 			if direction_x > 0 and not mirando_derecha:
 				$CharacterGreenFront.scale.x *= -1
@@ -322,7 +325,7 @@ func _physics_process(delta: float) -> void:
 				$AnimatedSprite2D.scale.x *= -1
 				$Marker2D.position.x *= -1
 				mirando_derecha = false
-
+		
 		if Input.is_action_just_pressed("ui_accept"):
 			en_liana = false
 			liana_actual = null
@@ -508,7 +511,7 @@ func _animaciones() -> void:
 		else:
 			state_machine.travel("runningIce")
 		
-	else:	
+	else:
 		# Hurt y death tienen prioridad absoluta, nada los interrumpe
 		if is_dead or is_hurt:
 			return
@@ -716,19 +719,18 @@ func flash(color):
 	animacion.modulate = Color(1, 1, 1)
 	
 
-
 func recoger_moneda(id):
 	if not GameState.monedas_estado[id]:
 		GameState.monedas_estado[id] = true
 		coinSound.play()
 		GameState.emit_signal("monedas_cambiadas", GameState.monedas_estado)
-		
+
 func hacer_ataque_cargado():
 	var atk = ataqueCargado.instantiate()
 	get_parent().add_child(atk)
 	atk.global_position = $Marker2D.global_position
 	atk.set_direccion(-1 if not mirando_derecha else 1)
-	
+
 func iniciar_parpadeo_cargado():
 	if tween_parpadeo:
 		tween_parpadeo.kill()
@@ -740,7 +742,7 @@ func iniciar_parpadeo_cargado():
 	
 	tween_parpadeo.tween_property(animacion, "modulate",
 		Color(1, 1, 1), 0.5)	
-		
+
 func parar_parpadeo_cargado():
 	if tween_parpadeo:
 		tween_parpadeo.kill()
@@ -763,31 +765,31 @@ func _on_tiempo_agotado():
 	await get_tree().create_timer(1.0).timeout
 	
 	get_tree().root.add_child(deathScreen.instantiate())
-	
+
 func set_water():
 	water = true
-	
+
 func set_waterf():
 	water = false
-	
+
 func _muerte_instantanea():
 	if is_dead:
 		return
 	is_dead = true
 	bloquearControles = true
-
+	
 	deathSound.play()
-
+	
 	if proyectil_actual == bala_hielo:
 		state_machine.travel("deathIce")
 	else:
 		state_machine.travel("death")
-
+	
 	#  Mata directamente (ignora escudo y vida actual)
 	GameState.perder_vida()
-
+	
 	await get_tree().create_timer(1.0).timeout
-
+	
 	if GameState.vidas_juego > 0:
 		if GameState.checkpoint_activo:
 			get_tree().reload_current_scene()
@@ -795,4 +797,4 @@ func _muerte_instantanea():
 			GameState.resetear_monedas()
 			get_tree().reload_current_scene()
 	else:
-		get_tree().root.add_child(deathScreen.instantiate())	
+		get_tree().root.add_child(deathScreen.instantiate())
