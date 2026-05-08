@@ -4,6 +4,13 @@ extends CanvasLayer
 @onready var ajustes = $"Control/Fondo/Menú Ajustes"
 @onready var salida = $"Control/Fondo/Menú de salida"
 
+@onready var selected_label = $"Control/Fondo/Menú de pausa/InfoCargar/Partida seleccionada"
+@onready var play_time = $"Control/Fondo/Menú de pausa/InfoCargar/Tiempo de juego"
+@onready var last_time_played = $"Control/Fondo/Menú de pausa/InfoCargar/Última vez"
+@onready var lives = $"Control/Fondo/Menú de pausa/InfoCargar/Vidas"
+@onready var max_level = $"Control/Fondo/Menú de pausa/InfoCargar/Nivel alcanzado"
+@onready var collectibles = $"Control/Fondo/Menú de pausa/InfoCargar/Coleccionables"
+
 var pointer_texture = preload("res://Sprites/Pointer.png")
 
 func _ready():
@@ -23,6 +30,16 @@ func _set_process_always(node):
 
 func show_menu():
 	visible = true
+	
+	# Show game info
+	var slot_save: SaveData = SaveManager.save_data
+	
+	selected_label.text = "PARTIDA: " + slot_save.title
+	SaveManager.set_info(play_time, Utils.format_play_time(slot_save.play_time))
+	SaveManager.set_info(last_time_played, Utils.format_time(slot_save.last_time_played))
+	SaveManager.set_info(lives, str(slot_save.lives))
+	SaveManager.set_info(max_level, str(slot_save.max_level))
+	SaveManager.set_info(collectibles, str(slot_save.get_total_collected()))
 
 func hide_menu():
 	visible = false

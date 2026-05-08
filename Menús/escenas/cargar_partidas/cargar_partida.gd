@@ -57,7 +57,7 @@ func _on_slot_pressed(button, slot_id) -> void:
 	if SaveManager._exists(slot_id):
 		var slot_save: SaveData = ResourceLoader.load(SaveManager._get_path(slot_id))
 		
-		selected_label.text = "RANURA DE PARTIDA: " + slot_save.title
+		selected_label.text = "PARTIDA: " + slot_save.title
 		SaveManager.set_info(play_time, Utils.format_play_time(slot_save.play_time))
 		SaveManager.set_info(last_time_played, Utils.format_time(slot_save.last_time_played))
 		SaveManager.set_info(lives, str(slot_save.lives))

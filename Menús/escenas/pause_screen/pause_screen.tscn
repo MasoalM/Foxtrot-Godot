@@ -30,6 +30,16 @@
 [ext_resource type="Texture2D" uid="uid://yavhpueitbev" path="res://Menús/assets/option/ArrowDown.png" id="24_kslt8"]
 [ext_resource type="Texture2D" uid="uid://f1r665yj4yh4" path="res://Menús/assets/option/AjustesDropdownLong.png" id="25_x751n"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_kcbi8"]
+font = ExtResource("15_4evw2")
+font_size = 12
+font_color = Color(0.47843137, 0.3019608, 0.21568628, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_b8833"]
+font = ExtResource("15_4evw2")
+font_size = 12
+font_color = Color(0.47843137, 0.3019608, 0.21568628, 1)
+
 [sub_resource type="Theme" id="Theme_5lpet"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_33udb"]
@@ -254,9 +264,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -128.0
-offset_top = -125.0
+offset_top = -192.0
 offset_right = 128.0
-offset_bottom = 155.0
+offset_bottom = 88.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 8
@@ -276,6 +286,51 @@ texture_normal = ExtResource("4_momuc")
 layout_mode = 2
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("5_06v8l")
+
+[node name="InfoCargar" type="VBoxContainer" parent="Control/Fondo/Menú de pausa" unique_id=1917701134]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = 115.0
+offset_right = 161.0
+offset_bottom = 235.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 3
+
+[node name="Partida seleccionada" type="Label" parent="Control/Fondo/Menú de pausa/InfoCargar" unique_id=1761580497]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_kcbi8")
+horizontal_alignment = 1
+
+[node name="Tiempo de juego" type="Label" parent="Control/Fondo/Menú de pausa/InfoCargar" unique_id=1926912242]
+layout_mode = 2
+text = "Tiempo de juego: "
+label_settings = SubResource("LabelSettings_b8833")
+
+[node name="Última vez" type="Label" parent="Control/Fondo/Menú de pausa/InfoCargar" unique_id=1338020279]
+layout_mode = 2
+text = "Última vez: "
+label_settings = SubResource("LabelSettings_b8833")
+
+[node name="Vidas" type="Label" parent="Control/Fondo/Menú de pausa/InfoCargar" unique_id=620349846]
+layout_mode = 2
+text = "Vidas: "
+label_settings = SubResource("LabelSettings_b8833")
+
+[node name="Nivel alcanzado" type="Label" parent="Control/Fondo/Menú de pausa/InfoCargar" unique_id=42245516]
+layout_mode = 2
+text = "Nivel alcanzado: "
+label_settings = SubResource("LabelSettings_b8833")
+
+[node name="Coleccionables" type="Label" parent="Control/Fondo/Menú de pausa/InfoCargar" unique_id=357434829]
+layout_mode = 2
+text = "Coleccionables: "
+label_settings = SubResource("LabelSettings_b8833")
 
 [node name="Menú Ajustes" type="TextureRect" parent="Control/Fondo" unique_id=1259843885]
 visible = false
