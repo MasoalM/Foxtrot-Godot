@@ -30,6 +30,7 @@ var selected_button = null
 
 func _ready() -> void:
 	UIManager.register_buttons(self)
+	AudioManager.play_music("MenuPrincipal")
 	
 	# Cargar textura inicial
 	var slots = $"Fondo/Menú/Menú Partidas/Partidas"

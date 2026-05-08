@@ -4,9 +4,10 @@ extends VBoxContainer
 var pointer_texture = preload("res://Sprites/Pointer.png")
 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	UIManager.register_buttons(self)
+	AudioManager.play_music("MenuPrincipal")
 	
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	Input.set_custom_mouse_cursor(pointer_texture, Input.CURSOR_ARROW)
 	Input.set_custom_mouse_cursor(pointer_texture, Input.CURSOR_POINTING_HAND)
 
@@ -25,7 +26,7 @@ func _on_nueva_partida_pressed() -> void:
 
 # Ajustes
 func _on_ajustes_pressed() -> void:
-	get_tree().change_scene_to_file("res://Menús/escenas/ajustes/ajustes.tscn")
+	get_tree().change_scene_to_file("res://Menús/escenas/ajustes/ajustes_screen.tscn")
 	AudioManager.play("menu_principal_click")
 
 # Salir

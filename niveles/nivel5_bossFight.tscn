@@ -342,6 +342,7 @@ script = ExtResource("1_c0rvr")
 stream = ExtResource("2_c0rvr")
 volume_db = -12.0
 autoplay = true
+bus = &"Música"
 
 [node name="CharacterBody2D5" parent="." unique_id=1006504852 groups=["player"] instance=ExtResource("3_sam67")]
 z_index = -1

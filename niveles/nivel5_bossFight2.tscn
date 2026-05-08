@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://dqv5682iatep7" path="res://niveles/camera_shake.gd" id="4_twdg6"]
 [ext_resource type="Texture2D" uid="uid://bgh8ouadkr0y" path="res://Sprites/Bloques/Dirt.png" id="5_mh124"]
 [ext_resource type="Texture2D" uid="uid://by6ou6ijmk82e" path="res://Sprites/Bloques/Grass.png" id="6_oshr0"]
-[ext_resource type="Texture2D" uid="uid://5uvn68uac1bp" path="res://Sprites/Bloques/Spikes (1).png" id="7_t58tf"]
+[ext_resource type="Texture2D" uid="uid://dso2t3joxpt18" path="res://Sprites/Bloques/Spikes.png" id="7_t58tf"]
 [ext_resource type="Texture2D" uid="uid://bktcuauxvfsik" path="res://Sprites/Bloques/WoodBlock (1).png" id="8_vjo4i"]
 [ext_resource type="Texture2D" uid="uid://cv1sxq1g5e6ya" path="res://Sprites/Bloques/DamagedWoodBlock (1).png" id="9_fkqeg"]
 [ext_resource type="Texture2D" uid="uid://1c6fp8kosfun" path="res://Sprites/Bloques/DirtPlant.png" id="10_lcpl4"]
@@ -356,6 +356,7 @@ script = ExtResource("1_5cig1")
 stream = ExtResource("2_2c86o")
 volume_db = -12.0
 autoplay = true
+bus = &"Música"
 
 [node name="CharacterBody2D5" parent="." unique_id=1006504852 groups=["player"] instance=ExtResource("3_cpssm")]
 z_index = -1

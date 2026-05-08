@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://b3ctycvf404e0" path="res://Menús/assets/botones/Nueva Partida Desativado.png" id="6_13ptg"]
 [ext_resource type="Texture2D" uid="uid://cppd4mtt2ypgn" path="res://Menús/assets/botones/Ajustes.png" id="7_0xcfo"]
 [ext_resource type="Texture2D" uid="uid://qm5nijdh1m8e" path="res://Menús/assets/botones/Salir.png" id="8_y4740"]
-[ext_resource type="AudioStream" uid="uid://doemiotxtfad" path="res://Music/MenuPrincipal.ogg" id="9_x568q"]
 [ext_resource type="Texture2D" uid="uid://ckjwxvoidsjca" path="res://Menús/assets/fondos/MoxAniFondo1.png" id="10_5kjh4"]
 [ext_resource type="Texture2D" uid="uid://1r6cbmvcwlqn" path="res://Menús/assets/fondos/MoxAniFondo2.png" id="11_goc3w"]
 [ext_resource type="Texture2D" uid="uid://dnxqw7qqgkpi0" path="res://Menús/assets/fondos/MoxAniFondo3.png" id="12_1ekl3"]
@@ -117,12 +116,6 @@ animations = [{
 }]
 
 [node name="MenúPrincipal" type="CanvasLayer" unique_id=325566166]
-
-[node name="Música Menú" type="AudioStreamPlayer2D" parent="." unique_id=703604580]
-stream = ExtResource("9_x568q")
-volume_db = -8.0
-autoplay = true
-bus = &"Música"
 
 [node name="Menú Principal" type="TextureRect" parent="." unique_id=821630638]
 offset_right = 1280.0

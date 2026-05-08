@@ -5,7 +5,7 @@ extends TextureRect
 @onready var efectos_slider = $"Efectos"
 @onready var efectos_label = $"Efectos Label"
 
-func _ready():
+func _ready() -> void:
 	var musica_vol = SettingsManager.get_setting("audio", "musica")
 	var efectos_vol = SettingsManager.get_setting("audio", "efectos")
 	

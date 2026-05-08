@@ -20,6 +20,7 @@ var selected_button = null
 
 func _ready() -> void:
 	UIManager.register_buttons(self)
+	AudioManager.play_music("MenuPrincipal")
 	
 	# Saltar aviso de ninguna partida creada
 	var exists_any_save: bool = SaveManager._exists_any()
@@ -92,6 +93,7 @@ func _on_jugar_pressed():
 	
 	get_tree().change_scene_to_file("res://niveles/level_selector.tscn")
 	
+	AudioManager.stop_music()
 	AudioManager.play("click")
 	print("Cargar partida: ", selected_slot)
 
