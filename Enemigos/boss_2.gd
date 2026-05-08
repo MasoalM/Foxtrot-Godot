@@ -450,8 +450,10 @@ func _advance_phase():
 	if current_phase < 3:
 		_set_phase(current_phase + 1)
 		if (current_phase==1):
+			shoot_interval = 3.5
 			platform_manager2.start()
 		if (current_phase==2):
+			shoot_interval = 6.0
 			platform_manager3.start()
 		if camera:
 			camera.add_trauma(1.0)
