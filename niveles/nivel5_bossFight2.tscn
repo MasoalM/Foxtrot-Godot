@@ -526,7 +526,7 @@ spawn_positions = Array[Vector2]([Vector2(160, -736), Vector2(224, -736), Vector
 [node name="PlatformManager3" type="Node2D" parent="." unique_id=280493700]
 script = ExtResource("49_cpssm")
 platform_scene = ExtResource("47_1gtpf")
-spawn_positions = Array[Vector2]([Vector2(160, -2848), Vector2(224, -2848), Vector2(288, -2848), Vector2(352, -2848), Vector2(416, -2848), Vector2(480, -2848), Vector2(544, -2848), Vector2(608, -2848), Vector2(672, -2848), Vector2(736, -2848), Vector2(800, -2848), Vector2(864, -2848), Vector2(928, -2848), Vector2(992, -2848), Vector2(1056, -2848), Vector2(1120, -2848), Vector2(1184, -2848), Vector2(416, -3232), Vector2(928, -3232), Vector2(992, -3616), Vector2(480, -3616), Vector2(480, -3936), Vector2(544, -3936), Vector2(608, -3936), Vector2(864, -4320), Vector2(480, -4320), Vector2(608, -4576), Vector2(672, -4576), Vector2(736, -4576)])
+spawn_positions = Array[Vector2]([Vector2(160, -2848), Vector2(224, -2848), Vector2(288, -2848), Vector2(352, -2848), Vector2(416, -2848), Vector2(480, -2848), Vector2(544, -2848), Vector2(608, -2848), Vector2(672, -2848), Vector2(736, -2848), Vector2(800, -2848), Vector2(864, -2848), Vector2(928, -2848), Vector2(992, -2848), Vector2(1056, -2848), Vector2(1120, -2848), Vector2(1184, -2848), Vector2(416, -3232), Vector2(480, -3232), Vector2(928, -3232), Vector2(864, -3232), Vector2(992, -3616), Vector2(928, -3616), Vector2(544, -3616), Vector2(480, -3616), Vector2(480, -3936), Vector2(544, -3936), Vector2(608, -3936), Vector2(864, -4320), Vector2(480, -4320), Vector2(608, -4576), Vector2(672, -4576), Vector2(736, -4576)])
 
 [node name="RigidBody2D6" parent="." unique_id=788352537 instance=ExtResource("45_lc37a")]
 position = Vector2(153, -1427)
