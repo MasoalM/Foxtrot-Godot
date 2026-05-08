@@ -517,6 +517,26 @@ rotation = 0.0007608196
 
 [node name="BOSS" parent="." unique_id=2105881948 instance=ExtResource("47_5cig1")]
 position = Vector2(630, 215)
+frame_speed = null
+bounds_x = null
+bounds_y = null
+bounds_y2 = null
+bounds_y3 = null
+move_duration = null
+move_pause = null
+move_speed = null
+target_change_interval = null
+velocity_smooth = null
+top_margin = null
+top_float_range = null
+shoot_interval = null
+balls_per_shot = null
+ball_lifetime = null
+charge_interval = null
+charge_speed = null
+immunity_duration = null
+hits_to_stun = null
+stun_duration = null
 
 [node name="PlatformManager2" type="Node2D" parent="." unique_id=915506063]
 script = ExtResource("48_2c86o")

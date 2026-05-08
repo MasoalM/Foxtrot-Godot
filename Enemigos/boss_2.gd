@@ -156,7 +156,7 @@ func _flash_red():
 	sfx_hit.play()
 	var tween := create_tween()
 	tween.tween_property(sprite, "modulate", Color(2.0, 0.2, 0.2, 1.0), 0.05)
-	tween.tween_property(sprite, "modulate", Color(0.5, 0.1, 1.0, 1.0), 0.15)
+	tween.tween_property(sprite, "modulate", Color.WHITE, 0.15)
 
 func _trigger_stun():
 	if is_stunned:
