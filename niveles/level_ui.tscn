@@ -5,13 +5,15 @@
 [ext_resource type="Texture2D" uid="uid://6ibedxnblj8w" path="res://Sprites/Clock.png" id="3_3qt84"]
 [ext_resource type="FontFile" uid="uid://t3qeauxnndoj" path="res://font/Retro Gaming.ttf" id="4_e0ytq"]
 [ext_resource type="Texture2D" uid="uid://ca7kef2h3iclf" path="res://Sprites/PowerUps/Heart.png" id="5_tu54p"]
-[ext_resource type="Texture2D" uid="uid://bthw7bhk4t5j3" path="res://Sprites/Enemigos/RuinsWheel.png" id="6_r5rnn"]
+[ext_resource type="Texture2D" uid="uid://cyvb7mkdi53xp" path="res://Sprites/Puntuación.png" id="6_r5rnn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0guox"]
 font = ExtResource("4_e0ytq")
 
 [sub_resource type="LabelSettings" id="LabelSettings_kcd17"]
 font = ExtResource("4_e0ytq")
+
+[sub_resource type="Theme" id="Theme_r5rnn"]
 
 [node name="LevelUi" type="Control" unique_id=286716871]
 layout_mode = 3
@@ -80,9 +82,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -100.0
-offset_top = 5.0
+offset_top = 14.0
 offset_right = 28.0
-offset_bottom = 132.0
+offset_bottom = 158.0
 grow_horizontal = 0
 alignment = 1
 
@@ -93,7 +95,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/VBoxContainer/HBoxContainerTime" unique_id=365867984]
 layout_mode = 2
 texture = ExtResource("3_3qt84")
-expand_mode = 2
+expand_mode = 3
 
 [node name="time" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainerTime" unique_id=275907543]
 custom_minimum_size = Vector2(1, 28)
@@ -107,9 +109,9 @@ layout_mode = 2
 theme_override_constants/separation = -4
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/VBoxContainer/HBoxContainerUP" unique_id=280263613]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 texture = ExtResource("5_tu54p")
-expand_mode = 2
 
 [node name="textoVidas" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainerUP" unique_id=1508181735]
 custom_minimum_size = Vector2(1, 28)
@@ -118,14 +120,15 @@ label_settings = SubResource("LabelSettings_kcd17")
 vertical_alignment = 2
 
 [node name="HBoxContainerPuntos" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer" unique_id=960306961]
+custom_minimum_size = Vector2(128, 48)
 layout_mode = 2
+theme = SubResource("Theme_r5rnn")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/VBoxContainer/HBoxContainerPuntos" unique_id=491921035]
 texture_filter = 1
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 texture = ExtResource("6_r5rnn")
-expand_mode = 2
 
 [node name="textoPuntuacion" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainerPuntos" unique_id=1232213388]
 layout_mode = 2

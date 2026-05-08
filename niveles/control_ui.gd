@@ -18,7 +18,6 @@ var corazon_escudo = preload("res://hud/ShieldHeart.png")
 var moneda_textura = preload("res://Sprites/Coleccionables/Coleccionable.png")
 
 func _ready():
-	
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	
 	GameState.tiempo_activo = true
@@ -32,16 +31,16 @@ func _ready():
 	
 	for moneda in monedas:
 		moneda.texture = moneda_textura
-		
+	
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
 		player.vidas_cambiadas.connect(actualizar_vidas)
 		GameState.monedas_cambiadas.connect(actualizar_monedas)
 		actualizar_monedas(GameState.monedas_estado)
 		actualizar_vidas(player.vidas, player.escudo)
+
 func actualizar_puntuacion(puntos):
-	#label_puntos.text = str(puntos)	
-	pass
+	label_puntos.text = str(puntos)
 
 func actualizar_vidas(vidas, escudo):
 	var max_vidas = 2
