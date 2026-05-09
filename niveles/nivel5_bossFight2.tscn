@@ -391,7 +391,7 @@ position = Vector2(424, 412)
 [node name="PlatformManager" type="Node2D" parent="." unique_id=1520847845]
 script = ExtResource("46_q5bmt")
 platform_scene = ExtResource("47_1gtpf")
-spawn_positions = Array[Vector2]([Vector2(672, 20), Vector2(448, -300), Vector2(832, -300), Vector2(740, -620), Vector2(413, -620)])
+spawn_positions = Array[Vector2]([Vector2(672, 84), Vector2(608, 84), Vector2(448, -300), Vector2(832, -300), Vector2(740, -620), Vector2(413, -620)])
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1287819453]
 position = Vector2(669, -4507.9995)
