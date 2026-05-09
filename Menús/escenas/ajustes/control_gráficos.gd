@@ -31,6 +31,7 @@ func refresh():
 			resolucion.selected = i
 			selected_resolution = i
 
+
 # -- Selectors --
 
 func _on_modo_item_selected(index: int) -> void:
@@ -73,6 +74,7 @@ func _on_resolución_item_selected(index: int) -> void:
 	
 	SettingsManager.apply_settings()
 	SettingsManager.save_from_data()
+
 
 # -- Helper methods -- 
 
