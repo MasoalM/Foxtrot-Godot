@@ -30,17 +30,16 @@ func entrar_al_nivel():
 		nivel = obtener_id_nivel_desde_ruta(escena_destino)
 		print("el nivel es: ", nivel)
 		
-
 		if nivel != -1:
 			GameState.entrandoNivel(nivel)
-
+	
 	if escena_destino == "res://niveles/level_selector.tscn":
 		print(GameState.obtener_resultado())
 		GameState.sumar_puntos(GameState.tiempo_restante)
 		APIclient.enviar_resultado(GameState.obtener_resultado())
 		GameState.resetear_monedas()
 		GameState.resetear_puntos()
-
+	
 	#  Safety check
 	if escena_destino == "":
 		print("Error: escena_destino no asignada")
@@ -48,10 +47,10 @@ func entrar_al_nivel():
 	
 	jugador_dentro = false
 	print("Entrando al nivel: ", escena_destino)
-
+	
 	prePortalSound.stop()
 	portalSound.play()
-
+	
 	var jugador = get_tree().get_first_node_in_group("player")
 	if jugador:
 		jugador.bloquearControles = true
@@ -68,7 +67,6 @@ func obtener_id_nivel_desde_ruta(ruta: String) -> int:
 		return -1
 	
 	var resto = ruta.substr(prefijo.length())
-	
 	if resto.length() > 0 and resto[0].is_valid_int():
 		return int(resto[0])
 	

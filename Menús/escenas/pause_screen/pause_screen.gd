@@ -34,12 +34,13 @@ func show_menu():
 	# Show game info
 	var slot_save: SaveData = SaveManager.save_data
 	
-	selected_label.text = "PARTIDA: " + slot_save.title
-	SaveManager.set_info(play_time, Utils.format_play_time(slot_save.play_time))
-	SaveManager.set_info(last_time_played, Utils.format_time(slot_save.last_time_played))
-	SaveManager.set_info(lives, str(slot_save.lives))
-	SaveManager.set_info(max_level, str(slot_save.max_level))
-	SaveManager.set_info(collectibles, str(slot_save.get_total_collected()))
+	if slot_save:
+		selected_label.text = "PARTIDA: " + slot_save.title
+		SaveManager.set_info(play_time, Utils.format_play_time(slot_save.play_time))
+		SaveManager.set_info(last_time_played, Utils.format_time(slot_save.last_time_played))
+		SaveManager.set_info(lives, str(slot_save.lives))
+		SaveManager.set_info(max_level, str(slot_save.max_level))
+		SaveManager.set_info(collectibles, str(slot_save.get_total_collected()))
 
 func hide_menu():
 	visible = false

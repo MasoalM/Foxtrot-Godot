@@ -85,7 +85,9 @@ func _ready():
 		GameState.reiniciar_tiempo()
 	else:#en caso de haber pillado el checkpoint volvemos al tiempo que habia cuando lo cogimos
 		GameState.tiempo_restante = GameState.checkpoint_tiempo
+		GameState.puntuacion = GameState.puntuacion_anterior
 		GameState.emit_signal("tiempo_cambiado", int(GameState.tiempo_restante))
+		GameState.emit_signal("puntuacion_cambiada", GameState.puntuacion)
 	
 	GameState.tiempo_agotado.connect(_on_tiempo_agotado)
 	proyectil_actual = bala
@@ -685,9 +687,11 @@ func _dañar():
 			if GameState.vidas_juego > 0:
 				# antes estaba en 0 pero le resta las vidas_juego antes de llegar aqui ,oops
 				if GameState.checkpoint_activo:
+					GameState.puntuacion = GameState.puntuacion_anterior
 					get_tree().reload_current_scene()
 				else:
 					GameState.resetear_monedas()
+					GameState.resetear_puntos()
 					get_tree().reload_current_scene()
 			else:
 				print("mox ha muerto y no le quedan vidas")
@@ -699,9 +703,7 @@ func _dañar():
 			else:
 				state_machine.travel("hurt")
 			flash(3)
-			
 
-	
 func flash(color):
 	for i in range(3):
 		if color == 3:
@@ -792,9 +794,11 @@ func _muerte_instantanea():
 	
 	if GameState.vidas_juego > 0:
 		if GameState.checkpoint_activo:
+			GameState.puntuacion = GameState.puntuacion_anterior
 			get_tree().reload_current_scene()
 		else:
 			GameState.resetear_monedas()
+			GameState.resetear_puntos()
 			get_tree().reload_current_scene()
 	else:
 		get_tree().root.add_child(deathScreen.instantiate())

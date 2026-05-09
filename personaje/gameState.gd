@@ -16,7 +16,9 @@ signal puntuacion_cambiada(puntos)
 var vidas_juego = 5
 var maxVida = 99
 var tiempo_activo = false
+
 var puntuacion = 0
+var puntuacion_anterior = 0
 
 func _ready():
 	set_process(true)
@@ -64,17 +66,15 @@ func actualizar_tiempo(delta):
 	if tiempo_restante > 0:
 		tiempo_restante -= delta
 		emit_signal("tiempo_cambiado", int(tiempo_restante))
-
+		
 		if tiempo_restante <= 0:
 			tiempo_restante = 0
 			emit_signal("tiempo_agotado")
 
 func reiniciar_tiempo():
-
 	match nivel:
 		5:
 			tiempo_restante = 361
-		
 		_:
 			tiempo_restante = 241
 
@@ -83,8 +83,8 @@ func reiniciar_tiempo():
 # =========================
 #  CHECKPOINT
 # =========================
-var checkpoint_position: Vector2 = Vector2.ZERO
 var checkpoint_activo = false
+var checkpoint_position: Vector2 = Vector2.ZERO
 var checkpoint_tiempo: float = 0.0
 
 # =========================
@@ -92,37 +92,36 @@ var checkpoint_tiempo: float = 0.0
 # =========================
 func resetear_nivel():
 	resetear_monedas()
+	resetear_puntos()
 	reiniciar_tiempo()
 	vidas_juego = 5
 	checkpoint_activo = false
 	checkpoint_position = Vector2.ZERO
-	
+
 func entrandoNivel(niv: int):
 	if niv == null:
 		print("ERROR: nivel no definido")
 		return {}
-
+	
 	nivel = niv
-
+	
 	# Tiempo por nivel
 	match nivel:
 		5:
 			tiempo_restante = 361  # 241 + 120
-		
 		_:
 			tiempo_restante = 241
-
-	emit_signal("tiempo_cambiado", int(tiempo_restante))
-
-	print("en gameState el nivel ya es : ", nivel )
 	
+	emit_signal("tiempo_cambiado", int(tiempo_restante))
+	print("en gameState el nivel ya es : ", nivel )
 
 func sumar_puntos(cantidad):
 	puntuacion += cantidad
 	emit_signal("puntuacion_cambiada", puntuacion)
-	
+
 func resetear_puntos():
 	puntuacion = 0
+	puntuacion_anterior = 0
 	emit_signal("puntuacion_cambiada", puntuacion)
 
 func restar_puntos(cantidad: int):
@@ -133,9 +132,6 @@ func restar_puntos(cantidad: int):
 		puntuacion = 0
 		
 	emit_signal("puntuacion_cambiada", puntuacion)	
-	
-	
-		
 
 # =========================
 #  RESULTADO DEL NIVEL
