@@ -73,3 +73,14 @@ func _process(delta: float):
 		var rainbow := Color.from_hsv(hue, 0.5, 1.0)
 		rainbow.a = plat.modulate.a
 		plat.modulate = rainbow
+		
+func stop():
+	set_process(false)
+	for p in platforms:
+		if not is_instance_valid(p):
+			continue
+		p.visible = false
+		p.modulate.a = 0.0
+		var col: CollisionShape2D = p.get_node_or_null("CollisionShape2D")
+		if col:
+			col.disabled = true

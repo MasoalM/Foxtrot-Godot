@@ -11,6 +11,7 @@ extends CharacterBody2D
 @export var bounds_y := Vector2(-380, 340)   # min Y, max Y
 @export var bounds_y2 := Vector2(-2720.0, 340)   # min Y, max Y
 @export var bounds_y3 := Vector2(-4508.0,340) 
+@export var bounds_y4 := Vector2(-5600.0,340) 
 var current_phase := 0
 var is_dead := false
 
@@ -188,6 +189,12 @@ func _trigger_stun():
 			bounds_y3.y +200
 			)
 			has_reached_top = false
+		3:
+			move_target = Vector2(
+			randf_range(bounds_x.x + 40.0, bounds_x.y - 40.0),
+			bounds_y4.y +200
+			)
+			has_reached_top = false
 			
 
 # -----------------------------------------------
@@ -214,6 +221,10 @@ func _process_movement(delta):
 				_pick_new_target()
 		2:
 			if not has_reached_top and global_position.y <= bounds_y3.x + top_margin:
+				has_reached_top = true
+				_pick_new_target()
+		3:
+			if not has_reached_top and global_position.y <= bounds_y4.x + top_margin:
 				has_reached_top = true
 				_pick_new_target()
 	
@@ -256,6 +267,12 @@ func _pick_new_target():
 				new_y = bounds_y3.x + randf_range(-top_float_range * 0.3, top_float_range)
 			else:
 				new_y = bounds_y3.x
+		3:
+			if has_reached_top:
+				# Oscila por encima y por debajo del techo
+				new_y = bounds_y4.x + randf_range(-top_float_range * 0.3, top_float_range)
+			else:
+				new_y = bounds_y4.x
 	
 
 	move_target = Vector2(new_x, new_y)
@@ -348,6 +365,9 @@ func _process_charge_timer(delta):
 func _telegraph_charge():
 	if is_dead:
 		return
+	var player = get_tree().get_first_node_in_group("player")
+	if player == null or player.global_position.y > -4704.0:
+		return  # jugador demasiado abajo, no cargar
 	var tween := create_tween()
 	for i in range(4):
 		tween.tween_callback(func(): sprite.modulate = Color(1, 0.2, 0.2))
@@ -363,11 +383,19 @@ func _start_charge():
 	if player == null:
 		return
 	charging = true
-	global_position = player.global_position + Vector2(randf_range(-150, 150), -350)
+	charge_velocity = Vector2.ZERO                          # quieto mientras espera
+	global_position = player.global_position + Vector2(randf_range(-150, 150), -550)  # antes -350
 	_teleport_effect()
-	charge_velocity = (player.global_position - global_position).normalized() * charge_speed
 	if camera:
 		camera.add_trauma(0.4)
+
+	await get_tree().create_timer(0.8).timeout             # pausa antes de bajar
+	if is_dead or not is_inside_tree():
+		return
+	player = get_tree().get_first_node_in_group("player")  # refresca por si se movió
+	if player == null:
+		return
+	charge_velocity = (player.global_position - global_position).normalized() * charge_speed
 
 func _process_charge(delta):
 	if is_dead:
@@ -504,11 +532,12 @@ func _die():
 			ball.queue_free()
 
 	# Plataformas desaparecen
-	if platform_manager:
-		var tween_plat := create_tween()
-		tween_plat.tween_property(platform_manager, "modulate:a", 0.0, 1.0)
-		tween_plat.tween_callback(func(): platform_manager.set_process(false))
-
+	for pm in [platform_manager, platform_manager2, platform_manager3, platform_manager4]:
+		if pm:
+			var tween_plat := create_tween()
+			tween_plat.tween_property(pm, "modulate:a", 0.0, 1.0)
+			tween_plat.tween_callback(func(): pm.stop())
+			
 	# Música fade out
 	if music:
 		var tween_music := create_tween()
