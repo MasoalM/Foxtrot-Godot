@@ -78,6 +78,7 @@ var stun_timer := 0.0
 @onready var platform_manager = $"../PlatformManager"
 @onready var platform_manager2 = $"../PlatformManager2"
 @onready var platform_manager3 = $"../PlatformManager3"
+@onready var platform_manager4 = $"../PlatformManager4"
 
 func _ready():
 	
@@ -455,6 +456,8 @@ func _advance_phase():
 		if (current_phase==2):
 			shoot_interval = 6.0
 			platform_manager3.start()
+		if (current_phase==3):
+			platform_manager4.start()
 		if camera:
 			camera.add_trauma(1.0)
 		_flash_transition()
