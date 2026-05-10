@@ -1,17 +1,14 @@
 extends Node2D
 
-@export var escena_destino: String = ""
-var jugador_dentro = false
-var nivel 
-
-
-
 # Referencia al Sprite2D que mostrará la "F"
 @onready var indicador: Sprite2D = $Indicador
 @onready var portalSound = $AudioStreamPlayer2D
 @onready var prePortalSound = $PrePortal
 @onready var luz = $PointLight2D
 
+@export var escena_destino: String = ""
+var jugador_dentro = false
+var nivel 
 
 func _ready() -> void:
 	indicador.visible = false  # Oculto al inicio
@@ -32,7 +29,7 @@ func entrar_al_nivel():
 		
 		if nivel != -1:
 			SaveManager.save_game()
-			GameState.entrandoNivel(nivel)
+			GameState.entrar_nivel(nivel)
 	
 	if escena_destino == "res://niveles/level_selector.tscn":
 		print(GameState.obtener_resultado())
@@ -65,8 +62,7 @@ func entrar_al_nivel():
 	
 	await get_tree().create_timer(1.0).timeout
 	get_tree().change_scene_to_file(escena_destino)
-	
-	
+
 func obtener_id_nivel_desde_ruta(ruta: String) -> int:
 	var prefijo = "res://niveles/nivel"
 	
@@ -78,7 +74,6 @@ func obtener_id_nivel_desde_ruta(ruta: String) -> int:
 		return int(resto[0])
 	
 	return -1
-	
 
 func _on_area_2d_body_entered(body: CharacterBody2D):
 	print("body entró: ", body.name)

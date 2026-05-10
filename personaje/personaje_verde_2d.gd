@@ -84,7 +84,7 @@ func _ready():
 		GameState.reiniciar_tiempo()
 	else:#en caso de haber pillado el checkpoint volvemos al tiempo que habia cuando lo cogimos
 		GameState.tiempo_restante = GameState.checkpoint_tiempo
-		GameState.puntuacion = GameState.puntuacion_anterior
+		GameState.puntuacion = GameState.checkpoint_score
 		GameState.emit_signal("tiempo_cambiado", int(GameState.tiempo_restante))
 		GameState.emit_signal("puntuacion_cambiada", GameState.puntuacion)
 	
@@ -686,7 +686,7 @@ func _die():
 	if GameState.vidas_juego > 0:
 		# antes estaba en 0 pero le resta las vidas_juego antes de llegar aqui ,oops
 		if GameState.checkpoint_activo:
-			GameState.puntuacion = GameState.puntuacion_anterior
+			GameState.puntuacion = GameState.checkpoint_score
 		else:
 			GameState.resetear_monedas()
 			GameState.resetear_puntos()
@@ -791,7 +791,7 @@ func _muerte_instantanea():
 	
 	if GameState.vidas_juego > 0:
 		if GameState.checkpoint_activo:
-			GameState.puntuacion = GameState.puntuacion_anterior
+			GameState.puntuacion = GameState.checkpoint_score
 			get_tree().reload_current_scene()
 		else:
 			GameState.resetear_monedas()

@@ -13,7 +13,7 @@ func _on_body_entered(body):
 		GameState.checkpoint_activo = true
 		GameState.checkpoint_position = respawn_point.global_position
 		GameState.checkpoint_tiempo = 121
-		GameState.puntuacion_anterior = GameState.puntuacion
+		GameState.checkpoint_score = GameState.puntuacion
 		sound.play()
 		light.energy = 6
 		particles.amount = 300
