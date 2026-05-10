@@ -291,6 +291,9 @@ func attack():
 		
 		await get_tree().create_timer(0.25).timeout
 		
+		if !is_instance_valid(self) or lives <= 0 or !is_instance_valid(hitbox):
+			return
+		
 		shape.radius = original_radius
 		shape.height = original_height
 		shape_node.position.x = 0
@@ -325,7 +328,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			var direction = sign(global_position.x - area.global_position.x)
 			
 			velocity.x = direction * knockback_force
-		
+			
 			if is_on_floor():
 				velocity.y = knockback_up_force
 			
@@ -340,6 +343,18 @@ func muerte():
 		return
 	
 	lives = 0
+	chasing = false
+	in_knockback = false
+	
+	# Desactivar enemigo, hitbox y colisiones
+	remove_from_group("Enemigos")
+	
+	hitbox.set_deferred("monitoring", false)
+	hitbox.set_deferred("monitorable", false)
+	hitbox.get_node("CollisionShape2D").set_deferred("disabled", true)
+	
+	set_collision_layer_value(3, false)
+	set_collision_layer_value(4, true)
 	
 	# SUMAR PUNTOS
 	GameState.sumar_puntos(10)
@@ -351,12 +366,6 @@ func muerte():
 	popup.setup("+10")
 	
 	aullidoMuerte.play()
-	
-	set_collision_layer_value(3, false)
-	set_collision_layer_value(4, true)
-	
-	set_deferred("monitoring", false)
-	remove_from_group("Enemigos")
 	
 	if is_instance_valid(espada_sprite):
 		espada_sprite.queue_free()

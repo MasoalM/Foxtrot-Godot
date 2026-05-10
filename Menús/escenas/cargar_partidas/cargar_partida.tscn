@@ -51,9 +51,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -200.0
-offset_top = -110.0
+offset_top = -119.0
 offset_right = 200.0
-offset_bottom = 110.0
+offset_bottom = 119.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = -2
@@ -131,9 +131,14 @@ layout_mode = 2
 text = "Vidas: "
 label_settings = SubResource("LabelSettings_vdci2")
 
-[node name="Nivel alcanzado" type="Label" parent="Control/Fondo/Menú/Información/InfoCargar" unique_id=671649267]
+[node name="Puntuación" type="Label" parent="Control/Fondo/Menú/Información/InfoCargar" unique_id=995380316]
 layout_mode = 2
-text = "Nivel alcanzado: "
+text = "Puntuación: "
+label_settings = SubResource("LabelSettings_vdci2")
+
+[node name="Niveles completados" type="Label" parent="Control/Fondo/Menú/Información/InfoCargar" unique_id=671649267]
+layout_mode = 2
+text = "Niveles completados: "
 label_settings = SubResource("LabelSettings_vdci2")
 
 [node name="Coleccionables" type="Label" parent="Control/Fondo/Menú/Información/InfoCargar" unique_id=800693965]
@@ -144,9 +149,9 @@ label_settings = SubResource("LabelSettings_vdci2")
 [node name="Botones" type="HBoxContainer" parent="Control/Fondo" unique_id=850779537]
 layout_mode = 0
 offset_left = 440.0
-offset_top = 480.5
+offset_top = 500.5
 offset_right = 840.0
-offset_bottom = 528.5
+offset_bottom = 548.5
 size_flags_vertical = 4
 theme_override_constants/separation = 6
 alignment = 1

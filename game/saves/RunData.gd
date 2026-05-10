@@ -2,6 +2,7 @@ extends Resource
 class_name RunData
 
 var level := 0
+var score := 0
 var collectibles := [false, false, false]
 
 func setup(level_index: int):

@@ -62,7 +62,6 @@ var coyoteTimeActual = coyoteTime
 
 var vidas = 200
 var escudo = 0
-var enemigosIn = 0
 
 var shoot_cooldown = 0.2
 var shoot_timer = 0
@@ -112,6 +111,7 @@ func _physics_process(delta: float) -> void:
 	if not en_liana:
 		if liana_cooldown > 0:
 			liana_cooldown -= delta
+		
 		if !isGrounded and is_on_floor():
 			var instance = dust.instantiate()
 			instance.global_position = $DustMarker.global_position
@@ -120,8 +120,10 @@ func _physics_process(delta: float) -> void:
 		if not is_dead:
 			if hurt_timer > 0:
 				hurt_timer -= delta
+				
 				if hurt_timer <= 0:
 					is_hurt = false
+					
 					if proyectil_actual == bala_hielo:
 						state_machine.travel("staticIce")
 					else:
@@ -131,9 +133,11 @@ func _physics_process(delta: float) -> void:
 		
 		if isShooting:
 			shoot_anim_timeout += delta
+			
 			if shoot_anim_timeout >= SHOOT_ANIM_MAX:
 				isShooting = false
 				shoot_anim_timeout = 0.0
+		
 		_animaciones()
 		# Gravedad
 		if not is_on_floor():
@@ -261,9 +265,6 @@ func _physics_process(delta: float) -> void:
 					shoot.vel_bala *= -1
 
 		move_and_slide()
-		# Daño continuo por contacto
-		if enemigosIn > 0 and not is_hurt and not is_dead:
-			_dañar()
 		
 		if is_on_floor() and abs(velocity.x) > velocidad/4:
 			walk_timer -= 0.008
@@ -399,11 +400,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 				return
 		
 		_dañar()
-		enemigosIn += 1
-
-func _on_area_2d_body_exited(body: Node2D) -> void:
-	if body.is_in_group("Enemigos"):
-		enemigosIn -= 1
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Enemigos"):
@@ -412,9 +408,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		if enemigo.has_method("congelado") or "congelado" in enemigo:
 			if enemigo.congelado:
 				return
-
-		enemigosIn += 1
-
+		
 		_dañar()
 	
 	if area.is_in_group("Lianas"):
@@ -436,14 +430,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 				
 				if liana_actual.has_method("recibir_inercia"):
 					liana_actual.recibir_inercia(inercia)
-					
-func _on_area_2d_area_exited(area: Area2D) -> void:
-	
-	if area.is_in_group("Enemigos"):
-		enemigosIn -= 1
-
-		if enemigosIn < 0:
-			enemigosIn = 0
 
 	if area.is_in_group("Lianas"):
 		# Solo desacoplar si la salida es natural (no estamos activamente en liana)
@@ -640,69 +626,80 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 				state_machine.travel("staticIce")
 
 func _dañar():
-		if is_hurt or is_dead:
-			return
+	if is_dead:
+		return
+	
+	if hurt_timer > 0:
+		return
+	
+	_damage()
+
+func _damage():
+	if is_dead:
+		return
+	
+	is_hurt = true
+	hurt_timer = HURT_DURATION
+	
+	damageSound.play()
+	
+	# Escudo
+	if escudo > 0:
+		escudo -= 1
 		
-		if proyectil_actual == bala_hielo:
-			state_machine.travel("staticIce")
-		else:
-			state_machine.travel("static")
-		
-		#  Primero escudo
-		damageSound.play()
-		if escudo > 0:
-			is_hurt = true;
-			if proyectil_actual == bala_hielo:
-				state_machine.travel("hurtIce")
-			else:
-				state_machine.travel("hurt")
-			escudo -= 1
-			# Reemplaza las dos líneas "is_hurt = true" por esto en ambos sitios:	
-			is_hurt = true
-			hurt_timer = HURT_DURATION
-			emit_signal("vidas_cambiadas", vidas, escudo)
-			# efecto visual distinto opcional
-			flash(3)
-			return
-		vidas -= 1
-		# Reemplaza las dos líneas "is_hurt = true" por esto en ambos sitios:
-		is_hurt = true
-		hurt_timer = HURT_DURATION 
 		emit_signal("vidas_cambiadas", vidas, escudo)
-		if vidas <= 0:
-			# parar música?
-			flash(3)
-			deathSound.play()
-			is_dead = true
-			bloquearControles = true
-			if proyectil_actual == bala_hielo:
-				state_machine.travel("deathIce")
-			else:
-				state_machine.travel("death")
+		_play_hurt_anim()
+		
+		flash(3)
+		return
+	
+	# Vida
+	vidas -= 1
+	emit_signal("vidas_cambiadas", vidas, escudo)
+	
+	if vidas <= 0:
+		_die()
+		return
+	
+	_play_hurt_anim()
+	flash(3)
 
-			GameState.perder_vida()
-
-			await get_tree().create_timer(1.0).timeout
-
-			if GameState.vidas_juego > 0:
-				# antes estaba en 0 pero le resta las vidas_juego antes de llegar aqui ,oops
-				if GameState.checkpoint_activo:
-					GameState.puntuacion = GameState.puntuacion_anterior
-					get_tree().reload_current_scene()
-				else:
-					GameState.resetear_monedas()
-					GameState.resetear_puntos()
-					get_tree().reload_current_scene()
-			else:
-				print("mox ha muerto y no le quedan vidas")
-				get_tree().root.add_child(deathScreen.instantiate())
+func _die():
+	if is_dead:
+		return
+	
+	is_dead = true
+	bloquearControles = true
+	
+	flash(3)
+	deathSound.play()
+	
+	if proyectil_actual == bala_hielo:
+		state_machine.travel("deathIce")
+	else:
+		state_machine.travel("death")
+	
+	GameState.perder_vida()
+	
+	await get_tree().create_timer(1.0).timeout
+	
+	if GameState.vidas_juego > 0:
+		# antes estaba en 0 pero le resta las vidas_juego antes de llegar aqui ,oops
+		if GameState.checkpoint_activo:
+			GameState.puntuacion = GameState.puntuacion_anterior
 		else:
-			is_hurt = true
-			if proyectil_actual == bala_hielo:
-				state_machine.travel("hurtIce")
-			else:
-				state_machine.travel("hurt")
-			flash(3)
+			GameState.resetear_monedas()
+			GameState.resetear_puntos()
+		
+		get_tree().reload_current_scene()
+	else:
+		get_tree().root.add_child(deathScreen.instantiate())
+
+func _play_hurt_anim():
+	if proyectil_actual == bala_hielo:
+		state_machine.travel("hurtIce")
+	else:
+		state_machine.travel("hurt")
 
 func flash(color):
 	for i in range(3):

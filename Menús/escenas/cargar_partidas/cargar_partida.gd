@@ -52,7 +52,8 @@ func _on_slot_pressed(button, slot_id) -> void:
 	var play_time = $"Fondo/Menú/Información/InfoCargar/Tiempo de juego"
 	var last_time_played = $"Fondo/Menú/Información/InfoCargar/Última vez"
 	var lives = $"Fondo/Menú/Información/InfoCargar/Vidas"
-	var max_level = $"Fondo/Menú/Información/InfoCargar/Nivel alcanzado"
+	var score = $"Fondo/Menú/Información/InfoCargar/Puntuación"
+	var level_completed = $"Fondo/Menú/Información/InfoCargar/Niveles completados"
 	var collectibles = $"Fondo/Menú/Información/InfoCargar/Coleccionables"
 	
 	if SaveManager._exists(slot_id):
@@ -62,14 +63,16 @@ func _on_slot_pressed(button, slot_id) -> void:
 		SaveManager.set_info(play_time, Utils.format_play_time(slot_save.play_time))
 		SaveManager.set_info(last_time_played, Utils.format_time(slot_save.last_time_played))
 		SaveManager.set_info(lives, str(slot_save.lives))
-		SaveManager.set_info(max_level, str(slot_save.max_level))
+		SaveManager.set_info(score, str(slot_save.score))
+		SaveManager.set_info(level_completed, str(slot_save.level_completed))
 		SaveManager.set_info(collectibles, str(slot_save.get_total_collected()))
 	else:
 		selected_label.text = "NUEVA PARTIDA - SLOT " + str(slot_id)
 		SaveManager.set_info(play_time, "N/A")
 		SaveManager.set_info(last_time_played, "N/A")
 		SaveManager.set_info(lives, "N/A")
-		SaveManager.set_info(max_level, "N/A")
+		SaveManager.set_info(score, "N/A")
+		SaveManager.set_info(level_completed, "N/A")
 		SaveManager.set_info(collectibles, "N/A")
 	
 	if selected_button:

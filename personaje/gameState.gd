@@ -98,12 +98,23 @@ func resetear_nivel():
 	checkpoint_activo = false
 	checkpoint_position = Vector2.ZERO
 
+func cargar_data():
+	var save_data: SaveData = SaveManager.save_data
+	
+	vidas_juego = save_data.lives
+	
+	monedas_estado = save_data.collectibles[nivel-1]
+	emit_signal("monedas_cambiadas", monedas_estado)
+	
+	
+
 func entrandoNivel(niv: int):
 	if niv == null:
 		print("ERROR: nivel no definido")
 		return {}
 	
 	nivel = niv
+	cargar_data()
 	
 	# Tiempo por nivel
 	match nivel:

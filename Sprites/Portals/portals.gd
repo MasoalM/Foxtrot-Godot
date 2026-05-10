@@ -31,12 +31,19 @@ func entrar_al_nivel():
 		print("el nivel es: ", nivel)
 		
 		if nivel != -1:
+			SaveManager.save_game()
 			GameState.entrandoNivel(nivel)
 	
 	if escena_destino == "res://niveles/level_selector.tscn":
 		print(GameState.obtener_resultado())
 		GameState.sumar_puntos(GameState.tiempo_restante)
 		APIclient.enviar_resultado(GameState.obtener_resultado())
+		
+		# Save data into the game save
+		SaveManager.save_ingame()
+		SaveManager.session_start_time = Utils.get_current_time()
+		
+		# Reiniciar GameState
 		GameState.resetear_monedas()
 		GameState.resetear_puntos()
 	

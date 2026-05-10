@@ -24,6 +24,11 @@ font = ExtResource("15_4evw2")
 font_size = 12
 font_color = Color(0.47843137, 0.3019608, 0.21568628, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_f8boe"]
+font = ExtResource("15_4evw2")
+font_size = 12
+font_color = Color(0.47843137, 0.3019608, 0.21568628, 1)
+
 [node name="PauseScreen" type="CanvasLayer" unique_id=1421780813]
 script = ExtResource("1_8ndoo")
 
@@ -98,7 +103,7 @@ offset_right = 161.0
 offset_bottom = 235.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 3
+theme_override_constants/separation = 1
 
 [node name="Partida seleccionada" type="Label" parent="Control/Fondo/Menú de pausa/InfoCargar" unique_id=1761580497]
 layout_mode = 2
@@ -120,9 +125,14 @@ layout_mode = 2
 text = "Vidas: "
 label_settings = SubResource("LabelSettings_b8833")
 
-[node name="Nivel alcanzado" type="Label" parent="Control/Fondo/Menú de pausa/InfoCargar" unique_id=42245516]
+[node name="Puntuación" type="Label" parent="Control/Fondo/Menú de pausa/InfoCargar" unique_id=593477659]
 layout_mode = 2
-text = "Nivel alcanzado: "
+text = "Puntuación: "
+label_settings = SubResource("LabelSettings_f8boe")
+
+[node name="Niveles completados" type="Label" parent="Control/Fondo/Menú de pausa/InfoCargar" unique_id=42245516]
+layout_mode = 2
+text = "Niveles completados: "
 label_settings = SubResource("LabelSettings_b8833")
 
 [node name="Coleccionables" type="Label" parent="Control/Fondo/Menú de pausa/InfoCargar" unique_id=357434829]

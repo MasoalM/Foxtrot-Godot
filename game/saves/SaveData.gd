@@ -4,12 +4,15 @@ class_name SaveData
 const TOTAL_LEVELS = 5
 
 @export var title := ""
-@export var play_time := 0
-@export var last_time_played := 0
-@export var lives := 5
-@export var max_level := 1
 
+@export var play_time := 0.0
+@export var last_time_played := 0
+
+@export var lives := 5
+@export var score := 0
 @export var collectibles := {}
+
+@export var level_completed := 0
 
 func _init():
 	for i in TOTAL_LEVELS:

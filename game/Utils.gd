@@ -3,22 +3,22 @@ extends Node
 
 # -- Play Time --
 
-func format_play_time(seconds: int) -> String:
-	var days := seconds / 86400.0
-	var hours := (seconds % 86400) / 3600.0
-	var minutes := (seconds % 3600) / 60.0
-	var secs := seconds % 60
+func format_play_time(seconds: float) -> String:
+	var total := int(seconds)
+	
+	var days := total / 86400.0
+	var hours := (total % 86400) / 3600.0
+	var minutes := (total % 3600) / 60.0
+	var secs := total % 60
 	
 	var parts := []
 	
-	if days > 0:
+	if days >= 1.0:
 		parts.append("%dd" % days)
-	if hours > 0:
-		parts.append("%dh" % hours)
-	if minutes > 0:
-		parts.append("%dm" % minutes)
-	if secs > 0 or parts.is_empty():
-		parts.append("%ds" % secs)
+	
+	parts.append("%dh" % hours)
+	parts.append("%dm" % minutes)
+	parts.append("%ds" % secs)
 	
 	return " ".join(parts)
 

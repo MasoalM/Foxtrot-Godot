@@ -133,7 +133,7 @@ func handle_ontop_menu(visibility: bool):
 func _on_sí_pressed(action: bool) -> void:
 	if action:
 		SaveManager.create_game(selected_slot, game_title.text)
-		SaveManager.save_game()
+		SaveManager.save_game(false)
 		
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		get_tree().change_scene_to_file("res://niveles/level_selector.tscn")

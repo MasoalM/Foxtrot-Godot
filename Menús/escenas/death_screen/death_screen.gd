@@ -16,6 +16,7 @@ func _ready():
 func _on_retry_button_pressed():
 	get_tree().paused = false
 	GameState.resetear_nivel()
+	SaveManager.save_game()
 	
 	queue_free()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -24,6 +25,7 @@ func _on_retry_button_pressed():
 func _on_menu_button_pressed():
 	get_tree().paused = false
 	GameState.resetear_nivel()
+	SaveManager.save_game()
 	
 	queue_free()
 	get_tree().change_scene_to_file("res://Menús/escenas/principal.tscn")

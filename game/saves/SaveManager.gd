@@ -3,7 +3,9 @@ extends Node
 var save_data: SaveData
 var run_data: RunData
 
+var session_start_time: float = 0.0
 var current_slot := ""
+
 
 # -- Creating, Saving, Loading and Delete --
 
@@ -17,14 +19,31 @@ func create_game(slot: String, title: String):
 	
 	run_data = null
 
-func save_game():
+func save_game(save_playtime: bool = true):
 	if save_data == null or current_slot.is_empty():
 		push_error("No se ha podido guardar la partida.")
 		return
 	
+	if save_playtime:
+		save_data.play_time += (Utils.get_current_time() - session_start_time)
 	save_data.last_time_played = Utils.get_current_time()
 	ResourceSaver.save(save_data, _get_path(current_slot))
 	print("Partida guardada: %s" % current_slot)
+
+func save_ingame():
+	if save_data == null or current_slot.is_empty():
+		push_error("No se ha podido guardar la partida.")
+		return
+	
+	save_data.play_time += (Utils.get_current_time() - session_start_time)
+	save_data.last_time_played = Utils.get_current_time()
+	save_data.lives = GameState.vidas_juego
+	save_data.score += GameState.puntuacion
+	save_data.level_completed = GameState.nivel
+	save_data.collectibles[(GameState.nivel - 1)] = GameState.monedas_estado
+	
+	ResourceSaver.save(save_data, _get_path(current_slot))
+	print("Partida guardada en juego: %s" % current_slot)
 
 func load_game(slot: String):
 	var save_path = _get_path(slot)
@@ -34,6 +53,8 @@ func load_game(slot: String):
 		return
 	
 	current_slot = slot
+	session_start_time = Utils.get_current_time()
+	
 	save_data = ResourceLoader.load(save_path)
 	print("Partida cargada: %s" % current_slot)
 	
@@ -67,8 +88,8 @@ func complete_level():
 	for i in run_data.collectibles.size():
 		save_data.collected(level, i)
 	
-	if level == save_data.max_level:
-		save_data.max_level += 1
+	if level == save_data.level_completed:
+		save_data.level_completed += 1
 	
 	save_game()
 	run_data = null

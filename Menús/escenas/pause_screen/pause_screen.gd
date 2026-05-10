@@ -8,7 +8,8 @@ extends CanvasLayer
 @onready var play_time = $"Control/Fondo/Menú de pausa/InfoCargar/Tiempo de juego"
 @onready var last_time_played = $"Control/Fondo/Menú de pausa/InfoCargar/Última vez"
 @onready var lives = $"Control/Fondo/Menú de pausa/InfoCargar/Vidas"
-@onready var max_level = $"Control/Fondo/Menú de pausa/InfoCargar/Nivel alcanzado"
+@onready var score = $"Control/Fondo/Menú de pausa/InfoCargar/Puntuación"
+@onready var level_completed = $"Control/Fondo/Menú de pausa/InfoCargar/Niveles completados"
 @onready var collectibles = $"Control/Fondo/Menú de pausa/InfoCargar/Coleccionables"
 
 var pointer_texture = preload("res://Sprites/Pointer.png")
@@ -39,7 +40,8 @@ func show_menu():
 		SaveManager.set_info(play_time, Utils.format_play_time(slot_save.play_time))
 		SaveManager.set_info(last_time_played, Utils.format_time(slot_save.last_time_played))
 		SaveManager.set_info(lives, str(slot_save.lives))
-		SaveManager.set_info(max_level, str(slot_save.max_level))
+		SaveManager.set_info(score, str(slot_save.score))
+		SaveManager.set_info(level_completed, str(slot_save.level_completed))
 		SaveManager.set_info(collectibles, str(slot_save.get_total_collected()))
 
 func hide_menu():
@@ -65,6 +67,10 @@ func handle_leaving():
 	pausa.visible = true
 	salida.visible = false
 
+func save_game():
+	SaveManager.save_game()
+
+
 # -- Botones --
 
 # Botones del menú de pausa
@@ -75,6 +81,8 @@ func _on_reanudar_pressed() -> void:
 	AudioManager.play("click")
 
 func _on_ajustes_pressed() -> void:
+	get_tree().reload_current_scene()
+	
 	pausa.visible = false
 	ajustes.visible = true
 	
@@ -89,18 +97,21 @@ func _on_salir_pressed() -> void:
 # Botones del menú de salida
 
 func _on_selector_de_niveles_pressed() -> void:
+	save_game()
 	handle_leaving()
 	get_tree().change_scene_to_file("res://niveles/level_selector.tscn")
 	
 	AudioManager.play("click")
 
 func _on_menú_principal_pressed() -> void:
+	save_game()
 	handle_leaving()
 	get_tree().change_scene_to_file("res://Menús/escenas/principal.tscn")
 	
 	AudioManager.play("click")
 
 func _on_salir_al_escritorio_pressed() -> void:
+	save_game()
 	get_tree().quit()
 
 func _on_atrás_pressed() -> void:
