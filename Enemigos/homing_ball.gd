@@ -15,7 +15,9 @@ func _ready():
 	add_to_group("OwlBossBall")
 	
 	collision_layer = 4
-	collision_mask = 2
+	#collision_mask = 2
+	#collision_layer = 1
+	collision_mask = 3
 	monitoring = true
 	monitorable = true
 	
@@ -56,12 +58,14 @@ func _physics_process(delta):
 func _on_body_hit(body):
 	if _dead:
 		return
-	
 	if body == shooter:
 		return
-	
 	if body.is_in_group("player"):
-		body._dañar()
+		if body.has_method("_dañar"):
+			body._dañar()
+		_morir()
+		return
+	if body is TileMapLayer or body is TileMap:
 		_morir()
 
 func _on_area_hit(area: Area2D):
@@ -86,9 +90,11 @@ func _on_area_hit(area: Area2D):
 func _morir():
 	if _dead:
 		return
-	
 	_dead = true
-	call_deferred("queue_free")
+	visible = false
+	monitoring = false
+	monitorable = false
+	queue_free()
 
 func set_direction_from_target(target_node):
 	if not is_instance_valid(target_node):
