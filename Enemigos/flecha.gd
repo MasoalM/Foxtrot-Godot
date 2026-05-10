@@ -6,9 +6,6 @@ extends Area2D
 var velocity = Vector2.ZERO
 var shooter = null
 
-func _ready():
-	add_to_group("Enemigos")
-
 func _physics_process(delta):
 	# aplicar gravedad
 	velocity.y += gravity_force * delta
@@ -19,29 +16,30 @@ func _physics_process(delta):
 	# rotar hacia la dirección del movimiento
 	rotation = velocity.angle() + deg_to_rad(90)
 
-
 func shoot_to_target(target_pos):
 	var time = clamp(global_position.distance_to(target_pos) / 300.0, 0.5, 1.5)
-
 	var displacement = target_pos - global_position
-
+	
 	velocity.x = displacement.x / time
 	velocity.y = (displacement.y / time) - (0.5 * gravity_force * time)
-
-	print("VEL:", velocity)
-
 
 func _on_body_entered(body):
 	if body == shooter:
 		return
-
+	
 	if body.is_in_group("player"):
-		print("Jugador golpeado")
+		if body.has_method("_dañar"):
+			body._dañar()
+		
+		queue_free()
 	
 	if body is TileMap:
 		var tilemap = body
 		
 		var offset = Vector2(0, 32)
+		if velocity.y < 0:
+			offset = Vector2(0, -32)
+		
 		var pos = tilemap.to_local(global_position + offset)
 		var cell = tilemap.local_to_map(pos)
 		
