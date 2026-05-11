@@ -49,7 +49,7 @@ var stuck_timer = 0.0
 var last_x = 0.0
 var stuck_time_limit = 0.5
 @export var lives = 2
-var espada_scene = preload("res://Enemigos//Espada.tscn")
+var espada_scene = preload("res://Enemigos//espada.tscn")
 
 const HURT_LIVES = 1
 const DEATH_LIVES = 0
