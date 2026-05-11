@@ -116,4 +116,4 @@ scale = Vector2(3.4322917, 3.495371)
 texture = ExtResource("9_t7xcc")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Parallax2D/ParallaxBackground" unique_id=1603574935]
-color = Color(0.48178947, 0.48178947, 0.48178947, 1)
+color = Color(0.5609549, 0.5609549, 0.56095487, 1)
