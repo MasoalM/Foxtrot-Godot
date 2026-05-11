@@ -425,13 +425,5 @@ position = Vector2(14302, 228)
 [node name="Area2D2" parent="." unique_id=1836981711 instance=ExtResource("47_5kjbc")]
 position = Vector2(4330, 629)
 
-<<<<<<< HEAD
-[node name="Area2D3" parent="." unique_id=597476296 instance=ExtResource("47_x6fc4")]
-position = Vector2(201, 396)
-=======
-[node name="Area2D3" parent="." unique_id=1239014603 instance=ExtResource("47_x6fc4")]
-position = Vector2(136, 395)
->>>>>>> 60c13e35232e5cabc06926857c106e4ef2d50cff
-
 [connection signal="body_entered" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_exited"]
