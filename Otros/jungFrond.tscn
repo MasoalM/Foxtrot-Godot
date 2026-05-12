@@ -22,7 +22,7 @@ scale = Vector2(3.4322917, 3.495371)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground" unique_id=156519308]
 motion_scale = Vector2(0.1, 1)
-motion_mirroring = Vector2(1318, 0)
+motion_mirroring = Vector2(1318, 700)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer" unique_id=82658987]
 texture_filter = 1
