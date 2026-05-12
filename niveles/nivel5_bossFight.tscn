@@ -43,6 +43,7 @@
 [ext_resource type="PackedScene" uid="uid://bi8u5lyedj4lt" path="res://niveles/level_ui.tscn" id="43_m5nc2"]
 [ext_resource type="Script" uid="uid://byxf47d28o0p2" path="res://Enemigos/phase_platforms.gd" id="43_r70wt"]
 [ext_resource type="PackedScene" uid="uid://gbct1kgainuc" path="res://Enemigos/phase_platforms.tscn" id="44_aoo74"]
+[ext_resource type="PackedScene" uid="uid://b1ftwkgwp40yb" path="res://powerUps/vida.tscn" id="44_m5nc2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rn8p"]
 texture = ExtResource("4_irswv")
@@ -396,3 +397,6 @@ platform_scene = ExtResource("44_aoo74")
 spawn_positions = Array[Vector2]([Vector2(250, 400), Vector2(1000, 400), Vector2(150, 200), Vector2(950, 200), Vector2(250, 125), Vector2(850, 100), Vector2(600, 300), Vector2(800, 225), Vector2(450, 400), Vector2(500, 100)])
 
 [node name="LevelUi" parent="." unique_id=286716871 instance=ExtResource("43_m5nc2")]
+
+[node name="Area2D" parent="." unique_id=1230411257 instance=ExtResource("44_m5nc2")]
+position = Vector2(1183, 428)

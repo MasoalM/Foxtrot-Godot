@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c0pg6o11j4nrg"]
 
 [ext_resource type="Texture2D" uid="uid://bthw7bhk4t5j3" path="res://Sprites/Enemigos/RuinsWheel.png" id="1_prvix"]
+[ext_resource type="Script" uid="uid://ckxaqs14qw20b" path="res://Enemigos/wheel.gd" id="1_ufj1r"]
 [ext_resource type="Script" uid="uid://dneughl5app25" path="res://Enemigos/area_2d.gd" id="2_prvix"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_prvix"]
@@ -10,6 +11,7 @@ radius = 23.021729
 radius = 24.0
 
 [node name="RigidBody2D" type="RigidBody2D" unique_id=677796148]
+script = ExtResource("1_ufj1r")
 
 [node name="SawB" type="Sprite2D" parent="." unique_id=32117148]
 texture_filter = 1
