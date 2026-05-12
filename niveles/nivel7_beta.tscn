@@ -35,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://dwroa0ojm2rqf" path="res://Sprites/Bloques/Column.png" id="33_mnvsc"]
 [ext_resource type="PackedScene" uid="uid://dtcw45iyc4vgd" path="res://powerUps/dobleSalto.tscn" id="34_wii08"]
 [ext_resource type="PackedScene" uid="uid://6rcs6agfvdu0" path="res://powerUps/escudo.tscn" id="35_a5fm4"]
+[ext_resource type="PackedScene" uid="uid://b1ftwkgwp40yb" path="res://powerUps/vida.tscn" id="36_5mpim"]
 [ext_resource type="PackedScene" uid="uid://cv4mf7w2d3xe0" path="res://Otros/jungFrond.tscn" id="37_ldyvk"]
 [ext_resource type="Texture2D" uid="uid://c6hicl8pigqrp" path="res://Sprites/Portals/PortalNivel1.png" id="38_mool5"]
 [ext_resource type="Script" uid="uid://desol7c47hbtl" path="res://Sprites/Portals/portals.gd" id="39_tuw0n"]
@@ -533,6 +534,9 @@ position = Vector2(1956, -5649)
 
 [node name="CharacterBody2D51" parent="." unique_id=310838410 instance=ExtResource("44_j7wdq")]
 position = Vector2(1958, -6752)
+
+[node name="Area2D6" parent="." unique_id=1230411257 instance=ExtResource("36_5mpim")]
+position = Vector2(19, -5711)
 
 [connection signal="body_entered" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_exited"]
