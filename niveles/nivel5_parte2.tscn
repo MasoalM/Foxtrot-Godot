@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dfp82kfhn8v82"]
+[gd_scene format=3 uid="uid://d4alhd2mdgdv2"]
 
 [ext_resource type="Script" uid="uid://cuyvn6hit0t4h" path="res://niveles/nivel.gd" id="1_jqvl8"]
 [ext_resource type="AudioStream" uid="uid://bpk5rv1cneely" path="res://Music/Level5.ogg" id="2_fe5eo"]
@@ -355,7 +355,7 @@ bus = &"Música"
 [node name="CharacterBody2D5" parent="." unique_id=1006504852 groups=["player"] instance=ExtResource("3_mag71")]
 z_index = -1
 texture_filter = 1
-position = Vector2(443, -2400)
+position = Vector2(535, 412)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D5" unique_id=1788858218]
 position = Vector2(305, -708)
