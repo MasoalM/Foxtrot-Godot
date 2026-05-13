@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var muerteSound = $AudioStreamPlayer2DDeath
 @onready var shootSound = $AudioStreamPlayer2DShot
 
-@export var max_vertical_range := 300
+@export var max_vertical_range := 450
 @export var gravity := 900
 @export var shoot_distance := 400
 @export var shoot_cooldown := 1.5
