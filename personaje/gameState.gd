@@ -122,10 +122,11 @@ func resetear_nivel():
 func cargar_data():
 	var save_data: SaveData = SaveManager.save_data
 	
-	vidas_juego = save_data.lives
-	
-	monedas_estado = save_data.collectibles[nivel-1]
-	emit_signal("monedas_cambiadas", monedas_estado)
+	if save_data:
+		vidas_juego = save_data.lives
+		
+		monedas_estado = save_data.collectibles[nivel-1]
+		emit_signal("monedas_cambiadas", monedas_estado)
 
 func entrar_nivel(niv: int):
 	if niv == null:

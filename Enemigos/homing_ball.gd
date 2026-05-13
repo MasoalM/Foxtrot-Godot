@@ -90,10 +90,13 @@ func _on_area_hit(area: Area2D):
 func _morir():
 	if _dead:
 		return
+		
 	_dead = true
 	visible = false
-	monitoring = false
-	monitorable = false
+	
+	set_deferred("monitoring", false)
+	set_deferred("monitorable", false)
+	
 	queue_free()
 
 func set_direction_from_target(target_node):

@@ -136,7 +136,9 @@ func _on_sí_pressed(action: bool) -> void:
 		SaveManager.save_game(false)
 		
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		
 		get_tree().change_scene_to_file("res://niveles/level_selector.tscn")
+		AudioManager.stop_music()
 	else:
 		confirmar_eliminar.visible = false
 		reconfirmar_eliminar.visible = true
