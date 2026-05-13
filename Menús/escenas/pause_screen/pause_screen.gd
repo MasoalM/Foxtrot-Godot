@@ -81,8 +81,6 @@ func _on_reanudar_pressed() -> void:
 	AudioManager.play("click")
 
 func _on_ajustes_pressed() -> void:
-	get_tree().reload_current_scene()
-	
 	pausa.visible = false
 	ajustes.visible = true
 	

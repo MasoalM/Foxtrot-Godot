@@ -24,7 +24,7 @@ func enviar_resultado(data: Dictionary):
 	http.request_completed.connect(_on_request_completed)
 
 
-func _on_request_completed(result, response_code, headers, body):
+func _on_request_completed(_result, response_code, _headers, body):
 
 	print("HTTP CODE:", response_code)
 
