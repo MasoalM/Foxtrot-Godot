@@ -95,8 +95,6 @@ func reiniciar_tiempo():
 	match nivel:
 		5:
 			tiempo_restante = 361
-		#5_bossFight2:
-			#tiempo_restante = 
 		_:
 			tiempo_restante = 241
 	

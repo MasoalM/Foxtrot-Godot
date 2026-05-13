@@ -96,6 +96,7 @@ texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, -29.1833, -32, -29.1833)
 0:0/0/physics_layer_0/polygon_0/one_way = true
+0:0/0/custom_data_2 = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_570nr"]
 texture = ExtResource("12_vbc6m")
@@ -103,6 +104,7 @@ texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, -29.1833, -32, -29.1833)
 0:0/0/physics_layer_0/polygon_0/one_way = true
+0:0/0/custom_data_2 = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d3inr"]
 texture = ExtResource("13_c7oiw")
@@ -197,6 +199,7 @@ texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, -29.1833, -32, -29.1833)
 0:0/0/physics_layer_0/polygon_0/one_way = true
+0:0/0/custom_data_2 = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vp4r3"]
 texture = ExtResource("29_dqbii")
