@@ -44,7 +44,7 @@ func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	surface_y = position.y
 	swim_y = surface_y + swim_depth
-	animated_sprite.modulate = Color(1, 0.3, 0.3)
+	animated_sprite.self_modulate = Color(0.662, 0.004, 0.964, 1.0)
 	
 	jump_timer = randf() * jump_interval
 

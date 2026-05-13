@@ -2,8 +2,8 @@ extends Node
 
 @onready var indicador: Sprite2D = $Indicador
 
-func _ready() -> void:
-	indicador.visible = false  # Oculto al inicio
+#func _ready() -> void:
+#	indicador.visible = false  # Oculto al inicio
 
 func _on_area_2d_body_entered(body):
 	print("body entró: ", body.name)
