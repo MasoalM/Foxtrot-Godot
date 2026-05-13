@@ -365,7 +365,7 @@ position = Vector2(364, 415)
 position = Vector2(305, -708)
 limit_left = 0
 limit_top = 0
-limit_right = 10000012
+limit_right = 17100
 limit_bottom = 680
 script = ExtResource("4_q6r8m")
 

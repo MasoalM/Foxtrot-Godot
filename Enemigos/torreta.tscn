@@ -11,7 +11,7 @@ size = Vector2(64, 24)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hp5rg"]
 size = Vector2(34, 24)
 
-[node name="StaticBody2D" type="StaticBody2D" unique_id=1906171378]
+[node name="StaticBody2D" type="StaticBody2D" unique_id=1906171378 groups=["Enemigos"]]
 script = ExtResource("1_a1a64")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1679177513]
