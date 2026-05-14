@@ -1,0 +1,183 @@
+[gd_scene format=3 uid="uid://ccv41ysvhs68b"]
+
+[ext_resource type="Script" uid="uid://umcouooewlf7" path="res://Menús/escenas/nombre/nombre.gd" id="1_8chvt"]
+[ext_resource type="Texture2D" uid="uid://c2ykgj5lpibhw" path="res://Menús/assets/fondos/principal_frame.png" id="2_kh23j"]
+[ext_resource type="Script" uid="uid://clpeubl1jra34" path="res://Menús/escenas/principal.gd" id="3_cdt5n"]
+[ext_resource type="FontFile" uid="uid://coe4gaaihhlww" path="res://Menús/assets/fuentes/Retro Gaming.ttf" id="4_f8hme"]
+[ext_resource type="Texture2D" uid="uid://bjikh6tyskptp" path="res://Menús/assets/botones/Continuar.png" id="5_8chvt"]
+[ext_resource type="Texture2D" uid="uid://ckjwxvoidsjca" path="res://Menús/assets/fondos/MoxAniFondo1.png" id="6_bb61x"]
+[ext_resource type="Texture2D" uid="uid://1r6cbmvcwlqn" path="res://Menús/assets/fondos/MoxAniFondo2.png" id="7_a4ugi"]
+[ext_resource type="Texture2D" uid="uid://dnxqw7qqgkpi0" path="res://Menús/assets/fondos/MoxAniFondo3.png" id="8_s86qu"]
+[ext_resource type="Texture2D" uid="uid://dglpdp63refhf" path="res://Menús/assets/fondos/MoxAniFondo4.png" id="9_gv30k"]
+[ext_resource type="Texture2D" uid="uid://b7xdxd8ntbw77" path="res://Menús/assets/fondos/MoxAniFondo5.png" id="10_be0nq"]
+[ext_resource type="Texture2D" uid="uid://b6ueq1ia1s4i2" path="res://Menús/assets/fondos/MoxAniFondo6.png" id="11_r20bx"]
+[ext_resource type="Texture2D" uid="uid://dedn0xq1lfde" path="res://Menús/assets/fondos/MoxAniFondo7.png" id="12_wjpcs"]
+[ext_resource type="Texture2D" uid="uid://pp8tto0suolf" path="res://Menús/assets/fondos/MoxAniFondo8.png" id="13_ds2ss"]
+[ext_resource type="Texture2D" uid="uid://bv8dr4mx3t6n0" path="res://Menús/assets/logo/LogoProvisional1.png" id="14_02ebi"]
+[ext_resource type="Texture2D" uid="uid://b6lhmgppwuek3" path="res://Menús/assets/logo/LogoProvisional2.png" id="15_jix8s"]
+[ext_resource type="Texture2D" uid="uid://b8k8cgfbphg4q" path="res://Menús/assets/logo/LogoProvisional3.png" id="16_udwbp"]
+[ext_resource type="Texture2D" uid="uid://clwsfcpof8uvv" path="res://Menús/assets/logo/LogoProvisional4.png" id="17_ojbtv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h4avt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_bb61x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bb61x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bb61x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bb61x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bb61x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bb61x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bb61x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bb61x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bb61x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bb61x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bb61x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bb61x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bb61x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bb61x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bb61x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_a4ugi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_s86qu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_gv30k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_be0nq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_r20bx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_wjpcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ds2ss")
+}],
+"loop": true,
+"name": &"bubble",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jvwso"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_02ebi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_jix8s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_udwbp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ojbtv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="nombre" type="CanvasLayer" unique_id=325566166]
+script = ExtResource("1_8chvt")
+
+[node name="nombreEscena" type="TextureRect" parent="." unique_id=821630638]
+offset_right = 1280.0
+offset_bottom = 720.0
+size_flags_horizontal = 4
+texture = ExtResource("2_kh23j")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Botones" type="VBoxContainer" parent="nombreEscena" unique_id=1627282214]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -223.0
+offset_right = 128.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_cdt5n")
+
+[node name="Label" type="Label" parent="nombreEscena/Botones" unique_id=1424245937]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_f8hme")
+text = "    INTRODUCE TU NICK!"
+
+[node name="LineEdit" type="LineEdit" parent="nombreEscena/Botones" unique_id=1204620229]
+layout_mode = 2
+
+[node name="continuar" type="TextureButton" parent="nombreEscena/Botones" unique_id=1881072095]
+layout_mode = 2
+texture_normal = ExtResource("5_8chvt")
+
+[node name="Mox Nose" type="TextureButton" parent="nombreEscena" unique_id=1757504278]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -85.0
+offset_top = -356.0
+offset_right = 57.0
+offset_bottom = -139.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="nombreEscena/Mox Nose" unique_id=627234267]
+position = Vector2(69, 106)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_h4avt")
+animation = &"bubble"
+autoplay = "bubble"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="nombreEscena" unique_id=2020468221]
+position = Vector2(648, 68)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_jvwso")
+autoplay = "default"
+
+[connection signal="pressed" from="nombreEscena/Botones/continuar" to="." method="_on_continuar_pressed"]
+[connection signal="pressed" from="nombreEscena/Mox Nose" to="nombreEscena/Botones" method="_on_mox_nose_pressed"]

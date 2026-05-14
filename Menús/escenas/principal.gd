@@ -62,3 +62,7 @@ func _on_mox_nose_pressed() -> void:
 	sprite.modulate = Color(1, 1, 1)
 
 	shaking = false
+
+
+func _on_nombre_pressed() -> void:
+	pass # Replace with function body.

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="FOXTROT"
-run/main_scene="uid://ej230yybshag"
+run/main_scene="uid://ccv41ysvhs68b"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://bn7wpw2qs3085"
 

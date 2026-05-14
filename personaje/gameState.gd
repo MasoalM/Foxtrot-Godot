@@ -3,8 +3,8 @@ extends Node
 # =========================
 #  DATOS DEL JUGADOR
 # =========================
-var jugador_id = 1
-var nombre = "Hugo"
+var jugador_id : int = -1
+var nombre : String = ""
 var nivel: int = 0
 
 
