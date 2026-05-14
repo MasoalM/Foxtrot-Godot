@@ -1,6 +1,6 @@
 extends Area2D
 
-const dist_max = 1088.0
+const dist_max = 1472.0
 var vel_bala = 600.0
 var direccion = Vector2(1, 0)
 var dist = 0.0

@@ -148,9 +148,9 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		if area.has_method("morir"):
 			area.morir()
 		
-		die()
+		_die()
 
-func die():
+func _die():
 	velocity = Vector2.ZERO
 
 	# PUNTOS
