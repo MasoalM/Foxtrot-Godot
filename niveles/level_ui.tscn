@@ -6,11 +6,9 @@
 [ext_resource type="FontFile" uid="uid://t3qeauxnndoj" path="res://font/Retro Gaming.ttf" id="4_e0ytq"]
 [ext_resource type="Texture2D" uid="uid://ca7kef2h3iclf" path="res://Sprites/PowerUps/Heart.png" id="5_tu54p"]
 [ext_resource type="Texture2D" uid="uid://cyvb7mkdi53xp" path="res://Sprites/Puntuación.png" id="6_r5rnn"]
+[ext_resource type="Texture2D" uid="uid://elkftnhqa8w6" path="res://Sprites/GreenFrogColeccionable.png" id="7_3qt84"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0guox"]
-font = ExtResource("4_e0ytq")
-
-[sub_resource type="LabelSettings" id="LabelSettings_kcd17"]
 font = ExtResource("4_e0ytq")
 
 [sub_resource type="Theme" id="Theme_r5rnn"]
@@ -116,7 +114,7 @@ texture = ExtResource("5_tu54p")
 [node name="textoVidas" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainerUP" unique_id=1508181735]
 custom_minimum_size = Vector2(1, 28)
 layout_mode = 2
-label_settings = SubResource("LabelSettings_kcd17")
+label_settings = SubResource("LabelSettings_0guox")
 vertical_alignment = 2
 
 [node name="HBoxContainerPuntos" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer" unique_id=960306961]
@@ -133,3 +131,16 @@ texture = ExtResource("6_r5rnn")
 [node name="textoPuntuacion" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainerPuntos" unique_id=1232213388]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_e0ytq")
+label_settings = SubResource("LabelSettings_0guox")
+
+[node name="HBoxContainerRanas" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer" unique_id=452683305]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/VBoxContainer/HBoxContainerRanas" unique_id=1923243177]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("7_3qt84")
+
+[node name="textoRanas" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainerRanas" unique_id=1570975849]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_0guox")
