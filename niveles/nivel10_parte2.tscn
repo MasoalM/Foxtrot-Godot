@@ -200,10 +200,11 @@ layer_4/name = "Cubierta"
 
 [node name="PortalFinNivel" type="Sprite2D" parent="." unique_id=251286700 groups=["Portals"]]
 z_index = -2
-position = Vector2(12892, 202)
+position = Vector2(751, -5438)
+scale = Vector2(2, 2)
 texture = ExtResource("17_ih317")
 script = ExtResource("18_bqmvw")
-escena_destino = "res://niveles/nivel5_parte2.tscn"
+escena_destino = "res://niveles/nivel10_bossFight.tscn"
 
 [node name="PointLight2D" type="PointLight2D" parent="PortalFinNivel" unique_id=1218722798]
 position = Vector2(1, 9.999998)

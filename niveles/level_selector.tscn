@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bgh8ouadkr0y" path="res://Sprites/Bloques/Dirt.png" id="3_1ihya"]
 [ext_resource type="Script" uid="uid://bpowst78jrhru" path="res://niveles/camera.gd" id="3_l713b"]
 [ext_resource type="Texture2D" uid="uid://by6ou6ijmk82e" path="res://Sprites/Bloques/Grass.png" id="4_2j8ji"]
-[ext_resource type="Script" uid="uid://csqhart454t43" path="res://personaje/personaje_verde_2d.gd" id="4_s73dd"]
 [ext_resource type="Texture2D" uid="uid://dso2t3joxpt18" path="res://Sprites/Bloques/Spikes.png" id="5_es81m"]
 [ext_resource type="Texture2D" uid="uid://bktcuauxvfsik" path="res://Sprites/Bloques/WoodBlock (1).png" id="6_kr3tk"]
 [ext_resource type="Texture2D" uid="uid://cv1sxq1g5e6ya" path="res://Sprites/Bloques/DamagedWoodBlock (1).png" id="7_8bqxn"]
@@ -348,12 +347,9 @@ volume_db = -17.0
 autoplay = true
 bus = &"Música"
 
-[node name="CharacterBody2D5" type="CharacterBody2D" parent="." unique_id=1006504852 groups=["player"] instance=ExtResource("2_x1c2d")]
+[node name="CharacterBody2D5" parent="." unique_id=1006504852 groups=["player"] instance=ExtResource("2_x1c2d")]
 z_index = -1
 position = Vector2(284.29984, 398.6304)
-collision_layer = 2
-collision_mask = 133
-script = ExtResource("4_s73dd")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D5" unique_id=1548526242]
 position = Vector2(304, -708)
@@ -380,7 +376,7 @@ layer_3/tile_data = PackedInt32Array(524346, 30, 0, 524347, 30, 0, 524348, 30, 0
 layer_4/name = "Cubierta"
 layer_4/tile_data = PackedInt32Array(589882, 33, 1, 524346, 33, 0, 524347, 65569, 0, 589883, 65569, 1, 524348, 131105, 0, 589884, 131105, 1, 524349, 196641, 0, 589885, 196641, 1, 524350, 262177, 0, 589886, 262177, 1, 524351, 327713, 0, 589887, 327713, 1, 524352, 393249, 0, 589888, 393249, 1, 524353, 458785, 0, 589889, 458785, 1, 524354, 524321, 0, 589890, 524321, 1, 524359, 524321, 1, 589895, 524321, 2, 524360, 458785, 1, 589896, 458785, 2, 524361, 393249, 1, 589897, 393249, 2, 524362, 327713, 1, 589898, 327713, 2, 524363, 262177, 1, 589899, 262177, 2, 524364, 196641, 1, 589900, 196641, 2, 524365, 131105, 1, 589901, 131105, 2, 524366, 65569, 1, 589902, 65569, 2, 524367, 393249, 2, 589903, 393249, 1, 524368, 393249, 2, 589904, 393249, 0)
 
-[node name="Node2D" type="Node2D" parent="." unique_id=1858728029 instance=ExtResource("36_rpbob")]
+[node name="Node2D" parent="." unique_id=1858728029 instance=ExtResource("36_rpbob")]
 visible = false
 position = Vector2(1528, -160)
 
@@ -388,7 +384,7 @@ position = Vector2(1528, -160)
 
 [node name="PortalNivel1" type="Sprite2D" parent="." unique_id=2035532554 groups=["Portals"]]
 z_index = -2
-position = Vector2(900, 513)
+position = Vector2(546, 515)
 texture = ExtResource("32_4uapo")
 script = ExtResource("35_x1c2d")
 escena_destino = "res://niveles/nivel1_beta.tscn"
@@ -422,9 +418,45 @@ volume_db = 3.0
 stream = ExtResource("40_kr3tk")
 volume_db = -4.0
 
+[node name="PortalNivel6" type="Sprite2D" parent="." unique_id=229919446 groups=["Portals"]]
+z_index = -2
+position = Vector2(1954, 391)
+texture = ExtResource("32_4uapo")
+script = ExtResource("35_x1c2d")
+escena_destino = "res://niveles/nivel6_beta.tscn"
+
+[node name="PointLight2D" type="PointLight2D" parent="PortalNivel6" unique_id=1494495294]
+position = Vector2(1, 9.999998)
+scale = Vector2(0.680147, 0.67663515)
+color = Color(1, 0, 1, 1)
+energy = 2.0
+texture = ExtResource("32_fwmkn")
+
+[node name="Area2D" type="Area2D" parent="PortalNivel6" unique_id=781428311 groups=["Portals"]]
+position = Vector2(1, 7)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PortalNivel6/Area2D" unique_id=1550619967]
+position = Vector2(-1, 0)
+scale = Vector2(3.5, 5)
+shape = SubResource("CircleShape2D_tr1h6")
+
+[node name="Indicador" type="Sprite2D" parent="PortalNivel6" unique_id=307448280]
+position = Vector2(1, -64)
+texture = ExtResource("38_1ihya")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PortalNivel6" unique_id=366162034]
+stream = ExtResource("39_es81m")
+volume_db = 3.0
+
+[node name="PrePortal" type="AudioStreamPlayer2D" parent="PortalNivel6" unique_id=1702629940]
+stream = ExtResource("40_kr3tk")
+volume_db = -4.0
+
 [node name="PortalNivel2" type="Sprite2D" parent="." unique_id=1963603361]
 z_index = -2
-position = Vector2(1944, 387)
+position = Vector2(870, 516)
 texture = ExtResource("34_16s84")
 script = ExtResource("35_x1c2d")
 escena_destino = "res://niveles/nivel2_beta.tscn"
@@ -458,9 +490,45 @@ volume_db = 3.0
 stream = ExtResource("40_kr3tk")
 volume_db = -4.0
 
+[node name="PortalNivel7" type="Sprite2D" parent="." unique_id=158457269]
+z_index = -2
+position = Vector2(2181, 581)
+texture = ExtResource("34_16s84")
+script = ExtResource("35_x1c2d")
+escena_destino = "res://niveles/nivel7_beta.tscn"
+
+[node name="PointLight2D" type="PointLight2D" parent="PortalNivel7" unique_id=349889643]
+position = Vector2(2.0000305, 9.000026)
+scale = Vector2(0.66572946, 0.68760806)
+color = Color(0, 0.41960785, 0, 1)
+energy = 2.0
+texture = ExtResource("32_fwmkn")
+
+[node name="Area2D" type="Area2D" parent="PortalNivel7" unique_id=539434106 groups=["Portals"]]
+position = Vector2(1, 7)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PortalNivel7/Area2D" unique_id=1557211947]
+position = Vector2(-1, 0)
+scale = Vector2(3.5, 5)
+shape = SubResource("CircleShape2D_tr1h6")
+
+[node name="Indicador" type="Sprite2D" parent="PortalNivel7" unique_id=451949924]
+position = Vector2(2, -62)
+texture = ExtResource("38_1ihya")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PortalNivel7" unique_id=444345371]
+stream = ExtResource("39_es81m")
+volume_db = 3.0
+
+[node name="PrePortal" type="AudioStreamPlayer2D" parent="PortalNivel7" unique_id=553007455]
+stream = ExtResource("40_kr3tk")
+volume_db = -4.0
+
 [node name="PortalNivel3" type="Sprite2D" parent="." unique_id=1185762857]
 z_index = -2
-position = Vector2(2751, 515)
+position = Vector2(1120, 515)
 texture = ExtResource("35_tr1h6")
 script = ExtResource("35_x1c2d")
 escena_destino = "res://niveles/nivel3_beta.tscn"
@@ -494,9 +562,45 @@ volume_db = 3.0
 stream = ExtResource("40_kr3tk")
 volume_db = -4.0
 
+[node name="PortalNivel8" type="Sprite2D" parent="." unique_id=585115908]
+z_index = -2
+position = Vector2(2432, 516)
+texture = ExtResource("35_tr1h6")
+script = ExtResource("35_x1c2d")
+escena_destino = "res://niveles/nivel8_beta.tscn"
+
+[node name="PointLight2D" type="PointLight2D" parent="PortalNivel8" unique_id=967785904]
+position = Vector2(-1.9073486e-05, 7.9999733)
+scale = Vector2(0.627492, 0.6466005)
+color = Color(0, 0.5137255, 0.9882353, 1)
+energy = 2.0
+texture = ExtResource("32_fwmkn")
+
+[node name="Area2D" type="Area2D" parent="PortalNivel8" unique_id=1884346448 groups=["Portals"]]
+position = Vector2(1, 7)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PortalNivel8/Area2D" unique_id=872352683]
+position = Vector2(-1, 0)
+scale = Vector2(3.5, 5)
+shape = SubResource("CircleShape2D_tr1h6")
+
+[node name="Indicador" type="Sprite2D" parent="PortalNivel8" unique_id=2132093643]
+position = Vector2(2, -65)
+texture = ExtResource("38_1ihya")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PortalNivel8" unique_id=1145341223]
+stream = ExtResource("39_es81m")
+volume_db = 3.0
+
+[node name="PrePortal" type="AudioStreamPlayer2D" parent="PortalNivel8" unique_id=161617423]
+stream = ExtResource("40_kr3tk")
+volume_db = -4.0
+
 [node name="PortalNivel4" type="Sprite2D" parent="." unique_id=1175430740]
 z_index = -2
-position = Vector2(4417, 579)
+position = Vector2(1371, 513)
 texture = ExtResource("36_x1c2d")
 script = ExtResource("35_x1c2d")
 escena_destino = "res://niveles/nivel4_beta.tscn"
@@ -531,9 +635,46 @@ volume_db = 3.0
 stream = ExtResource("40_kr3tk")
 volume_db = -4.0
 
+[node name="PortalNivel9" type="Sprite2D" parent="." unique_id=1663851519]
+z_index = -2
+position = Vector2(2750, 517)
+texture = ExtResource("36_x1c2d")
+script = ExtResource("35_x1c2d")
+escena_destino = "res://niveles/nivel9_beta.tscn"
+
+[node name="PointLight2D" type="PointLight2D" parent="PortalNivel9" unique_id=2107948856]
+position = Vector2(1.0000343, 7.0000076)
+scale = Vector2(0.53709567, 0.54639554)
+color = Color(0.45, 0.45, 0, 1)
+energy = 2.0
+texture = ExtResource("32_fwmkn")
+
+[node name="Area2D" type="Area2D" parent="PortalNivel9" unique_id=404326234 groups=["Portals"]]
+position = Vector2(1, 7)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PortalNivel9/Area2D" unique_id=1980911301]
+position = Vector2(-1, 0)
+scale = Vector2(3.5, 5)
+shape = SubResource("CircleShape2D_tr1h6")
+
+[node name="Indicador" type="Sprite2D" parent="PortalNivel9" unique_id=1500345761]
+z_index = 1
+position = Vector2(0, -66)
+texture = ExtResource("38_1ihya")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PortalNivel9" unique_id=705404220]
+stream = ExtResource("39_es81m")
+volume_db = 3.0
+
+[node name="PrePortal" type="AudioStreamPlayer2D" parent="PortalNivel9" unique_id=1924765938]
+stream = ExtResource("40_kr3tk")
+volume_db = -4.0
+
 [node name="PortalNivel5" type="Sprite2D" parent="." unique_id=1514346959]
 z_index = -2
-position = Vector2(5920, 453)
+position = Vector2(1612, 513)
 texture = ExtResource("37_1ihya")
 script = ExtResource("35_x1c2d")
 escena_destino = "res://niveles/nivel5_beta.tscn"
@@ -567,13 +708,61 @@ volume_db = 3.0
 stream = ExtResource("40_kr3tk")
 volume_db = -4.0
 
+[node name="PortalNivel10" type="Sprite2D" parent="." unique_id=2120206730]
+modulate = Color(0.2166667, 0, 1, 1)
+z_index = -2
+position = Vector2(3321, 269)
+scale = Vector2(2, 2)
+texture = ExtResource("37_1ihya")
+script = ExtResource("35_x1c2d")
+escena_destino = "res://niveles/nivel10_parte1.tscn"
+
+[node name="PointLight2D" type="PointLight2D" parent="PortalNivel10" unique_id=580494628]
+position = Vector2(4.000078, 1.0000076)
+scale = Vector2(0.53404856, 0.55202734)
+color = Color(1, 0, 0, 1)
+energy = 2.0
+texture = ExtResource("32_fwmkn")
+
+[node name="Area2D" type="Area2D" parent="PortalNivel10" unique_id=128606396 groups=["Portals"]]
+position = Vector2(1, 7)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PortalNivel10/Area2D" unique_id=1039951990]
+position = Vector2(-1, 0)
+scale = Vector2(3.5, 5)
+shape = SubResource("CircleShape2D_tr1h6")
+
+[node name="Indicador" type="Sprite2D" parent="PortalNivel10" unique_id=1459231633]
+position = Vector2(-1, -69)
+texture = ExtResource("38_1ihya")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="PortalNivel10" unique_id=2111816447]
+stream = ExtResource("39_es81m")
+volume_db = 3.0
+
+[node name="PrePortal" type="AudioStreamPlayer2D" parent="PortalNivel10" unique_id=1334176152]
+stream = ExtResource("40_kr3tk")
+volume_db = -4.0
+
 [connection signal="body_entered" from="PortalNivel1/Area2D" to="PortalNivel1" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalNivel1/Area2D" to="PortalNivel1" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="PortalNivel6/Area2D" to="PortalNivel6" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="PortalNivel6/Area2D" to="PortalNivel6" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="PortalNivel2/Area2D" to="PortalNivel2" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalNivel2/Area2D" to="PortalNivel2" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="PortalNivel7/Area2D" to="PortalNivel7" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="PortalNivel7/Area2D" to="PortalNivel7" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="PortalNivel3/Area2D" to="PortalNivel3" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalNivel3/Area2D" to="PortalNivel3" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="PortalNivel8/Area2D" to="PortalNivel8" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="PortalNivel8/Area2D" to="PortalNivel8" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="PortalNivel4/Area2D" to="PortalNivel4" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalNivel4/Area2D" to="PortalNivel4" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="PortalNivel9/Area2D" to="PortalNivel9" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="PortalNivel9/Area2D" to="PortalNivel9" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="PortalNivel5/Area2D" to="PortalNivel5" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalNivel5/Area2D" to="PortalNivel5" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="PortalNivel10/Area2D" to="PortalNivel10" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="PortalNivel10/Area2D" to="PortalNivel10" method="_on_area_2d_body_exited"]

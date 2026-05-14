@@ -545,7 +545,7 @@ position = Vector2(665, 615)
 [node name="Collectibles" type="Node" parent="." unique_id=1703055811]
 
 [node name="Collec1" parent="Collectibles" unique_id=604219173 instance=ExtResource("60_is371")]
-position = Vector2(7792, 419)
+position = Vector2(7813, 224)
 
 [node name="Collec2" parent="Collectibles" unique_id=1545410951 instance=ExtResource("60_is371")]
 position = Vector2(11134, 93)
