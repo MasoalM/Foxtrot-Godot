@@ -240,9 +240,9 @@ func _physics_process(delta: float) -> void:
 				
 				var dir_shoot = 1 if mirando_derecha else -1
 				shoot.global_position = $Marker2D.global_position + Vector2(32 * dir_shoot, 0)
-				shoot.vel_bala *= dir
+				shoot.vel_bala *= dir_shoot
 				
-				if dir == -1:
+				if dir_shoot == -1:
 					shoot.scale.x = -1
 		
 		move_and_slide()

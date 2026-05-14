@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://t3cps6t21qux" path="res://personaje/personajeVerde_2d.tscn" id="1_t5lia"]
 [ext_resource type="Texture2D" uid="uid://by6ou6ijmk82e" path="res://Sprites/Bloques/Grass.png" id="3_0bvab"]
 [ext_resource type="Script" uid="uid://bpowst78jrhru" path="res://niveles/camera.gd" id="4_uqflv"]
-[ext_resource type="Script" uid="uid://csqhart454t43" path="res://personaje/personaje_verde_2d.gd" id="4_w2env"]
 [ext_resource type="Texture2D" uid="uid://dhj8neb2jgy8x" path="res://Sprites/Bloques/WoodPlatform64x64.png" id="5_c62jp"]
 [ext_resource type="Texture2D" uid="uid://bktcuauxvfsik" path="res://Sprites/Bloques/WoodBlock (1).png" id="5_lvpdh"]
 [ext_resource type="Texture2D" uid="uid://cqx6fj8wrtj5o" path="res://Sprites/Bloques/ruinBlock.png" id="5_lw2d6"]
@@ -38,10 +37,8 @@
 [ext_resource type="Texture2D" uid="uid://ctdnpbddrvlm4" path="res://Sprites/Bloques/DirtBroken.png" id="23_0bvab"]
 [ext_resource type="Texture2D" uid="uid://dxf6c0xlre7h3" path="res://Sprites/Bloques/TroncoGIradoAtravesable.png" id="23_sni5d"]
 [ext_resource type="Texture2D" uid="uid://bgh8ouadkr0y" path="res://Sprites/Bloques/Dirt.png" id="34_51gxm"]
-[ext_resource type="Script" uid="uid://dw1ufvymmdmcv" path="res://Enemigos/wolfior.gd" id="35_7hr46"]
 [ext_resource type="PackedScene" uid="uid://d0ordmi0yu7tp" path="res://Sprites/Coleccionables/coleccionable.tscn" id="39_608v1"]
 [ext_resource type="Texture2D" uid="uid://c6hicl8pigqrp" path="res://Sprites/Portals/PortalNivel1.png" id="40_sni5d"]
-[ext_resource type="Script" uid="uid://lb1yx00sjnic" path="res://Sprites/Coleccionables/coleccionable.gd" id="40_tudhf"]
 [ext_resource type="PackedScene" uid="uid://bbru0hmobasum" path="res://powerUps/CorazonRojo.tscn" id="40_uqflv"]
 [ext_resource type="Script" uid="uid://c1scqrsbv82t0" path="res://tutorial.gd" id="40_w30pp"]
 [ext_resource type="Texture2D" uid="uid://bjp53c15uhf5u" path="res://Sprites/E.png" id="40_yf3lr"]
@@ -49,16 +46,12 @@
 [ext_resource type="Texture2D" uid="uid://cin25ost2h5ft" path="res://Sprites/SPACE.png" id="42_32x6e"]
 [ext_resource type="Texture2D" uid="uid://cu8lwjcio2np5" path="res://Sprites/F.png" id="42_d3inr"]
 [ext_resource type="Texture2D" uid="uid://svy5yq8ekd38" path="res://Sprites/SHIFT.png" id="43_yhcb6"]
-[ext_resource type="Script" uid="uid://bspb61lunljlk" path="res://powerUps/guante.gd" id="46_p5dni"]
 [ext_resource type="AudioStream" uid="uid://bju45770rly62" path="res://Sounds/Portal.ogg" id="47_7ojyf"]
-[ext_resource type="Script" uid="uid://b6de74r0bjviw" path="res://Sprites/Checkpoint/checkpoint.gd" id="48_0hpbr"]
 [ext_resource type="AudioStream" uid="uid://dmybnkonokowx" path="res://Sounds/PrePortal.mp3" id="48_x8ox5"]
 [ext_resource type="PackedScene" uid="uid://sw3iu1espuey" path="res://powerUps/guante.tscn" id="50_7sv1y"]
-[ext_resource type="Script" uid="uid://cao6vsm5yboo3" path="res://Sprites/PowerUps/corazon_rojo.gd" id="50_j2hpl"]
 [ext_resource type="PackedScene" uid="uid://c83oj12tyaneq" path="res://Sprites/Checkpoint/checkpoint.tscn" id="52_2d1pr"]
 [ext_resource type="PackedScene" uid="uid://jdslm0dfoujo" path="res://Sprites/Coleccionables/frog.tscn" id="52_mbk0y"]
 [ext_resource type="PackedScene" uid="uid://bi8u5lyedj4lt" path="res://niveles/level_ui.tscn" id="52_uqflv"]
-[ext_resource type="Script" uid="uid://dcfcwvvxcondo" path="res://Sprites/Coleccionables/frog.gd" id="59_pt4mr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rn8p"]
 texture = ExtResource("34_51gxm")
@@ -325,12 +318,9 @@ volume_db = -14.0
 autoplay = true
 bus = &"Música"
 
-[node name="CharacterBody2D5" type="CharacterBody2D" parent="." unique_id=1006504852 groups=["player"] instance=ExtResource("1_t5lia")]
+[node name="CharacterBody2D5" parent="." unique_id=1006504852 groups=["player"] instance=ExtResource("1_t5lia")]
 z_index = -1
 position = Vector2(284.29984, 398.6304)
-collision_layer = 2
-collision_mask = 133
-script = ExtResource("4_w2env")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D5" unique_id=1548526242]
 position = Vector2(305, -708)
@@ -358,95 +348,48 @@ layer_3/tile_data = PackedInt32Array(458891, 27, 0, 458892, 27, 0, 458890, 27, 2
 layer_4/name = "Cubierta"
 layer_4/tile_data = PackedInt32Array(524346, 33, 0, 589882, 33, 2, 524347, 131105, 0, 589883, 524321, 2, 524348, 327713, 0, 589884, 196641, 2, 524349, 393249, 1, 589885, 65569, 2, 524350, 196641, 0, 589886, 262177, 2, 524351, 262177, 0, 589887, 327713, 2, 589888, 524321, 1, 524353, 196641, 0, 589889, 196641, 2, 524354, 327713, 0, 589890, 327713, 2, 524355, 524321, 0, 589891, 458785, 0, 524356, 393249, 0, 589892, 524321, 0, 524357, 393249, 1, 589893, 524321, 1, 524352, 327713, 0)
 
-[node name="CharacterBody2D2" type="CharacterBody2D" parent="." unique_id=547989863 instance=ExtResource("6_c62jp")]
+[node name="CharacterBody2D2" parent="." unique_id=547989863 instance=ExtResource("6_c62jp")]
 position = Vector2(4800, 0)
-collision_layer = 4
-script = ExtResource("35_7hr46")
 
-[node name="CharacterBody2D11" type="CharacterBody2D" parent="." unique_id=1732304284 instance=ExtResource("6_c62jp")]
+[node name="CharacterBody2D11" parent="." unique_id=1732304284 instance=ExtResource("6_c62jp")]
 position = Vector2(14293.299, 475.37866)
-collision_layer = 4
-script = ExtResource("35_7hr46")
 
-[node name="CharacterBody2D4" type="CharacterBody2D" parent="." unique_id=50032239 instance=ExtResource("6_c62jp")]
+[node name="CharacterBody2D4" parent="." unique_id=50032239 instance=ExtResource("6_c62jp")]
 position = Vector2(7129, 90)
-collision_layer = 4
-script = ExtResource("35_7hr46")
 
-[node name="RigidBody2D" type="Area2D" parent="." unique_id=637563091 instance=ExtResource("10_tc1tu")]
+[node name="RigidBody2D" parent="." unique_id=637563091 instance=ExtResource("10_tc1tu")]
 position = Vector2(5455, 175)
 
-[node name="RigidBody2D2" type="Area2D" parent="." unique_id=2136293655 instance=ExtResource("11_srfxy")]
+[node name="RigidBody2D2" parent="." unique_id=2136293655 instance=ExtResource("11_srfxy")]
 position = Vector2(8192, 50)
 
-[node name="Node2D" type="Node2D" parent="." unique_id=1858728029 instance=ExtResource("18_dbe8u")]
+[node name="Node2D" parent="." unique_id=1858728029 instance=ExtResource("18_dbe8u")]
 visible = false
 position = Vector2(1528, -160)
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1835275213 instance=ExtResource("6_c62jp")]
+[node name="CharacterBody2D" parent="." unique_id=1835275213 instance=ExtResource("6_c62jp")]
 position = Vector2(6896, 91)
-collision_layer = 4
-script = ExtResource("35_7hr46")
 
-[node name="CharacterBody2D6" type="CharacterBody2D" parent="." unique_id=99584889 instance=ExtResource("6_c62jp")]
+[node name="CharacterBody2D6" parent="." unique_id=99584889 instance=ExtResource("6_c62jp")]
 position = Vector2(8522, 458)
-collision_layer = 4
-script = ExtResource("35_7hr46")
 
-[node name="CharacterBody2D7" type="CharacterBody2D" parent="." unique_id=590187217 instance=ExtResource("6_c62jp")]
+[node name="CharacterBody2D7" parent="." unique_id=590187217 instance=ExtResource("6_c62jp")]
 position = Vector2(8559, 329)
-collision_layer = 4
-script = ExtResource("35_7hr46")
 
-[node name="CharacterBody2D8" type="CharacterBody2D" parent="." unique_id=1125922344 instance=ExtResource("6_c62jp")]
+[node name="CharacterBody2D8" parent="." unique_id=1125922344 instance=ExtResource("6_c62jp")]
 position = Vector2(8470, 198)
-collision_layer = 4
-script = ExtResource("35_7hr46")
 
-[node name="CharacterBody2D9" type="CharacterBody2D" parent="." unique_id=1350613708 instance=ExtResource("6_c62jp")]
+[node name="CharacterBody2D9" parent="." unique_id=1350613708 instance=ExtResource("6_c62jp")]
 position = Vector2(8520, 68)
-collision_layer = 4
-script = ExtResource("35_7hr46")
 
-[node name="CharacterBody2D13" type="CharacterBody2D" parent="." unique_id=2002355344 instance=ExtResource("6_c62jp")]
+[node name="CharacterBody2D13" parent="." unique_id=2002355344 instance=ExtResource("6_c62jp")]
 position = Vector2(11339, 21)
-collision_layer = 4
-script = ExtResource("35_7hr46")
 
-[node name="CharacterBody2D12" type="CharacterBody2D" parent="." unique_id=760641108 instance=ExtResource("6_c62jp")]
+[node name="CharacterBody2D12" parent="." unique_id=760641108 instance=ExtResource("6_c62jp")]
 position = Vector2(10989, 214)
-collision_layer = 4
-script = ExtResource("35_7hr46")
 
-[node name="CharacterBody2D10" type="CharacterBody2D" parent="." unique_id=177145773 instance=ExtResource("6_c62jp")]
+[node name="CharacterBody2D10" parent="." unique_id=177145773 instance=ExtResource("6_c62jp")]
 position = Vector2(10650, 337)
-collision_layer = 4
-script = ExtResource("35_7hr46")
-
-[node name="Area2D" type="Area2D" parent="." unique_id=604219173 instance=ExtResource("39_608v1")]
-light_mask = 7
-visibility_layer = 7
-position = Vector2(7898, 466)
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("40_tudhf")
-coin_id = 1
-
-[node name="Area2D2" type="Area2D" parent="." unique_id=1172429116 instance=ExtResource("39_608v1")]
-z_index = -2
-position = Vector2(4369, 582)
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("40_tudhf")
-
-[node name="Area2D3" type="Area2D" parent="." unique_id=134276004 instance=ExtResource("39_608v1")]
-light_mask = 2
-visibility_layer = 2
-position = Vector2(10704, -37)
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("40_tudhf")
-coin_id = 2
 
 [node name="E" type="Node2D" parent="." unique_id=604811084]
 rotation = 0.0007608196
@@ -526,23 +469,14 @@ position = Vector2(-253.33899, -222.61479)
 scale = Vector2(3.5000005, 5)
 shape = SubResource("RectangleShape2D_w30pp")
 
-[node name="guante" type="Area2D" parent="." unique_id=2119763944 instance=ExtResource("50_7sv1y")]
+[node name="guante" parent="." unique_id=2119763944 instance=ExtResource("50_7sv1y")]
 position = Vector2(6274, 239)
-collision_layer = 7
-collision_mask = 7
-script = ExtResource("46_p5dni")
 
-[node name="Area2D5" type="Area2D" parent="." unique_id=1406310529 instance=ExtResource("52_2d1pr")]
+[node name="Area2D5" parent="." unique_id=1406310529 instance=ExtResource("52_2d1pr")]
 position = Vector2(9311, 488)
-collision_layer = 7
-collision_mask = 7
-script = ExtResource("48_0hpbr")
 
-[node name="Area2D6" type="Area2D" parent="." unique_id=1836981711 instance=ExtResource("40_uqflv")]
+[node name="Area2D6" parent="." unique_id=1836981711 instance=ExtResource("40_uqflv")]
 position = Vector2(8896, 489)
-collision_layer = 7
-collision_mask = 7
-script = ExtResource("50_j2hpl")
 
 [node name="PortalFinNivel" type="Sprite2D" parent="." unique_id=1366909289 groups=["Portals"]]
 z_index = -2
@@ -580,146 +514,87 @@ volume_db = 3.0
 stream = ExtResource("48_x8ox5")
 volume_db = -4.0
 
-[node name="LevelUi" type="Control" parent="." unique_id=274504807 instance=ExtResource("52_uqflv")]
-layout_mode = 3
-anchors_preset = 0
+[node name="LevelUi" parent="." unique_id=274504807 instance=ExtResource("52_uqflv")]
 
 [node name="Ranas" type="Node" parent="." unique_id=1172388831]
 
-[node name="Area2D4" type="Area2D" parent="Ranas" unique_id=628388901 instance=ExtResource("52_mbk0y")]
+[node name="Area2D4" parent="Ranas" unique_id=628388901 instance=ExtResource("52_mbk0y")]
 position = Vector2(1323, 298)
-scale = Vector2(0.75, 0.75)
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("59_pt4mr")
 
-[node name="Area2D7" type="Area2D" parent="Ranas" unique_id=897342837 instance=ExtResource("52_mbk0y")]
+[node name="Area2D7" parent="Ranas" unique_id=897342837 instance=ExtResource("52_mbk0y")]
 position = Vector2(2235, 352)
-scale = Vector2(0.75, 0.75)
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("59_pt4mr")
 
-[node name="Area2D8" type="Area2D" parent="Ranas" unique_id=551956491 instance=ExtResource("52_mbk0y")]
+[node name="Area2D8" parent="Ranas" unique_id=551956491 instance=ExtResource("52_mbk0y")]
 position = Vector2(1743, 349)
-scale = Vector2(0.75, 0.75)
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("59_pt4mr")
 
-[node name="Area2D9" type="Area2D" parent="Ranas" unique_id=1150108735 instance=ExtResource("52_mbk0y")]
+[node name="Area2D9" parent="Ranas" unique_id=1150108735 instance=ExtResource("52_mbk0y")]
 position = Vector2(2180, 377)
-scale = Vector2(0.75, 0.75)
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("59_pt4mr")
 
-[node name="Area2D10" type="Area2D" parent="Ranas" unique_id=1597972162 instance=ExtResource("52_mbk0y")]
+[node name="Area2D10" parent="Ranas" unique_id=1597972162 instance=ExtResource("52_mbk0y")]
 position = Vector2(1831, 354)
-scale = Vector2(0.75, 0.75)
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("59_pt4mr")
 
-[node name="Area2D11" type="Area2D" parent="Ranas" unique_id=1411860789 instance=ExtResource("52_mbk0y")]
+[node name="Area2D11" parent="Ranas" unique_id=1411860789 instance=ExtResource("52_mbk0y")]
 position = Vector2(1429, 298)
-scale = Vector2(0.75, 0.75)
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("59_pt4mr")
 
-[node name="Area2D12" type="Area2D" parent="Ranas" unique_id=459071380 instance=ExtResource("52_mbk0y")]
+[node name="Area2D12" parent="Ranas" unique_id=459071380 instance=ExtResource("52_mbk0y")]
 position = Vector2(1949, 427)
-scale = Vector2(0.75, 0.75)
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("59_pt4mr")
 
-[node name="Area2D13" type="Area2D" parent="Ranas" unique_id=167009659 instance=ExtResource("52_mbk0y")]
+[node name="Area2D13" parent="Ranas" unique_id=167009659 instance=ExtResource("52_mbk0y")]
 position = Vector2(1623, 413)
-scale = Vector2(0.75, 0.75)
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("59_pt4mr")
 
-[node name="Area2D15" type="Area2D" parent="Ranas" unique_id=1266121859 instance=ExtResource("52_mbk0y")]
+[node name="Area2D15" parent="Ranas" unique_id=1266121859 instance=ExtResource("52_mbk0y")]
 position = Vector2(1670, 367)
-scale = Vector2(0.75, 0.75)
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("59_pt4mr")
 
-[node name="Area2D16" type="Area2D" parent="Ranas" unique_id=2108982700 instance=ExtResource("52_mbk0y")]
+[node name="Area2D16" parent="Ranas" unique_id=2108982700 instance=ExtResource("52_mbk0y")]
 position = Vector2(2305, 388)
-scale = Vector2(0.75, 0.75)
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("59_pt4mr")
 
-[node name="Area2D19" type="Area2D" parent="Ranas" unique_id=313192086 instance=ExtResource("52_mbk0y")]
+[node name="Area2D19" parent="Ranas" unique_id=313192086 instance=ExtResource("52_mbk0y")]
 position = Vector2(2397, 411)
-scale = Vector2(0.75, 0.75)
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("59_pt4mr")
 frog_type = 2
 
-[node name="Area2D22" type="Area2D" parent="Ranas" unique_id=570437772 instance=ExtResource("52_mbk0y")]
+[node name="Area2D22" parent="Ranas" unique_id=570437772 instance=ExtResource("52_mbk0y")]
 position = Vector2(2426, 380)
-scale = Vector2(0.75, 0.75)
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("59_pt4mr")
 frog_type = 2
 
-[node name="Area2D23" type="Area2D" parent="Ranas" unique_id=747775407 instance=ExtResource("52_mbk0y")]
+[node name="Area2D23" parent="Ranas" unique_id=747775407 instance=ExtResource("52_mbk0y")]
 position = Vector2(2473, 375)
-scale = Vector2(0.75, 0.75)
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("59_pt4mr")
 frog_type = 2
 
-[node name="Area2D20" type="Area2D" parent="Ranas" unique_id=891775186 instance=ExtResource("52_mbk0y")]
+[node name="Area2D20" parent="Ranas" unique_id=891775186 instance=ExtResource("52_mbk0y")]
 position = Vector2(2444, 417)
-scale = Vector2(0.75, 0.75)
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("59_pt4mr")
 frog_type = 2
 
-[node name="Area2D21" type="Area2D" parent="Ranas" unique_id=1932229929 instance=ExtResource("52_mbk0y")]
+[node name="Area2D21" parent="Ranas" unique_id=1932229929 instance=ExtResource("52_mbk0y")]
 position = Vector2(2486, 417)
-scale = Vector2(0.75, 0.75)
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("59_pt4mr")
 frog_type = 2
 
-[node name="Area2D17" type="Area2D" parent="Ranas" unique_id=553817395 instance=ExtResource("52_mbk0y")]
+[node name="Area2D17" parent="Ranas" unique_id=553817395 instance=ExtResource("52_mbk0y")]
 position = Vector2(2076, 424)
-scale = Vector2(0.75, 0.75)
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("59_pt4mr")
 
-[node name="Area2D18" type="Area2D" parent="Ranas" unique_id=893551542 instance=ExtResource("52_mbk0y")]
+[node name="Area2D18" parent="Ranas" unique_id=893551542 instance=ExtResource("52_mbk0y")]
 position = Vector2(1377, 299)
-scale = Vector2(0.75, 0.75)
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("59_pt4mr")
 
-[node name="Area2D14" type="Area2D" parent="Ranas" unique_id=2056519348 instance=ExtResource("52_mbk0y")]
+[node name="Area2D14" parent="Ranas" unique_id=2056519348 instance=ExtResource("52_mbk0y")]
 position = Vector2(2128, 393)
-scale = Vector2(0.75, 0.75)
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("59_pt4mr")
 
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
-[connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_body_entered"]
-[connection signal="body_entered" from="Area2D3" to="Area2D3" method="_on_body_entered"]
+[node name="Collectibles" type="Node" parent="." unique_id=1962061318]
+
+[node name="Collec1" parent="Collectibles" unique_id=1172429116 instance=ExtResource("39_608v1")]
+z_index = -2
+position = Vector2(4369, 582)
+
+[node name="Collec2" parent="Collectibles" unique_id=604219173 instance=ExtResource("39_608v1")]
+light_mask = 7
+visibility_layer = 7
+position = Vector2(7898, 466)
+coin_id = 1
+
+[node name="Collec3" parent="Collectibles" unique_id=134276004 instance=ExtResource("39_608v1")]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(10704, -37)
+coin_id = 2
+
 [connection signal="body_entered" from="E/Area2D" to="E" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="E/Area2D" to="E" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="SPACE2/Area2D" to="SPACE2" method="_on_area_2d_body_entered"]
@@ -728,8 +603,5 @@ script = ExtResource("59_pt4mr")
 [connection signal="body_exited" from="SPACE/Area2D" to="SPACE" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="SHIFT/Area2D" to="SHIFT" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="SHIFT/Area2D" to="SHIFT" method="_on_area_2d_body_exited"]
-[connection signal="body_entered" from="guante" to="guante" method="_on_body_entered"]
-[connection signal="body_entered" from="Area2D5" to="Area2D5" method="_on_body_entered"]
-[connection signal="body_entered" from="Area2D6" to="Area2D6" method="_on_body_entered"]
 [connection signal="body_entered" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_exited"]

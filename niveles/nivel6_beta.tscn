@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://cuyvn6hit0t4h" path="res://niveles/nivel.gd" id="1_adkdo"]
 [ext_resource type="AudioStream" uid="uid://b21swr17qntis" path="res://Music/Level1.ogg" id="2_jlmks"]
 [ext_resource type="PackedScene" uid="uid://t3cps6t21qux" path="res://personaje/personajeVerde_2d.tscn" id="3_wdkgc"]
-[ext_resource type="Script" uid="uid://csqhart454t43" path="res://personaje/personaje_verde_2d.gd" id="4_a2isf"]
 [ext_resource type="Script" uid="uid://bpowst78jrhru" path="res://niveles/camera.gd" id="4_ps3vt"]
 [ext_resource type="Texture2D" uid="uid://bgh8ouadkr0y" path="res://Sprites/Bloques/Dirt.png" id="5_g0wv3"]
 [ext_resource type="Texture2D" uid="uid://by6ou6ijmk82e" path="res://Sprites/Bloques/Grass.png" id="6_t7m0a"]
@@ -35,19 +34,14 @@
 [ext_resource type="Texture2D" uid="uid://dwroa0ojm2rqf" path="res://Sprites/Bloques/Column.png" id="32_byf4c"]
 [ext_resource type="PackedScene" uid="uid://digj45m3nsyp4" path="res://Enemigos/wolfior.tscn" id="33_cxlf5"]
 [ext_resource type="PackedScene" uid="uid://6rcs6agfvdu0" path="res://powerUps/escudo.tscn" id="34_550aw"]
-[ext_resource type="Script" uid="uid://dw1ufvymmdmcv" path="res://Enemigos/wolfior.gd" id="35_nqffx"]
 [ext_resource type="PackedScene" uid="uid://pv0tnikacfoy" path="res://Otros/bosq.tscn" id="36_c1ern"]
 [ext_resource type="PackedScene" uid="uid://d0ordmi0yu7tp" path="res://Sprites/Coleccionables/coleccionable.tscn" id="37_8qoy7"]
-[ext_resource type="Script" uid="uid://lb1yx00sjnic" path="res://Sprites/Coleccionables/coleccionable.gd" id="38_jg5jq"]
-[ext_resource type="Script" uid="uid://b6de74r0bjviw" path="res://Sprites/Checkpoint/checkpoint.gd" id="40_2b3f6"]
 [ext_resource type="PackedScene" uid="uid://c83oj12tyaneq" path="res://Sprites/Checkpoint/checkpoint.tscn" id="43_l2f3n"]
 [ext_resource type="Texture2D" uid="uid://c6hicl8pigqrp" path="res://Sprites/Portals/PortalNivel1.png" id="45_50t6v"]
 [ext_resource type="Script" uid="uid://desol7c47hbtl" path="res://Sprites/Portals/portals.gd" id="46_sj04b"]
 [ext_resource type="Texture2D" uid="uid://djp4mcoh2wnil" path="res://Sprites/Efecto y otros/luz.png" id="47_bxs52"]
 [ext_resource type="Texture2D" uid="uid://cu8lwjcio2np5" path="res://Sprites/F.png" id="48_f7xg7"]
-[ext_resource type="Script" uid="uid://co875d5yuwu3s" path="res://Enemigos/hawrker.gd" id="49_cuw5f"]
 [ext_resource type="AudioStream" uid="uid://bju45770rly62" path="res://Sounds/Portal.ogg" id="49_sro8j"]
-[ext_resource type="PackedScene" uid="uid://b7diipa0verqi" path="res://Enemigos/flecha.tscn" id="50_4iqbr"]
 [ext_resource type="AudioStream" uid="uid://dmybnkonokowx" path="res://Sounds/PrePortal.mp3" id="50_hrk8c"]
 [ext_resource type="PackedScene" uid="uid://bi8u5lyedj4lt" path="res://niveles/level_ui.tscn" id="51_f7ui1"]
 [ext_resource type="PackedScene" uid="uid://bjtf1vhnso0ys" path="res://Enemigos/hawrker.tscn" id="52_jlmks"]
@@ -348,12 +342,9 @@ volume_db = -14.0
 autoplay = true
 bus = &"Música"
 
-[node name="CharacterBody2D5" type="CharacterBody2D" parent="." unique_id=1006504852 groups=["player"] instance=ExtResource("3_wdkgc")]
+[node name="CharacterBody2D5" parent="." unique_id=1006504852 groups=["player"] instance=ExtResource("3_wdkgc")]
 z_index = -1
 position = Vector2(81, 358)
-collision_layer = 2
-collision_mask = 133
-script = ExtResource("4_a2isf")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D5" unique_id=1548526242]
 position = Vector2(305, -708)
@@ -380,85 +371,39 @@ layer_3/z_index = -2
 layer_3/tile_data = PackedInt32Array(458891, 27, 0, 458892, 27, 0, 458890, 27, 268435456, 458889, 27, 268435456, 262296, 27, 268435456, 327832, 27, 268435456, 131228, 27, 268435456, 196764, 27, 268435456, 262308, 27, 268435456, 327844, 27, 268435456, 327845, 27, 268435456, 262309, 27, 268435456, 196773, 27, 268435456, 131237, 27, 268435456, 131238, 27, 268435456, 131239, 27, 268435456, 196775, 27, 268435456, 196774, 27, 268435456, 262310, 27, 268435456, 327846, 27, 268435456, -65372, 27, 268435456, -65371, 27, 268435456, -65370, 27, 268435456, -65369, 27, 268435456, -130905, 27, 268435456, -196441, 27, 268435456, -261977, 27, 268435456, -261978, 27, 268435456, -261979, 27, 268435456, -196443, 27, 268435456, -196444, 27, 268435456, -130908, 27, 268435456, -261980, 27, 268435456, -130907, 27, 268435456, -130906, 27, 268435456, -196442, 27, 268435456, -65379, 27, 268435456, -130915, 27, 268435456, -196451, 27, 268435456, -261987, 27, 268435456, -261991, 27, 268435456, -196455, 27, 268435456, -130919, 27, 268435456, -65383, 27, 268435456, 153, 27, 268435456, 65689, 27, 268435456, 65688, 27, 0, 152, 27, 0, -65384, 27, 0, -130920, 27, 0, -196456, 27, 0, -261992, 27, 0, -65380, 27, 0, -130916, 27, 0, -196452, 27, 0, -261988, 27, 0, -65373, 27, 0, -65374, 27, 0, -65375, 27, 0, -65376, 27, 0, -130912, 27, 0, -196448, 27, 0, -261984, 27, 0, -261983, 27, 0, -261982, 27, 0, -196446, 27, 0, -196445, 27, 0, -261981, 27, 0, -130909, 27, 0, -130910, 27, 0, -130911, 27, 0, -196447, 27, 0, 327843, 27, 0, 327842, 27, 0, 327841, 27, 0, 327840, 27, 0, 262304, 27, 0, 262305, 27, 0, 262306, 27, 0, 262307, 27, 0, 196765, 27, 0, 131229, 27, 0, 262297, 27, 0, 327833, 27, 0, 327850, 27, 0, 327851, 27, 0, 327852, 27, 0, 327853, 27, 0, 327854, 27, 0, 262318, 27, 0, 196782, 27, 0, 131246, 27, 0, 65710, 27, 0, 174, 27, 0, -65362, 27, 0, -65363, 27, 0, 173, 27, 0, 65709, 27, 0, 131245, 27, 0, 196781, 27, 0, 262317, 27, 0, 262316, 27, 0, 262315, 27, 0, 262314, 27, 0, 196778, 27, 0, 131242, 27, 0, 65706, 27, 0, 170, 27, 0, -65366, 27, 0, -65365, 27, 0, -65364, 27, 0, 172, 27, 0, 65708, 27, 0, 131244, 27, 0, 196780, 27, 0, 196779, 27, 0, 131243, 27, 0, 65707, 27, 0, 171, 27, 0, 327855, 27, 268435456, 327856, 27, 268435456, 327857, 27, 268435456, 327858, 27, 268435456, 262322, 27, 268435456, 196786, 27, 268435456, 131250, 27, 268435456, 131249, 27, 268435456, 196785, 27, 268435456, 262321, 27, 268435456, 262320, 27, 268435456, 196784, 27, 268435456, 131248, 27, 268435456, 131247, 27, 268435456, 196783, 27, 268435456, 262319, 27, 268435456, 65711, 27, 268435456, 175, 27, 268435456, -65361, 27, 268435456, -65360, 27, 268435456, -65359, 27, 268435456, -65358, 27, 268435456, -65357, 27, 268435456, 179, 27, 268435456, 178, 27, 268435456, 177, 27, 268435456, 176, 27, 268435456, 65712, 27, 268435456, 65713, 27, 268435456, 65714, 27, 268435456, 65715, 27, 268435456, 131251, 27, 268435456, 196787, 27, 268435456, 262323, 27, 268435456, 327859, 27, 268435456, -130893, 27, 268435456, -130894, 27, 268435456, -130895, 27, 268435456, -130896, 27, 268435456, -130897, 27, 268435456, -130898, 27, 268435456, -130899, 27, 268435456, -130900, 27, 268435456, -130902, 27, 268435456, -130901, 27, 268435456, -196438, 27, 268435456, -196437, 27, 268435456, -196436, 27, 268435456, -196435, 27, 268435456, -196434, 27, 268435456, -196433, 27, 268435456, -196432, 27, 268435456, -196431, 27, 268435456, -196430, 27, 268435456, -196429, 27, 268435456, -261965, 27, 268435456, -261966, 27, 268435456, -261967, 27, 268435456, -261968, 27, 268435456, -261969, 27, 268435456, -261970, 27, 268435456, -261971, 27, 268435456, -261972, 27, 268435456, -261973, 27, 268435456, -261974, 27, 268435456, -327510, 27, 268435456, -327509, 27, 268435456, -327508, 27, 268435456, -327507, 27, 268435456, -327506, 27, 268435456, -327505, 27, 268435456, -327504, 27, 268435456, -327503, 27, 268435456, -327502, 27, 268435456, -327501, 27, 268435456, -393037, 27, 268435456, -393038, 27, 268435456, -393039, 27, 268435456, -393040, 27, 268435456, -393041, 27, 268435456, -393042, 27, 268435456, -393043, 27, 268435456, -393044, 27, 268435456, -393045, 27, 268435456, -393046, 27, 268435456, -458582, 27, 268435456, -458581, 27, 268435456, -458580, 27, 268435456, -458579, 27, 268435456, -458578, 27, 268435456, -458577, 27, 268435456, -458576, 27, 268435456, -458575, 27, 268435456, -458574, 27, 268435456, -458573, 27, 268435456, 393386, 27, 268435456, 458922, 27, 268435456, 458923, 27, 268435456, 393387, 27, 268435456, 393388, 27, 268435456, 458924, 27, 268435456, 393389, 27, 268435456, 458925, 27, 268435456, 458926, 27, 268435456, 393390, 27, 268435456, 393391, 27, 268435456, 458927, 27, 268435456, 458928, 27, 268435456, 393392, 27, 268435456, 393393, 27, 268435456, 458929, 27, 268435456, 458930, 27, 268435456, 393394, 27, 268435456, 393395, 27, 268435456, 458931, 27, 268435456, 65703, 27, 268435456, 167, 27, 268435456, 166, 27, 268435456, 65702, 27, 268435456, 65701, 27, 268435456, 165, 27, 268435456, 131236, 27, 268435456, 196772, 27, 268435456, 196771, 27, 0, 131235, 27, 0, 65699, 27, 0, 163, 27, 0, 164, 27, 268435456, 65700, 27, 268435456, 131234, 27, 0, 196770, 27, 0, 196769, 27, 0, 196768, 27, 0, 131232, 27, 0, 65696, 27, 0, 160, 27, 0, 161, 27, 0, 162, 27, 0, 65698, 27, 0, 131233, 27, 0, 65697, 27, 0)
 layer_4/name = "Cubierta"
 
-[node name="CharacterBody2D2" type="CharacterBody2D" parent="." unique_id=547989863 instance=ExtResource("33_cxlf5")]
+[node name="CharacterBody2D2" parent="." unique_id=547989863 instance=ExtResource("33_cxlf5")]
 position = Vector2(4829, 262)
-collision_layer = 4
-script = ExtResource("35_nqffx")
 
-[node name="CharacterBody2D11" type="CharacterBody2D" parent="." unique_id=1732304284 instance=ExtResource("33_cxlf5")]
+[node name="CharacterBody2D11" parent="." unique_id=1732304284 instance=ExtResource("33_cxlf5")]
 position = Vector2(14396, 468)
-collision_layer = 4
-script = ExtResource("35_nqffx")
 
-[node name="CharacterBody2D4" type="CharacterBody2D" parent="." unique_id=50032239 instance=ExtResource("33_cxlf5")]
+[node name="CharacterBody2D4" parent="." unique_id=50032239 instance=ExtResource("33_cxlf5")]
 position = Vector2(7227, 141)
-collision_layer = 4
-script = ExtResource("35_nqffx")
 
-[node name="Node2D" type="Node2D" parent="." unique_id=1858728029 instance=ExtResource("36_c1ern")]
+[node name="Node2D" parent="." unique_id=1858728029 instance=ExtResource("36_c1ern")]
 visible = false
 position = Vector2(1528, -160)
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1835275213 instance=ExtResource("33_cxlf5")]
+[node name="CharacterBody2D" parent="." unique_id=1835275213 instance=ExtResource("33_cxlf5")]
 position = Vector2(7053, 150)
-collision_layer = 4
-script = ExtResource("35_nqffx")
 
-[node name="CharacterBody2D6" type="CharacterBody2D" parent="." unique_id=99584889 instance=ExtResource("33_cxlf5")]
+[node name="CharacterBody2D6" parent="." unique_id=99584889 instance=ExtResource("33_cxlf5")]
 position = Vector2(8522, 458)
-collision_layer = 4
-script = ExtResource("35_nqffx")
 
-[node name="CharacterBody2D7" type="CharacterBody2D" parent="." unique_id=590187217 instance=ExtResource("33_cxlf5")]
+[node name="CharacterBody2D7" parent="." unique_id=590187217 instance=ExtResource("33_cxlf5")]
 position = Vector2(8559, 329)
-collision_layer = 4
-script = ExtResource("35_nqffx")
 
-[node name="CharacterBody2D8" type="CharacterBody2D" parent="." unique_id=1125922344 instance=ExtResource("33_cxlf5")]
+[node name="CharacterBody2D8" parent="." unique_id=1125922344 instance=ExtResource("33_cxlf5")]
 position = Vector2(8470, 198)
-collision_layer = 4
-script = ExtResource("35_nqffx")
 
-[node name="CharacterBody2D9" type="CharacterBody2D" parent="." unique_id=1350613708 instance=ExtResource("33_cxlf5")]
+[node name="CharacterBody2D9" parent="." unique_id=1350613708 instance=ExtResource("33_cxlf5")]
 position = Vector2(8520, 68)
-collision_layer = 4
-script = ExtResource("35_nqffx")
 
-[node name="CharacterBody2D10" type="CharacterBody2D" parent="." unique_id=177145773 instance=ExtResource("33_cxlf5")]
+[node name="CharacterBody2D10" parent="." unique_id=177145773 instance=ExtResource("33_cxlf5")]
 position = Vector2(10650, 337)
-collision_layer = 4
-script = ExtResource("35_nqffx")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=604219173 instance=ExtResource("37_8qoy7")]
-light_mask = 7
-visibility_layer = 7
-position = Vector2(8195, 151)
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("38_jg5jq")
-coin_id = 1
-
-[node name="Area2D2" type="Area2D" parent="." unique_id=1172429116 instance=ExtResource("37_8qoy7")]
-z_index = -2
-position = Vector2(3794, -40)
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("38_jg5jq")
-
-[node name="Area2D3" type="Area2D" parent="." unique_id=134276004 instance=ExtResource("37_8qoy7")]
-light_mask = 2
-visibility_layer = 2
-position = Vector2(10817, -28)
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("38_jg5jq")
-coin_id = 2
-
-[node name="Area2D5" type="Area2D" parent="." unique_id=1406310529 instance=ExtResource("43_l2f3n")]
+[node name="Area2D5" parent="." unique_id=1406310529 instance=ExtResource("43_l2f3n")]
 position = Vector2(9311, 488)
-collision_layer = 7
-collision_mask = 7
-script = ExtResource("40_2b3f6")
 
 [node name="PortalFinNivel" type="Sprite2D" parent="." unique_id=1366909289 groups=["Portals"]]
 z_index = -2
@@ -496,195 +441,137 @@ volume_db = 3.0
 stream = ExtResource("50_hrk8c")
 volume_db = -4.0
 
-[node name="LevelUi" type="Control" parent="." unique_id=274504807 instance=ExtResource("51_f7ui1")]
-layout_mode = 3
-anchors_preset = 0
+[node name="LevelUi" parent="." unique_id=274504807 instance=ExtResource("51_f7ui1")]
 
-[node name="CharacterBody2D3" type="CharacterBody2D" parent="." unique_id=75668169 instance=ExtResource("33_cxlf5")]
+[node name="CharacterBody2D3" parent="." unique_id=75668169 instance=ExtResource("33_cxlf5")]
 position = Vector2(1209, 377)
-collision_layer = 4
-script = ExtResource("35_nqffx")
 
-[node name="CharacterBody2D14" type="CharacterBody2D" parent="." unique_id=1315670313 instance=ExtResource("33_cxlf5")]
+[node name="CharacterBody2D14" parent="." unique_id=1315670313 instance=ExtResource("33_cxlf5")]
 position = Vector2(944, 253)
-collision_layer = 4
-script = ExtResource("35_nqffx")
 
-[node name="CharacterBody2D15" type="CharacterBody2D" parent="." unique_id=1098210497 groups=["Enemigos"] instance=ExtResource("52_jlmks")]
+[node name="CharacterBody2D15" parent="." unique_id=1098210497 instance=ExtResource("52_jlmks")]
 position = Vector2(1292, 269)
-script = ExtResource("49_cuw5f")
-projectile_scene = ExtResource("50_4iqbr")
 
-[node name="CharacterBody2D16" type="CharacterBody2D" parent="." unique_id=85728650 groups=["Enemigos"] instance=ExtResource("52_jlmks")]
+[node name="CharacterBody2D16" parent="." unique_id=85728650 instance=ExtResource("52_jlmks")]
 position = Vector2(1437, 264)
-script = ExtResource("49_cuw5f")
-projectile_scene = ExtResource("50_4iqbr")
 
-[node name="CharacterBody2D18" type="CharacterBody2D" parent="." unique_id=1151149882 instance=ExtResource("33_cxlf5")]
+[node name="CharacterBody2D18" parent="." unique_id=1151149882 instance=ExtResource("33_cxlf5")]
 position = Vector2(1863, 581)
-collision_layer = 4
-script = ExtResource("35_nqffx")
 
-[node name="CharacterBody2D19" type="CharacterBody2D" parent="." unique_id=890643172 instance=ExtResource("33_cxlf5")]
+[node name="CharacterBody2D19" parent="." unique_id=890643172 instance=ExtResource("33_cxlf5")]
 position = Vector2(2168, 587)
-collision_layer = 4
-script = ExtResource("35_nqffx")
 
-[node name="CharacterBody2D20" type="CharacterBody2D" parent="." unique_id=1261401780 instance=ExtResource("33_cxlf5")]
+[node name="CharacterBody2D20" parent="." unique_id=1261401780 instance=ExtResource("33_cxlf5")]
 position = Vector2(2444, 574)
-collision_layer = 4
-script = ExtResource("35_nqffx")
 
-[node name="CharacterBody2D21" type="CharacterBody2D" parent="." unique_id=1207986119 instance=ExtResource("33_cxlf5")]
+[node name="CharacterBody2D21" parent="." unique_id=1207986119 instance=ExtResource("33_cxlf5")]
 position = Vector2(2755, 578)
-collision_layer = 4
-script = ExtResource("35_nqffx")
 
-[node name="CharacterBody2D22" type="CharacterBody2D" parent="." unique_id=897857928 groups=["Enemigos"] instance=ExtResource("52_jlmks")]
+[node name="CharacterBody2D22" parent="." unique_id=897857928 instance=ExtResource("52_jlmks")]
 position = Vector2(2011, 594)
-script = ExtResource("49_cuw5f")
-projectile_scene = ExtResource("50_4iqbr")
 
-[node name="CharacterBody2D23" type="CharacterBody2D" parent="." unique_id=774068511 groups=["Enemigos"] instance=ExtResource("52_jlmks")]
+[node name="CharacterBody2D23" parent="." unique_id=774068511 instance=ExtResource("52_jlmks")]
 position = Vector2(2563, 591)
-script = ExtResource("49_cuw5f")
-projectile_scene = ExtResource("50_4iqbr")
 
-[node name="CharacterBody2D24" type="CharacterBody2D" parent="." unique_id=564028701 groups=["Enemigos"] instance=ExtResource("52_jlmks")]
+[node name="CharacterBody2D24" parent="." unique_id=564028701 instance=ExtResource("52_jlmks")]
 position = Vector2(2277, 601)
-script = ExtResource("49_cuw5f")
-projectile_scene = ExtResource("50_4iqbr")
 
-[node name="CharacterBody2D25" type="CharacterBody2D" parent="." unique_id=1122695833 groups=["Enemigos"] instance=ExtResource("52_jlmks")]
+[node name="CharacterBody2D25" parent="." unique_id=1122695833 instance=ExtResource("52_jlmks")]
 position = Vector2(2891, 344)
-script = ExtResource("49_cuw5f")
-projectile_scene = ExtResource("50_4iqbr")
 
-[node name="CharacterBody2D26" type="CharacterBody2D" parent="." unique_id=1338982246 instance=ExtResource("33_cxlf5")]
+[node name="CharacterBody2D26" parent="." unique_id=1338982246 instance=ExtResource("33_cxlf5")]
 position = Vector2(4662, 198)
-collision_layer = 4
-script = ExtResource("35_nqffx")
 
-[node name="CharacterBody2D27" type="CharacterBody2D" parent="." unique_id=509020333 instance=ExtResource("33_cxlf5")]
+[node name="CharacterBody2D27" parent="." unique_id=509020333 instance=ExtResource("33_cxlf5")]
 position = Vector2(4502, 253)
-collision_layer = 4
-script = ExtResource("35_nqffx")
 
-[node name="CharacterBody2D28" type="CharacterBody2D" parent="." unique_id=122754446 groups=["Enemigos"] instance=ExtResource("52_jlmks")]
+[node name="CharacterBody2D28" parent="." unique_id=122754446 instance=ExtResource("52_jlmks")]
 position = Vector2(4739, 283)
-script = ExtResource("49_cuw5f")
-projectile_scene = ExtResource("50_4iqbr")
 
-[node name="CharacterBody2D29" type="CharacterBody2D" parent="." unique_id=1112822435 groups=["Enemigos"] instance=ExtResource("52_jlmks")]
+[node name="CharacterBody2D29" parent="." unique_id=1112822435 instance=ExtResource("52_jlmks")]
 position = Vector2(4925, 279)
-script = ExtResource("49_cuw5f")
-projectile_scene = ExtResource("50_4iqbr")
 
-[node name="CharacterBody2D30" type="CharacterBody2D" parent="." unique_id=1856460961 groups=["Enemigos"] instance=ExtResource("52_jlmks")]
+[node name="CharacterBody2D30" parent="." unique_id=1856460961 instance=ExtResource("52_jlmks")]
 position = Vector2(6739, 159)
-script = ExtResource("49_cuw5f")
-projectile_scene = ExtResource("50_4iqbr")
 
-[node name="CharacterBody2D31" type="CharacterBody2D" parent="." unique_id=602660760 groups=["Enemigos"] instance=ExtResource("52_jlmks")]
+[node name="CharacterBody2D31" parent="." unique_id=602660760 instance=ExtResource("52_jlmks")]
 position = Vector2(7779, 474)
-script = ExtResource("49_cuw5f")
-projectile_scene = ExtResource("50_4iqbr")
 
-[node name="CharacterBody2D32" type="CharacterBody2D" parent="." unique_id=1210546807 groups=["Enemigos"] instance=ExtResource("52_jlmks")]
+[node name="CharacterBody2D32" parent="." unique_id=1210546807 instance=ExtResource("52_jlmks")]
 position = Vector2(8036, 477)
-script = ExtResource("49_cuw5f")
-projectile_scene = ExtResource("50_4iqbr")
 
-[node name="CharacterBody2D33" type="CharacterBody2D" parent="." unique_id=1805749449 instance=ExtResource("33_cxlf5")]
+[node name="CharacterBody2D33" parent="." unique_id=1805749449 instance=ExtResource("33_cxlf5")]
 position = Vector2(7803, 586)
-collision_layer = 4
-script = ExtResource("35_nqffx")
 
-[node name="CharacterBody2D34" type="CharacterBody2D" parent="." unique_id=1458255701 instance=ExtResource("33_cxlf5")]
+[node name="CharacterBody2D34" parent="." unique_id=1458255701 instance=ExtResource("33_cxlf5")]
 position = Vector2(8144, 456)
-collision_layer = 4
-script = ExtResource("35_nqffx")
 
-[node name="CharacterBody2D35" type="CharacterBody2D" parent="." unique_id=1633455938 instance=ExtResource("33_cxlf5")]
+[node name="CharacterBody2D35" parent="." unique_id=1633455938 instance=ExtResource("33_cxlf5")]
 position = Vector2(8023, 587)
-collision_layer = 4
-script = ExtResource("35_nqffx")
 
-[node name="CharacterBody2D36" type="CharacterBody2D" parent="." unique_id=582959238 instance=ExtResource("33_cxlf5")]
+[node name="CharacterBody2D36" parent="." unique_id=582959238 instance=ExtResource("33_cxlf5")]
 position = Vector2(8193, 270)
-collision_layer = 4
-script = ExtResource("35_nqffx")
 
-[node name="RigidBody2D" type="Area2D" parent="." unique_id=917221941 instance=ExtResource("34_550aw")]
+[node name="RigidBody2D" parent="." unique_id=917221941 instance=ExtResource("34_550aw")]
 position = Vector2(8193, 44)
 
-[node name="CharacterBody2D12" type="CharacterBody2D" parent="." unique_id=721697933 instance=ExtResource("33_cxlf5")]
+[node name="CharacterBody2D12" parent="." unique_id=721697933 instance=ExtResource("33_cxlf5")]
 position = Vector2(10476, 334)
-collision_layer = 4
-script = ExtResource("35_nqffx")
 
-[node name="CharacterBody2D13" type="CharacterBody2D" parent="." unique_id=158408064 instance=ExtResource("33_cxlf5")]
+[node name="CharacterBody2D13" parent="." unique_id=158408064 instance=ExtResource("33_cxlf5")]
 position = Vector2(11074, 17)
-collision_layer = 4
-script = ExtResource("35_nqffx")
 
-[node name="CharacterBody2D37" type="CharacterBody2D" parent="." unique_id=154806616 instance=ExtResource("33_cxlf5")]
+[node name="CharacterBody2D37" parent="." unique_id=154806616 instance=ExtResource("33_cxlf5")]
 position = Vector2(11164, 9)
-collision_layer = 4
-script = ExtResource("35_nqffx")
 
-[node name="CharacterBody2D38" type="CharacterBody2D" parent="." unique_id=1904444218 instance=ExtResource("33_cxlf5")]
+[node name="CharacterBody2D38" parent="." unique_id=1904444218 instance=ExtResource("33_cxlf5")]
 position = Vector2(11254, 9)
-collision_layer = 4
-script = ExtResource("35_nqffx")
 
-[node name="CharacterBody2D39" type="CharacterBody2D" parent="." unique_id=1251472555 groups=["Enemigos"] instance=ExtResource("52_jlmks")]
+[node name="CharacterBody2D39" parent="." unique_id=1251472555 instance=ExtResource("52_jlmks")]
 position = Vector2(10990, -36)
-script = ExtResource("49_cuw5f")
-projectile_scene = ExtResource("50_4iqbr")
 
-[node name="CharacterBody2D40" type="CharacterBody2D" parent="." unique_id=340281743 groups=["Enemigos"] instance=ExtResource("52_jlmks")]
+[node name="CharacterBody2D40" parent="." unique_id=340281743 instance=ExtResource("52_jlmks")]
 position = Vector2(11687, 33)
-script = ExtResource("49_cuw5f")
-projectile_scene = ExtResource("50_4iqbr")
 
-[node name="CharacterBody2D41" type="CharacterBody2D" parent="." unique_id=160468766 instance=ExtResource("33_cxlf5")]
+[node name="CharacterBody2D41" parent="." unique_id=160468766 instance=ExtResource("33_cxlf5")]
 position = Vector2(11351, 8)
-collision_layer = 4
-script = ExtResource("35_nqffx")
 
-[node name="CharacterBody2D42" type="CharacterBody2D" parent="." unique_id=1906376555 instance=ExtResource("33_cxlf5")]
+[node name="CharacterBody2D42" parent="." unique_id=1906376555 instance=ExtResource("33_cxlf5")]
 position = Vector2(12911, 452)
-collision_layer = 4
-script = ExtResource("35_nqffx")
 
-[node name="CharacterBody2D43" type="CharacterBody2D" parent="." unique_id=1942731691 groups=["Enemigos"] instance=ExtResource("52_jlmks")]
+[node name="CharacterBody2D43" parent="." unique_id=1942731691 instance=ExtResource("52_jlmks")]
 position = Vector2(13476, 227)
-script = ExtResource("49_cuw5f")
-projectile_scene = ExtResource("50_4iqbr")
 
-[node name="CharacterBody2D44" type="CharacterBody2D" parent="." unique_id=1296833452 groups=["Enemigos"] instance=ExtResource("52_jlmks")]
+[node name="CharacterBody2D44" parent="." unique_id=1296833452 instance=ExtResource("52_jlmks")]
 position = Vector2(14617, 424)
-script = ExtResource("49_cuw5f")
-projectile_scene = ExtResource("50_4iqbr")
 
-[node name="CharacterBody2D45" type="CharacterBody2D" parent="." unique_id=128624716 groups=["Enemigos"] instance=ExtResource("52_jlmks")]
+[node name="CharacterBody2D45" parent="." unique_id=128624716 instance=ExtResource("52_jlmks")]
 position = Vector2(14485, 424)
-script = ExtResource("49_cuw5f")
-projectile_scene = ExtResource("50_4iqbr")
 
-[node name="CharacterBody2D46" type="CharacterBody2D" parent="." unique_id=1620772998 groups=["Enemigos"] instance=ExtResource("52_jlmks")]
+[node name="CharacterBody2D46" parent="." unique_id=1620772998 instance=ExtResource("52_jlmks")]
 position = Vector2(14554, 423)
-script = ExtResource("49_cuw5f")
-projectile_scene = ExtResource("50_4iqbr")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=638188322]
 color = Color(1, 0.44, 0.44, 1)
 energy = 0.5
 
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
-[connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_body_entered"]
-[connection signal="body_entered" from="Area2D3" to="Area2D3" method="_on_body_entered"]
-[connection signal="body_entered" from="Area2D5" to="Area2D5" method="_on_body_entered"]
+[node name="Collectibles" type="Node" parent="." unique_id=130737758]
+
+[node name="Collec1" parent="Collectibles" unique_id=1172429116 instance=ExtResource("37_8qoy7")]
+z_index = -2
+position = Vector2(3794, -40)
+
+[node name="Collec2" parent="Collectibles" unique_id=604219173 instance=ExtResource("37_8qoy7")]
+light_mask = 7
+visibility_layer = 7
+position = Vector2(8195, 151)
+coin_id = 1
+
+[node name="Collec3" parent="Collectibles" unique_id=134276004 instance=ExtResource("37_8qoy7")]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(10817, -28)
+coin_id = 2
+
 [connection signal="body_entered" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_exited"]
