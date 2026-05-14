@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://umcouooewlf7" path="res://Menús/escenas/nombre/nombre.gd" id="1_8chvt"]
 [ext_resource type="Texture2D" uid="uid://c2ykgj5lpibhw" path="res://Menús/assets/fondos/principal_frame.png" id="2_kh23j"]
-[ext_resource type="Script" uid="uid://clpeubl1jra34" path="res://Menús/escenas/principal.gd" id="3_cdt5n"]
 [ext_resource type="FontFile" uid="uid://coe4gaaihhlww" path="res://Menús/assets/fuentes/Retro Gaming.ttf" id="4_f8hme"]
+[ext_resource type="Texture2D" uid="uid://cc2pin3e5atyh" path="res://Menús/assets/Bienvenido.png" id="4_kh23j"]
 [ext_resource type="Texture2D" uid="uid://bjikh6tyskptp" path="res://Menús/assets/botones/Continuar.png" id="5_8chvt"]
+[ext_resource type="FontFile" uid="uid://t3qeauxnndoj" path="res://font/Retro Gaming.ttf" id="5_kh23j"]
 [ext_resource type="Texture2D" uid="uid://ckjwxvoidsjca" path="res://Menús/assets/fondos/MoxAniFondo1.png" id="6_bb61x"]
 [ext_resource type="Texture2D" uid="uid://1r6cbmvcwlqn" path="res://Menús/assets/fondos/MoxAniFondo2.png" id="7_a4ugi"]
 [ext_resource type="Texture2D" uid="uid://dnxqw7qqgkpi0" path="res://Menús/assets/fondos/MoxAniFondo3.png" id="8_s86qu"]
@@ -17,6 +18,62 @@
 [ext_resource type="Texture2D" uid="uid://b6lhmgppwuek3" path="res://Menús/assets/logo/LogoProvisional2.png" id="15_jix8s"]
 [ext_resource type="Texture2D" uid="uid://b8k8cgfbphg4q" path="res://Menús/assets/logo/LogoProvisional3.png" id="16_udwbp"]
 [ext_resource type="Texture2D" uid="uid://clwsfcpof8uvv" path="res://Menús/assets/logo/LogoProvisional4.png" id="17_ojbtv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cdt5n"]
+font = ExtResource("5_kh23j")
+font_size = 18
+font_color = Color(0.48235294, 0.30588236, 0.21568628, 1)
+
+[sub_resource type="Theme" id="Theme_cdt5n"]
+default_base_scale = 0.1
+default_font = ExtResource("4_f8hme")
+default_font_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f8hme"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.5686275, 0.3529412, 0.24705882, 1)
+border_width_bottom = 2
+border_color = Color(0.47843137, 0.29803923, 0.20784314, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lyah6"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.57, 0.3534, 0.2451, 0.78431374)
+border_width_bottom = 1
+border_color = Color(0.48, 0.2976, 0.20639999, 0.78431374)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bb61x"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.44705883, 0.27450982, 0.1882353, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h4avt"]
 animations = [{
@@ -112,10 +169,17 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="nombre" type="CanvasLayer" unique_id=325566166]
+[node name="Nombre" type="CanvasLayer" unique_id=325566166]
 script = ExtResource("1_8chvt")
 
-[node name="nombreEscena" type="TextureRect" parent="." unique_id=821630638]
+[node name="Control" type="Control" parent="." unique_id=1646774340]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Fondo" type="TextureRect" parent="Control" unique_id=821630638]
+layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 720.0
 size_flags_horizontal = 4
@@ -123,34 +187,81 @@ texture = ExtResource("2_kh23j")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Botones" type="VBoxContainer" parent="nombreEscena" unique_id=1627282214]
+[node name="Menú" type="VBoxContainer" parent="Control/Fondo" unique_id=1627282214]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = -223.0
-offset_right = 128.0
-offset_bottom = -19.0
+offset_left = -215.0
+offset_top = -230.0
+offset_right = 215.0
+offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("3_cdt5n")
 
-[node name="Label" type="Label" parent="nombreEscena/Botones" unique_id=1424245937]
+[node name="Menú Nombre" type="TextureRect" parent="Control/Fondo/Menú" unique_id=797392431]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_kh23j")
+
+[node name="Introduce tu nombre" type="Label" parent="Control/Fondo/Menú/Menú Nombre" unique_id=1424245937]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -112.0
+offset_top = 85.0
+offset_right = 112.0
+offset_bottom = 108.0
+grow_horizontal = 2
 theme_override_fonts/font = ExtResource("4_f8hme")
-text = "    INTRODUCE TU NICK!"
+text = "INTRODUCE TU NICK!"
+label_settings = SubResource("LabelSettings_cdt5n")
 
-[node name="LineEdit" type="LineEdit" parent="nombreEscena/Botones" unique_id=1204620229]
-layout_mode = 2
+[node name="Introducir nombre" type="LineEdit" parent="Control/Fondo/Menú/Menú Nombre" unique_id=1235172987]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -2.5
+offset_right = 150.0
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = SubResource("Theme_cdt5n")
+theme_override_colors/font_color = Color(0.88235295, 0.6509804, 0.41960785, 1)
+theme_override_colors/font_selected_color = Color(0.88235295, 0.6509804, 0.41960785, 1)
+theme_override_colors/font_placeholder_color = Color(0.88, 0.6512, 0.42240003, 0.58431375)
+theme_override_colors/caret_color = Color(0.8, 0.592, 0.38400003, 1)
+theme_override_colors/selection_color = Color(0.42, 0.2604, 0.1806, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_f8hme")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_lyah6")
+theme_override_styles/focus = SubResource("StyleBoxFlat_bb61x")
+placeholder_text = "Nombre"
 
-[node name="continuar" type="TextureButton" parent="nombreEscena/Botones" unique_id=1881072095]
-layout_mode = 2
+[node name="Continuar" type="TextureButton" parent="Control/Fondo/Menú/Menú Nombre" unique_id=1881072095]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -68.0
+offset_top = -75.0
+offset_right = 68.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 0
 texture_normal = ExtResource("5_8chvt")
 
-[node name="Mox Nose" type="TextureButton" parent="nombreEscena" unique_id=1757504278]
+[node name="Mox Nose" type="TextureButton" parent="Control/Fondo" unique_id=1757504278]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -165,18 +276,18 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_default_cursor_shape = 2
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="nombreEscena/Mox Nose" unique_id=627234267]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Fondo/Mox Nose" unique_id=627234267]
 position = Vector2(69, 106)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_h4avt")
 animation = &"bubble"
 autoplay = "bubble"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="nombreEscena" unique_id=2020468221]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Fondo" unique_id=2020468221]
 position = Vector2(648, 68)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_jvwso")
 autoplay = "default"
 
-[connection signal="pressed" from="nombreEscena/Botones/continuar" to="." method="_on_continuar_pressed"]
-[connection signal="pressed" from="nombreEscena/Mox Nose" to="nombreEscena/Botones" method="_on_mox_nose_pressed"]
+[connection signal="pressed" from="Control/Fondo/Menú/Menú Nombre/Continuar" to="." method="_on_continuar_pressed"]
+[connection signal="pressed" from="Control/Fondo/Mox Nose" to="Control/Fondo/Menú" method="_on_mox_nose_pressed"]

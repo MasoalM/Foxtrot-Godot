@@ -1,12 +1,13 @@
 extends CanvasLayer
 
-@onready var input_nick = $nombreEscena/Botones/LineEdit
+@onready var input_nick = $"Control/Fondo/Menú/Menú Nombre/Introducir nombre"
 
 
 func _ready():
-
+	UIManager.register_buttons(self)
+	
 	input_nick.grab_focus()
-
+	
 	APIclient.player_login_completed.connect(
 		_on_login_completed
 	)
