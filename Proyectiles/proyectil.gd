@@ -11,7 +11,9 @@ func _process(delta: float) -> void:
 	if visible:
 		var mov = vel_bala * delta
 		position.x += mov
-		dist += mov  # ← acumula la distancia real recorrida en píxeles
+		
+		dist += abs(mov)  # ← acumula la distancia real recorrida en píxeles
+		
 		if dist > dist_max:
 			morir()
 	

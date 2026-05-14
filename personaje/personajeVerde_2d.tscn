@@ -16,25 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://iw8am0x8v3wt" path="res://Sprites/Mox/HurtingIceMoxSprites.png" id="9_2h4e4"]
 [ext_resource type="Texture2D" uid="uid://iws05xq3bht3" path="res://Sprites/Mox/PowerShootingMoxSprite.png" id="10_3dfmv"]
 [ext_resource type="Texture2D" uid="uid://dvhty3fc28y1o" path="res://Sprites/Mox/MoxVine.png" id="10_ensr3"]
-[ext_resource type="PackedScene" uid="uid://dd5sb40u5hh3j" path="res://Sprites/Particles/DoubleJumpParticles.tscn" id="11_2n4ny"]
 [ext_resource type="Texture2D" uid="uid://bhngcmva1t6a5" path="res://Sprites/Mox/RunningIceMoxSprites.png" id="11_6lti3"]
-[ext_resource type="AudioStream" uid="uid://b3p1ioh4e7wyt" path="res://Sounds/Mox/Shot1.ogg" id="11_g88dg"]
-[ext_resource type="PackedScene" uid="uid://bvh1g2k08pj06" path="res://Sprites/Particles/Dust.tscn" id="11_t4j0b"]
-[ext_resource type="AudioStream" uid="uid://dw8gvjc120phm" path="res://Sounds/ShieldPowerUp.ogg" id="12_g88dg"]
 [ext_resource type="Texture2D" uid="uid://de64mj2xeo82t" path="res://Sprites/Mox/ShootingIceMoxSprite.png" id="13_2h4e4"]
-[ext_resource type="AudioStream" uid="uid://dnw4gu41pv2d2" path="res://Sounds/Mox/MoxDeath.ogg" id="13_ldn0h"]
-[ext_resource type="AudioStream" uid="uid://bnam0ivmvmieu" path="res://Sounds/HealPowerUp.ogg" id="13_mijjb"]
-[ext_resource type="AudioStream" uid="uid://8yxd8012oq5s" path="res://Sounds/Mox/Jump.ogg" id="14_wha0b"]
 [ext_resource type="Texture2D" uid="uid://cnb052then2l3" path="res://Sprites/Mox/IdleIceMoxSprites.png" id="15_spigs"]
-[ext_resource type="AudioStream" uid="uid://cc3mrbj63h21l" path="res://Sounds/Coin.ogg" id="15_ycepb"]
-[ext_resource type="AudioStream" uid="uid://dkj5a17j4eo2x" path="res://Sounds/Walk.ogg" id="16_up0l0"]
-[ext_resource type="AudioStream" uid="uid://b7x6xvgkwjgyl" path="res://Sounds/Mox/Damage.ogg" id="17_w0lf6"]
 [ext_resource type="Texture2D" uid="uid://djqt7jhmkuem2" path="res://Sprites/Mox/MoxIceVine.png" id="18_yerff"]
-[ext_resource type="AudioStream" uid="uid://cc8trocc4vgup" path="res://Sounds/IcePowerUp.ogg" id="19_4bugb"]
-[ext_resource type="AudioStream" uid="uid://dduldphi3utph" path="res://Sounds/DoubleJumpPowerUp.ogg" id="20_0j0yh"]
-[ext_resource type="AudioStream" uid="uid://b4t76w5uffl0v" path="res://Sounds/Water1.ogg" id="20_wwv8k"]
-[ext_resource type="AudioStream" uid="uid://dbetyft40i32s" path="res://Sounds/1UP.ogg" id="21_6jq4r"]
-[ext_resource type="AudioStream" uid="uid://b0f827m4js5d5" path="res://Sounds/FirePowerUp.ogg" id="22_6s1wh"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qlilp"]
 
@@ -2176,7 +2161,12 @@ texture_filter = 1
 texture = SubResource("CompressedTexture2D_qlilp")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1361997311]
-position = Vector2(35, 0)
+
+[node name="DustMarker" type="Marker2D" parent="." unique_id=196948750]
+position = Vector2(-1, 17)
+
+[node name="DoubleJumpMarker" type="Marker2D" parent="." unique_id=1829997222]
+position = Vector2(-1, 17)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1469037904]
 color = Color(0.6706895, 0.6706895, 0.6706895, 1)
@@ -2228,65 +2218,6 @@ parameters/vineIce/TimeScale/scale = 1.0
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=829617542]
 root_node = NodePath("../AnimationTree")
 libraries/ = SubResource("AnimationLibrary_no0uw")
-
-[node name="DustMarker" type="Marker2D" parent="." unique_id=196948750]
-position = Vector2(-1, 17)
-
-[node name="Dust" parent="DustMarker" unique_id=1834029072 instance=ExtResource("11_t4j0b")]
-
-[node name="DoubleJumpMarker" type="Marker2D" parent="." unique_id=1829997222]
-position = Vector2(-1, 17)
-
-[node name="AnimatedSprite2D" parent="DoubleJumpMarker" unique_id=727688675 instance=ExtResource("11_2n4ny")]
-
-[node name="AudioStreamPlayer2DDeath" type="AudioStreamPlayer2D" parent="." unique_id=1555088730]
-stream = ExtResource("13_ldn0h")
-volume_db = 4.0
-
-[node name="AudioStreamPlayer2DShot" type="AudioStreamPlayer2D" parent="." unique_id=779898210]
-stream = ExtResource("11_g88dg")
-volume_db = 15.0
-
-[node name="AudioStreamPlayer2DShield" type="AudioStreamPlayer2D" parent="." unique_id=1879655811]
-stream = ExtResource("12_g88dg")
-
-[node name="AudioStreamPlayer2DHeal" type="AudioStreamPlayer2D" parent="." unique_id=1762546225]
-stream = ExtResource("13_mijjb")
-volume_db = 1.0
-
-[node name="AudioStreamPlayer2DJump" type="AudioStreamPlayer2D" parent="." unique_id=2071857992]
-stream = ExtResource("14_wha0b")
-volume_db = -8.0
-
-[node name="AudioStreamPlayer2DCoin" type="AudioStreamPlayer2D" parent="." unique_id=1804781218]
-stream = ExtResource("15_ycepb")
-
-[node name="AudioStreamPlayer2DWalk" type="AudioStreamPlayer2D" parent="." unique_id=1857039479]
-stream = ExtResource("16_up0l0")
-
-[node name="AudioStreamPlayer2DWater" type="AudioStreamPlayer2D" parent="." unique_id=811223212]
-stream = ExtResource("20_wwv8k")
-
-[node name="AudioStreamPlayer2DDamage" type="AudioStreamPlayer2D" parent="." unique_id=1385423498]
-stream = ExtResource("17_w0lf6")
-volume_db = 4.0
-
-[node name="AudioStreamPlayer2DIce" type="AudioStreamPlayer2D" parent="." unique_id=1040995588]
-stream = ExtResource("19_4bugb")
-volume_db = -1.0
-pitch_scale = 1.5
-
-[node name="AudioStreamPlayer2DDoubleJumpPowerUp" type="AudioStreamPlayer2D" parent="." unique_id=617406377]
-stream = ExtResource("20_0j0yh")
-volume_db = 1.0
-
-[node name="AudioStreamPlayer2DOneUp" type="AudioStreamPlayer2D" parent="." unique_id=1679633186]
-stream = ExtResource("21_6jq4r")
-volume_db = 1.0
-
-[node name="AudioStreamPlayer2DFirePowerUp" type="AudioStreamPlayer2D" parent="." unique_id=1253763831]
-stream = ExtResource("22_6s1wh")
-volume_db = -4.0
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

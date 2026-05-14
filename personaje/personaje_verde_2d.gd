@@ -3,8 +3,6 @@ extends CharacterBody2D
 @onready var animacion = $AnimatedSprite2D
 @onready var anim_tree = $AnimationTree
 @onready var state_machine = anim_tree.get("parameters/playback")
-@onready var dust = preload("res://Sprites/Particles/Dust.tscn")
-@onready var doubleJumpParticles = preload("res://Sprites/Particles/DoubleJumpParticles.tscn")
 
 var monedas_estado = [false, false, false]
 var deathScreen = preload("res://Menús/escenas/death_screen/death_screen.tscn")
@@ -21,6 +19,8 @@ const cut_factor = 0.5
 const bala = preload("res://Proyectiles/proyectil.tscn")
 const bala_hielo = preload("res://Proyectiles/proyectil_hielo.tscn")
 const ataqueCargado = preload("res://powerUps/ataque_cargado.tscn")
+const dust = preload("res://Sprites/Particles/Dust.tscn")
+const doubleJumpParticles = preload("res://Sprites/Particles/DoubleJumpParticles.tscn")
 const coyoteTime = 10
 const afk = 400
 
@@ -146,7 +146,7 @@ func _physics_process(delta: float) -> void:
 				and (is_on_floor() or (coyoteTimeActual > 0) or dobSal):
 			_reset_afk()
 			aire = true
-			# Si quisiésemos poner partículas al saltar	
+			# Si quisiésemos poner partículas al saltar
 			#if is_jumping and isGrounded:
 			#	var instance = dust.instantiate()
 			#	instance.global_position = $DustMarker2.global_position
@@ -165,15 +165,15 @@ func _physics_process(delta: float) -> void:
 				instance2.global_position = $DoubleJumpMarker.global_position
 				get_parent().add_child(instance2)
 				dobSal = false
-
+		
 		if Input.is_action_just_released("ui_accept") and velocity.y < 0:
 			velocity.y *= cut_factor
-
+		
 		if water:
-			vel=velocidad*0.75
+			vel = velocidad * 0.75
 		else:
 			vel = velocidad
-			
+		
 		if ((not bloquearControles) and Input.is_action_pressed("correr") and is_on_floor()) or air_nercia:
 			if water:
 				vel=velocidad_correr*0.75
@@ -185,16 +185,14 @@ func _physics_process(delta: float) -> void:
 			correr = false
 
 		# Voltear sprite
-		if mirando_derecha and velocity.x < 0:
-			$CharacterGreenFront.scale.x *= -1
-			$Marker2D.position.x *= -1
-			$AnimatedSprite2D.scale.x *= -1
+		if velocity.x < 0:
 			mirando_derecha = false
-		if not mirando_derecha and velocity.x > 0:
-			$CharacterGreenFront.scale.x *= -1
-			$AnimatedSprite2D.scale.x *= -1
-			$Marker2D.position.x *= -1
+		elif velocity.x > 0:
 			mirando_derecha = true
+		
+		var dir = 1 if mirando_derecha else -1
+		$CharacterGreenFront.scale.x = dir
+		$AnimatedSprite2D.scale.x = dir
 
 		# Movimiento
 		if is_on_floor():
@@ -215,13 +213,13 @@ func _physics_process(delta: float) -> void:
 					velocity.x = move_toward(velocity.x, 0, friccion * delta)
 
 		# Disparo
-		
 		if shoot_timer > 0:
 			shoot_timer -= delta
 
 		if (not bloquearControles) and Input.is_action_just_pressed("DispararBasico") and (shoot_timer <= 0):
+			print("DISPARAR")
 			_reset_afk()
-
+			
 			# ATAQUE CARGADO
 			if ataqueCarg:
 				ataqueCarg = false
@@ -229,7 +227,7 @@ func _physics_process(delta: float) -> void:
 				shoot_timer = shoot_cooldown
 				hacer_ataque_cargado()
 				return
-
+			
 			# DISPARO NORMAL
 			if get_tree().get_nodes_in_group("ProyectilAliado").size() < 3:
 				shoot_timer = shoot_cooldown
@@ -237,20 +235,16 @@ func _physics_process(delta: float) -> void:
 				var shoot = proyectil_actual.instantiate()
 				
 				AudioManager.play("Shot1", 15.0, 1.0, global_position)
+				
 				get_parent().add_child(shoot)
-
-				shoot.position = $Marker2D.global_position
-
-				# OFFSET DEL PROYECTIL
-				if mirando_derecha:
-					shoot.position.x -= 12
-				else:
-					shoot.position.x += 12
-
-				if not mirando_derecha:
-					shoot.scale.x *= -1
-					shoot.vel_bala *= -1
-
+				
+				var dir_shoot = 1 if mirando_derecha else -1
+				shoot.global_position = $Marker2D.global_position + Vector2(32 * dir_shoot, 0)
+				shoot.vel_bala *= dir
+				
+				if dir == -1:
+					shoot.scale.x = -1
+		
 		move_and_slide()
 		
 		if is_on_floor() and abs(velocity.x) > velocidad/4:
@@ -300,17 +294,14 @@ func _physics_process(delta: float) -> void:
 			var direction_x := Input.get_axis("ui_left", "ui_right")
 			liana_segmento.apply_central_force(Vector2(direction_x * velocidad * 3, direction_y * velocidad * 2))
 			
-			# Voltear sprite según hacia dónde se balancea
-			if direction_x > 0 and not mirando_derecha:
-				$CharacterGreenFront.scale.x *= -1
-				$AnimatedSprite2D.scale.x *= -1
-				$Marker2D.position.x *= -1
-				mirando_derecha = true
-			elif direction_x < 0 and mirando_derecha:
-				$CharacterGreenFront.scale.x *= -1
-				$AnimatedSprite2D.scale.x *= -1
-				$Marker2D.position.x *= -1
+			if velocity.x < 0:
 				mirando_derecha = false
+			elif velocity.x > 0:
+				mirando_derecha = true
+			
+			var dir = 1 if mirando_derecha else -1
+			$CharacterGreenFront.scale.x = dir
+			$AnimatedSprite2D.scale.x = dir
 		
 		if Input.is_action_just_pressed("ui_accept"):
 			en_liana = false
