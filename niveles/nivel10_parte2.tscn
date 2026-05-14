@@ -31,13 +31,13 @@
 [ext_resource type="PackedScene" uid="uid://6rcs6agfvdu0" path="res://powerUps/escudo.tscn" id="28_oggur"]
 [ext_resource type="PackedScene" uid="uid://crcpdgs13fsbd" path="res://Otros/ascendentLava.tscn" id="30_tydr7"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_53ss6"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tydr7"]
 texture = ExtResource("5_e6362")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1.1289444, 1.6934204, 32, -32, 32, 32, -32, 32)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i12o8"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i2ncr"]
 texture = ExtResource("6_hiyww")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -73,20 +73,20 @@ texture_region_size = Vector2i(64, 64)
 3:3/0 = 0
 3:3/0/modulate = Color(0.4497078, 0.22775215, 0.6512044, 1)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qhqn8"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wprup"]
 texture = ExtResource("7_d6ysd")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-25.76823, -0.31045914, 26.699615, -0.6209221, 32, 32, -32, 32)
 0:0/0/custom_data_1 = true
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ne4c4"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f8bq3"]
 texture = ExtResource("8_c3xip")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fetfd"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4xlvv"]
 texture = ExtResource("9_hl0nm")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -95,7 +95,7 @@ texture_region_size = Vector2i(64, 64)
 0:0/0/physics_layer_0/polygon_0/one_way = true
 0:0/0/custom_data_2 = true
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_570nr"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e6362"]
 texture = ExtResource("10_mv42a")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -104,30 +104,30 @@ texture_region_size = Vector2i(64, 64)
 0:0/0/physics_layer_0/polygon_0/one_way = true
 0:0/0/custom_data_2 = true
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2twbf"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hiyww"]
 texture = ExtResource("11_5sjk5")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mybwg"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d6ysd"]
 texture = ExtResource("12_sj0cj")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, -21.58323, -32, -22.129639)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dsjyb"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c3xip"]
 texture = ExtResource("13_80hr5")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/modulate = Color(1, 0, 0.8333335, 1)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_th76g"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hl0nm"]
 texture = ExtResource("14_ht322")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/modulate = Color(1, 0, 0.8333335, 1)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tc1tu"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mv42a"]
 texture = ExtResource("15_r3ctm")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -145,17 +145,17 @@ custom_data_layer_1/name = "damage"
 custom_data_layer_1/type = 1
 custom_data_layer_2/name = "pass_through"
 custom_data_layer_2/type = 1
-sources/1 = SubResource("TileSetAtlasSource_i12o8")
-sources/4 = SubResource("TileSetAtlasSource_tc1tu")
-sources/10 = SubResource("TileSetAtlasSource_qhqn8")
-sources/15 = SubResource("TileSetAtlasSource_fetfd")
-sources/16 = SubResource("TileSetAtlasSource_570nr")
-sources/2 = SubResource("TileSetAtlasSource_2twbf")
-sources/14 = SubResource("TileSetAtlasSource_ne4c4")
-sources/29 = SubResource("TileSetAtlasSource_mybwg")
-sources/30 = SubResource("TileSetAtlasSource_dsjyb")
-sources/31 = SubResource("TileSetAtlasSource_th76g")
-sources/0 = SubResource("TileSetAtlasSource_53ss6")
+sources/1 = SubResource("TileSetAtlasSource_i2ncr")
+sources/4 = SubResource("TileSetAtlasSource_mv42a")
+sources/10 = SubResource("TileSetAtlasSource_wprup")
+sources/15 = SubResource("TileSetAtlasSource_4xlvv")
+sources/16 = SubResource("TileSetAtlasSource_e6362")
+sources/2 = SubResource("TileSetAtlasSource_hiyww")
+sources/14 = SubResource("TileSetAtlasSource_f8bq3")
+sources/29 = SubResource("TileSetAtlasSource_d6ysd")
+sources/30 = SubResource("TileSetAtlasSource_c3xip")
+sources/31 = SubResource("TileSetAtlasSource_hl0nm")
+sources/0 = SubResource("TileSetAtlasSource_tydr7")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yf3lr"]
 radius = 50.626984
@@ -277,8 +277,7 @@ position = Vector2(-30, -2976)
 scale = Vector2(-1, 1)
 
 [node name="Area2D3" parent="." unique_id=1657376063 instance=ExtResource("30_tydr7")]
-position = Vector2(735, 832)
-scale = Vector2(27, 27)
+position = Vector2(-129, 768)
 
 [connection signal="body_entered" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_exited"]
