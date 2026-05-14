@@ -5,19 +5,6 @@ extends CharacterBody2D
 @onready var state_machine = anim_tree.get("parameters/playback")
 @onready var dust = preload("res://Sprites/Particles/Dust.tscn")
 @onready var doubleJumpParticles = preload("res://Sprites/Particles/DoubleJumpParticles.tscn")
-@onready var shotSound = $AudioStreamPlayer2DShot
-@onready var shieldSound = $AudioStreamPlayer2DShield
-@onready var healSound = $AudioStreamPlayer2DHeal
-@onready var jumpSound = $AudioStreamPlayer2DJump
-@onready var coinSound = $AudioStreamPlayer2DCoin
-@onready var walkSound = $AudioStreamPlayer2DWalk
-@onready var waterSound = $AudioStreamPlayer2DWater
-@onready var damageSound = $AudioStreamPlayer2DDamage
-@onready var iceSound = $AudioStreamPlayer2DIce
-@onready var doubleJumpPowerUpSound = $AudioStreamPlayer2DDoubleJumpPowerUp
-@onready var oneUpSound = $AudioStreamPlayer2DOneUp
-@onready var firePowerUpSound = $AudioStreamPlayer2DFirePowerUp
-@onready var deathSound = $AudioStreamPlayer2DDeath
 
 var monedas_estado = [false, false, false]
 var deathScreen = preload("res://Menús/escenas/death_screen/death_screen.tscn")
@@ -172,7 +159,7 @@ func _physics_process(delta: float) -> void:
 			else:
 				velocity.y = JUMP_VELOCITY
 			
-			jumpSound.play()
+			AudioManager.play("Jump", -8.0, 1.0, global_position)
 			if not is_on_floor() and coyoteTimeActual <= 0:
 				var instance2 = doubleJumpParticles.instantiate()
 				instance2.global_position = $DoubleJumpMarker.global_position
@@ -249,7 +236,7 @@ func _physics_process(delta: float) -> void:
 				
 				var shoot = proyectil_actual.instantiate()
 				
-				shotSound.play()
+				AudioManager.play("Shot1", 15.0, 1.0, global_position)
 				get_parent().add_child(shoot)
 
 				shoot.position = $Marker2D.global_position
@@ -285,13 +272,9 @@ func _physics_process(delta: float) -> void:
 				walk_timer = next_step_time
 				
 				if not water:
-					walkSound.volume_db = rand_volume
-					walkSound.pitch_scale = rand_pitch
-					walkSound.play()
+					AudioManager.play("Walk", rand_volume, rand_pitch, global_position)
 				else:
-					waterSound.volume_db = rand_volume
-					waterSound.pitch_scale = rand_pitch
-					waterSound.play()
+					AudioManager.play("Water1", rand_volume, rand_pitch, global_position)
 		
 		for i in get_slide_collision_count():
 			var collision = get_slide_collision(i)
@@ -345,8 +328,8 @@ func _physics_process(delta: float) -> void:
 			#########################################################
 			collision_layer = 2  # el valor original de tu jugador
 			collision_mask = 133
-			
-			jumpSound.play()
+
+			AudioManager.play("Jump", -8.0, 1.0, global_position)
 
 		_animaciones()
 
@@ -354,10 +337,10 @@ func _physics_process(delta: float) -> void:
 func apply_powerup(type):
 	match type:
 		"dobSal":
-			doubleJumpPowerUpSound.play()
+			AudioManager.play("DoubleJumpPowerUp", 1.0, 1.0, global_position)
 			dobSalAct = true
 		"escudo":
-			shieldSound.play()
+			AudioManager.play("ShieldPowerUp", 0.0, 1.0, global_position)
 			var cantidad = 2
 
 			# Curar primero si falta vida
@@ -378,19 +361,19 @@ func apply_powerup(type):
 			emit_signal("vidas_cambiadas", vidas, escudo)
 		"vida":
 			if vidas < 2:
-				healSound.play()
+				AudioManager.play("HealPowerUp", 1.0, 1.0, global_position)
 				vidas = 2
 				emit_signal("vidas_cambiadas", vidas, escudo)
 				flash(2)
 		"guante":
-			firePowerUpSound.play()
+			AudioManager.play("FirePowerUp", -4.0, 1.0, global_position)
 			ataqueCarg = true
 			iniciar_parpadeo_cargado()
 		"hielo":
-			iceSound.play()
+			AudioManager.play("IcePowerUp", -1.0, 1.5, global_position)
 			proyectil_actual = bala_hielo
 		"OneUp":
-			oneUpSound.play()
+			AudioManager.play("1UP", -6.0, 1.0)
 			GameState.ganar_vida()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -513,7 +496,7 @@ func _animaciones() -> void:
 				isShooting = true
 				if ataqueCarg:
 					state_machine.travel("super_shoot")
-				else:	
+				else:
 					state_machine.travel("shoot")
 				return
 		
@@ -641,7 +624,7 @@ func _damage():
 	is_hurt = true
 	hurt_timer = HURT_DURATION
 	
-	damageSound.play()
+	AudioManager.play("Damage", 4.0, 1.0, global_position)
 	
 	# Escudo
 	if escudo > 0:
@@ -672,7 +655,7 @@ func _die():
 	bloquearControles = true
 	
 	flash(3)
-	deathSound.play()
+	AudioManager.play("MoxDeath", 4.0, 1.0, global_position)
 	
 	if proyectil_actual == bala_hielo:
 		state_machine.travel("deathIce")
@@ -720,8 +703,8 @@ func flash(color):
 
 func recoger_moneda(id):
 	if not GameState.monedas_estado[id]:
+		AudioManager.play("Coin", 0.0, 1.0, global_position)
 		GameState.monedas_estado[id] = true
-		coinSound.play()
 		GameState.emit_signal("monedas_cambiadas", GameState.monedas_estado)
 
 func hacer_ataque_cargado():
@@ -729,6 +712,8 @@ func hacer_ataque_cargado():
 	get_parent().add_child(atk)
 	atk.global_position = $Marker2D.global_position
 	atk.set_direccion(-1 if not mirando_derecha else 1)
+	
+	AudioManager.play("Shot2", 20.0, 1.25, global_position)
 
 func iniciar_parpadeo_cargado():
 	if tween_parpadeo:
@@ -774,10 +759,11 @@ func set_waterf():
 func _muerte_instantanea():
 	if is_dead:
 		return
+	
 	is_dead = true
 	bloquearControles = true
 	
-	deathSound.play()
+	AudioManager.play("MoxDeath", 4.0, 1.0, global_position)
 	
 	if proyectil_actual == bala_hielo:
 		state_machine.travel("deathIce")
