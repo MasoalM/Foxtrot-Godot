@@ -51,7 +51,7 @@
 [ext_resource type="PackedScene" uid="uid://d0ordmi0yu7tp" path="res://Sprites/Coleccionables/coleccionable.tscn" id="51_1bdcj"]
 [ext_resource type="PackedScene" uid="uid://cbfxwrm0nrkil" path="res://Enemigos/torreta.tscn" id="52_0m1w1"]
 [ext_resource type="Script" uid="uid://byxf47d28o0p2" path="res://Enemigos/phase_platforms.gd" id="53_wr7bh"]
-[ext_resource type="PackedScene" uid="uid://c0pg6o11j4nrg" path="res://Enemigos/ruedaTemplo.tscn" id="54_2oo37"]
+[ext_resource type="PackedScene" uid="uid://c0pg6o11j4nrg" path="res://Enemigos/rueda_templo.tscn" id="54_2oo37"]
 [ext_resource type="PackedScene" uid="uid://gbct1kgainuc" path="res://Enemigos/phase_platforms.tscn" id="54_hhrnq"]
 [ext_resource type="PackedScene" uid="uid://dtcw45iyc4vgd" path="res://powerUps/dobleSalto.tscn" id="56_vxjl6"]
 

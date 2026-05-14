@@ -3,8 +3,6 @@ extends CharacterBody2D
 @onready var hitbox = $Hitbox
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var bow = $Bow
-@onready var muerteSound = $AudioStreamPlayer2DDeath
-@onready var shootSound = $AudioStreamPlayer2DShot
 
 @export var max_vertical_range := 450
 @export var gravity := 900
@@ -65,7 +63,7 @@ func _physics_process(delta):
 					
 					shoot()
 					shoot_timer = shoot_cooldown
-					shootSound.play()
+					AudioManager.play("HawrkerShot", 5.0, 1.0, global_position)
 					
 					if not is_dead:
 						animated_sprite.play("idle")
@@ -128,7 +126,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		popup.global_position = global_position + Vector2(0, -40)
 		popup.setup("+10")
 		
-		muerteSound.play()
+		AudioManager.play("WolfiorHurtSound", 15.0, 0.3, global_position)
 		
 		animated_sprite.play("death")
 		await get_tree().create_timer(1.8).timeout

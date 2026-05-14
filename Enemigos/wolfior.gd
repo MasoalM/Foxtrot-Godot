@@ -4,12 +4,6 @@ extends CharacterBody2D
 @onready var espada_idle = $EspadaIdle
 @onready var espada_sprite = $EspadaIdle/sword
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var aullidoMuerte = $AudioStreamPlayer2DDeath
-@onready var madSound = $AudioStreamPlayer2DMad
-@onready var jumpSound = $AudioStreamPlayer2DJump
-@onready var swordHitSound = $AudioStreamPlayer2DSwordHit
-@onready var hurtSound = $AudioStreamPlayer2DHurt
-@onready var freezeSound = $AudioStreamPlayer2DFreeze
 
 var popup_scene = preload("res://personaje/PointPopup.tscn")
 
@@ -107,7 +101,7 @@ func _physics_process(delta):
 			
 			if can_see_player() and distance < detect_distance:
 				if !chasing:
-					madSound.play()
+					AudioManager.play("Maxfior", 10.0, 0.75, global_position)
 				
 				chasing = true
 				chase_timer = chase_duration
@@ -130,7 +124,7 @@ func _physics_process(delta):
 						velocity.x = 0
 						if attack_timer <= 0:
 							attack()
-							swordHitSound.play()
+							AudioManager.play("SwordHit", 5.0, 1.0, global_position)
 							attack_timer = attack_cooldown
 					else:
 						if player.global_position.x > global_position.x:
@@ -204,7 +198,7 @@ func _physics_process(delta):
 			stuck_timer = 0
 		
 		if (stuck_timer > stuck_time_limit):
-			jumpSound.play()
+			AudioManager.play("Jump", 0.0, 0.5, global_position)
 			
 			if lives == HURT_LIVES:
 				animated_sprite.play("hurtJump")
@@ -321,7 +315,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			return
 		
 		# si no muere hacemos knockback aplicar knockback
-		hurtSound.play()
+		AudioManager.play("WolfiorHurtSound", 13.0, 1.0, global_position)
 		lives = new_lives
 		
 		if not eshielo:
@@ -365,7 +359,7 @@ func muerte():
 	popup.global_position = global_position + Vector2(0, -40)
 	popup.setup("+10")
 	
-	aullidoMuerte.play()
+	AudioManager.play("WolfiorHurtSound", 20.0, 0.2, global_position)
 	
 	if is_instance_valid(espada_sprite):
 		espada_sprite.queue_free()
@@ -377,7 +371,8 @@ func muerte():
 func congelar(tiempo):
 	if congelado:
 		return
-	freezeSound.play()
+	
+	AudioManager.play("Freeze", 14.0, 0.75, global_position)
 	
 	congelado = true
 	freeze_timer = tiempo

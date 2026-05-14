@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cy0n7mpysjx47"]
 
-[ext_resource type="Script" uid="uid://cqrqo5hfxa8s0" path="res://Enemigos/boss_2.gd" id="1_kty0q"]
+[ext_resource type="Script" uid="uid://cqrqo5hfxa8s0" path="res://Enemigos/boss2.gd" id="1_kty0q"]
 [ext_resource type="Texture2D" uid="uid://ypafyky4dcp" path="res://Sprites/Enemigos/BOSS/Idle0Hits/BossDefinitivoIdle1.png" id="2_lfaag"]
 [ext_resource type="Texture2D" uid="uid://dgd66b70e77h4" path="res://Sprites/Enemigos/BOSS/Idle0Hits/BossDefinitivoIdle2.png" id="3_lcr7x"]
 [ext_resource type="Texture2D" uid="uid://b6vq8bi7wp5su" path="res://Sprites/Enemigos/BOSS/Idle0Hits/BossDefinitivoIdle3.png" id="4_q1ifj"]
@@ -18,8 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://bokhotmbdkl71" path="res://Sprites/Enemigos/BOSS/Idle3Hits/BossDefinitivoIdle3Hits3.png" id="16_2vayr"]
 [ext_resource type="Texture2D" uid="uid://crypcfndqd3cm" path="res://Sprites/Enemigos/BOSS/Idle3Hits/BossDefinitivoIdle3Hits4.png" id="17_uiaxj"]
 [ext_resource type="PackedScene" uid="uid://ctyikf2m6nhqr" path="res://Enemigos/homing_ball.tscn" id="18_0bc4v"]
-[ext_resource type="AudioStream" uid="uid://cdgb4iftj70eo" path="res://Sounds/MadBoss.ogg" id="19_cvxuq"]
-[ext_resource type="AudioStream" uid="uid://bju45770rly62" path="res://Sounds/Portal.ogg" id="20_2e0v0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5qnxw"]
 animations = [{
@@ -130,18 +128,3 @@ shape = SubResource("CircleShape2D_4befi")
 position = Vector2(2.3841858e-07, 0)
 scale = Vector2(60, 15)
 shape = SubResource("CircleShape2D_4befi")
-
-[node name="MadBoss" type="AudioStreamPlayer2D" parent="." unique_id=951522089]
-stream = ExtResource("19_cvxuq")
-volume_db = 10.0
-
-[node name="Shot" type="AudioStreamPlayer2D" parent="." unique_id=1025116359]
-stream = ExtResource("20_2e0v0")
-volume_db = -5.0
-pitch_scale = 0.75
-
-[node name="Death" type="AudioStreamPlayer2D" parent="." unique_id=778852785]
-stream = ExtResource("19_cvxuq")
-volume_db = 10.0
-pitch_scale = 0.25
-attenuation = 4.594792

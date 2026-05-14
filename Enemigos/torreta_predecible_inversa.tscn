@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bwcy0n2uwadj8"]
+
+[ext_resource type="Script" uid="uid://cql6l6u525mh0" path="res://Enemigos/torreta_predecible_inversa.gd" id="1_mqikb"]
+[ext_resource type="Texture2D" uid="uid://dj0d7kysoxui5" path="res://Sprites/Enemigos/RuinShooter.png" id="2_0x0ar"]
+[ext_resource type="Texture2D" uid="uid://djp4mcoh2wnil" path="res://Sprites/Efecto y otros/luz.png" id="3_imeo6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a1a64"]
+size = Vector2(64, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hp5rg"]
+size = Vector2(34, 24)
+
+[node name="RigidBody2D" type="RigidBody2D" unique_id=9191560]
+script = ExtResource("1_mqikb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2117115171]
+texture_filter = 1
+texture = ExtResource("2_0x0ar")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1215087692]
+position = Vector2(0, 20)
+shape = SubResource("RectangleShape2D_a1a64")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=797523724]
+position = Vector2(1, -4)
+shape = SubResource("RectangleShape2D_hp5rg")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1100862579]
+position = Vector2(43, -3)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1242945836]
+position = Vector2(4, -10)
+scale = Vector2(0.059817173, 0.06174698)
+color = Color(1, 0.00999999, 0.00999999, 1)
+energy = 5.0
+texture = ExtResource("3_imeo6")

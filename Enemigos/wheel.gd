@@ -15,7 +15,6 @@ var _bounced: bool = false
 var pos_y_fija: float
 var _jugador: Node2D = null
 var _current_speed: float
-@onready var roto = $AudioStreamPlayer2D
 
 func _ready() -> void:
 	pos_y_fija = global_position.y
@@ -127,11 +126,11 @@ func _romper_bloques() -> void:
 			var cell = Vector2i(cell_centro.x, cell_y)
 			var pos_bloque = tilemap.to_global(tilemap.map_to_local(cell))
 			if tilemap.get_cell_tile_data(0, cell):
-				roto.play()
+				AudioManager.play("back_click", 2.0, 0.7, global_position)
 				tilemap.erase_cell(0, cell)
 				_spawn_particulas_bloque(pos_bloque)
 			if tilemap.get_cell_tile_data(1, cell):
-				roto.play()
+				AudioManager.play("back_click", 2.0, 0.7, global_position)
 				tilemap.erase_cell(1, cell)
 				_spawn_particulas_bloque(pos_bloque)
 

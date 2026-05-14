@@ -18,8 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://bokhotmbdkl71" path="res://Sprites/Enemigos/BOSS/Idle3Hits/BossDefinitivoIdle3Hits3.png" id="15_luofu"]
 [ext_resource type="Texture2D" uid="uid://crypcfndqd3cm" path="res://Sprites/Enemigos/BOSS/Idle3Hits/BossDefinitivoIdle3Hits4.png" id="16_jix7o"]
 [ext_resource type="PackedScene" uid="uid://ctyikf2m6nhqr" path="res://Enemigos/homing_ball.tscn" id="17_8teny"]
-[ext_resource type="AudioStream" uid="uid://cdgb4iftj70eo" path="res://Sounds/MadBoss.ogg" id="19_eae3g"]
-[ext_resource type="AudioStream" uid="uid://bju45770rly62" path="res://Sounds/Portal.ogg" id="20_c0gxf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5qnxw"]
 animations = [{
@@ -129,18 +127,3 @@ shape = SubResource("CircleShape2D_4befi")
 position = Vector2(2.3841858e-07, 0)
 scale = Vector2(60, 15)
 shape = SubResource("CircleShape2D_4befi")
-
-[node name="MadBoss" type="AudioStreamPlayer2D" parent="." unique_id=951522089]
-stream = ExtResource("19_eae3g")
-volume_db = 10.0
-
-[node name="Shot" type="AudioStreamPlayer2D" parent="." unique_id=1025116359]
-stream = ExtResource("20_c0gxf")
-volume_db = -5.0
-pitch_scale = 0.75
-
-[node name="Death" type="AudioStreamPlayer2D" parent="." unique_id=778852785]
-stream = ExtResource("19_eae3g")
-volume_db = 10.0
-pitch_scale = 0.25
-attenuation = 4.594792

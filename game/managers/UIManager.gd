@@ -38,7 +38,7 @@ func _on_hover(button):
 	if button.disabled:
 		return
 	
-	AudioManager.play("hover_button", 0.2)
+	AudioManager.play_random_pitch("hover_button", 0.0, 0.2)
 	set_state(button, State.HOVER)
 
 func _on_exit(button):

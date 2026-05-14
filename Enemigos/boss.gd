@@ -52,10 +52,10 @@ var camera: Node
 @onready var hitbox_body := $HitboxBody
 
 # ---- Sonidos ----
-@onready var sfx_hit := $MadBoss
-@onready var sfx_shot := $Shot
-@onready var sfx_death := $Death
 @onready var music: AudioStreamPlayer = $"../AudioStreamPlayer"
+var sfx_hit: AudioStreamPlayer
+var sfx_shot: AudioStreamPlayer
+var sfx_death: AudioStreamPlayer
 
 # ---- Luz ----
 @onready var luz: DirectionalLight2D = $"../DirectionalLight2D"
@@ -70,6 +70,18 @@ func _ready():
 	_set_phase(0)
 	hitbox_head.area_entered.connect(_on_head_area_hit)
 	_start_new_move()
+	
+	# Prepare sounds
+	sfx_hit = AudioManager.get_player("MadBoss")
+	sfx_hit.volume_db = 10.0
+	
+	sfx_shot = AudioManager.get_player("Portal")
+	sfx_shot.volume_db = -5.0
+	sfx_shot.pitch_scale = 0.75
+	
+	sfx_death = AudioManager.get_player("MadBoss")
+	sfx_death.volume_db = 10.0
+	sfx_death.pitch_scale = 0.25
 
 func _physics_process(delta):
 	if is_dead:
@@ -405,10 +417,10 @@ func _die():
 	rainbow_active = false
 
 	# Desactivar hitboxes inmediatamente
-	hitbox_body.monitoring = false
-	hitbox_body.monitorable = false
-	hitbox_head.monitoring = false
-	hitbox_head.monitorable = false
+	hitbox_body.set_deferred("monitoring", false)
+	hitbox_body.set_deferred("monitorable", false)
+	hitbox_head.set_deferred("monitoring", false)
+	hitbox_head.set_deferred("monitorable", false)
 
 	# Parar inmunidad
 	if immunity_tween:

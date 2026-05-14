@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://cv0lmbdpnhih" path="res://Enemigos/torreta.gd" id="1_a1a64"]
 [ext_resource type="Texture2D" uid="uid://dj0d7kysoxui5" path="res://Sprites/Enemigos/RuinShooter.png" id="1_hp5rg"]
 [ext_resource type="Texture2D" uid="uid://djp4mcoh2wnil" path="res://Sprites/Efecto y otros/luz.png" id="3_chi4q"]
-[ext_resource type="AudioStream" uid="uid://cwpbn1gqqu21" path="res://Sounds/HawrkerShot.ogg" id="4_ov8ab"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a1a64"]
 size = Vector2(64, 24)
@@ -35,8 +34,3 @@ scale = Vector2(0.059817173, 0.06174698)
 color = Color(1, 0.00999999, 0.00999999, 1)
 energy = 5.0
 texture = ExtResource("3_chi4q")
-
-[node name="AudioStreamPlayer2DShot" type="AudioStreamPlayer2D" parent="." unique_id=182503353]
-stream = ExtResource("4_ov8ab")
-volume_db = 4.0
-pitch_scale = 0.75

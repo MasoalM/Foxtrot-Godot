@@ -42,20 +42,15 @@ func _load_ui_sounds(path: String):
 				
 				var stream = ResourceLoader.load(final_path)
 				if stream:
-					var sound = AudioStreamPlayer.new()
-					sound.stream = stream
-					sound.bus = "Efectos"
-					add_child(sound)
-				
 					var sound_name = file_name.get_basename()
-					sounds[sound_name] = sound
+					sounds[sound_name] = stream
 		file_name = directory.get_next()
 	directory.list_dir_end()
 
 
 # -- Music --
 
-func play_music(sound_name):
+func play_music(sound_name: String):
 	if not sounds.has(sound_name):
 		push_error("El sonido '" + sound_name + "' no existe.")
 		return
@@ -65,7 +60,7 @@ func play_music(sound_name):
 	
 	current_music = sound_name
 	
-	music_player.stream = sounds[sound_name].stream
+	music_player.stream = sounds[sound_name]
 	music_player.volume_db = -8.0
 	music_player.play()
 
@@ -76,32 +71,64 @@ func stop_music():
 
 # -- Sounds --
 
-func play(sound_name, pitch := 0.0) -> void:
+func play(sound_name: String, volume := 0.0, pitch := 1.0, position := Vector2.ZERO) -> void:
 	if not sounds.has(sound_name):
 		push_error("El sonido '" + sound_name + "' no existe.")
 		return
 	
-	var sound = sounds[sound_name]
 	var time = Time.get_ticks_msec()
-	
 	if last_played.get(sound_name, 0) + 40 > time:
 		return
+	else:
+		last_played[sound_name] = time
 	
-	last_played[sound_name] = time
+	var sound
+	if position == Vector2.ZERO:
+		sound = AudioStreamPlayer.new()
+	else:
+		sound = AudioStreamPlayer2D.new()
+		sound.global_position = position
+	
+	sound.stream = sounds[sound_name]
+	sound.bus = "Efectos"
+	
+	sound.volume_db = volume
+	sound.pitch_scale = pitch
+	
+	add_child(sound)
+	sound.play()
+	sound.finished.connect(sound.queue_free)
+
+
+# -- Random Players --
+
+func play_random_pitch(sound_name: String, volume := 0.0, pitch := 0.0) -> void:
+	var rand_pitch := 1.0
 	
 	if pitch > 0.0:
-		sound.pitch_scale = randf_range(1.0 - pitch, 1.0 + pitch)
+		rand_pitch = randf_range(1.0 - pitch, 1.0 + pitch)
 	else:
-		sound.pitch_scale = 1.0
+		rand_pitch = 1.0
 	
-	sound.play()
+	play(sound_name, volume, rand_pitch)
 
 
 # -- Utils --
 
-func get_sound(sound_name) -> AudioStreamPlayer:
+func get_sound(sound_name: String) -> AudioStream:
 	if not sounds.has(sound_name):
 		push_error("El sonido '" + sound_name + "' no existe.")
 		return
 	
-	return sounds.get(sound_name)
+	return sounds[sound_name]
+
+func get_player(sound_name: String) -> AudioStreamPlayer:
+	if not sounds.has(sound_name):
+		push_error("El sonido '" + sound_name + "' no existe.")
+		return
+	
+	var sound = AudioStreamPlayer.new()
+	sound.stream = sounds[sound_name]
+	sound.bus = "Efectos"
+	
+	return sound

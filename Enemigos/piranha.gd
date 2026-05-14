@@ -2,8 +2,6 @@ extends Node2D
 
 @onready var animated_sprite = $AnimatedSprite2D
 
-@onready var freezeSound = $AudioStreamPlayer2DFreeze
-
 @export var speed := 80.0
 @export var jump_interval := 5.0
 @export var gravity := 600.0
@@ -83,8 +81,8 @@ func _physics_process(delta):
 		direction = -1
 		
 	animated_sprite.flip_h = direction > 0
-		
-	_update_rotation(delta)	
+	
+	_update_rotation(delta)
 
 func _update_rotation(_delta):
 	var visual_velocity = velocity
@@ -127,15 +125,12 @@ func _on_AnimatedSprite2D_animation_finished():
 	if current_anim == "bite":
 		play_anim("movement")
 
-func _on_animated_sprite_2d_animation_finished() -> void:
-	pass # Replace with function body.
-
-
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("ProyectilHielo"):
 		if congelado:
 			return
-		freezeSound.play()
+		
+		AudioManager.play("Freeze", 14.0, 1.25, global_position)
 		
 		congelado = true
 		

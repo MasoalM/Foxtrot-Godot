@@ -7,8 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://brp3kmgrft1k1" path="res://Sprites/Enemigos/Sorceraven/SorceravenIdle1.png" id="3_dmgt1"]
 [ext_resource type="Texture2D" uid="uid://bybvr112wue2k" path="res://Sprites/Enemigos/Sorceraven/SorceravenIdle2.png" id="4_gutsu"]
 [ext_resource type="Texture2D" uid="uid://b68qxbuttd68" path="res://Sprites/Enemigos/Sorceraven/SorceravenPreShotSprites.png" id="7_fwtqn"]
-[ext_resource type="AudioStream" uid="uid://b07go6ttw8dxj" path="res://Sounds/Wolfior/WolfiorHurtSound.ogg" id="8_fwtqn"]
-[ext_resource type="AudioStream" uid="uid://cq5l48tfi2kbe" path="res://Sounds/SorceravenShot.ogg" id="9_6kd4u"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xdyjh"]
 radius = 21.0
@@ -211,14 +209,5 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1540405121]
-
-[node name="AudioStreamPlayer2DDeath" type="AudioStreamPlayer2D" parent="." unique_id=417198862]
-stream = ExtResource("8_fwtqn")
-volume_db = 10.0
-pitch_scale = 0.5
-
-[node name="AudioStreamPlayer2DShot" type="AudioStreamPlayer2D" parent="." unique_id=340106767]
-stream = ExtResource("9_6kd4u")
-volume_db = -2.0
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -29,7 +29,7 @@
 [ext_resource type="PackedScene" path="res://Otros/geyserlavadoble.tscn" id="51_vq4ol"]
 [ext_resource type="PackedScene" path="res://Otros/geyserlavadobleAlto.tscn" id="52_dsjyb"]
 [ext_resource type="PackedScene" path="res://Otros/geyserlavadobleMedio.tscn" id="53_th76g"]
-[ext_resource type="PackedScene" uid="uid://c0pg6o11j4nrg" path="res://Enemigos/ruedaTemplo.tscn" id="54_o58ik"]
+[ext_resource type="PackedScene" uid="uid://c0pg6o11j4nrg" path="res://Enemigos/rueda_templo.tscn" id="54_o58ik"]
 [ext_resource type="PackedScene" uid="uid://cbfxwrm0nrkil" path="res://Enemigos/torreta.tscn" id="55_bshhl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i12o8"]

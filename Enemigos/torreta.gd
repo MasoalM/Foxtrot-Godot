@@ -1,7 +1,6 @@
 extends StaticBody2D
 
 const proyectil = preload("res://Proyectiles/proyectilTorreta.tscn")
-@onready var shotSound = $AudioStreamPlayer2DShot
 @onready var pointLight = $PointLight2D
 
 # --- Enum de dirección (aparece como desplegable en el inspector) ---
@@ -56,7 +55,7 @@ func _disparar() -> void:
 	get_parent().add_child(shoot)
 	shoot.position = $Marker2D.global_position
 
-	shotSound.play()
+	AudioManager.play("HawrkerShot", 8.0, 0.75, global_position)
 	var dir = VECTORES_DIRECCION[direccion_disparo]
 	shoot.direccion = dir
 	

@@ -5,9 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dep81qp7tesl" path="res://Sprites/Proyectiles/Bow.png" id="3_afeyf"]
 [ext_resource type="Texture2D" uid="uid://cjd700yupuah4" path="res://Sprites/Enemigos/Hawrker/HawrkerIdleSprites.png" id="5_cymbx"]
 [ext_resource type="Texture2D" uid="uid://dkm3jik5m245f" path="res://Sprites/Enemigos/Hawrker/HawrkerDeathSprites.png" id="5_nd4nf"]
-[ext_resource type="AudioStream" uid="uid://b07go6ttw8dxj" path="res://Sounds/Wolfior/WolfiorHurtSound.ogg" id="7_nd4nf"]
 [ext_resource type="Texture2D" uid="uid://6swigxysokkw" path="res://Sprites/Enemigos/Hawrker/HawrkerPreShot.png" id="7_q2lss"]
-[ext_resource type="AudioStream" uid="uid://cwpbn1gqqu21" path="res://Sounds/HawrkerShot.ogg" id="8_q2lss"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x4fpu"]
 radius = 21.0
@@ -188,14 +186,5 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_q2lss")
 animation = &"death"
 autoplay = "idle"
-
-[node name="AudioStreamPlayer2DDeath" type="AudioStreamPlayer2D" parent="." unique_id=23386432]
-stream = ExtResource("7_nd4nf")
-volume_db = 15.0
-pitch_scale = 0.3
-
-[node name="AudioStreamPlayer2DShot" type="AudioStreamPlayer2D" parent="." unique_id=1847388920]
-stream = ExtResource("8_q2lss")
-volume_db = 5.0
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

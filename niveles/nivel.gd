@@ -11,7 +11,7 @@ func _ready():
 	
 	var scene = get_tree().current_scene.scene_file_path
 	if scene != "res://niveles/level_selector.tscn":
-		noTimeSound = AudioManager.get_sound("NoTime")
+		noTimeSound = AudioManager.get_player("NoTime")
 		noTimeSound.volume_db = -2.0
 		noTimeSound.pitch_scale = 0.75
 	

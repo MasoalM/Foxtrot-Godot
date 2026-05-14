@@ -11,8 +11,6 @@ var popup_scene = preload("res://personaje/PointPopup.tscn")
 @onready var ray_vision = $RayCastVision
 @onready var shoot_point = $ShootPoint
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var muerte = $AudioStreamPlayer2DDeath
-@onready var shootSound = $AudioStreamPlayer2DShot
 
 var direction := 1
 var player
@@ -53,7 +51,7 @@ func _physics_process(delta):
 			shoot_timer = shoot_cooldown
 			animated_sprite.play("preShot")
 			await get_tree().create_timer(0.5).timeout
-			shootSound.play()
+			AudioManager.play("SorceravenShot", -2.0, 1.0, global_position)
 			shoot()
 	else:
 		# --- MOVIMIENTO NORMAL ---
@@ -176,7 +174,7 @@ func die():
 	set_deferred("monitoring", false)
 	$Area2D.set_deferred("monitoring", false)
 
-	muerte.play()
+	AudioManager.play("WolfiorHurtSound", 12.0, 0.5, global_position)
 
 	set_physics_process(false)
 	

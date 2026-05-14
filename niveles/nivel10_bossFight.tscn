@@ -44,8 +44,8 @@
 [ext_resource type="PackedScene" uid="uid://cy0n7mpysjx47" path="res://Enemigos/BOSS2.tscn" id="42_n2wgx"]
 [ext_resource type="Script" uid="uid://bshhohvbgjgng" path="res://Enemigos/phase_platforms2.gd" id="43_y26qn"]
 [ext_resource type="Script" uid="uid://dnvkhmfoxd08t" path="res://niveles/platform_manager_3.gd" id="44_qtsru"]
-[ext_resource type="PackedScene" uid="uid://j1jcojwm7rpg" path="res://Enemigos/torretaPredecible.tscn" id="45_wbqp6"]
-[ext_resource type="PackedScene" uid="uid://bwcy0n2uwadj8" path="res://Enemigos/torretaPredecibleInversa.tscn" id="46_sn2lg"]
+[ext_resource type="PackedScene" uid="uid://j1jcojwm7rpg" path="res://Enemigos/torreta_predecible.tscn" id="45_wbqp6"]
+[ext_resource type="PackedScene" uid="uid://bwcy0n2uwadj8" path="res://Enemigos/torreta_predecible_inversa.tscn" id="46_sn2lg"]
 [ext_resource type="PackedScene" uid="uid://bi8u5lyedj4lt" path="res://niveles/level_ui.tscn" id="47_mqnkh"]
 [ext_resource type="PackedScene" uid="uid://b1ftwkgwp40yb" path="res://powerUps/vida.tscn" id="48_sep7s"]
 
