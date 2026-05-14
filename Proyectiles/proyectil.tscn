@@ -19,7 +19,6 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_1hd88")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1311440186]
-texture_filter = 1
 position = Vector2(3.3881318e-21, 0)
 scale = Vector2(0.77000004, 0.5799999)
 texture = ExtResource("2_1hd88")

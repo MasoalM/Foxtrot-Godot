@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ddrjia0hvaicm" path="res://Menús/escenas/ajustes/ajustes.gd" id="1_mbglq"]
 [ext_resource type="Texture2D" uid="uid://c2ykgj5lpibhw" path="res://Menús/assets/fondos/principal_frame.png" id="2_il33w"]
 [ext_resource type="Texture2D" uid="uid://br4w7x75iyvs0" path="res://Menús/assets/Ajustes.png" id="3_rxun8"]
-[ext_resource type="PackedScene" uid="uid://dqbe5okdrpjjb" path="res://Menús/escenas/ajustes/ajustes.tscn" id="4_nq5rj"]
+[ext_resource type="PackedScene" uid="uid://dqbe5okdrpjjb" path="res://Menús/escenas/ajustes/ajustes.tscn" id="4_bia61"]
 [ext_resource type="Texture2D" uid="uid://bmg6eta32vtya" path="res://Menús/assets/botones/Atrás.png" id="23_p11f4"]
 [ext_resource type="Script" uid="uid://i8al5r4kf4uc" path="res://Menús/botones/atrás.gd" id="24_c5dah"]
 
@@ -39,20 +39,19 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_rxun8")
 
-[node name="Ajustes" parent="Control/Fondo/Menú Ajustes" unique_id=521340292 instance=ExtResource("4_nq5rj")]
+[node name="Ajustes" type="VBoxContainer" parent="Control/Fondo/Menú Ajustes" unique_id=521340292 instance=ExtResource("4_bia61")]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.0
 offset_left = -180.0
 offset_top = 57.0
 offset_right = 180.0
 offset_bottom = 229.0
-grow_vertical = 1
+grow_horizontal = 2
+theme_override_constants/separation = 8
 
 [node name="Atrás" type="TextureButton" parent="Control/Fondo/Menú Ajustes" unique_id=1395209060]
-texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c4iqjuupd12d6" path="res://Menús/assets/botones/Selector de Niveles.png" id="7_cqc5r"]
 [ext_resource type="Texture2D" uid="uid://br4w7x75iyvs0" path="res://Menús/assets/Ajustes.png" id="7_kcbi8"]
 [ext_resource type="Texture2D" uid="uid://b6c0c13rra11h" path="res://Menús/assets/botones/Menú Principal.png" id="8_f8boe"]
-[ext_resource type="PackedScene" uid="uid://dqbe5okdrpjjb" path="res://Menús/escenas/ajustes/ajustes.tscn" id="8_l6mxg"]
+[ext_resource type="PackedScene" uid="uid://dqbe5okdrpjjb" path="res://Menús/escenas/ajustes/ajustes.tscn" id="8_t35ot"]
 [ext_resource type="Texture2D" uid="uid://gtt3plcfsdf4" path="res://Menús/assets/botones/Salir Escritorio.png" id="9_l6mxg"]
 [ext_resource type="Texture2D" uid="uid://bmg6eta32vtya" path="res://Menús/assets/botones/Atrás.png" id="10_bxypm"]
 [ext_resource type="FontFile" uid="uid://coe4gaaihhlww" path="res://Menús/assets/fuentes/Retro Gaming.ttf" id="15_4evw2"]
@@ -156,20 +156,19 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_kcbi8")
 
-[node name="Ajustes" parent="Control/Fondo/Menú Ajustes" unique_id=521340292 instance=ExtResource("8_l6mxg")]
+[node name="Ajustes" type="VBoxContainer" parent="Control/Fondo/Menú Ajustes" unique_id=521340292 instance=ExtResource("8_t35ot")]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.0
 offset_left = -180.0
 offset_top = 57.0
 offset_right = 180.0
 offset_bottom = 229.0
-grow_vertical = 1
+grow_horizontal = 2
+theme_override_constants/separation = 8
 
 [node name="Atrás" type="TextureButton" parent="Control/Fondo/Menú Ajustes" unique_id=264141266]
-texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

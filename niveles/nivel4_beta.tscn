@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dso2t3joxpt18" path="res://Sprites/Bloques/Spikes.png" id="3_ayohi"]
 [ext_resource type="Texture2D" uid="uid://bgh8ouadkr0y" path="res://Sprites/Bloques/Dirt.png" id="3_r10fn"]
 [ext_resource type="Script" uid="uid://bpowst78jrhru" path="res://niveles/camera.gd" id="4_7y6eg"]
+[ext_resource type="Script" uid="uid://csqhart454t43" path="res://personaje/personaje_verde_2d.gd" id="4_o6a1n"]
 [ext_resource type="Texture2D" uid="uid://bktcuauxvfsik" path="res://Sprites/Bloques/WoodBlock (1).png" id="4_t1lxu"]
 [ext_resource type="Texture2D" uid="uid://cv1sxq1g5e6ya" path="res://Sprites/Bloques/DamagedWoodBlock (1).png" id="5_sph8r"]
 [ext_resource type="Texture2D" uid="uid://1c6fp8kosfun" path="res://Sprites/Bloques/DirtPlant.png" id="6_uec6p"]
@@ -44,11 +45,18 @@
 [ext_resource type="AudioStream" uid="uid://bju45770rly62" path="res://Sounds/Portal.ogg" id="43_ayohi"]
 [ext_resource type="Texture2D" uid="uid://cu8lwjcio2np5" path="res://Sprites/F.png" id="43_l4jck"]
 [ext_resource type="AudioStream" uid="uid://dmybnkonokowx" path="res://Sounds/PrePortal.mp3" id="44_t1lxu"]
+[ext_resource type="Script" uid="uid://co875d5yuwu3s" path="res://Enemigos/hawrker.gd" id="46_j7d20"]
 [ext_resource type="PackedScene" uid="uid://sua7jayjmk8o" path="res://Enemigos/sorceraven.tscn" id="46_t1lxu"]
 [ext_resource type="PackedScene" uid="uid://sw3iu1espuey" path="res://powerUps/guante.tscn" id="47_sph8r"]
+[ext_resource type="PackedScene" uid="uid://b7diipa0verqi" path="res://Enemigos/flecha.tscn" id="47_wiocq"]
 [ext_resource type="PackedScene" uid="uid://bi8u5lyedj4lt" path="res://niveles/level_ui.tscn" id="48_uec6p"]
 [ext_resource type="PackedScene" uid="uid://c83oj12tyaneq" path="res://Sprites/Checkpoint/checkpoint.tscn" id="49_bjwex"]
+[ext_resource type="Script" uid="uid://csrje5a1d385h" path="res://Enemigos/sorceraven.gd" id="49_o04fj"]
+[ext_resource type="PackedScene" uid="uid://b4x007pbgxha5" path="res://Enemigos/sorcery.tscn" id="50_lkji2"]
 [ext_resource type="PackedScene" uid="uid://d0ordmi0yu7tp" path="res://Sprites/Coleccionables/coleccionable.tscn" id="50_opcjv"]
+[ext_resource type="Script" uid="uid://bspb61lunljlk" path="res://powerUps/guante.gd" id="52_cxkg3"]
+[ext_resource type="Script" uid="uid://b6de74r0bjviw" path="res://Sprites/Checkpoint/checkpoint.gd" id="55_clrv8"]
+[ext_resource type="Script" uid="uid://lb1yx00sjnic" path="res://Sprites/Coleccionables/coleccionable.gd" id="57_05rbu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_86eud"]
 texture = ExtResource("3_r10fn")
@@ -279,9 +287,11 @@ volume_db = -14.0
 autoplay = true
 bus = &"Música"
 
-[node name="CharacterBody2D5" parent="." unique_id=1006504852 groups=["player"] instance=ExtResource("2_86eud")]
-texture_filter = 1
+[node name="CharacterBody2D5" type="CharacterBody2D" parent="." unique_id=1006504852 groups=["player"] instance=ExtResource("2_86eud")]
 position = Vector2(100, 398.63)
+collision_layer = 2
+collision_mask = 133
+script = ExtResource("4_o6a1n")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D5" unique_id=1548526242]
 position = Vector2(305, -708)
@@ -293,7 +303,6 @@ script = ExtResource("4_7y6eg")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1726310753]
 z_index = -1
-texture_filter = 1
 rotation = 0.0007608196
 tile_set = SubResource("TileSet_ny6w2")
 format = 2
@@ -305,19 +314,19 @@ layer_2/name = "Fondo"
 layer_2/z_index = -2
 layer_2/tile_data = PackedInt32Array(524346, 28, 0, 458810, 28, 0, 393274, 28, 0, 327738, 28, 0, 327739, 28, 0, 393275, 28, 0, 458811, 28, 0, 524347, 28, 0, 524348, 28, 0, 458812, 28, 0, 393276, 28, 0, 327740, 28, 0, 262204, 28, 0, 262203, 28, 0, 262202, 28, 0, 196666, 28, 0, 131130, 28, 0, 65594, 28, 0, 58, 28, 0, -65478, 28, 0, -65477, 28, 0, -65476, 28, 0, 60, 28, 0, 65596, 28, 0, 65595, 28, 0, 131131, 28, 0, 196667, 28, 0, 59, 28, 0, 131132, 28, 0, 196668, 28, 0, 262201, 28, 0, 262200, 25, 0, 196664, 25, 0, 131128, 25, 0, 65592, 25, 0, 56, 25, 0, 57, 28, 0, -65479, 28, 0, -65480, 25, 0, 65593, 28, 0, 131129, 28, 0, 196665, 28, 0, 524349, 28, 0, 458813, 28, 0, 393277, 28, 0, 327741, 28, 0, 262205, 28, 0, 196669, 28, 0, 131133, 28, 0, 65597, 28, 0, 61, 28, 0, -65475, 28, 0, -65474, 28, 0, 62, 28, 0, 65598, 28, 0, 131134, 28, 0, 196670, 28, 0, 262206, 28, 0, 327742, 28, 0, 393278, 28, 0, 458814, 28, 0, 524350, 28, 0, 524351, 28, 268435456, 458815, 28, 268435456, 393279, 28, 268435456, 327743, 28, 268435456, 262207, 28, 268435456, 196671, 28, 268435456, 131135, 28, 268435456, 65599, 28, 268435456, 63, 28, 268435456, -65473, 28, 268435456, -65472, 28, 268435456, -65471, 28, 268435456, -65470, 28, 268435456, -65469, 28, 268435456, -65468, 28, 268435456, -65467, 28, 268435456, -65466, 26, 0, 70, 26, 0, 65606, 26, 0, 131142, 26, 0, 196678, 26, 0, 262214, 26, 0, 327750, 26, 0, 393286, 26, 0, 458822, 26, 0, 524358, 26, 0, 524357, 28, 268435456, 524356, 28, 268435456, 524355, 28, 268435456, 524354, 28, 268435456, 524353, 28, 268435456, 524352, 28, 268435456, 458816, 28, 268435456, 393280, 28, 268435456, 327744, 28, 268435456, 262208, 28, 268435456, 196672, 28, 268435456, 131136, 28, 268435456, 65600, 28, 268435456, 64, 28, 268435456, 65601, 28, 268435456, 131137, 28, 268435456, 196673, 28, 268435456, 262209, 28, 268435456, 327745, 28, 268435456, 393281, 28, 268435456, 458817, 28, 268435456, 65, 28, 268435456, 66, 28, 268435456, 65602, 28, 268435456, 131138, 28, 268435456, 196674, 28, 268435456, 262210, 28, 268435456, 327746, 28, 268435456, 393282, 28, 268435456, 458818, 28, 268435456, 393283, 28, 268435456, 327747, 28, 268435456, 262211, 28, 268435456, 196675, 28, 268435456, 131139, 28, 268435456, 65603, 28, 268435456, 67, 28, 268435456, 458819, 28, 268435456, 458820, 28, 268435456, 393284, 28, 268435456, 327748, 28, 268435456, 262212, 28, 268435456, 196676, 28, 268435456, 131140, 28, 268435456, 65604, 28, 268435456, 68, 28, 268435456, 69, 28, 268435456, 65605, 28, 268435456, 131141, 28, 268435456, 196677, 28, 268435456, 262213, 28, 268435456, 327749, 28, 268435456, 393285, 28, 268435456, 458821, 28, 268435456, 65742, 27, 0, 65743, 27, 0, 65744, 27, 0, 65745, 27, 0, 65746, 27, 0, 65747, 27, 0, 65748, 27, 0, 131278, 27, 0, 196814, 27, 0, 196815, 27, 0, 196816, 27, 0, 196817, 27, 0, 196818, 27, 0, 196819, 27, 0, 262355, 27, 0, 327891, 27, 0, 327890, 27, 0, 327889, 27, 0, 327888, 27, 0, 327887, 27, 0, 327886, 27, 0, 393422, 27, 0, 458958, 27, 0, 458959, 27, 0, 458960, 27, 0, 458961, 27, 0, 458962, 27, 0, 458963, 27, 0, 524499, 27, 0, 590035, 27, 0, 590034, 27, 0, 590033, 27, 0, 590032, 27, 0, 590031, 27, 0, 590030, 27, 0, 590029, 27, 0, 590028, 27, 0, 524492, 27, 0, 458956, 27, 0, 393420, 27, 0, 327884, 27, 0, 262348, 27, 0, 196812, 27, 0, 131276, 27, 0, 65740, 27, 0)
 
-[node name="StaticBody2D" parent="." unique_id=1752570427 instance=ExtResource("32_hu74c")]
+[node name="StaticBody2D" type="Area2D" parent="." unique_id=1752570427 instance=ExtResource("32_hu74c")]
 position = Vector2(890, 550)
 
-[node name="StaticBody2D2" parent="." unique_id=134811654 instance=ExtResource("32_hu74c")]
+[node name="StaticBody2D2" type="Area2D" parent="." unique_id=134811654 instance=ExtResource("32_hu74c")]
 position = Vector2(11250, 550)
 
-[node name="RigidBody2D" parent="." unique_id=637563091 instance=ExtResource("33_sh013")]
+[node name="RigidBody2D" type="Area2D" parent="." unique_id=637563091 instance=ExtResource("33_sh013")]
 position = Vector2(4356, 67)
 
-[node name="RigidBody2D2" parent="." unique_id=2136293655 instance=ExtResource("34_nc06k")]
+[node name="RigidBody2D2" type="Area2D" parent="." unique_id=2136293655 instance=ExtResource("34_nc06k")]
 position = Vector2(402, -44)
 
-[node name="Node2D" parent="." unique_id=220363280 instance=ExtResource("36_6aqdr")]
+[node name="Node2D" type="Node2D" parent="." unique_id=220363280 instance=ExtResource("36_6aqdr")]
 position = Vector2(8661, 521)
 
 [node name="PortalFinNivel" type="Sprite2D" parent="." unique_id=975711507 groups=["Portals"]]
@@ -345,7 +354,6 @@ scale = Vector2(3.5, 5)
 shape = SubResource("CircleShape2D_mqfnb")
 
 [node name="Indicador" type="Sprite2D" parent="PortalFinNivel" unique_id=1441578271]
-texture_filter = 1
 position = Vector2(0, -70)
 texture = ExtResource("43_l4jck")
 
@@ -357,51 +365,107 @@ volume_db = 3.0
 stream = ExtResource("44_t1lxu")
 volume_db = -4.0
 
-[node name="CharacterBody2D2" parent="." unique_id=1098210497 instance=ExtResource("38_ijlxt")]
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="." unique_id=1098210497 groups=["Enemigos"] instance=ExtResource("38_ijlxt")]
 position = Vector2(3294, 546)
+script = ExtResource("46_j7d20")
+projectile_scene = ExtResource("47_wiocq")
 
-[node name="CharacterBody2D" parent="." unique_id=826984372 instance=ExtResource("38_ijlxt")]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=826984372 groups=["Enemigos"] instance=ExtResource("38_ijlxt")]
 position = Vector2(3189, 547)
+script = ExtResource("46_j7d20")
+projectile_scene = ExtResource("47_wiocq")
 
-[node name="CharacterBody2D17" parent="." unique_id=1159300983 instance=ExtResource("46_t1lxu")]
+[node name="CharacterBody2D17" type="CharacterBody2D" parent="." unique_id=1159300983 groups=["Enemigos"] instance=ExtResource("46_t1lxu")]
+light_mask = 7
+visibility_layer = 7
 position = Vector2(6748, 292)
+collision_layer = 4
+script = ExtResource("49_o04fj")
+projectile_scene = ExtResource("50_lkji2")
 
-[node name="CharacterBody2D18" parent="." unique_id=977668380 instance=ExtResource("46_t1lxu")]
+[node name="CharacterBody2D18" type="CharacterBody2D" parent="." unique_id=977668380 groups=["Enemigos"] instance=ExtResource("46_t1lxu")]
+light_mask = 7
+visibility_layer = 7
 position = Vector2(9751, 488)
+collision_layer = 4
+script = ExtResource("49_o04fj")
+projectile_scene = ExtResource("50_lkji2")
 
-[node name="CharacterBody2D19" parent="." unique_id=570225595 instance=ExtResource("46_t1lxu")]
+[node name="CharacterBody2D19" type="CharacterBody2D" parent="." unique_id=570225595 groups=["Enemigos"] instance=ExtResource("46_t1lxu")]
+light_mask = 7
+visibility_layer = 7
 position = Vector2(13423, 617)
+collision_layer = 4
+script = ExtResource("49_o04fj")
+projectile_scene = ExtResource("50_lkji2")
 
-[node name="CharacterBody2D20" parent="." unique_id=337192067 instance=ExtResource("46_t1lxu")]
+[node name="CharacterBody2D20" type="CharacterBody2D" parent="." unique_id=337192067 groups=["Enemigos"] instance=ExtResource("46_t1lxu")]
+light_mask = 7
+visibility_layer = 7
 position = Vector2(13217, 492)
+collision_layer = 4
+script = ExtResource("49_o04fj")
+projectile_scene = ExtResource("50_lkji2")
 
-[node name="CharacterBody2D22" parent="." unique_id=1533149994 instance=ExtResource("46_t1lxu")]
+[node name="CharacterBody2D22" type="CharacterBody2D" parent="." unique_id=1533149994 groups=["Enemigos"] instance=ExtResource("46_t1lxu")]
+light_mask = 7
+visibility_layer = 7
 position = Vector2(13217, 238)
+collision_layer = 4
+script = ExtResource("49_o04fj")
+projectile_scene = ExtResource("50_lkji2")
 
-[node name="CharacterBody2D16" parent="." unique_id=1127469986 instance=ExtResource("46_t1lxu")]
+[node name="CharacterBody2D16" type="CharacterBody2D" parent="." unique_id=1127469986 groups=["Enemigos"] instance=ExtResource("46_t1lxu")]
+light_mask = 7
+visibility_layer = 7
 position = Vector2(6362, 292)
+collision_layer = 4
+script = ExtResource("49_o04fj")
+projectile_scene = ExtResource("50_lkji2")
 
-[node name="guante" parent="." unique_id=2119763944 instance=ExtResource("47_sph8r")]
+[node name="guante" type="Area2D" parent="." unique_id=2119763944 instance=ExtResource("47_sph8r")]
 position = Vector2(10351, 559)
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("52_cxkg3")
 
-[node name="LevelUi" parent="." unique_id=274504807 instance=ExtResource("48_uec6p")]
+[node name="LevelUi" type="Control" parent="." unique_id=274504807 instance=ExtResource("48_uec6p")]
+layout_mode = 3
+anchors_preset = 0
 
-[node name="Area2D5" parent="." unique_id=1406310529 instance=ExtResource("49_bjwex")]
+[node name="Area2D5" type="Area2D" parent="." unique_id=1406310529 instance=ExtResource("49_bjwex")]
 position = Vector2(10244, 425)
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("55_clrv8")
 
-[node name="RigidBody2D3" parent="." unique_id=917221941 instance=ExtResource("33_sh013")]
+[node name="RigidBody2D3" type="Area2D" parent="." unique_id=917221941 instance=ExtResource("33_sh013")]
 position = Vector2(12352, 170)
 
-[node name="Area2D" parent="." unique_id=604219173 instance=ExtResource("50_opcjv")]
+[node name="Area2D" type="Area2D" parent="." unique_id=604219173 instance=ExtResource("50_opcjv")]
 position = Vector2(5762, 144)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("57_05rbu")
 
-[node name="Area2D2" parent="." unique_id=816645255 instance=ExtResource("50_opcjv")]
+[node name="Area2D2" type="Area2D" parent="." unique_id=816645255 instance=ExtResource("50_opcjv")]
 position = Vector2(8831, 193)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("57_05rbu")
 coin_id = 1
 
-[node name="Area2D3" parent="." unique_id=2121880747 instance=ExtResource("50_opcjv")]
+[node name="Area2D3" type="Area2D" parent="." unique_id=2121880747 instance=ExtResource("50_opcjv")]
 position = Vector2(13304, -31)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("57_05rbu")
 coin_id = 2
 
 [connection signal="body_entered" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="guante" to="guante" method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D5" to="Area2D5" method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D3" to="Area2D3" method="_on_body_entered"]

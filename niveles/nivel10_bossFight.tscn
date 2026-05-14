@@ -340,7 +340,7 @@ sources/30 = SubResource("TileSetAtlasSource_dsjyb")
 sources/31 = SubResource("TileSetAtlasSource_th76g")
 sources/32 = SubResource("TileSetAtlasSource_h5rf2")
 
-[node name="Node2D2" type="Node2D" unique_id=1979362221]
+[node name="Node2D4" type="Node2D" unique_id=1979362221]
 script = ExtResource("1_6ipxs")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=396328753]
@@ -351,7 +351,6 @@ bus = &"Música"
 
 [node name="CharacterBody2D5" parent="." unique_id=1006504852 groups=["player"] instance=ExtResource("3_p51xv")]
 z_index = -1
-texture_filter = 1
 position = Vector2(284.29984, 398.6304)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D5" unique_id=1548526242]
@@ -363,7 +362,6 @@ script = ExtResource("4_d7rg3")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1726310753]
 z_index = -1
-texture_filter = 1
 rotation = 0.0007608196
 tile_set = SubResource("TileSet_ny6w2")
 format = 2

@@ -2157,7 +2157,6 @@ script = ExtResource("1_7aows")
 
 [node name="CharacterGreenFront" type="Sprite2D" parent="." unique_id=217656587]
 visible = false
-texture_filter = 1
 texture = SubResource("CompressedTexture2D_qlilp")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1361997311]
@@ -2184,7 +2183,7 @@ position = Vector2(-4, 0)
 shape = SubResource("CapsuleShape2D_s7s46")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1427350456]
-texture_filter = 1
+use_parent_material = true
 position = Vector2(-3, 0)
 sprite_frames = SubResource("SpriteFrames_hypta")
 animation = &"idle"

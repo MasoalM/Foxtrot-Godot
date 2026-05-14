@@ -354,7 +354,6 @@ bus = &"Música"
 
 [node name="CharacterBody2D5" parent="." unique_id=1006504852 groups=["player"] instance=ExtResource("3_mag71")]
 z_index = -1
-texture_filter = 1
 position = Vector2(535, 412)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D5" unique_id=1788858218]
@@ -367,7 +366,6 @@ script = ExtResource("4_vv1sh")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1726310753]
 z_index = -1
-texture_filter = 1
 rotation = 0.0007608196
 tile_set = SubResource("TileSet_ny6w2")
 format = 2
@@ -408,7 +406,6 @@ scale = Vector2(3.5, 5)
 shape = SubResource("CircleShape2D_yf3lr")
 
 [node name="Indicador" type="Sprite2D" parent="PortalFinNivel" unique_id=1651135916]
-texture_filter = 1
 position = Vector2(-1, -72)
 texture = ExtResource("44_67mun")
 

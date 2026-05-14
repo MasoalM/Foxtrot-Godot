@@ -14,7 +14,6 @@ size = Vector2(34, 24)
 script = ExtResource("1_mqikb")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2117115171]
-texture_filter = 1
 texture = ExtResource("2_0x0ar")
 flip_h = true
 

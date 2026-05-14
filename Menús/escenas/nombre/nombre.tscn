@@ -124,7 +124,6 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Botones" type="VBoxContainer" parent="nombreEscena" unique_id=1627282214]
-texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

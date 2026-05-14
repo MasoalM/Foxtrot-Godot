@@ -14,7 +14,6 @@ height = 34.0
 [node name="RigidBody2D" type="Area2D" unique_id=917221941]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=924884598]
-texture_filter = 1
 texture = ExtResource("1_2dfc1")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1278460220]

@@ -12,7 +12,6 @@ radius = 17.0
 [node name="Area2D" type="Area2D" unique_id=134811654]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=354953536]
-texture_filter = 1
 texture = ExtResource("1_hpqph")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=754972774]

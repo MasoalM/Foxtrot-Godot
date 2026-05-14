@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cuyvn6hit0t4h" path="res://niveles/nivel.gd" id="1_c0rvr"]
 [ext_resource type="AudioStream" uid="uid://bho0of4st26kb" path="res://Music/BOSS.ogg" id="2_c0rvr"]
 [ext_resource type="PackedScene" uid="uid://t3cps6t21qux" path="res://personaje/personajeVerde_2d.tscn" id="3_sam67"]
+[ext_resource type="Script" uid="uid://csqhart454t43" path="res://personaje/personaje_verde_2d.gd" id="4_2tpwf"]
 [ext_resource type="Script" uid="uid://dqv5682iatep7" path="res://niveles/camera_shake.gd" id="4_h5rf2"]
 [ext_resource type="Texture2D" uid="uid://bgh8ouadkr0y" path="res://Sprites/Bloques/Dirt.png" id="4_irswv"]
 [ext_resource type="Texture2D" uid="uid://by6ou6ijmk82e" path="res://Sprites/Bloques/Grass.png" id="5_iea6l"]
@@ -38,12 +39,30 @@
 [ext_resource type="Texture2D" uid="uid://uo1swjyosu5i" path="res://Sprites/Bloques/DirtRuinTransition.png" id="35_awm4o"]
 [ext_resource type="Texture2D" uid="uid://dwroa0ojm2rqf" path="res://Sprites/Bloques/Column.png" id="36_kgjhr"]
 [ext_resource type="PackedScene" uid="uid://cp5pub8lyfwwh" path="res://Enemigos/BOSS.tscn" id="38_cnv7i"]
+[ext_resource type="Script" uid="uid://die7t87qolqj5" path="res://Enemigos/boss.gd" id="40_rtfjc"]
 [ext_resource type="PackedScene" uid="uid://dtcw45iyc4vgd" path="res://powerUps/dobleSalto.tscn" id="41_5antl"]
+[ext_resource type="Texture2D" uid="uid://ypafyky4dcp" path="res://Sprites/Enemigos/BOSS/Idle0Hits/BossDefinitivoIdle1.png" id="41_8a361"]
+[ext_resource type="Texture2D" uid="uid://dgd66b70e77h4" path="res://Sprites/Enemigos/BOSS/Idle0Hits/BossDefinitivoIdle2.png" id="42_b566i"]
 [ext_resource type="PackedScene" uid="uid://6rcs6agfvdu0" path="res://powerUps/escudo.tscn" id="43_aoo74"]
 [ext_resource type="PackedScene" uid="uid://bi8u5lyedj4lt" path="res://niveles/level_ui.tscn" id="43_m5nc2"]
 [ext_resource type="Script" uid="uid://byxf47d28o0p2" path="res://Enemigos/phase_platforms.gd" id="43_r70wt"]
+[ext_resource type="Texture2D" uid="uid://b6vq8bi7wp5su" path="res://Sprites/Enemigos/BOSS/Idle0Hits/BossDefinitivoIdle3.png" id="43_wa7l5"]
 [ext_resource type="PackedScene" uid="uid://gbct1kgainuc" path="res://Enemigos/phase_platforms.tscn" id="44_aoo74"]
+[ext_resource type="Texture2D" uid="uid://caq481lw3bcmn" path="res://Sprites/Enemigos/BOSS/Idle0Hits/BossDefinitivoIdle4.png" id="44_fwwwn"]
 [ext_resource type="PackedScene" uid="uid://b1ftwkgwp40yb" path="res://powerUps/vida.tscn" id="44_m5nc2"]
+[ext_resource type="Texture2D" uid="uid://celrylb6cnk1f" path="res://Sprites/Enemigos/BOSS/Idle1Hit/BossDefinitivoIdle1Hit1.png" id="45_8x4lb"]
+[ext_resource type="Texture2D" uid="uid://cst1mscykm3d3" path="res://Sprites/Enemigos/BOSS/Idle1Hit/BossDefinitivoIdle1Hit2.png" id="46_upfa8"]
+[ext_resource type="Texture2D" uid="uid://ddrokwmr6hvmk" path="res://Sprites/Enemigos/BOSS/Idle1Hit/BossDefinitivoIdle1Hit3.png" id="47_eavok"]
+[ext_resource type="Texture2D" uid="uid://kcb0kufddnx3" path="res://Sprites/Enemigos/BOSS/Idle1Hit/BossDefinitivoIdle1Hit4.png" id="48_r253l"]
+[ext_resource type="Texture2D" uid="uid://blo4nkof7h6su" path="res://Sprites/Enemigos/BOSS/Idle2Hits/BossDefinitivoIdle2Hits1.png" id="49_f27qw"]
+[ext_resource type="Texture2D" uid="uid://bekbpdpj588n" path="res://Sprites/Enemigos/BOSS/Idle2Hits/BossDefinitivoIdle2Hits2.png" id="50_tbsql"]
+[ext_resource type="Texture2D" uid="uid://di85yv0jxbhre" path="res://Sprites/Enemigos/BOSS/Idle2Hits/BossDefinitivoIdle2Hits3.png" id="51_ub77o"]
+[ext_resource type="Texture2D" uid="uid://bbq5saj2nqqvm" path="res://Sprites/Enemigos/BOSS/Idle2Hits/BossDefinitivoIdle2Hits4.png" id="52_p07tc"]
+[ext_resource type="Texture2D" uid="uid://c8el1eagp2ww7" path="res://Sprites/Enemigos/BOSS/Idle3Hits/BossDefinitivoIdle3Hits1.png" id="53_dt4yp"]
+[ext_resource type="Texture2D" uid="uid://ch78nxmosr1e8" path="res://Sprites/Enemigos/BOSS/Idle3Hits/BossDefinitivoIdle3Hits2.png" id="54_1dtda"]
+[ext_resource type="Texture2D" uid="uid://bokhotmbdkl71" path="res://Sprites/Enemigos/BOSS/Idle3Hits/BossDefinitivoIdle3Hits3.png" id="55_y0bia"]
+[ext_resource type="Texture2D" uid="uid://crypcfndqd3cm" path="res://Sprites/Enemigos/BOSS/Idle3Hits/BossDefinitivoIdle3Hits4.png" id="56_1joc8"]
+[ext_resource type="PackedScene" uid="uid://ctyikf2m6nhqr" path="res://Enemigos/homing_ball.tscn" id="57_erpy2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rn8p"]
 texture = ExtResource("4_irswv")
@@ -344,10 +363,12 @@ volume_db = -12.0
 autoplay = true
 bus = &"Música"
 
-[node name="CharacterBody2D5" parent="." unique_id=1006504852 groups=["player"] instance=ExtResource("3_sam67")]
+[node name="CharacterBody2D5" type="CharacterBody2D" parent="." unique_id=1006504852 groups=["player"] instance=ExtResource("3_sam67")]
 z_index = -1
-texture_filter = 1
 position = Vector2(284.29984, 398.6304)
+collision_layer = 2
+collision_mask = 133
+script = ExtResource("4_2tpwf")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D5" unique_id=1548526242]
 position = Vector2(305, -708)
@@ -359,7 +380,6 @@ script = ExtResource("4_h5rf2")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1726310753]
 z_index = -1
-texture_filter = 1
 rotation = 0.0007608196
 tile_set = SubResource("TileSet_ny6w2")
 format = 2
@@ -379,15 +399,21 @@ layer_4/name = "Cubierta"
 color = Color(0.78447294, 0.11464273, 0.99999994, 1)
 energy = 1.25
 
-[node name="Boss" parent="." unique_id=884704565 groups=["Enemigos"] instance=ExtResource("38_cnv7i")]
+[node name="Boss" type="CharacterBody2D" parent="." unique_id=884704565 groups=["Enemigos"] instance=ExtResource("38_cnv7i")]
 position = Vector2(649, 212)
 collision_layer = 8
 collision_mask = 8
+script = ExtResource("40_rtfjc")
+phase_1_frames = Array[Texture2D]([ExtResource("41_8a361"), ExtResource("42_b566i"), ExtResource("43_wa7l5"), ExtResource("44_fwwwn")])
+phase_2_frames = Array[Texture2D]([ExtResource("45_8x4lb"), ExtResource("46_upfa8"), ExtResource("47_eavok"), ExtResource("48_r253l")])
+phase_3_frames = Array[Texture2D]([ExtResource("49_f27qw"), ExtResource("50_tbsql"), ExtResource("51_ub77o"), ExtResource("52_p07tc")])
+phase_4_frames = Array[Texture2D]([ExtResource("53_dt4yp"), ExtResource("54_1dtda"), ExtResource("55_y0bia"), ExtResource("56_1joc8")])
+ball_scene = ExtResource("57_erpy2")
 
-[node name="StaticBody2D" parent="." unique_id=134811654 instance=ExtResource("41_5antl")]
+[node name="StaticBody2D" type="Area2D" parent="." unique_id=134811654 instance=ExtResource("41_5antl")]
 position = Vector2(355, 416)
 
-[node name="RigidBody2D" parent="." unique_id=917221941 instance=ExtResource("43_aoo74")]
+[node name="RigidBody2D" type="Area2D" parent="." unique_id=917221941 instance=ExtResource("43_aoo74")]
 position = Vector2(424, 412)
 
 [node name="PlatformManager" type="Node2D" parent="." unique_id=1520847845]
@@ -395,7 +421,9 @@ script = ExtResource("43_r70wt")
 platform_scene = ExtResource("44_aoo74")
 spawn_positions = Array[Vector2]([Vector2(250, 400), Vector2(1000, 400), Vector2(150, 200), Vector2(950, 200), Vector2(250, 125), Vector2(850, 100), Vector2(600, 300), Vector2(800, 225), Vector2(450, 400), Vector2(500, 100)])
 
-[node name="LevelUi" parent="." unique_id=286716871 instance=ExtResource("43_m5nc2")]
+[node name="LevelUi" type="Control" parent="." unique_id=286716871 instance=ExtResource("43_m5nc2")]
+layout_mode = 3
+anchors_preset = 0
 
-[node name="Area2D" parent="." unique_id=1230411257 instance=ExtResource("44_m5nc2")]
+[node name="Area2D" type="Area2D" parent="." unique_id=1230411257 instance=ExtResource("44_m5nc2")]
 position = Vector2(1183, 428)

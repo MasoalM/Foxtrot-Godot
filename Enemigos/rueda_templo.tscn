@@ -14,7 +14,6 @@ radius = 24.0
 script = ExtResource("1_ufj1r")
 
 [node name="SawB" type="Sprite2D" parent="." unique_id=32117148]
-texture_filter = 1
 texture = ExtResource("1_prvix")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=614849374]

@@ -21,7 +21,6 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="Column" type="Sprite2D" parent="StaticBody2D" unique_id=1677913051]
-texture_filter = 1
 scale = Vector2(2, 2.5)
 texture = ExtResource("2_lwmiw")
 
@@ -47,7 +46,6 @@ linear_damp = 0.75
 angular_damp = 1.5
 
 [node name="Column" type="Sprite2D" parent="RigidBody2D" unique_id=1125570310]
-texture_filter = 1
 scale = Vector2(2, 2.5)
 texture = ExtResource("2_lwmiw")
 
@@ -77,7 +75,6 @@ linear_damp = 0.75
 angular_damp = 1.5
 
 [node name="Column" type="Sprite2D" parent="RigidBody2D2" unique_id=404935539]
-texture_filter = 1
 scale = Vector2(2, 2.5)
 texture = ExtResource("2_lwmiw")
 
@@ -107,7 +104,6 @@ linear_damp = 0.75
 angular_damp = 1.5
 
 [node name="Column" type="Sprite2D" parent="RigidBody2D3" unique_id=1231036278]
-texture_filter = 1
 scale = Vector2(2, 2.5)
 texture = ExtResource("2_lwmiw")
 
@@ -137,7 +133,6 @@ linear_damp = 0.75
 angular_damp = 1.5
 
 [node name="Column" type="Sprite2D" parent="RigidBody2D4" unique_id=452694304]
-texture_filter = 1
 scale = Vector2(2, 2.5)
 texture = ExtResource("2_lwmiw")
 
@@ -159,7 +154,6 @@ linear_damp = 0.75
 angular_damp = 1.5
 
 [node name="Column" type="Sprite2D" parent="RigidBody2D6" unique_id=1434253867]
-texture_filter = 1
 scale = Vector2(2, 2.5)
 texture = ExtResource("2_lwmiw")
 
@@ -181,7 +175,6 @@ linear_damp = 0.75
 angular_damp = 1.5
 
 [node name="Column" type="Sprite2D" parent="RigidBody2D7" unique_id=1056606347]
-texture_filter = 1
 scale = Vector2(2, 2.5)
 texture = ExtResource("2_lwmiw")
 

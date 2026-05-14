@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cuyvn6hit0t4h" path="res://niveles/nivel.gd" id="1_v0nek"]
 [ext_resource type="AudioStream" uid="uid://xmsdxetrf7nj" path="res://Music/Level3.ogg" id="2_wy3s1"]
 [ext_resource type="PackedScene" uid="uid://t3cps6t21qux" path="res://personaje/personajeVerde_2d.tscn" id="3_aywxr"]
+[ext_resource type="Script" uid="uid://csqhart454t43" path="res://personaje/personaje_verde_2d.gd" id="4_6poiu"]
 [ext_resource type="Script" uid="uid://bpowst78jrhru" path="res://niveles/camera.gd" id="4_cow1m"]
 [ext_resource type="Texture2D" uid="uid://bgh8ouadkr0y" path="res://Sprites/Bloques/Dirt.png" id="5_2vaqt"]
 [ext_resource type="Texture2D" uid="uid://by6ou6ijmk82e" path="res://Sprites/Bloques/Grass.png" id="6_8fmr3"]
@@ -45,7 +46,10 @@
 [ext_resource type="AudioStream" uid="uid://dmybnkonokowx" path="res://Sounds/PrePortal.mp3" id="47_73f3w"]
 [ext_resource type="PackedScene" uid="uid://c0tuke05vvcv2" path="res://Otros/cataratas.tscn" id="48_3lt21"]
 [ext_resource type="PackedScene" uid="uid://bi8u5lyedj4lt" path="res://niveles/level_ui.tscn" id="50_25mrc"]
+[ext_resource type="Script" uid="uid://b6de74r0bjviw" path="res://Sprites/Checkpoint/checkpoint.gd" id="50_nv1qx"]
 [ext_resource type="PackedScene" uid="uid://duk5en5j45jy1" path="res://Otros/geyserdoble.tscn" id="51_npfwj"]
+[ext_resource type="Script" uid="uid://lb1yx00sjnic" path="res://Sprites/Coleccionables/coleccionable.gd" id="52_vyqqg"]
+[ext_resource type="Script" uid="uid://cv7pcfofuq2ko" path="res://Enemigos/big_ranha.gd" id="54_crtan"]
 [ext_resource type="Script" uid="uid://c1scqrsbv82t0" path="res://tutorial.gd" id="55_pw6x1"]
 [ext_resource type="PackedScene" uid="uid://c83oj12tyaneq" path="res://Sprites/Checkpoint/checkpoint.tscn" id="59_ykgty"]
 [ext_resource type="PackedScene" uid="uid://d0ordmi0yu7tp" path="res://Sprites/Coleccionables/coleccionable.tscn" id="60_is371"]
@@ -337,6 +341,104 @@ sources/31 = SubResource("TileSetAtlasSource_t5mwo")
 [sub_resource type="CircleShape2D" id="CircleShape2D_n0u70"]
 radius = 12.292276
 
+[sub_resource type="GDScript" id="GDScript_g0r31"]
+script/source = "extends Node2D
+
+@export var altura_max = 150.0
+@export var duracion_subida = 0.3
+@export var duracion_cima = 0.4
+@export var duracion_bajada = 0.8
+@export var duracion_pausa = 1.2
+
+@onready var area = $Area2D
+@onready var area_shape = $Area2D/CollisionShape2D
+@onready var suelo = $StaticBody2D
+@onready var suelo_shape = $StaticBody2D/CollisionShape2D
+@onready var sound = $AudioStreamPlayer2D
+@onready var freezeSound = $AudioStreamPlayer2DFreeze
+
+@onready var sprite_main = $Sprite2D
+@onready var sprite_area = $Area2D/Sprite2D
+
+enum Fase { SUBIDA, CIMA, BAJADA, PAUSA }
+
+var fase_actual = Fase.PAUSA
+var tiempo_fase = 0.0
+var altura_actual = 0.0
+var helado = 0
+
+var color_original
+var color_hielo = Color(2.434, 5.788, 5.967, 1.0)
+
+func _ready() -> void:
+	suelo_shape.shape = suelo_shape.shape.duplicate()
+	suelo_shape.set_deferred(\"disabled\", true)
+	color_original = sprite_main.modulate
+
+func _process(delta):
+	tiempo_fase += delta
+
+	if helado == 0:
+		match fase_actual:
+			Fase.SUBIDA:
+				sound.play()
+				var t = tiempo_fase / duracion_subida
+				altura_actual = altura_max * (1 - pow(1 - t, 3))
+				if tiempo_fase >= duracion_subida:
+					altura_actual = altura_max
+					_cambiar_fase(Fase.CIMA)
+
+			Fase.CIMA:
+				altura_actual = altura_max + randf_range(-3.0, 3.0)
+				if tiempo_fase >= duracion_cima:
+					_cambiar_fase(Fase.BAJADA)
+
+			Fase.BAJADA:
+				var t = tiempo_fase / duracion_bajada
+				altura_actual = altura_max * pow(1 - t, 2)
+				if tiempo_fase >= duracion_bajada:
+					altura_actual = 0
+					_cambiar_fase(Fase.PAUSA)
+
+			Fase.PAUSA:
+				altura_actual = 0
+				if tiempo_fase >= duracion_pausa:
+					_cambiar_fase(Fase.SUBIDA)
+
+		area.scale.y = max(0.01, 5 * altura_actual / altura_max)
+
+		var altura = max(1.0, altura_actual)
+		suelo_shape.shape.size.y = altura
+		suelo.position.y = -altura / 2
+
+	else:
+		helado -= 1
+		if helado <= 0:
+			_set_color(color_original)
+			area_shape.set_deferred(\"disabled\", false)
+			suelo_shape.set_deferred(\"disabled\", true)
+
+func _cambiar_fase(nueva: Fase):
+	fase_actual = nueva
+	tiempo_fase = 0.0
+
+func _on_area_2d_area_entered(area_entered: Area2D) -> void:
+	if area_entered.is_in_group(\"ProyectilHielo\"):
+		if area_entered.has_method(\"morir\"):
+			area_entered.morir()
+
+		if helado == 0:
+			helado = 500
+			_set_color(color_hielo)
+			freezeSound.play()
+			area_shape.set_deferred(\"disabled\", true)
+			suelo_shape.set_deferred(\"disabled\", false)
+
+func _set_color(c: Color):
+	sprite_main.modulate = c
+	sprite_area.modulate = c
+"
+
 [node name="Node2D" type="Node2D" unique_id=1979362221]
 script = ExtResource("1_v0nek")
 
@@ -346,10 +448,12 @@ volume_db = -9.0
 autoplay = true
 bus = &"Música"
 
-[node name="CharacterBody2D5" parent="." unique_id=1006504852 groups=["player"] instance=ExtResource("3_aywxr")]
+[node name="CharacterBody2D5" type="CharacterBody2D" parent="." unique_id=1006504852 groups=["player"] instance=ExtResource("3_aywxr")]
 z_index = -1
-texture_filter = 1
 position = Vector2(364, 415)
+collision_layer = 2
+collision_mask = 133
+script = ExtResource("4_6poiu")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D5" unique_id=1548526242]
 position = Vector2(305, -708)
@@ -361,7 +465,6 @@ script = ExtResource("4_cow1m")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1726310753]
 z_index = -1
-texture_filter = 1
 rotation = 0.0007608196
 tile_set = SubResource("TileSet_ny6w2")
 format = 2
@@ -381,7 +484,7 @@ position = Vector2(-1199, -1141)
 texture = ExtResource("37_w0w21")
 texture_scale = 14.87
 
-[node name="RigidBody2D" parent="." unique_id=637563091 instance=ExtResource("39_2x1lw")]
+[node name="RigidBody2D" type="Area2D" parent="." unique_id=637563091 instance=ExtResource("39_2x1lw")]
 position = Vector2(564, 386)
 
 [node name="PortalFinNivel" type="Sprite2D" parent="." unique_id=1626171669 groups=["Portals"]]
@@ -409,7 +512,6 @@ scale = Vector2(3.5, 5)
 shape = SubResource("CircleShape2D_n0u70")
 
 [node name="Indicador" type="Sprite2D" parent="PortalFinNivel" unique_id=1825291874]
-texture_filter = 1
 position = Vector2(0, -67)
 texture = ExtResource("45_w7ipd")
 
@@ -421,14 +523,17 @@ volume_db = 3.0
 stream = ExtResource("47_73f3w")
 volume_db = -4.0
 
-[node name="Node2D2" parent="." unique_id=220363280 instance=ExtResource("48_3lt21")]
+[node name="Node2D2" type="Node2D" parent="." unique_id=220363280 instance=ExtResource("48_3lt21")]
 position = Vector2(1642, 49)
 
-[node name="LevelUi" parent="." unique_id=274504807 instance=ExtResource("50_25mrc")]
+[node name="LevelUi" type="Control" parent="." unique_id=274504807 instance=ExtResource("50_25mrc")]
+layout_mode = 3
+anchors_preset = 0
 
-[node name="Node2D6" parent="." unique_id=972032776 instance=ExtResource("51_npfwj")]
+[node name="Node2D6" type="Node2D" parent="." unique_id=972032776 instance=ExtResource("51_npfwj")]
 position = Vector2(7952, 459)
 scale = Vector2(175, 1)
+script = SubResource("GDScript_g0r31")
 altura_max = 10000.0
 duracion_subida = 1.0
 duracion_cima = 3.0
@@ -440,22 +545,43 @@ position = Vector2(6422, 128)
 rotation = 0.0007608196
 script = ExtResource("55_pw6x1")
 
-[node name="Area2D6" parent="." unique_id=1406310529 instance=ExtResource("59_ykgty")]
+[node name="Area2D6" type="Area2D" parent="." unique_id=1406310529 instance=ExtResource("59_ykgty")]
 position = Vector2(8702, 424)
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("50_nv1qx")
 
-[node name="Area2D7" parent="." unique_id=604219173 instance=ExtResource("60_is371")]
+[node name="Area2D7" type="Area2D" parent="." unique_id=604219173 instance=ExtResource("60_is371")]
 position = Vector2(7792, 419)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("52_vyqqg")
 
-[node name="Area2D8" parent="." unique_id=1545410951 instance=ExtResource("60_is371")]
+[node name="Area2D8" type="Area2D" parent="." unique_id=1545410951 instance=ExtResource("60_is371")]
 position = Vector2(11134, 93)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("52_vyqqg")
 coin_id = 1
 
-[node name="Area2D9" parent="." unique_id=1878375805 instance=ExtResource("60_is371")]
+[node name="Area2D9" type="Area2D" parent="." unique_id=1878375805 instance=ExtResource("60_is371")]
 position = Vector2(14258, 87)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("52_vyqqg")
 coin_id = 2
 
-[node name="Bigranha" parent="." unique_id=887321509 instance=ExtResource("61_wy3s1")]
+[node name="Bigranha" type="CharacterBody2D" parent="." unique_id=887321509 groups=["Enemigos"] instance=ExtResource("61_wy3s1")]
+light_mask = 2
+z_index = -1
 position = Vector2(665, 615)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("54_crtan")
 
 [connection signal="body_entered" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Area2D6" to="Area2D6" method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D7" to="Area2D7" method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D8" to="Area2D8" method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D9" to="Area2D9" method="_on_body_entered"]

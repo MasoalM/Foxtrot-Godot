@@ -35,7 +35,6 @@ animations = [{
 }]
 
 [node name="Dust" type="AnimatedSprite2D" unique_id=1834029072]
-texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_s6y7e")
 autoplay = "default"
 frame = 5

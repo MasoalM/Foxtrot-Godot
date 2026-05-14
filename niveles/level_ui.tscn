@@ -27,7 +27,6 @@ offset_bottom = 461.0
 script = ExtResource("1_3i2k3")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control" unique_id=657924689]
-texture_filter = 1
 layout_mode = 0
 offset_left = 51.0
 offset_top = 41.0
@@ -43,19 +42,15 @@ offset_right = 278.0
 offset_bottom = 91.0
 
 [node name="cora1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1782111166]
-texture_filter = 1
 layout_mode = 2
 
 [node name="cora2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1948406013]
-texture_filter = 1
 layout_mode = 2
 
 [node name="escudo1" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=926537653]
-texture_filter = 1
 layout_mode = 2
 
 [node name="escudo2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer" unique_id=1226779806]
-texture_filter = 1
 layout_mode = 2
 
 [node name="HBoxContainerMonedas" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=327697321]
@@ -123,7 +118,6 @@ layout_mode = 2
 theme = SubResource("Theme_r5rnn")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/VBoxContainer/HBoxContainerPuntos" unique_id=491921035]
-texture_filter = 1
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 texture = ExtResource("6_r5rnn")

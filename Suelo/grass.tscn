@@ -1,15 +1,11 @@
 [gd_scene format=3 uid="uid://1mc4d131wgq0"]
 
-[ext_resource type="Texture2D" uid="uid://5ti0kh28yim5" path="res://Sprites/Tiles/Default/Grass.png" id="1_g17dg"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fbo4i"]
 size = Vector2(64, 64)
 
 [node name="StaticBody2D" type="StaticBody2D" unique_id=463068738]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1238315499]
-texture_filter = 1
-texture = ExtResource("1_g17dg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=762172065]
 shape = SubResource("RectangleShape2D_fbo4i")

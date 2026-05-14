@@ -177,12 +177,10 @@ shape = SubResource("CircleShape2D_dm53f")
 [node name="Marker2D" type="Marker2D" parent="Bow" unique_id=1733462299]
 
 [node name="Sprite2D" type="Sprite2D" parent="Bow" unique_id=419762791]
-texture_filter = 1
 position = Vector2(18, 1)
 texture = ExtResource("3_afeyf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=714040421]
-texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_q2lss")
 animation = &"death"
 autoplay = "idle"

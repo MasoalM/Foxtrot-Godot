@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bgh8ouadkr0y" path="res://Sprites/Bloques/Dirt.png" id="3_q0edt"]
 [ext_resource type="Texture2D" uid="uid://by6ou6ijmk82e" path="res://Sprites/Bloques/Grass.png" id="4_3qka7"]
 [ext_resource type="Script" uid="uid://bpowst78jrhru" path="res://niveles/camera.gd" id="4_q6r8m"]
+[ext_resource type="Script" uid="uid://csqhart454t43" path="res://personaje/personaje_verde_2d.gd" id="4_wd6dj"]
 [ext_resource type="Texture2D" uid="uid://bktcuauxvfsik" path="res://Sprites/Bloques/WoodBlock (1).png" id="6_6f0j1"]
 [ext_resource type="Texture2D" uid="uid://dso2t3joxpt18" path="res://Sprites/Bloques/Spikes.png" id="7_7xf2h"]
 [ext_resource type="Texture2D" uid="uid://cv1sxq1g5e6ya" path="res://Sprites/Bloques/DamagedWoodBlock (1).png" id="7_t5mwo"]
@@ -39,7 +40,9 @@
 [ext_resource type="Texture2D" uid="uid://djp4mcoh2wnil" path="res://Sprites/Efecto y otros/luz.png" id="32_xhdyk"]
 [ext_resource type="PackedScene" uid="uid://6rcs6agfvdu0" path="res://powerUps/escudo.tscn" id="34_x8vmk"]
 [ext_resource type="PackedScene" uid="uid://b1ftwkgwp40yb" path="res://powerUps/vida.tscn" id="35_3vl3f"]
+[ext_resource type="Script" uid="uid://dw1ufvymmdmcv" path="res://Enemigos/wolfior.gd" id="42_ulhbr"]
 [ext_resource type="PackedScene" uid="uid://digj45m3nsyp4" path="res://Enemigos/wolfior.tscn" id="44_6f0j1"]
+[ext_resource type="Script" uid="uid://ce7kdwdx7gsp7" path="res://Enemigos/piranha.gd" id="44_by22t"]
 [ext_resource type="PackedScene" uid="uid://cb6oqqy6h61jd" path="res://Enemigos/piranha.tscn" id="45_y6dms"]
 [ext_resource type="Texture2D" uid="uid://c6hicl8pigqrp" path="res://Sprites/Portals/PortalNivel1.png" id="46_xradi"]
 [ext_resource type="Script" uid="uid://desol7c47hbtl" path="res://Sprites/Portals/portals.gd" id="47_bf0o1"]
@@ -47,6 +50,7 @@
 [ext_resource type="AudioStream" uid="uid://bju45770rly62" path="res://Sounds/Portal.ogg" id="49_n0u70"]
 [ext_resource type="AudioStream" uid="uid://dmybnkonokowx" path="res://Sounds/PrePortal.mp3" id="50_6t5vl"]
 [ext_resource type="PackedScene" uid="uid://c0tuke05vvcv2" path="res://Otros/cataratas.tscn" id="50_u5i5k"]
+[ext_resource type="Script" uid="uid://dsq7d3l6ct4qb" path="res://powerUps/item_hielo.gd" id="52_eyhl7"]
 [ext_resource type="PackedScene" uid="uid://bi8u5lyedj4lt" path="res://niveles/level_ui.tscn" id="53_5ojtp"]
 [ext_resource type="PackedScene" uid="uid://duk5en5j45jy1" path="res://Otros/geyserdoble.tscn" id="53_c5aqp"]
 [ext_resource type="PackedScene" uid="uid://bsv2dvqlv8m35" path="res://Otros/geyserdobleMedio.tscn" id="54_g8d7h"]
@@ -55,10 +59,15 @@
 [ext_resource type="Script" uid="uid://c1scqrsbv82t0" path="res://tutorial.gd" id="56_0vww6"]
 [ext_resource type="PackedScene" uid="uid://dnrf50t8ymia2" path="res://Otros/agua.tscn" id="56_q56wv"]
 [ext_resource type="Texture2D" uid="uid://bjp53c15uhf5u" path="res://Sprites/E.png" id="57_rs6mn"]
+[ext_resource type="Script" uid="uid://bnpx7a8ylx6fb" path="res://Otros/agua.gd" id="58_nfwgg"]
 [ext_resource type="PackedScene" uid="uid://bbru0hmobasum" path="res://powerUps/CorazonRojo.tscn" id="58_rs6mn"]
 [ext_resource type="PackedScene" uid="uid://csgorm16kj0mv" path="res://Otros/liana.tscn" id="59_utksw"]
 [ext_resource type="PackedScene" uid="uid://c83oj12tyaneq" path="res://Sprites/Checkpoint/checkpoint.tscn" id="60_7xf2h"]
 [ext_resource type="PackedScene" uid="uid://d0ordmi0yu7tp" path="res://Sprites/Coleccionables/coleccionable.tscn" id="60_q6r8m"]
+[ext_resource type="Script" uid="uid://cao6vsm5yboo3" path="res://Sprites/PowerUps/corazon_rojo.gd" id="62_j8m00"]
+[ext_resource type="Script" uid="uid://brdmfpep60oxs" path="res://Otros/liana.gd" id="64_xrphv"]
+[ext_resource type="Script" uid="uid://b6de74r0bjviw" path="res://Sprites/Checkpoint/checkpoint.gd" id="66_5f3ou"]
+[ext_resource type="Script" uid="uid://lb1yx00sjnic" path="res://Sprites/Coleccionables/coleccionable.gd" id="68_1v31q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rn8p"]
 texture = ExtResource("3_q0edt")
@@ -343,6 +352,313 @@ sources/31 = SubResource("TileSetAtlasSource_t5mwo")
 [sub_resource type="CircleShape2D" id="CircleShape2D_n0u70"]
 radius = 12.292276
 
+[sub_resource type="GDScript" id="GDScript_g0r31"]
+script/source = "extends Node2D
+
+@export var altura_max = 150.0
+@export var duracion_subida = 0.3
+@export var duracion_cima = 0.4
+@export var duracion_bajada = 0.8
+@export var duracion_pausa = 1.2
+
+@onready var area = $Area2D
+@onready var area_shape = $Area2D/CollisionShape2D
+@onready var suelo = $StaticBody2D
+@onready var suelo_shape = $StaticBody2D/CollisionShape2D
+@onready var sound = $AudioStreamPlayer2D
+@onready var freezeSound = $AudioStreamPlayer2DFreeze
+
+@onready var sprite_main = $Sprite2D
+@onready var sprite_area = $Area2D/Sprite2D
+
+enum Fase { SUBIDA, CIMA, BAJADA, PAUSA }
+
+var fase_actual = Fase.PAUSA
+var tiempo_fase = 0.0
+var altura_actual = 0.0
+var helado = 0
+
+var color_original
+var color_hielo = Color(2.434, 5.788, 5.967, 1.0)
+
+func _ready() -> void:
+	suelo_shape.shape = suelo_shape.shape.duplicate()
+	suelo_shape.set_deferred(\"disabled\", true)
+	color_original = sprite_main.modulate
+
+func _process(delta):
+	tiempo_fase += delta
+
+	if helado == 0:
+		match fase_actual:
+			Fase.SUBIDA:
+				sound.play()
+				var t = tiempo_fase / duracion_subida
+				altura_actual = altura_max * (1 - pow(1 - t, 3))
+				if tiempo_fase >= duracion_subida:
+					altura_actual = altura_max
+					_cambiar_fase(Fase.CIMA)
+
+			Fase.CIMA:
+				altura_actual = altura_max + randf_range(-3.0, 3.0)
+				if tiempo_fase >= duracion_cima:
+					_cambiar_fase(Fase.BAJADA)
+
+			Fase.BAJADA:
+				var t = tiempo_fase / duracion_bajada
+				altura_actual = altura_max * pow(1 - t, 2)
+				if tiempo_fase >= duracion_bajada:
+					altura_actual = 0
+					_cambiar_fase(Fase.PAUSA)
+
+			Fase.PAUSA:
+				altura_actual = 0
+				if tiempo_fase >= duracion_pausa:
+					_cambiar_fase(Fase.SUBIDA)
+
+		area.scale.y = max(0.01, 5 * altura_actual / altura_max)
+
+		var altura = max(1.0, altura_actual)
+		suelo_shape.shape.size.y = altura
+		suelo.position.y = -altura / 2
+
+	else:
+		helado -= 1
+		if helado <= 0:
+			_set_color(color_original)
+			area_shape.set_deferred(\"disabled\", false)
+			suelo_shape.set_deferred(\"disabled\", true)
+
+func _cambiar_fase(nueva: Fase):
+	fase_actual = nueva
+	tiempo_fase = 0.0
+
+func _on_area_2d_area_entered(area_entered: Area2D) -> void:
+	if area_entered.is_in_group(\"ProyectilHielo\"):
+		if area_entered.has_method(\"morir\"):
+			area_entered.morir()
+
+		if helado == 0:
+			helado = 500
+			_set_color(color_hielo)
+			freezeSound.play()
+			area_shape.set_deferred(\"disabled\", true)
+			suelo_shape.set_deferred(\"disabled\", false)
+
+func _set_color(c: Color):
+	sprite_main.modulate = c
+	sprite_area.modulate = c
+"
+
+[sub_resource type="GDScript" id="GDScript_jfyf5"]
+script/source = "extends Node2D
+
+@export var altura_max = 250.0
+@export var duracion_subida = 0.3
+@export var duracion_cima = 0.4
+@export var duracion_bajada = 0.8
+@export var duracion_pausa = 1.2
+
+@onready var area = $Area2D
+@onready var area_shape = $Area2D/CollisionShape2D
+@onready var suelo = $StaticBody2D
+@onready var suelo_shape = $StaticBody2D/CollisionShape2D
+@onready var sound = $AudioStreamPlayer2D
+@onready var freezeSound = $AudioStreamPlayer2DFreeze
+
+# Sprites a colorear
+@onready var sprite_main = $Sprite2D
+@onready var sprite_area = $Area2D/Sprite2D
+
+enum Fase { SUBIDA, CIMA, BAJADA, PAUSA }
+
+var fase_actual = Fase.PAUSA
+var tiempo_fase = 0.0
+var altura_actual = 0.0
+var helado = 0
+
+# Colores
+var color_original
+var color_hielo = Color(2.434, 5.788, 5.967, 1.0)
+
+func _ready() -> void:
+	suelo_shape.shape = suelo_shape.shape.duplicate()
+	suelo_shape.set_deferred(\"disabled\", true)
+
+	# Guardar color original real
+	color_original = sprite_main.modulate
+
+
+func _process(delta):
+	tiempo_fase += delta
+
+	if helado == 0:
+		match fase_actual:
+			Fase.SUBIDA:
+				sound.play()
+				var t = tiempo_fase / duracion_subida
+				altura_actual = altura_max * (1 - pow(1 - t, 3))
+				if tiempo_fase >= duracion_subida:
+					altura_actual = altura_max
+					_cambiar_fase(Fase.CIMA)
+
+			Fase.CIMA:
+				altura_actual = altura_max + randf_range(-3.0, 3.0)
+				if tiempo_fase >= duracion_cima:
+					_cambiar_fase(Fase.BAJADA)
+
+			Fase.BAJADA:
+				var t = tiempo_fase / duracion_bajada
+				altura_actual = altura_max * pow(1 - t, 2)
+				if tiempo_fase >= duracion_bajada:
+					altura_actual = 0
+					_cambiar_fase(Fase.PAUSA)
+
+			Fase.PAUSA:
+				altura_actual = 0
+				if tiempo_fase >= duracion_pausa:
+					_cambiar_fase(Fase.SUBIDA)
+
+		area.scale.y = max(0.01, altura_actual / 30.0)
+
+		var altura = max(1.0, altura_actual)
+		suelo_shape.shape.size.y = altura
+		suelo.position.y = -altura / 2
+
+	else:
+		helado -= 1
+		if helado <= 0:
+			_set_color(color_original)
+			area_shape.set_deferred(\"disabled\", false)
+			suelo_shape.set_deferred(\"disabled\", true)
+
+
+func _cambiar_fase(nueva: Fase):
+	fase_actual = nueva
+	tiempo_fase = 0.0
+
+
+func _on_area_2d_area_entered(area_entered: Area2D) -> void:
+	if area_entered.is_in_group(\"ProyectilHielo\"):
+		if area_entered.has_method(\"morir\"):
+			area_entered.morir()
+
+		if helado == 0:
+			helado = 500
+			_set_color(color_hielo)
+			freezeSound.play()
+			area_shape.set_deferred(\"disabled\", true)
+			suelo_shape.set_deferred(\"disabled\", false)
+
+
+# Función para colorear ambos sprites
+func _set_color(c: Color):
+	sprite_main.modulate = c
+	sprite_area.modulate = c
+"
+
+[sub_resource type="GDScript" id="GDScript_e80fc"]
+script/source = "extends Node2D
+
+@export var altura_max = 350.0
+@export var duracion_subida = 0.3
+@export var duracion_cima = 0.4
+@export var duracion_bajada = 0.8
+@export var duracion_pausa = 1.2
+
+@onready var area = $Area2D
+@onready var area_shape = $Area2D/CollisionShape2D
+@onready var suelo = $StaticBody2D
+@onready var suelo_shape = $StaticBody2D/CollisionShape2D
+@onready var sound = $AudioStreamPlayer2D
+@onready var freezeSound = $AudioStreamPlayer2DFreeze
+
+# Sprites a colorear
+@onready var sprite_main = $Sprite2D
+@onready var sprite_area = $Area2D/Sprite2D
+
+enum Fase { SUBIDA, CIMA, BAJADA, PAUSA }
+
+var fase_actual = Fase.PAUSA
+var tiempo_fase = 0.0
+var altura_actual = 0.0
+var helado = 0
+
+# Colores
+var color_original
+var color_hielo = Color(2.434, 5.788, 5.967, 1.0)
+
+func _ready() -> void:
+	suelo_shape.shape = suelo_shape.shape.duplicate()
+	suelo_shape.set_deferred(\"disabled\", true)
+
+	color_original = sprite_main.modulate
+
+
+func _process(delta):
+	tiempo_fase += delta
+
+	if helado == 0:
+		match fase_actual:
+			Fase.SUBIDA:
+				sound.play()
+				var t = tiempo_fase / duracion_subida
+				altura_actual = altura_max * (1 - pow(1 - t, 3))
+				if tiempo_fase >= duracion_subida:
+					altura_actual = altura_max
+					_cambiar_fase(Fase.CIMA)
+
+			Fase.CIMA:
+				altura_actual = altura_max + randf_range(-3.0, 3.0)
+				if tiempo_fase >= duracion_cima:
+					_cambiar_fase(Fase.BAJADA)
+
+			Fase.BAJADA:
+				var t = tiempo_fase / duracion_bajada
+				altura_actual = altura_max * pow(1 - t, 2)
+				if tiempo_fase >= duracion_bajada:
+					altura_actual = 0
+					_cambiar_fase(Fase.PAUSA)
+
+			Fase.PAUSA:
+				altura_actual = 0
+				if tiempo_fase >= duracion_pausa:
+					_cambiar_fase(Fase.SUBIDA)
+
+		area.scale.y = max(0.01, altura_actual / 30.0)
+
+		var altura = max(1.0, altura_actual)
+		suelo_shape.shape.size.y = altura
+		suelo.position.y = -altura / 2
+
+	else:
+		helado -= 1
+		if helado <= 0:
+			_set_color(color_original)
+			area_shape.set_deferred(\"disabled\", false)
+			suelo_shape.set_deferred(\"disabled\", true)
+
+func _cambiar_fase(nueva: Fase):
+	fase_actual = nueva
+	tiempo_fase = 0.0
+
+func _on_area_2d_area_entered(area_entered: Area2D) -> void:
+	if area_entered.is_in_group(\"ProyectilHielo\"):
+		if area_entered.has_method(\"morir\"):
+			area_entered.morir()
+		
+		if helado == 0:
+			helado = 500
+			_set_color(color_hielo)
+			freezeSound.play()
+			area_shape.set_deferred(\"disabled\", true)
+			suelo_shape.set_deferred(\"disabled\", false)
+
+func _set_color(c: Color):
+	sprite_main.modulate = c
+	sprite_area.modulate = c
+"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utksw"]
 size = Vector2(147.91939, 73.91759)
 
@@ -355,10 +671,12 @@ volume_db = -9.0
 autoplay = true
 bus = &"Música"
 
-[node name="CharacterBody2D5" parent="." unique_id=1006504852 groups=["player"] instance=ExtResource("2_s6an7")]
+[node name="CharacterBody2D5" type="CharacterBody2D" parent="." unique_id=1006504852 groups=["player"] instance=ExtResource("2_s6an7")]
 z_index = -1
-texture_filter = 1
 position = Vector2(364, 415)
+collision_layer = 2
+collision_mask = 133
+script = ExtResource("4_wd6dj")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D5" unique_id=1548526242]
 position = Vector2(305, -708)
@@ -370,7 +688,6 @@ script = ExtResource("4_q6r8m")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1726310753]
 z_index = -1
-texture_filter = 1
 rotation = 0.0007608196
 tile_set = SubResource("TileSet_ny6w2")
 format = 2
@@ -391,55 +708,97 @@ position = Vector2(-1199, -1141)
 texture = ExtResource("32_xhdyk")
 texture_scale = 14.87
 
-[node name="RigidBody2D" parent="." unique_id=637563091 instance=ExtResource("34_x8vmk")]
+[node name="RigidBody2D" type="Area2D" parent="." unique_id=637563091 instance=ExtResource("34_x8vmk")]
 position = Vector2(5343, 515)
 
-[node name="RigidBody2D2" parent="." unique_id=2136293655 instance=ExtResource("35_3vl3f")]
+[node name="RigidBody2D2" type="Area2D" parent="." unique_id=2136293655 instance=ExtResource("35_3vl3f")]
 position = Vector2(8158, 309)
 
-[node name="CharacterBody2D8" parent="." unique_id=547989863 instance=ExtResource("44_6f0j1")]
+[node name="CharacterBody2D8" type="CharacterBody2D" parent="." unique_id=547989863 instance=ExtResource("44_6f0j1")]
 modulate = Color(1, 0, 0, 1)
 position = Vector2(7682, 358)
 scale = Vector2(2, 2)
+collision_layer = 4
+script = ExtResource("42_ulhbr")
 lives = 4
 
-[node name="piranha14" parent="." unique_id=1966710050 instance=ExtResource("45_y6dms")]
+[node name="piranha14" type="CharacterBody2D" parent="." unique_id=1966710050 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(2372, 606)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 3750.0
 limiteDerecha = 5000.0
 
-[node name="piranha13" parent="." unique_id=1743259283 instance=ExtResource("45_y6dms")]
+[node name="piranha13" type="CharacterBody2D" parent="." unique_id=1743259283 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(3986, 547)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 3750.0
 limiteDerecha = 5000.0
 
-[node name="piranha12" parent="." unique_id=1011308812 instance=ExtResource("45_y6dms")]
+[node name="piranha12" type="CharacterBody2D" parent="." unique_id=1011308812 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(4575, 549)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 3750.0
 limiteDerecha = 5000.0
 
-[node name="piranha1" parent="." unique_id=434774238 instance=ExtResource("45_y6dms")]
+[node name="piranha1" type="CharacterBody2D" parent="." unique_id=434774238 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(4247, 549)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 3750.0
 limiteDerecha = 5000.0
 
-[node name="piranha2" parent="." unique_id=1268708965 instance=ExtResource("45_y6dms")]
+[node name="piranha2" type="CharacterBody2D" parent="." unique_id=1268708965 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(6225, 553)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 6000.0
 limiteDerecha = 7500.0
 
-[node name="piranha3" parent="." unique_id=362443143 instance=ExtResource("45_y6dms")]
+[node name="piranha3" type="CharacterBody2D" parent="." unique_id=362443143 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(6571, 616)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 6000.0
 limiteDerecha = 7500.0
 
-[node name="piranha5" parent="." unique_id=764955249 instance=ExtResource("45_y6dms")]
+[node name="piranha5" type="CharacterBody2D" parent="." unique_id=764955249 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(5677, 683)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 5000.0
 limiteDerecha = 5900.0
 
-[node name="piranha4" parent="." unique_id=1218329668 instance=ExtResource("45_y6dms")]
+[node name="piranha4" type="CharacterBody2D" parent="." unique_id=1218329668 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(6880, 553)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 6500.0
 limiteDerecha = 8000.0
 
@@ -468,7 +827,6 @@ scale = Vector2(3.5, 5)
 shape = SubResource("CircleShape2D_n0u70")
 
 [node name="Indicador" type="Sprite2D" parent="PortalFinNivel" unique_id=1825291874]
-texture_filter = 1
 position = Vector2(0, -67)
 texture = ExtResource("48_bf0o1")
 
@@ -480,250 +838,483 @@ volume_db = 3.0
 stream = ExtResource("50_6t5vl")
 volume_db = -4.0
 
-[node name="piranha11" parent="." unique_id=604658476 instance=ExtResource("45_y6dms")]
+[node name="piranha11" type="CharacterBody2D" parent="." unique_id=604658476 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(11006, 559)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 10000.0
 limiteDerecha = 11500.0
 
-[node name="piranha15" parent="." unique_id=1527374466 instance=ExtResource("45_y6dms")]
+[node name="piranha15" type="CharacterBody2D" parent="." unique_id=1527374466 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(12539, 579)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 12250.0
 limiteDerecha = 13250.0
 
-[node name="piranha16" parent="." unique_id=482535060 instance=ExtResource("45_y6dms")]
+[node name="piranha16" type="CharacterBody2D" parent="." unique_id=482535060 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(12723, 577)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 12250.0
 limiteDerecha = 13250.0
 
-[node name="piranha17" parent="." unique_id=174939693 instance=ExtResource("45_y6dms")]
+[node name="piranha17" type="CharacterBody2D" parent="." unique_id=174939693 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(12610, 671)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 12250.0
 limiteDerecha = 13250.0
 
-[node name="piranha18" parent="." unique_id=1226520811 instance=ExtResource("45_y6dms")]
+[node name="piranha18" type="CharacterBody2D" parent="." unique_id=1226520811 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(12733, 723)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 12250.0
 limiteDerecha = 13250.0
 
-[node name="piranha48" parent="." unique_id=2105809268 instance=ExtResource("45_y6dms")]
+[node name="piranha48" type="CharacterBody2D" parent="." unique_id=2105809268 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(12684, 648)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 12250.0
 limiteDerecha = 13250.0
 
-[node name="piranha19" parent="." unique_id=475280576 instance=ExtResource("45_y6dms")]
+[node name="piranha19" type="CharacterBody2D" parent="." unique_id=475280576 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(12457, 681)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 12250.0
 limiteDerecha = 13250.0
 
-[node name="piranha50" parent="." unique_id=1156227947 instance=ExtResource("45_y6dms")]
+[node name="piranha50" type="CharacterBody2D" parent="." unique_id=1156227947 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(12395, 627)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 12250.0
 limiteDerecha = 13250.0
 
-[node name="piranha51" parent="." unique_id=669946998 instance=ExtResource("45_y6dms")]
+[node name="piranha51" type="CharacterBody2D" parent="." unique_id=669946998 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(12425, 747)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 12250.0
 limiteDerecha = 13250.0
 
-[node name="piranha49" parent="." unique_id=695047691 instance=ExtResource("45_y6dms")]
+[node name="piranha49" type="CharacterBody2D" parent="." unique_id=695047691 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(12534, 732)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 12250.0
 limiteDerecha = 13250.0
 
-[node name="piranha20" parent="." unique_id=1211809733 instance=ExtResource("45_y6dms")]
+[node name="piranha20" type="CharacterBody2D" parent="." unique_id=1211809733 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(12773, 643)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 12250.0
 limiteDerecha = 13250.0
 
-[node name="piranha21" parent="." unique_id=299586698 instance=ExtResource("45_y6dms")]
+[node name="piranha21" type="CharacterBody2D" parent="." unique_id=299586698 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(12877, 579)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 12250.0
 limiteDerecha = 13250.0
 
-[node name="piranha22" parent="." unique_id=1655759866 instance=ExtResource("45_y6dms")]
+[node name="piranha22" type="CharacterBody2D" parent="." unique_id=1655759866 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(12898, 683)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 12250.0
 limiteDerecha = 13250.0
 
-[node name="piranha24" parent="." unique_id=710430894 instance=ExtResource("45_y6dms")]
+[node name="piranha24" type="CharacterBody2D" parent="." unique_id=710430894 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(13051, 654)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 12550.0
 limiteDerecha = 13550.0
 
-[node name="piranha46" parent="." unique_id=1667576714 instance=ExtResource("45_y6dms")]
+[node name="piranha46" type="CharacterBody2D" parent="." unique_id=1667576714 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(13066, 740)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 12550.0
 limiteDerecha = 13550.0
 
-[node name="piranha27" parent="." unique_id=1284307228 instance=ExtResource("45_y6dms")]
+[node name="piranha27" type="CharacterBody2D" parent="." unique_id=1284307228 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(13188, 732)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 12550.0
 limiteDerecha = 13550.0
 
-[node name="piranha28" parent="." unique_id=305748909 instance=ExtResource("45_y6dms")]
+[node name="piranha28" type="CharacterBody2D" parent="." unique_id=305748909 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(13207, 645)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 12550.0
 limiteDerecha = 13550.0
 
-[node name="piranha29" parent="." unique_id=1064468355 instance=ExtResource("45_y6dms")]
+[node name="piranha29" type="CharacterBody2D" parent="." unique_id=1064468355 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(13297, 603)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 12550.0
 limiteDerecha = 13550.0
 
-[node name="piranha30" parent="." unique_id=1910411123 instance=ExtResource("45_y6dms")]
+[node name="piranha30" type="CharacterBody2D" parent="." unique_id=1910411123 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(13297, 603)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 12550.0
 limiteDerecha = 13550.0
 
-[node name="piranha31" parent="." unique_id=999453492 instance=ExtResource("45_y6dms")]
+[node name="piranha31" type="CharacterBody2D" parent="." unique_id=999453492 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(13414, 630)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 13000.0
 limiteDerecha = 14000.0
 
-[node name="piranha32" parent="." unique_id=938186487 instance=ExtResource("45_y6dms")]
+[node name="piranha32" type="CharacterBody2D" parent="." unique_id=938186487 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(13488, 727)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 13000.0
 limiteDerecha = 14000.0
 
-[node name="piranha33" parent="." unique_id=744531536 instance=ExtResource("45_y6dms")]
+[node name="piranha33" type="CharacterBody2D" parent="." unique_id=744531536 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(13548, 618)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 13000.0
 limiteDerecha = 14000.0
 
-[node name="piranha34" parent="." unique_id=827134440 instance=ExtResource("45_y6dms")]
+[node name="piranha34" type="CharacterBody2D" parent="." unique_id=827134440 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(13636, 723)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 13000.0
 limiteDerecha = 14000.0
 
-[node name="piranha35" parent="." unique_id=571886426 instance=ExtResource("45_y6dms")]
+[node name="piranha35" type="CharacterBody2D" parent="." unique_id=571886426 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(13618, 641)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 13000.0
 limiteDerecha = 14000.0
 
-[node name="piranha36" parent="." unique_id=834779976 instance=ExtResource("45_y6dms")]
+[node name="piranha36" type="CharacterBody2D" parent="." unique_id=834779976 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(13558, 685)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 13000.0
 limiteDerecha = 14000.0
 
-[node name="piranha37" parent="." unique_id=1223540239 instance=ExtResource("45_y6dms")]
+[node name="piranha37" type="CharacterBody2D" parent="." unique_id=1223540239 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(13394, 701)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 13000.0
 limiteDerecha = 14000.0
 
-[node name="piranha38" parent="." unique_id=873386324 instance=ExtResource("45_y6dms")]
+[node name="piranha38" type="CharacterBody2D" parent="." unique_id=873386324 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(13583, 793)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 13000.0
 limiteDerecha = 14000.0
 
-[node name="piranha39" parent="." unique_id=2087573131 instance=ExtResource("45_y6dms")]
+[node name="piranha39" type="CharacterBody2D" parent="." unique_id=2087573131 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(13712, 691)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 13000.0
 limiteDerecha = 14000.0
 
-[node name="piranha40" parent="." unique_id=2017978783 instance=ExtResource("45_y6dms")]
+[node name="piranha40" type="CharacterBody2D" parent="." unique_id=2017978783 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(13733, 748)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 13000.0
 limiteDerecha = 14000.0
 
-[node name="piranha42" parent="." unique_id=169249739 instance=ExtResource("45_y6dms")]
+[node name="piranha42" type="CharacterBody2D" parent="." unique_id=169249739 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(13707, 637)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 13000.0
 limiteDerecha = 14000.0
 
-[node name="piranha43" parent="." unique_id=1472859467 instance=ExtResource("45_y6dms")]
+[node name="piranha43" type="CharacterBody2D" parent="." unique_id=1472859467 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(13313, 777)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 13000.0
 limiteDerecha = 14000.0
 
-[node name="piranha44" parent="." unique_id=328468152 instance=ExtResource("45_y6dms")]
+[node name="piranha44" type="CharacterBody2D" parent="." unique_id=328468152 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(13278, 701)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 13000.0
 limiteDerecha = 14000.0
 
-[node name="piranha45" parent="." unique_id=1565695613 instance=ExtResource("45_y6dms")]
+[node name="piranha45" type="CharacterBody2D" parent="." unique_id=1565695613 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(13278, 701)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 13000.0
 limiteDerecha = 14000.0
 
-[node name="piranha25" parent="." unique_id=1511467972 instance=ExtResource("45_y6dms")]
+[node name="piranha25" type="CharacterBody2D" parent="." unique_id=1511467972 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(12976, 734)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 12250.0
 limiteDerecha = 13250.0
 
-[node name="piranha47" parent="." unique_id=1892836409 instance=ExtResource("45_y6dms")]
+[node name="piranha47" type="CharacterBody2D" parent="." unique_id=1892836409 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(12828, 723)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 12250.0
 limiteDerecha = 13250.0
 
-[node name="piranha26" parent="." unique_id=832579680 instance=ExtResource("45_y6dms")]
+[node name="piranha26" type="CharacterBody2D" parent="." unique_id=832579680 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(13098, 589)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 12550.0
 limiteDerecha = 13550.0
 
-[node name="piranha23" parent="." unique_id=1826210730 instance=ExtResource("45_y6dms")]
+[node name="piranha23" type="CharacterBody2D" parent="." unique_id=1826210730 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(12971, 612)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 12250.0
 limiteDerecha = 13250.0
 
-[node name="piranha10" parent="." unique_id=378626977 instance=ExtResource("45_y6dms")]
+[node name="piranha10" type="CharacterBody2D" parent="." unique_id=378626977 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(10636, 558)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 10000.0
 limiteDerecha = 11500.0
 
-[node name="piranha6" parent="." unique_id=929317046 instance=ExtResource("45_y6dms")]
+[node name="piranha6" type="CharacterBody2D" parent="." unique_id=929317046 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(7143, 611)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 6500.0
 limiteDerecha = 8000.0
 
-[node name="piranha7" parent="." unique_id=1811325459 instance=ExtResource("45_y6dms")]
+[node name="piranha7" type="CharacterBody2D" parent="." unique_id=1811325459 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(7425, 550)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 7000.0
 limiteDerecha = 8500.0
 
-[node name="piranha8" parent="." unique_id=387354311 instance=ExtResource("45_y6dms")]
+[node name="piranha8" type="CharacterBody2D" parent="." unique_id=387354311 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(7622, 610)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 7500.0
 limiteDerecha = 9000.0
 
-[node name="piranha9" parent="." unique_id=1172051062 instance=ExtResource("45_y6dms")]
+[node name="piranha9" type="CharacterBody2D" parent="." unique_id=1172051062 groups=["Enemigos"] instance=ExtResource("45_y6dms")]
+light_mask = 2
+z_index = -1
 position = Vector2(7822, 554)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("44_by22t")
 limiteIzquierda = 7750.0
 limiteDerecha = 9250.0
 
-[node name="Node2D2" parent="." unique_id=220363280 instance=ExtResource("50_u5i5k")]
+[node name="Node2D2" type="Node2D" parent="." unique_id=220363280 instance=ExtResource("50_u5i5k")]
 position = Vector2(1642, 49)
 
-[node name="Area2D4" parent="." unique_id=116065897 instance=ExtResource("55_g8d7h")]
+[node name="Area2D4" type="Area2D" parent="." unique_id=116065897 instance=ExtResource("55_g8d7h")]
 position = Vector2(9240, 426)
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("52_eyhl7")
 
-[node name="LevelUi" parent="." unique_id=274504807 instance=ExtResource("53_5ojtp")]
+[node name="LevelUi" type="Control" parent="." unique_id=274504807 instance=ExtResource("53_5ojtp")]
+layout_mode = 3
+anchors_preset = 0
 
-[node name="Node2D" parent="." unique_id=972032776 instance=ExtResource("53_c5aqp")]
+[node name="Node2D" type="Node2D" parent="." unique_id=972032776 instance=ExtResource("53_c5aqp")]
 position = Vector2(9599.999, 583)
+scale = Vector2(1.42, 1)
+script = SubResource("GDScript_g0r31")
 
-[node name="Node2D3" parent="." unique_id=215923423 instance=ExtResource("53_c5aqp")]
+[node name="Node2D3" type="Node2D" parent="." unique_id=215923423 instance=ExtResource("53_c5aqp")]
 position = Vector2(10240, 570)
+scale = Vector2(1.42, 1)
+script = SubResource("GDScript_g0r31")
 
-[node name="Node2D7" parent="." unique_id=861539861 instance=ExtResource("53_c5aqp")]
+[node name="Node2D7" type="Node2D" parent="." unique_id=861539861 instance=ExtResource("53_c5aqp")]
 position = Vector2(11765, 572)
+scale = Vector2(1.42, 1)
+script = SubResource("GDScript_g0r31")
 
-[node name="Node2D4" parent="." unique_id=1116569177 instance=ExtResource("54_g8d7h")]
+[node name="Node2D4" type="Node2D" parent="." unique_id=1116569177 instance=ExtResource("54_g8d7h")]
 position = Vector2(10497, 571)
+scale = Vector2(1.42, 1)
+script = SubResource("GDScript_jfyf5")
 
-[node name="Node2D8" parent="." unique_id=1770629580 instance=ExtResource("54_g8d7h")]
+[node name="Node2D8" type="Node2D" parent="." unique_id=1770629580 instance=ExtResource("54_g8d7h")]
 position = Vector2(11939, 571)
+scale = Vector2(1.42, 1)
+script = SubResource("GDScript_jfyf5")
 
-[node name="Node2D5" parent="." unique_id=547520316 instance=ExtResource("55_q56wv")]
+[node name="Node2D5" type="Node2D" parent="." unique_id=547520316 instance=ExtResource("55_q56wv")]
 position = Vector2(10752, 572)
+scale = Vector2(1.42, 1)
+script = SubResource("GDScript_e80fc")
 
-[node name="Area2D" parent="." unique_id=851504275 instance=ExtResource("56_q56wv")]
+[node name="Area2D" type="Area2D" parent="." unique_id=851504275 instance=ExtResource("56_q56wv")]
 position = Vector2(2128, 543)
+collision_mask = 2
+script = ExtResource("58_nfwgg")
 
-[node name="Area2D2" parent="." unique_id=1734348503 instance=ExtResource("56_q56wv")]
+[node name="Area2D2" type="Area2D" parent="." unique_id=1734348503 instance=ExtResource("56_q56wv")]
 position = Vector2(7045, 543)
+collision_mask = 2
+script = ExtResource("58_nfwgg")
 
-[node name="Area2D3" parent="." unique_id=866802051 instance=ExtResource("56_q56wv")]
+[node name="Area2D3" type="Area2D" parent="." unique_id=866802051 instance=ExtResource("56_q56wv")]
 position = Vector2(11942, 543)
+collision_mask = 2
+script = ExtResource("58_nfwgg")
 
 [node name="E" type="Node2D" parent="." unique_id=156668555]
 position = Vector2(6422, 128)
@@ -731,7 +1322,6 @@ rotation = 0.0007608196
 script = ExtResource("56_0vww6")
 
 [node name="Indicador" type="Sprite2D" parent="E" unique_id=1097603579]
-texture_filter = 1
 position = Vector2(3094.2312, 302.6459)
 texture = ExtResource("57_rs6mn")
 
@@ -745,45 +1335,79 @@ position = Vector2(-45.085297, -111.96572)
 scale = Vector2(3.5, 5)
 shape = SubResource("RectangleShape2D_utksw")
 
-[node name="Area2D5" parent="." unique_id=1836981711 instance=ExtResource("58_rs6mn")]
+[node name="Area2D5" type="Area2D" parent="." unique_id=1836981711 instance=ExtResource("58_rs6mn")]
 position = Vector2(3617, 485)
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("62_j8m00")
 
-[node name="Node2D6" parent="." unique_id=339845542 instance=ExtResource("59_utksw")]
+[node name="Node2D6" type="Node2D" parent="." unique_id=339845542 groups=["Lianas"] instance=ExtResource("59_utksw")]
 position = Vector2(12129, -222)
+script = ExtResource("64_xrphv")
 
-[node name="Node2D9" parent="." unique_id=731092890 instance=ExtResource("59_utksw")]
+[node name="Node2D9" type="Node2D" parent="." unique_id=731092890 groups=["Lianas"] instance=ExtResource("59_utksw")]
 position = Vector2(12449, -219)
+script = ExtResource("64_xrphv")
 
-[node name="Node2D10" parent="." unique_id=168408205 instance=ExtResource("59_utksw")]
+[node name="Node2D10" type="Node2D" parent="." unique_id=168408205 groups=["Lianas"] instance=ExtResource("59_utksw")]
 position = Vector2(12765, -218)
+script = ExtResource("64_xrphv")
 
-[node name="Node2D11" parent="." unique_id=164347740 instance=ExtResource("59_utksw")]
+[node name="Node2D11" type="Node2D" parent="." unique_id=164347740 groups=["Lianas"] instance=ExtResource("59_utksw")]
 position = Vector2(13092, -166)
+script = ExtResource("64_xrphv")
 
-[node name="Node2D12" parent="." unique_id=500604068 instance=ExtResource("59_utksw")]
+[node name="Node2D12" type="Node2D" parent="." unique_id=500604068 groups=["Lianas"] instance=ExtResource("59_utksw")]
 position = Vector2(13349, -210)
+script = ExtResource("64_xrphv")
 
-[node name="Node2D14" parent="." unique_id=1493730302 instance=ExtResource("59_utksw")]
+[node name="Node2D14" type="Node2D" parent="." unique_id=1493730302 groups=["Lianas"] instance=ExtResource("59_utksw")]
 position = Vector2(13989, -192)
+script = ExtResource("64_xrphv")
 
-[node name="Node2D13" parent="." unique_id=392131277 instance=ExtResource("59_utksw")]
+[node name="Node2D13" type="Node2D" parent="." unique_id=392131277 groups=["Lianas"] instance=ExtResource("59_utksw")]
 position = Vector2(13603, -214)
+script = ExtResource("64_xrphv")
 
-[node name="Area2D6" parent="." unique_id=1406310529 instance=ExtResource("60_7xf2h")]
+[node name="Area2D6" type="Area2D" parent="." unique_id=1406310529 instance=ExtResource("60_7xf2h")]
 position = Vector2(8702, 424)
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("66_5f3ou")
 
-[node name="Area2D7" parent="." unique_id=604219173 instance=ExtResource("60_q6r8m")]
+[node name="Area2D7" type="Area2D" parent="." unique_id=604219173 instance=ExtResource("60_q6r8m")]
 position = Vector2(7792, 419)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("68_1v31q")
 
-[node name="Area2D8" parent="." unique_id=1545410951 instance=ExtResource("60_q6r8m")]
+[node name="Area2D8" type="Area2D" parent="." unique_id=1545410951 instance=ExtResource("60_q6r8m")]
 position = Vector2(11134, 93)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("68_1v31q")
 coin_id = 1
 
-[node name="Area2D9" parent="." unique_id=1878375805 instance=ExtResource("60_q6r8m")]
+[node name="Area2D9" type="Area2D" parent="." unique_id=1878375805 instance=ExtResource("60_q6r8m")]
 position = Vector2(14258, 87)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("68_1v31q")
 coin_id = 2
 
 [connection signal="body_entered" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Area2D4" to="Area2D4" method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
+[connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D2" to="Area2D2" method="_on_body_exited"]
+[connection signal="body_entered" from="Area2D3" to="Area2D3" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D3" to="Area2D3" method="_on_body_exited"]
 [connection signal="body_entered" from="E/Area2D" to="E" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="E/Area2D" to="E" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Area2D5" to="Area2D5" method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D6" to="Area2D6" method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D7" to="Area2D7" method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D8" to="Area2D8" method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D9" to="Area2D9" method="_on_body_entered"]
