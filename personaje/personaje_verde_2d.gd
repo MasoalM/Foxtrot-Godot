@@ -18,6 +18,7 @@ const JUMP_VELOCITY = -525.0
 const cut_factor = 0.5
 const bala = preload("res://Proyectiles/proyectil.tscn")
 const bala_hielo = preload("res://Proyectiles/proyectil_hielo.tscn")
+const bala_doublesalto = preload("res://Proyectiles/proyectilDoubleJump.tscn")
 const ataqueCargado = preload("res://powerUps/ataque_cargado.tscn")
 const dust = preload("res://Sprites/Particles/Dust.tscn")
 const doubleJumpParticles = preload("res://Sprites/Particles/DoubleJumpParticles.tscn")
@@ -161,9 +162,12 @@ func _physics_process(delta: float) -> void:
 			
 			AudioManager.play("Jump", -8.0, 1.0, global_position)
 			if not is_on_floor() and coyoteTimeActual <= 0:
-				var instance2 = doubleJumpParticles.instantiate()
-				instance2.global_position = $DoubleJumpMarker.global_position
-				get_parent().add_child(instance2)
+				var pdj = bala_doublesalto.instantiate()
+				var djp = doubleJumpParticles.instantiate()
+				pdj.global_position = $DoubleJumpMarker.global_position
+				djp.global_position = $DoubleJumpMarker.global_position
+				get_parent().add_child(pdj)
+				get_parent().add_child(djp)
 				dobSal = false
 		
 		if Input.is_action_just_released("ui_accept") and velocity.y < 0:
