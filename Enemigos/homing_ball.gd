@@ -18,11 +18,8 @@ func _ready():
 	#collision_mask = 2
 	#collision_layer = 1
 	collision_mask = 3
-	monitoring = true
-	monitorable = true
-	
-	body_entered.connect(_on_body_hit)
-	area_entered.connect(_on_area_hit)
+	set_deferred("monitoring", true)
+	set_deferred("monitorable", true)
 
 func _physics_process(delta):
 	if _dead:
@@ -55,20 +52,23 @@ func _physics_process(delta):
 	if velocity.length() > 0.1:
 		rotation = velocity.angle()
 
-func _on_body_hit(body):
+func _on_body_entered(body):
 	if _dead:
 		return
+	
 	if body == shooter:
 		return
+	
 	if body.is_in_group("player"):
 		if body.has_method("_dañar"):
 			body._dañar()
 		_morir()
 		return
+	
 	if body is TileMapLayer or body is TileMap:
 		_morir()
 
-func _on_area_hit(area: Area2D):
+func _on_area_entered(area: Area2D):
 	if _dead:
 		return
 	
@@ -90,7 +90,7 @@ func _on_area_hit(area: Area2D):
 func _morir():
 	if _dead:
 		return
-		
+	
 	_dead = true
 	visible = false
 	

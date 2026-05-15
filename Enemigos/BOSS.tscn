@@ -127,3 +127,5 @@ shape = SubResource("CircleShape2D_4befi")
 position = Vector2(2.3841858e-07, 0)
 scale = Vector2(60, 15)
 shape = SubResource("CircleShape2D_4befi")
+
+[connection signal="area_entered" from="HitboxHead" to="." method="_on_hitbox_head_area_entered"]

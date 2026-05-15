@@ -21,3 +21,5 @@ visibility_layer = 7
 position = Vector2(-0.99999994, 0)
 scale = Vector2(0.7, 0.7)
 shape = SubResource("CircleShape2D_ngwx3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

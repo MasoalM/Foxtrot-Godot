@@ -68,9 +68,6 @@ var stun_timer := 0.0
 
 # ---- Sonidos ----
 @onready var music: AudioStreamPlayer = $"../AudioStreamPlayer"
-var sfx_hit: AudioStreamPlayer
-var sfx_shot: AudioStreamPlayer
-var sfx_death: AudioStreamPlayer
 
 # ---- Luz ----
 @onready var luz: DirectionalLight2D = $"../DirectionalLight2D"
@@ -82,28 +79,13 @@ var sfx_death: AudioStreamPlayer
 @onready var platform_manager4 = $"../PlatformManager4"
 
 func _ready():
-	
 	GameState.tiempo_activo = false
 	camera = get_tree().get_first_node_in_group("camera")
 	_set_phase(0)
-	hitbox_head.area_entered.connect(_on_head_area_hit)
 	move_target = global_position
 	_pick_new_target()
 	# --- NUEVO ---
 	_start_immunity()
-	hitbox_body.area_entered.connect(_on_hitbox_body_area_entered)
-	
-	# Prepare sounds
-	sfx_hit = AudioManager.get_player("MadBoss")
-	sfx_hit.volume_db = 10.0
-	
-	sfx_shot = AudioManager.get_player("Portal")
-	sfx_shot.volume_db = -5.0
-	sfx_shot.pitch_scale = 0.75
-	
-	sfx_death = AudioManager.get_player("MadBoss")
-	sfx_death.volume_db = 10.0
-	sfx_death.pitch_scale = 0.25
 
 func _physics_process(delta):
 	if is_dead:
@@ -313,7 +295,7 @@ func _shoot():
 		if is_dead or not is_instance_valid(player) or not is_inside_tree():
 			return
 		
-		sfx_shot.play()
+		AudioManager.play("Portal", -5.0, 0.75, global_position)
 		
 		if camera:
 			camera.add_trauma(0.6)
@@ -357,7 +339,7 @@ func _shoot_burst():
 		await get_tree().create_timer(i * 0.1).timeout
 		if is_dead or not is_inside_tree():
 			return
-		sfx_shot.play()
+		AudioManager.play("Portal", -5.0, 0.75, global_position)
 		var ball = ball_scene.instantiate()
 		get_parent().add_child(ball)
 		ball.global_position = global_position
@@ -474,7 +456,7 @@ func _set_phase(phase: int):
 		var scale_tween := create_tween()
 		scale_tween.tween_property(sprite, "scale", Vector2(1.3, 1.3), 0.4).set_trans(Tween.TRANS_ELASTIC)
 
-func _on_head_area_hit(area: Area2D):
+func _on_hitbox_head_area_entered(area: Area2D):
 	if not area.is_in_group("DoubleJumpShot"):
 		return
 	
@@ -484,7 +466,7 @@ func _on_head_area_hit(area: Area2D):
 		return
 	
 	area.morirahora()
-	sfx_hit.play()
+	AudioManager.play("MadBoss", 10.0, 1.0, global_position)
 	
 	if camera:
 		camera.add_trauma(0.8)
@@ -527,6 +509,7 @@ func _flash_transition():
 func _die():
 	if is_dead:
 		return
+	
 	is_dead = true
 	rainbow_active = false
 
@@ -561,8 +544,7 @@ func _die():
 		tween_music.tween_callback(func(): music.stop())
 
 	# Sonido muerte una sola vez
-	sfx_death.stop()
-	sfx_death.play()
+	AudioManager.play("MadBoss", 10.0, 0.25, global_position)
 
 	# Golpe de cámara y luego para completamente
 	if camera:
@@ -583,7 +565,7 @@ func _die():
 	tween.tween_property(sprite, "modulate", Color(1, 1, 1, 0), 0.3)
 	tween.tween_callback(func():
 		visible = false
-		await get_tree().create_timer(sfx_death.stream.get_length()).timeout
+		await get_tree().create_timer(AudioManager.get_length("MadBoss")).timeout
 		queue_free()
 	)
 

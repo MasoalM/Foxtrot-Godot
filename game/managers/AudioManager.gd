@@ -10,6 +10,8 @@ var current_music = ""
 var music_player: AudioStreamPlayer
 
 var sounds = {}
+
+var active_sounds = {}
 var last_played = {}
 
 func _ready():
@@ -96,8 +98,33 @@ func play(sound_name: String, volume := 0.0, pitch := 1.0, position := Vector2.Z
 	sound.pitch_scale = pitch
 	
 	add_child(sound)
+	
+	if not active_sounds.has(sound_name):
+		active_sounds[sound_name] = []
+	
+	active_sounds[sound_name].append(sound)
+	
+	sound.finished.connect(func():
+		active_sounds[sound_name].erase(sound)
+		sound.queue_free()
+	)
+	
 	sound.play()
-	sound.finished.connect(sound.queue_free)
+
+func stop(sound_name: String) -> void:
+	if not sounds.has(sound_name):
+		push_error("El sonido '" + sound_name + "' no existe.")
+		return
+	
+	if not active_sounds.has(sound_name):
+		return
+	
+	for sound in active_sounds[sound_name]:
+		if is_instance_valid(sound):
+			sound.stop()
+			sound.queue_free()
+	
+	active_sounds[sound_name].clear()
 
 
 # -- Random Players --
@@ -132,3 +159,10 @@ func get_player(sound_name: String) -> AudioStreamPlayer:
 	sound.bus = "Efectos"
 	
 	return sound
+
+func get_length(sound_name: String) -> float:
+	if not sounds.has(sound_name):
+		push_error("El sonido '" + sound_name + "' no existe.")
+		return 0.0
+	
+	return sounds[sound_name].get_length()

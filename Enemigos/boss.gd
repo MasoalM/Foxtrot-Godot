@@ -68,7 +68,6 @@ func _ready():
 	
 	camera = get_tree().get_first_node_in_group("camera")
 	_set_phase(0)
-	hitbox_head.area_entered.connect(_on_head_area_hit)
 	_start_new_move()
 	
 	# Prepare sounds
@@ -368,7 +367,7 @@ func _set_phase(phase: int):
 		var scale_tween := create_tween()
 		scale_tween.tween_property(sprite, "scale", Vector2(1.3, 1.3), 0.4).set_trans(Tween.TRANS_ELASTIC)
 
-func _on_head_area_hit(area: Area2D):
+func _on_hitbox_head_area_entered(area: Area2D):
 	if not area.is_in_group("DoubleJumpShot"):
 		return
 	

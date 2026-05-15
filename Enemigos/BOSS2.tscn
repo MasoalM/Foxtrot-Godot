@@ -103,7 +103,28 @@ phase_1_frames = Array[Texture2D]([ExtResource("2_lfaag"), ExtResource("3_lcr7x"
 phase_2_frames = Array[Texture2D]([ExtResource("6_tp6e4"), ExtResource("7_wt3gv"), ExtResource("8_wf65g"), ExtResource("9_8gttv")])
 phase_3_frames = Array[Texture2D]([ExtResource("10_62ko0"), ExtResource("11_r6lem"), ExtResource("12_ce1hu"), ExtResource("13_7f33g")])
 phase_4_frames = Array[Texture2D]([ExtResource("14_rara8"), ExtResource("15_joq4i"), ExtResource("16_2vayr"), ExtResource("17_uiaxj")])
+frame_speed = null
+bounds_x = null
+bounds_y = null
+bounds_y2 = null
+bounds_y3 = null
+bounds_y4 = null
+move_duration = null
+move_pause = null
+move_speed = null
+target_change_interval = null
+velocity_smooth = null
+top_margin = null
+top_float_range = null
+shoot_interval = null
+balls_per_shot = null
+ball_lifetime = null
 ball_scene = ExtResource("18_0bc4v")
+charge_interval = null
+charge_speed = null
+immunity_duration = null
+hits_to_stun = null
+stun_duration = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1096179978]
 sprite_frames = SubResource("SpriteFrames_5qnxw")
@@ -128,3 +149,6 @@ shape = SubResource("CircleShape2D_4befi")
 position = Vector2(2.3841858e-07, 0)
 scale = Vector2(60, 15)
 shape = SubResource("CircleShape2D_4befi")
+
+[connection signal="area_entered" from="HitboxHead" to="." method="_on_hitbox_head_area_entered"]
+[connection signal="area_entered" from="HitboxBody" to="." method="_on_hitbox_body_area_entered"]
