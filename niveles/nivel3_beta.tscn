@@ -58,6 +58,7 @@
 [ext_resource type="PackedScene" uid="uid://bbru0hmobasum" path="res://powerUps/CorazonRojo.tscn" id="58_rs6mn"]
 [ext_resource type="PackedScene" uid="uid://csgorm16kj0mv" path="res://Otros/liana.tscn" id="59_utksw"]
 [ext_resource type="PackedScene" uid="uid://c83oj12tyaneq" path="res://Sprites/Checkpoint/checkpoint.tscn" id="60_7xf2h"]
+[ext_resource type="PackedScene" uid="uid://jdslm0dfoujo" path="res://Sprites/Coleccionables/frog.tscn" id="60_37e6k"]
 [ext_resource type="PackedScene" uid="uid://d0ordmi0yu7tp" path="res://Sprites/Coleccionables/coleccionable.tscn" id="60_q6r8m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rn8p"]
@@ -1093,6 +1094,214 @@ coin_id = 1
 [node name="Collec3" parent="Collectibles" unique_id=1878375805 instance=ExtResource("60_q6r8m")]
 position = Vector2(14258, 87)
 coin_id = 2
+
+[node name="Ranas" type="Node" parent="." unique_id=605331302]
+
+[node name="Area2D7" parent="Ranas" unique_id=628388901 instance=ExtResource("60_37e6k")]
+position = Vector2(1460, 430)
+
+[node name="Area2D8" parent="Ranas" unique_id=1067089005 instance=ExtResource("60_37e6k")]
+position = Vector2(1528, 427)
+
+[node name="Area2D9" parent="Ranas" unique_id=493730754 instance=ExtResource("60_37e6k")]
+position = Vector2(1612, 368)
+
+[node name="Area2D10" parent="Ranas" unique_id=1101852098 instance=ExtResource("60_37e6k")]
+position = Vector2(1719, 305)
+
+[node name="Area2D11" parent="Ranas" unique_id=283437688 instance=ExtResource("60_37e6k")]
+position = Vector2(1835, 281)
+
+[node name="Area2D12" parent="Ranas" unique_id=1736243630 instance=ExtResource("60_37e6k")]
+position = Vector2(1934, 335)
+
+[node name="Area2D13" parent="Ranas" unique_id=124214163 instance=ExtResource("60_37e6k")]
+position = Vector2(2542, 451)
+
+[node name="Area2D14" parent="Ranas" unique_id=1363903250 instance=ExtResource("60_37e6k")]
+position = Vector2(2623, 417)
+
+[node name="Area2D15" parent="Ranas" unique_id=352850520 instance=ExtResource("60_37e6k")]
+position = Vector2(2700, 444)
+
+[node name="Area2D16" parent="Ranas" unique_id=862887805 instance=ExtResource("60_37e6k")]
+position = Vector2(4001, 438)
+
+[node name="Area2D17" parent="Ranas" unique_id=1928337737 instance=ExtResource("60_37e6k")]
+position = Vector2(4064, 438)
+
+[node name="Area2D18" parent="Ranas" unique_id=1358267614 instance=ExtResource("60_37e6k")]
+position = Vector2(4130, 401)
+
+[node name="Area2D19" parent="Ranas" unique_id=746495809 instance=ExtResource("60_37e6k")]
+position = Vector2(4195, 356)
+
+[node name="Area2D20" parent="Ranas" unique_id=1657468036 instance=ExtResource("60_37e6k")]
+position = Vector2(4256, 321)
+
+[node name="Area2D21" parent="Ranas" unique_id=1273296276 instance=ExtResource("60_37e6k")]
+position = Vector2(4321, 305)
+
+[node name="Area2D22" parent="Ranas" unique_id=242812057 instance=ExtResource("60_37e6k")]
+position = Vector2(4381, 304)
+
+[node name="Area2D23" parent="Ranas" unique_id=202581049 instance=ExtResource("60_37e6k")]
+position = Vector2(4447, 320)
+
+[node name="Area2D24" parent="Ranas" unique_id=1050321435 instance=ExtResource("60_37e6k")]
+position = Vector2(6625, 439)
+
+[node name="Area2D25" parent="Ranas" unique_id=617868861 instance=ExtResource("60_37e6k")]
+position = Vector2(6817.0005, 440)
+
+[node name="Area2D26" parent="Ranas" unique_id=2140970780 instance=ExtResource("60_37e6k")]
+position = Vector2(6881, 440)
+
+[node name="Area2D27" parent="Ranas" unique_id=1814008288 instance=ExtResource("60_37e6k")]
+position = Vector2(7072, 440)
+
+[node name="Area2D28" parent="Ranas" unique_id=1246164739 instance=ExtResource("60_37e6k")]
+position = Vector2(7137, 440)
+
+[node name="Area2D29" parent="Ranas" unique_id=508684026 instance=ExtResource("60_37e6k")]
+position = Vector2(7200, 440)
+
+[node name="Area2D30" parent="Ranas" unique_id=1909614041 instance=ExtResource("60_37e6k")]
+position = Vector2(7265, 441)
+
+[node name="Area2D31" parent="Ranas" unique_id=897124931 instance=ExtResource("60_37e6k")]
+position = Vector2(7329, 440)
+
+[node name="Area2D32" parent="Ranas" unique_id=355739776 instance=ExtResource("60_37e6k")]
+position = Vector2(7391, 441)
+
+[node name="Area2D33" parent="Ranas" unique_id=432761243 instance=ExtResource("60_37e6k")]
+position = Vector2(7456, 441)
+frog_type = 2
+
+[node name="Area2D34" parent="Ranas" unique_id=1964071913 instance=ExtResource("60_37e6k")]
+position = Vector2(7904, 440.00003)
+
+[node name="Area2D35" parent="Ranas" unique_id=1708493632 instance=ExtResource("60_37e6k")]
+position = Vector2(7968, 440)
+
+[node name="Area2D36" parent="Ranas" unique_id=923076861 instance=ExtResource("60_37e6k")]
+position = Vector2(6817, 184)
+
+[node name="Area2D37" parent="Ranas" unique_id=1086824697 instance=ExtResource("60_37e6k")]
+position = Vector2(6944, 184)
+
+[node name="Area2D38" parent="Ranas" unique_id=1754278272 instance=ExtResource("60_37e6k")]
+position = Vector2(7072, 183)
+
+[node name="Area2D39" parent="Ranas" unique_id=997470943 instance=ExtResource("60_37e6k")]
+position = Vector2(7199, 184)
+
+[node name="Area2D40" parent="Ranas" unique_id=918803275 instance=ExtResource("60_37e6k")]
+position = Vector2(7329, 184)
+
+[node name="Area2D41" parent="Ranas" unique_id=603055504 instance=ExtResource("60_37e6k")]
+position = Vector2(7457, 185)
+
+[node name="Area2D42" parent="Ranas" unique_id=1324553329 instance=ExtResource("60_37e6k")]
+position = Vector2(7585, 184)
+
+[node name="Area2D43" parent="Ranas" unique_id=1902491665 instance=ExtResource("60_37e6k")]
+position = Vector2(7713, 184)
+
+[node name="Area2D44" parent="Ranas" unique_id=1724962059 instance=ExtResource("60_37e6k")]
+position = Vector2(8163, 170)
+
+[node name="Area2D45" parent="Ranas" unique_id=1437528167 instance=ExtResource("60_37e6k")]
+position = Vector2(8231, 213)
+
+[node name="Area2D46" parent="Ranas" unique_id=1125695320 instance=ExtResource("60_37e6k")]
+position = Vector2(8295, 281)
+
+[node name="Area2D47" parent="Ranas" unique_id=1474145115 instance=ExtResource("60_37e6k")]
+position = Vector2(8335, 351)
+
+[node name="Area2D48" parent="Ranas" unique_id=1557674012 instance=ExtResource("60_37e6k")]
+position = Vector2(8376, 431)
+
+[node name="Area2D49" parent="Ranas" unique_id=1072992565 instance=ExtResource("60_37e6k")]
+position = Vector2(9601, 379.00003)
+
+[node name="Area2D50" parent="Ranas" unique_id=902591227 instance=ExtResource("60_37e6k")]
+position = Vector2(9600, 341)
+
+[node name="Area2D51" parent="Ranas" unique_id=310438594 instance=ExtResource("60_37e6k")]
+position = Vector2(9600, 299)
+
+[node name="Area2D52" parent="Ranas" unique_id=807907370 instance=ExtResource("60_37e6k")]
+position = Vector2(9602, 260)
+
+[node name="Area2D53" parent="Ranas" unique_id=734480640 instance=ExtResource("60_37e6k")]
+position = Vector2(10287, 364)
+
+[node name="Area2D54" parent="Ranas" unique_id=398874329 instance=ExtResource("60_37e6k")]
+position = Vector2(10339, 317)
+
+[node name="Area2D55" parent="Ranas" unique_id=1707784478 instance=ExtResource("60_37e6k")]
+position = Vector2(10411, 283)
+
+[node name="Area2D56" parent="Ranas" unique_id=1045846499 instance=ExtResource("60_37e6k")]
+position = Vector2(10489, 266)
+
+[node name="Area2D57" parent="Ranas" unique_id=426264340 instance=ExtResource("60_37e6k")]
+position = Vector2(10546, 213)
+
+[node name="Area2D58" parent="Ranas" unique_id=570602770 instance=ExtResource("60_37e6k")]
+position = Vector2(10609, 181)
+
+[node name="Area2D59" parent="Ranas" unique_id=1714337035 instance=ExtResource("60_37e6k")]
+position = Vector2(10683, 169)
+
+[node name="Area2D60" parent="Ranas" unique_id=1782929843 instance=ExtResource("60_37e6k")]
+position = Vector2(10766, 169)
+
+[node name="Area2D61" parent="Ranas" unique_id=1647975678 instance=ExtResource("60_37e6k")]
+position = Vector2(10823, 130)
+
+[node name="Area2D62" parent="Ranas" unique_id=1273948733 instance=ExtResource("60_37e6k")]
+position = Vector2(10898, 84)
+
+[node name="Area2D63" parent="Ranas" unique_id=561357858 instance=ExtResource("60_37e6k")]
+position = Vector2(10977, 71)
+
+[node name="Area2D64" parent="Ranas" unique_id=2060743481 instance=ExtResource("60_37e6k")]
+position = Vector2(11279, 104)
+
+[node name="Area2D65" parent="Ranas" unique_id=990147289 instance=ExtResource("60_37e6k")]
+position = Vector2(11337, 143)
+
+[node name="Area2D66" parent="Ranas" unique_id=460609936 instance=ExtResource("60_37e6k")]
+position = Vector2(11357, 213)
+
+[node name="Area2D67" parent="Ranas" unique_id=989531949 instance=ExtResource("60_37e6k")]
+position = Vector2(11361, 275)
+
+[node name="Area2D68" parent="Ranas" unique_id=215344383 instance=ExtResource("60_37e6k")]
+position = Vector2(11360, 344)
+
+[node name="Area2D69" parent="Ranas" unique_id=338739398 instance=ExtResource("60_37e6k")]
+position = Vector2(11360, 413)
+
+[node name="Area2D70" parent="Ranas" unique_id=825025749 instance=ExtResource("60_37e6k")]
+position = Vector2(11360, 476)
+
+[node name="Area2D71" parent="Ranas" unique_id=2001885237 instance=ExtResource("60_37e6k")]
+position = Vector2(12284, 154)
+
+[node name="Area2D72" parent="Ranas" unique_id=1328159473 instance=ExtResource("60_37e6k")]
+position = Vector2(12610, 142)
+
+[node name="Area2D73" parent="Ranas" unique_id=576381684 instance=ExtResource("60_37e6k")]
+position = Vector2(12968, 154)
+
+[node name="Area2D74" parent="Ranas" unique_id=1367621092 instance=ExtResource("60_37e6k")]
+position = Vector2(13796, 52)
+frog_type = 2
 
 [connection signal="body_entered" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PortalFinNivel/Area2D" to="PortalFinNivel" method="_on_area_2d_body_exited"]
