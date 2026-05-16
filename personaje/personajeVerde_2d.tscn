@@ -2218,6 +2218,20 @@ parameters/vineIce/TimeScale/scale = 1.0
 root_node = NodePath("../AnimationTree")
 libraries/ = SubResource("AnimationLibrary_no0uw")
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=191299382]
+position = Vector2(0, 32)
+emitting = false
+amount = 25
+lifetime = 0.09999999999999999
+one_shot = true
+spread = 180.0
+gravity = Vector2(0, 200)
+initial_velocity_min = 1.0
+initial_velocity_max = 30.0
+linear_accel_min = 1.0
+linear_accel_max = 20.0
+color = Color(0.95000005, 1, 0, 1)
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]

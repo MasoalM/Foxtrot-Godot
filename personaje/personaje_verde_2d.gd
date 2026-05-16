@@ -66,6 +66,8 @@ var liana_cooldown = 0
 var liana_actual: Node2D = null
 var liana_segmento: RigidBody2D = null
 
+@onready var coyote_jump = $CPUParticles2D
+
 func _ready():
 	#get_tree().debug_collisions_hint = true
 	if not GameState.checkpoint_activo:
@@ -145,6 +147,10 @@ func _physics_process(delta: float) -> void:
 		# Salto
 		if (not bloquearControles) and Input.is_action_just_pressed("ui_accept") \
 				and (is_on_floor() or (coyoteTimeActual > 0) or dobSal):
+					
+			if not is_on_floor() and coyoteTimeActual > 0:
+				coyote_jump.emitting=true
+					
 			_reset_afk()
 			aire = true
 			# Si quisiésemos poner partículas al saltar
@@ -172,6 +178,7 @@ func _physics_process(delta: float) -> void:
 		
 		if Input.is_action_just_released("ui_accept") and velocity.y < 0:
 			velocity.y *= cut_factor
+		
 		
 		if water:
 			vel = velocidad * 0.75
